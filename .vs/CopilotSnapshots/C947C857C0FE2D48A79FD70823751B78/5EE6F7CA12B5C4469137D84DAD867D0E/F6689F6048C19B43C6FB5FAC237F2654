@@ -1,0 +1,251 @@
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.Business.Dtos.TokenDtos;
+using STREAMIT.Business.Dtos.UserDtos;
+using STREAMIT.Business.Services.Abstractions;
+using Microsoft.AspNetCore.Authorization;
+using STREAMIT.Core.Entities;
+using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Security.Claims;
+
+public class AccountController : Controller
+{
+    private readonly UserManager<AppUser> _userManager;
+    private readonly SignInManager<AppUser> _signInManager;
+    private readonly IEmailService _emailService;
+    private readonly AuthService _authService;
+
+
+    public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailService emailService, AuthService authService)
+    {
+        _userManager = userManager;
+        _signInManager = signInManager;
+        _emailService = emailService;
+        _authService = authService;
+    }
+
+    // GET: /Account/Login
+    public IActionResult Login(string? returnUrl = null)
+    {
+        ViewBag.ReturnUrl = returnUrl;
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Login(LoginDto dto, string? returnUrl = null)
+    {
+        if (!ModelState.IsValid)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View(dto);
+        }
+
+        var user = await _userManager.FindByEmailAsync(dto.EmailOrUsername)
+                   ?? await _userManager.FindByNameAsync(dto.EmailOrUsername);
+
+        if (user == null || !await _userManager.CheckPasswordAsync(user, dto.Password))
+        {
+            ModelState.AddModelError(string.Empty, "Invalid credentials");
+            return View(dto);
+        }
+
+        if (!user.EmailConfirmed)
+        {
+            ModelState.AddModelError(string.Empty, "Email not confirmed");
+            return View(dto);
+        }
+
+        // JWT token yaratmaq üçün claims
+        var roles = await _userManager.GetRolesAsync(user);
+        var claims = new List<Claim>
+        {
+            new Claim("Fullname", user.Fullname),
+            new Claim("Username", user.UserName!),
+            new Claim("Email", user.Email!),
+            new Claim("Role", roles.FirstOrDefault() ?? "")
+        };
+
+        // Cookie authentication üçün claims identity
+        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var principal = new ClaimsPrincipal(claimsIdentity);
+
+        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, new AuthenticationProperties
+        {
+            IsPersistent = true
+        });
+
+        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+            return Redirect(returnUrl);
+
+        return RedirectToAction("Index", "Home");
+    }
+
+    // GET: /Account/Register
+    [AllowAnonymous]
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Register(RegisterDto dto)
+    {
+        if (!ModelState.IsValid)
+            return View(dto);
+
+        var existingUser = await _userManager.FindByNameAsync(dto.UserName)
+                           ?? await _userManager.FindByEmailAsync(dto.Email);
+
+        if (existingUser != null)
+        {
+            ModelState.AddModelError(string.Empty, "Username or Email already exists");
+            return View(dto);
+        }
+
+        var user = new AppUser
+        {
+            UserName = dto.UserName,
+            Email = dto.Email,
+            Fullname = dto.Fullname,
+            EmailConfirmed = false
+        };
+
+        var result = await _userManager.CreateAsync(user, dto.Password);
+
+        if (!result.Succeeded)
+        {
+            ModelState.AddModelError(string.Empty, string.Join(", ", result.Errors.Select(e => e.Description)));
+            return View(dto);
+        }
+
+        await _userManager.AddToRoleAsync(user, "Member");
+
+        // Email confirmation token yarat
+        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        var confirmationLink = $"https://localhost:7107/Account/ConfirmEmail?userId={user.Id}&token={WebUtility.UrlEncode(token)}";
+
+        var emailHtml = $@"
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Confirm Your Email</title>
+</head>
+<body style='margin:0; padding:0; font-family: Arial, sans-serif; background-color:#ffffff;'>
+    <table width='100%' cellpadding='0' cellspacing='0'>
+        <tr>
+            <td align='center' style='padding: 60px 0;'>
+                <table width='600' cellpadding='0' cellspacing='0' style='
+                        background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+                        border-radius:10px; 
+                        overflow:hidden; 
+                        box-shadow:0 4px 20px rgba(0,0,0,0.3);
+                        text-align:center;
+                    '>
+                    <!-- Header Image -->
+                    <tr>
+                        <td style='padding: 40px; background-color:#000;'>
+                            <img src='https://res.cloudinary.com/dgpf0kufs/image/upload/v1771527578/d23d4a1b-89e1-495f-b429-7e3cf2248c0a.png' 
+                                 alt='Logo' width='120' style='display:block; border:none; margin:auto;'/>
+                        </td>
+                    </tr>
+
+                    <!-- Greeting -->
+                    <tr>
+                        <td style='padding: 30px 20px; color:#fff;'>
+                            <h2 style='color:#e53935; margin:0;'>Welcome, {user.Fullname}!</h2>
+                            <p style='color:#fff; font-size:16px; margin-top:10px;'>Click the button below to confirm your email address and activate your account.</p>
+                        </td>
+                    </tr>
+
+                    <!-- Confirm Button -->
+                    <tr>
+                        <td style='padding: 20px;'>
+                            <a href='{confirmationLink}' 
+                               style='
+                                    background-color:#e53935; 
+                                    color:#fff; 
+                                    text-decoration:none; 
+                                    padding:15px 30px; 
+                                    border-radius:5px; 
+                                    font-weight:bold; 
+                                    display:inline-block; 
+                                    font-size:16px;
+                                    transition: all 0.3s ease;
+                               '
+                               onmouseover=""this.style.backgroundColor='#b71c1c'""
+                               onmouseout=""this.style.backgroundColor='#e53935'"">
+                               Confirm Email
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style='padding: 20px; color:#888; font-size:12px;'>
+                            <p style='margin:0;'>If you did not create an account, you can safely ignore this email.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>";
+
+        await _emailService.SendEmailAsync(user.Email!, "Confirm your email", emailHtml);
+
+        return View("EmailVerification"); // Email yoxlanışı üçün xüsusi view
+    }
+
+    // GET: /Account/ConfirmEmail
+    [HttpGet]
+    public async Task<IActionResult> ConfirmEmail(string userId, string token)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+
+        if (user == null)
+        {
+            ViewBag.Message = "User not found";
+            return View("ConfirmEmail");
+        }
+
+        token = WebUtility.UrlDecode(token);
+
+        var result = await _userManager.ConfirmEmailAsync(user, token);
+
+        ViewBag.Message = result.Succeeded ? "Email confirmed successfully" : "Email confirmation failed";
+        return View("ConfirmEmail");
+    }
+
+    // POST: /Account/Logout
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("Index", "Home");
+    }
+
+    // Helper: JWT claims-ləri çıxarmaq (istəsən login üçün istifadə oluna bilər)
+    private IEnumerable<Claim> ExtractClaimsFromJwt(string jwt)
+    {
+        try
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var token = handler.ReadJwtToken(jwt);
+            return token.Claims.Select(c => new Claim(c.Type, c.Value));
+        }
+        catch
+        {
+            return Array.Empty<Claim>();
+        }
+    }
+}

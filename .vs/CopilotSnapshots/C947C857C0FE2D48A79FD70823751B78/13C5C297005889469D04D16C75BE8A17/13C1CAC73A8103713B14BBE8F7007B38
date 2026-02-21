@@ -1,0 +1,2074 @@
+﻿@model IEnumerable<STREAMIT.Business.Dtos.MovieDtos.GetMovieDto>
+
+        <div class="content-inner container-fluid pb-0" id="page_layout">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="streamit-wraper-table">
+                <div class="card-header d-flex justify-content-between gap-3 flex-wrap align-items-center mb-4">
+                <h2 class="episode-playlist-title wp-heading-inline">
+                    <span class="position-relative "> Movies </span>
+                </h2>
+                <a asp-area="Admin" asp-controller="Movie" asp-action="Create" class="btn btn-primary">
+                    <i class="fa-solid fa-plus me-2"></i>Add Movie
+                </a>
+            </div>
+            <div class="table-view table-space">
+                <table id="seasonTable" class="data-tables data-table-one table custom-table movie_table"
+                    data-toggle="data-table1">
+                    <thead>
+                        <tr class="text-uppercase">
+                            <th class="">
+                                <input type="checkbox" class="form-check-input" />
+                            </th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Date and Time</th>
+                            <th>Views</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var movie in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input" />
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <img src="@(movie.PosterUrl ?? Url.Content("~/admin/assets/images/movie-thumb/any-name.webp"))" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @movie.Title
+                                    </td>
+                                    <td>
+                                        @movie.MembershipName
+                                    </td>
+                                    <td>
+                                        @movie.ReleaseDate.ToString("yyyy-MM-dd HH:mm:ss")
+                                    </td>
+                                    <td>
+                                        @(movie.MovieStatistics?.ViewCount ?? 0) views
+                                    </td>
+                                    <td>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input form-switch-input" type="checkbox" @(movie.Status == "Published" ? "checked" : "") disabled />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center list-user-action gap-2">
+                                            <a asp-area="Admin" asp-controller="Movie" asp-action="Update" asp-route-id="@movie.Id" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                                <i class="ph ph-pencil-simple fs-6"></i>
+                                            </a>
+                                            <a asp-area="Admin" asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.Id" class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                                <i class="ph ph-trash-simple fs-6"></i>
+                                            </a>
+                                            <a asp-area="Admin" asp-controller="Movie" asp-action="Update" asp-route-id="@movie.Id" class="btn btn-sm btn-icon btn-info-subtle rounded" data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                                <i class="ph ph-eye fs-6"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center">No movies found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="offcanvas offcanvas-end offcanvas-width-80" tabindex="-1" id="season-offcanvas">
+            <div class="offcanvas-header">
+                <h2 class="episode-playlist-title wp-heading-inline">
+                    <span class="position-relative ">
+                        Add New Movie </span>
+                </h2>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <form>
+                    <div class="section-form">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="genres">
+                                        Title
+                                    </label>
+                                    <input class="form-control" type="text" placeholder="Enter title of the movie."
+                                        data-id="multiple" >
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="author">Author</label>
+                                    <select id="author" class="form-control select2-basic-single">
+                                        <option>admin</option>
+                                        <option>user</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="status">Status</label>
+                                    <select id="status" class="form-control select2-basic-single">
+                                        <option>Published</option>
+                                        <option>Draft</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <label class="form-label flex-grow-1">Content</label>
+                            <div class="col-lg-12">
+                                <div id="editor" style="height:200px"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="streamit-upload form-group position-relative tvshow_genre_thumbnail_id_field">
+                                    <label class="form-label flex-grow-1">Thumbnail</label>
+                                
+                                    <!-- Hidden file input (per-instance) -->
+                                    <input type="file" class="d-none">
+                                
+                                    <!-- Button to trigger file input -->
+                                    <div>
+                                        <a href="#" class="d-flex align-items-center flex-column justify-content-center gap-4 button streamit_upload_video_button tips">
+                                            <!-- Default SVG icon (visible before image is selected) -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="img-icon d-block">
+                                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                                <polyline points="21 15 16 10 5 21"></polyline>
+                                            </svg>
+                                            <!-- Default text (visible before image is selected) -->
+                                            <span class="d-block">Choose Media to Upload</span>
+                                        </a>
+                                    </div>
+                                
+                                
+                                    <!-- Hidden file input element (per-instance) -->
+                                    <input type="file" class="file_upload" style="display:none;" accept="image/*">
+                                
+                                    <div class="streamit_media_preview-wrap">
+                                        <div class="streamit_media_preview">
+                                            <!-- Image preview (initially hidden) -->
+                                            <img class="tvshow_genre_thumbnail_preview" src="..//assets/images/movie-thumb/krishna.webp" alt="image1"
+                                                style="display: none; max-width: 150px; max-height: 150px; object-fit: cover;" />
+                                            <!-- Remove button (initially hidden) -->
+                                            <button class="button remove_tvshow_genre_thumbnail_button streamit_remove_video_button position-absolute" style="display: none;">
+                                                <span class="remove-media-icon">X</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="Description">
+                                        Excerpt
+                                    </label>
+                                    <textarea id="Description" class="form-control" rows="7"
+                                        placeholder="Enter excerpt content of the movie."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card streamit-tabs-card">
+                            <div class="card-body">
+                                <div class="row gy-4">
+                                    <div class="col-lg-3">
+                                        <div class="streamit-verticle-tab">
+                                            <div class="nav flex-column nav-pills me-0 me-lg-3 mb-3 mb-md-0 list-inline streamit-tabs"
+                                                role="tablist" aria-orientation="vertical">
+
+                                                <button class="nav-link active" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#general_tab" role="tab" aria-selected="true">
+                                                    <span>General</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#recommendedMovies_tab" role="tab"
+                                                    aria-selected="false">
+                                                    <span>Recommended Movies</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#relatedVideos_tab" role="tab"
+                                                    aria-selected="false">
+                                                    <span>Related Videos</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#cast_tab" role="tab" aria-selected="false">
+                                                    <span>Cast</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#crew_tab" role="tab" aria-selected="false">
+                                                    <span>Crew</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#sources_tab" role="tab" aria-selected="false">
+                                                    <span>Sources</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#genres_tab" role="tab" aria-selected="false">
+                                                    <span>Genres</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#tags_tab" role="tab" aria-selected="false">
+                                                    <span>Tags</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#additionData_tab" role="tab" aria-selected="true">
+                                                    <span>Additional Data</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#membershipLevel_tab" role="tab"
+                                                    aria-selected="false">
+                                                    <span>Membership Level</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 edit-tab-content">
+                                        <div class="tab-content" id="streamit-tabs-content">
+                                            <div class="tab-pane fade show active" id="general_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="movieMethod">Choose Movie Method</label>
+                                                                <select id="movieMethod"
+                                                                    class="form-select select2-basic-single">
+                                                                    <option>Upload movie</option>
+                                                                    <option>Embed movie</option>
+                                                                    <option>Movie URL</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="streamit-upload form-group position-relative tvshow_genre_thumbnail_id_field">
+                                                                <label class="form-label flex-grow-1">Upload movie</label>
+                                                                <span class="text-danger">*</span>
+                                                            
+                                                                <!-- Hidden file input (per-instance) -->
+                                                                <input type="file" class="d-none">
+                                                            
+                                                                <!-- Button to trigger file input -->
+                                                                <div>
+                                                                    <a href="#" class="d-flex align-items-center flex-column justify-content-center gap-4 button streamit_upload_video_button tips">
+                                                                        <!-- Default SVG icon (visible before image is selected) -->
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                            class="img-icon d-block">
+                                                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                                                        </svg>
+                                                                        <!-- Default text (visible before image is selected) -->
+                                                                        <span class="d-block">Choose Media to Upload</span>
+                                                                    </a>
+                                                                </div>
+                                                            
+                                                            
+                                                                <!-- Hidden file input element (per-instance) -->
+                                                                <input type="file" class="file_upload" style="display:none;" accept="image/*">
+                                                            
+                                                                <div class="streamit_media_preview-wrap">
+                                                                    <div class="streamit_media_preview">
+                                                                        <!-- Image preview (initially hidden) -->
+                                                                        <img class="tvshow_genre_thumbnail_preview" src="..//assets/images/movie-thumb/krishna.webp" alt="image1"
+                                                                            style="display: none; max-width: 150px; max-height: 150px; object-fit: cover;" />
+                                                                        <!-- Remove button (initially hidden) -->
+                                                                        <button class="button remove_tvshow_genre_thumbnail_button streamit_remove_video_button position-absolute" style="display: none;">
+                                                                            <span class="remove-media-icon">X</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1" for="genres">
+                                                                    Movie Release Date
+                                                                </label>
+                                                                <input class="form-control flatpickr_humandate"
+                                                                    type="text"
+                                                                    placeholder="Enter the release date of the movie."
+                                                                    data-id="multiple" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <label class="form-label">Movie Time
+                                                                    Duration</label>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <input type="number" class="form-control"
+                                                                            name="hours" value="0" placeholder="Hours"
+                                                                            min="0" aria-invalid="false">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <input type="number" class="form-control"
+                                                                            name="minutes" value="0"
+                                                                            placeholder="Minutes" min="0" max="59"
+                                                                            aria-invalid="false">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Movie Censor
+                                                                    Rating</label>
+                                                                <input type="text" name="_movie_censor_rating"
+                                                                    id="_movie_censor_rating" class="form-control"
+                                                                    placeholder="Enter the movie censor rating.">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="genres">Language</label>
+                                                                <select id="genres"
+                                                                    class="form-select select2-basic-single">
+                                                                    <option>Upload movie</option>
+                                                                    <option>Embed movie</option>
+                                                                    <option>Movie URL</option>
+
+                                                                    <option>
+                                                                        Afrikaans </option>
+                                                                    <option>
+                                                                        አማርኛ </option>
+                                                                    <option>
+                                                                        Aragonés </option>
+                                                                    <option>
+                                                                        العربية </option>
+                                                                    <option>
+                                                                        العربية المغربية </option>
+                                                                    <option>
+                                                                        অসমীয়া </option>
+                                                                    <option>
+                                                                        گؤنئی آذربایجان </option>
+                                                                    <option>
+                                                                        Azərbaycan dili </option>
+                                                                    <option>
+                                                                        Беларуская мова </option>
+                                                                    <option>
+                                                                        Български </option>
+                                                                    <option>
+                                                                        বাংলা </option>
+                                                                    <option>
+                                                                        བོད་ཡིག </option>
+                                                                    <option>
+                                                                        Bosanski </option>
+                                                                    <option>
+                                                                        Català </option>
+                                                                    <option>
+                                                                        Cebuano </option>
+                                                                    <option>
+                                                                        Čeština </option>
+                                                                    <option>
+                                                                        Cymraeg </option>
+                                                                    <option>
+                                                                        Dansk </option>
+                                                                    <option>
+                                                                        Deutsch (Schweiz) </option>
+                                                                    <option>
+                                                                        Deutsch </option>
+                                                                    <option>
+                                                                        Deutsch (Sie) </option>
+                                                                    <option>
+                                                                        Deutsch (Österreich) </option>
+                                                                    <option>
+                                                                        Deutsch (Schweiz, Du) </option>
+                                                                    <option>
+                                                                        Dolnoserbšćina </option>
+                                                                    <option>
+                                                                        རྫོང་ཁ </option>
+                                                                    <option>
+                                                                        Ελληνικά </option>
+                                                                    <option>
+                                                                        English (South Africa) </option>
+                                                                    <option>
+                                                                        English (Australia) </option>
+                                                                    <option>
+                                                                        English (UK) </option>
+                                                                    <option>
+                                                                        English (New Zealand) </option>
+                                                                    <option>
+                                                                        English (Canada) </option>
+                                                                    <option>
+                                                                        Esperanto </option>
+                                                                    <option>
+                                                                        Español de Perú </option>
+                                                                    <option>
+                                                                        Español de México </option>
+                                                                    <option>
+                                                                        Español de Colombia </option>
+                                                                    <option>
+                                                                        Español </option>
+                                                                    <option>
+                                                                        Español de Venezuela </option>
+                                                                    <option>
+                                                                        Español de Ecuador </option>
+                                                                    <option>
+                                                                        Español de República Dominicana </option>
+                                                                    <option>
+                                                                        Español de Uruguay </option>
+                                                                    <option>
+                                                                        Español de Puerto Rico </option>
+                                                                    <option>
+                                                                        Español de Guatemala </option>
+                                                                    <option>
+                                                                        Español de Costa Rica </option>
+                                                                    <option>
+                                                                        Español de Chile </option>
+                                                                    <option>
+                                                                        Español de Argentina </option>
+                                                                    <option>
+                                                                        Eesti </option>
+                                                                    <option>
+                                                                        Euskara </option>
+                                                                    <option>
+                                                                        (فارسی (افغانستان </option>
+                                                                    <option>
+                                                                        فارسی </option>
+                                                                    <option>
+                                                                        Suomi </option>
+                                                                    <option>
+                                                                        Français du Canada </option>
+                                                                    <option>
+                                                                        Français </option>
+                                                                    <option>
+                                                                        Français de Belgique </option>
+                                                                    <option>
+                                                                        Friulian </option>
+                                                                    <option>
+                                                                        Frysk </option>
+                                                                    <option>
+                                                                        Gàidhlig </option>
+                                                                    <option>
+                                                                        Galego </option>
+                                                                    <option>
+                                                                        ગુજરાતી </option>
+                                                                    <option>
+                                                                        هزاره گی </option>
+                                                                    <option>
+                                                                        עִבְרִית </option>
+                                                                    <option>
+                                                                        हिन्दी </option>
+                                                                    <option>
+                                                                        Hrvatski </option>
+                                                                    <option>
+                                                                        Hornjoserbšćina </option>
+                                                                    <option>
+                                                                        Magyar </option>
+                                                                    <option>
+                                                                        Հայերեն </option>
+                                                                    <option>
+                                                                        Bahasa Indonesia </option>
+                                                                    <option>
+                                                                        Íslenska </option>
+                                                                    <option>
+                                                                        Italiano </option>
+                                                                    <option>
+                                                                        日本語 </option>
+                                                                    <option>
+                                                                        Basa Jawa </option>
+                                                                    <option>
+                                                                        ქართული </option>
+                                                                    <option>
+                                                                        Taqbaylit </option>
+                                                                    <option>
+                                                                        Қазақ тілі </option>
+                                                                    <option>
+                                                                        ភាសាខ្មែរ </option>
+                                                                    <option>
+                                                                        ಕನ್ನಡ </option>
+                                                                    <option>
+                                                                        한국어 </option>
+                                                                    <option>
+                                                                        كوردی‎ </option>
+                                                                    <option>
+                                                                        Кыргызча </option>
+                                                                    <option>
+                                                                        ພາສາລາວ </option>
+                                                                    <option>
+                                                                        Lietuvių kalba </option>
+                                                                    <option>
+                                                                        Latviešu valoda </option>
+                                                                    <option>
+                                                                        Македонски јазик </option>
+                                                                    <option>
+                                                                        മലയാളം </option>
+                                                                    <option>
+                                                                        Монгол </option>
+                                                                    <option>
+                                                                        मराठी </option>
+                                                                    <option>
+                                                                        Bahasa Melayu </option>
+                                                                    <option>
+                                                                        ဗမာစာ </option>
+                                                                    <option>
+                                                                        Norsk bokmål </option>
+                                                                    <option>
+                                                                        नेपाली </option>
+                                                                    <option>
+                                                                        Nederlands (Formeel) </option>
+                                                                    <option>
+                                                                        Nederlands (België) </option>
+                                                                    <option>
+                                                                        Nederlands </option>
+                                                                    <option>
+                                                                        Norsk nynorsk </option>
+                                                                    <option>
+                                                                        Occitan </option>
+                                                                    <option>
+                                                                        ਪੰਜਾਬੀ </option>
+                                                                    <option>
+                                                                        Polski </option>
+                                                                    <option>
+                                                                        پښتو </option>
+                                                                    <option>
+                                                                        Português (AO90) </option>
+                                                                    <option>
+                                                                        Português do Brasil </option>
+                                                                    <option>
+                                                                        Português de Angola </option>
+                                                                    <option>
+                                                                        Português </option>
+                                                                    <option>
+                                                                        Ruáinga </option>
+                                                                    <option>
+                                                                        Română </option>
+                                                                    <option>
+                                                                        Русский </option>
+                                                                    <option>
+                                                                        Сахалыы </option>
+                                                                    <option>
+                                                                        سنڌي </option>
+                                                                    <option>
+                                                                        සිංහල </option>
+                                                                    <option>
+                                                                        Slovenčina </option>
+                                                                    <option>
+                                                                        سرائیکی </option>
+                                                                    <option>
+                                                                        Slovenščina </option>
+                                                                    <option>
+                                                                        Shqip </option>
+                                                                    <option>
+                                                                        Српски језик </option>
+                                                                    <option>
+                                                                        Svenska </option>
+                                                                    <option>
+                                                                        Kiswahili </option>
+                                                                    <option>
+                                                                        Ślōnskŏ gŏdka </option>
+                                                                    <option>
+                                                                        தமிழ் </option>
+                                                                    <option>
+                                                                        தமிழ் </option>
+                                                                    <option>
+                                                                        తెలుగు </option>
+                                                                    <option>
+                                                                        ไทย </option>
+                                                                    <option>
+                                                                        Tagalog </option>
+                                                                    <option>
+                                                                        Türkçe </option>
+                                                                    <option>
+                                                                        Татар теле </option>
+                                                                    <option>
+                                                                        Reo Tahiti </option>
+                                                                    <option>
+                                                                        ئۇيغۇرچە </option>
+                                                                    <option>
+                                                                        Українська </option>
+                                                                    <option>
+                                                                        اردو </option>
+                                                                    <option>
+                                                                        O‘zbekcha </option>
+                                                                    <option>
+                                                                        Tiếng Việt </option>
+                                                                    <option>
+                                                                        简体中文 </option>
+                                                                    <option>
+                                                                        繁體中文 </option>
+                                                                    <option>
+                                                                        香港中文 </option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="recommendedMovies_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group mb-0">
+                                                        <label class="form-label flex-grow-1" for="recommended_movies">Recommended Movies</label>
+                                                        <select id="recommended_movies" class="form-select select2-basic-multiple" multiple>
+                                                            <option>Pushpa </option>
+                                                            <option>The Conjuring </option>
+                                                            <option>Giikre </option>
+                                                            <option>Another Danger </option>
+                                                            <option>Kung Fu Panda </option>
+                                                            <option>John Wick </option>
+                                                            <option>Spiderman </option>
+                                                            <option>War For The Planet </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="relatedVideos_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group mb-0">
+                                                        <label class="form-label flex-grow-1"
+                                                            for="related_videos">Related
+                                                            Videos</label>
+                                                        <select id="related_videos"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                            <option>Little Krishna </option>
+                                                            <option>Red Dog </option>
+                                                            <option>Frozen </option>
+                                                            <option>Titanic </option>
+                                                            <option>Adventure </option>
+                                                            <option>Kung Fu Panda </option>
+                                                            <option>Red </option>
+                                                            <option>The Crew </option>
+                                                            <option>Synchronic </option>
+                                                            <option>Lost In Space </option>
+                                                            <option>The Dragon King </option>
+                                                            <option>Sonil </option>
+                                                            <option>Guilty </option>
+                                                            <option>Toddler </option>
+                                                            <option>Charlie Chaplin </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="cast_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group mb-0">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="choose_cast">Choose Cast</label>
+                                                                <div class="d-flex gap-2">
+                                                                    <select id="choose_cast"
+                                                                        class="form-control select2-basic-multiple" multiple>
+                                                                        <option>Select Cast </option>
+                                                                        <option>Ava Monroe </option>
+                                                                        <option>Charles Melton </option>
+                                                                        <option>Jack Nicholson </option>
+                                                                        <option>James Stewart </option>
+                                                                        <option>Jeff Bridges </option>
+                                                                        <option>Jordan Grant </option>
+                                                                        <option>Mark Smith </option>
+                                                                        <option>Maxwell Carter </option>
+                                                                        <option>Ruby Scott </option>
+                                                                        <option>Michael Fox </option>
+                                                                        <option>Ryan Pierce </option>
+                                                                        <option>John Abraham </option>
+                                                                        <option>Leena Burton </option>
+                                                                        <option>Davina Decorous </option>
+                                                                        <option>Thomas Bailey </option>
+                                                                        <option>Kelly Reilly </option>
+                                                                        <option>Smith Jonas </option>
+                                                                        <option>Angel Louis </option>
+                                                                        <option>Millar Joseph </option>
+                                                                        <option>Mark Wilson </option>
+                                                                        <option>Jack Walker </option>
+                                                                        <option>Benjamin Hayes </option>
+                                                                        <option>Olivia Foster </option>
+                                                                        <option>Ethan Crawford </option>
+                                                                        <option>Oliver Turner </option>
+                                                                        <option>Maria Rodriguez </option>
+                                                                    </select>
+                                                                    <button type="button"
+                                                                        class="btn btn-primary">Add</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="crew_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group mb-0">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="choose_crew">Choose Crew  Member</label>
+                                                                <div class="d-flex gap-2">
+                                                                    <select id="choose_crew"
+                                                                        class="form-control select2-basic-multiple" multiple>
+                                                                        <option>Select Crew </option>
+                                                                        <option>Ava Monroe </option>
+                                                                        <option>Charles Melton </option>
+                                                                        <option>Jack Nicholson </option>
+                                                                        <option>James Stewart </option>
+                                                                        <option>Jeff Bridges </option>
+                                                                        <option>Jordan Grant </option>
+                                                                        <option>Mark Smith </option>
+                                                                        <option>Maxwell Carter </option>
+                                                                        <option>Ruby Scott </option>
+                                                                        <option>Michael Fox </option>
+                                                                        <option>Ryan Pierce </option>
+                                                                        <option>John Abraham </option>
+                                                                        <option>Leena Burton </option>
+                                                                        <option>Davina Decorous </option>
+                                                                        <option>Thomas Bailey </option>
+                                                                        <option>Kelly Reilly </option>
+                                                                        <option>Smith Jonas </option>
+                                                                        <option>Angel Louis </option>
+                                                                        <option>Millar Joseph </option>
+                                                                        <option>Mark Wilson </option>
+                                                                        <option>Jack Walker </option>
+                                                                        <option>Benjamin Hayes </option>
+                                                                        <option>Olivia Foster </option>
+                                                                        <option>Ethan Crawford </option>
+                                                                        <option>Oliver Turner </option>
+                                                                        <option>Maria Rodriguez </option>
+                                                                    </select>
+                                                                    <button type="button" class="btn btn-primary">Add</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="sources_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <!-- Add Source Button -->
+                                                    <button id="add-movie-source" class="btn btn-primary">Add Source</button>
+                                                        <div id="source-container" class="source-container">
+                                                            <!-- Dynamically added sources will appear here -->
+                                                        </div>
+                                                        <div id="source-data-template" style="display: none;">
+                                                            <div id="source-data-container"
+                                                                class="streamit_source_data streamit-metabox-content pt-3 mt-3 pb-3 d-none">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Name
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="name"
+                                                                                placeholder="Enter the source name of the movie.">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Quality
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="quality"
+                                                                                placeholder="Enter the source quality of the movie.">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Choose Method
+                                                                            </label>
+                                                                            <select class="form-control"
+                                                                                name="Choose Method">
+                                                                                <option>Embed Movie</option>
+                                                                                <option>Movie URL</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="Description1">
+                                                                                Embed Movie
+                                                                            </label>
+                                                                            <textarea id="Description1"
+                                                                                class="form-control" rows="7"
+                                                                                placeholder="Enter the embed content to the movie."></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Language
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="Language"
+                                                                                placeholder="Enter the source name of the movie.">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Date Added
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="Date Added"
+                                                                                placeholder="Enter the source quality of the movie.">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Player
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="Player"
+                                                                                placeholder="Enter the source quality of the movie.">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Download URL
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="Download URL"
+                                                                                placeholder="Enter the source quality of the movie.">
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="genres_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label flex-grow-1" for="choice_genres">Choose Movie Genres</label>
+                                                        <select id="choice_genres"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                            <option>Action </option>
+                                                            <option>Adventure </option>
+                                                            <option>Animation </option>
+                                                            <option>Crime </option>
+                                                            <option>Horror </option>
+                                                            <option>Mystery </option>
+                                                            <option>Romance </option>
+                                                            <option>Action moview </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tags_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label flex-grow-1" for="choice_tags">Choose
+                                                            Movie
+                                                            Tags</label>
+                                                        <select id="choice_tags"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                            <option>Action </option>
+                                                            <option>Adventure </option>
+                                                            <option>Animation </option>
+                                                            <option>Assassin </option>
+                                                            <option>Comedy </option>
+                                                            <option>Drama </option>
+                                                            <option>Family </option>
+                                                            <option>Fantasy </option>
+                                                            <option>History </option>
+                                                            <option>Hitman </option>
+                                                            <option>Horror </option>
+                                                            <option>Mystery </option>
+                                                            <option>Recommended </option>
+                                                            <option>Revenge </option>
+                                                            <option>Sci-Fi </option>
+                                                            <option>Thriller </option>
+                                                            <option>Animated Tag </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="additionData_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1" for="genres">
+                                                                    Trailer Link
+                                                                </label>
+                                                                <input type="text" class="form-control"
+                                                                    name="Download URL"
+                                                                    placeholder="Enter the trailer link.">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label class="d-block form-label">Upcoming</label>
+                                                            <div class="checkbox mb-3">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="flexCheckDefault3">
+                                                                    <label class="form-check-label"
+                                                                        for="flexCheckDefault3">
+                                                                        This Is Upcoming Movie
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="streamit-upload form-group position-relative tvshow_genre_thumbnail_id_field">
+                                                                <label class="form-label flex-grow-1">Upload Potrait Image</label>
+                                                            
+                                                                <!-- Hidden file input (per-instance) -->
+                                                                <input type="file" class="d-none">
+                                                            
+                                                                <!-- Button to trigger file input -->
+                                                                <div>
+                                                                    <a href="#" class="d-flex align-items-center flex-column justify-content-center gap-4 button streamit_upload_video_button tips">
+                                                                        <!-- Default SVG icon (visible before image is selected) -->
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                            class="img-icon d-block">
+                                                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                                                        </svg>
+                                                                        <!-- Default text (visible before image is selected) -->
+                                                                        <span class="d-block">Choose Media to Upload</span>
+                                                                    </a>
+                                                                </div>
+                                                            
+                                                            
+                                                                <!-- Hidden file input element (per-instance) -->
+                                                                <input type="file" class="file_upload" style="display:none;" accept="image/*">
+                                                            
+                                                                <div class="streamit_media_preview-wrap">
+                                                                    <div class="streamit_media_preview">
+                                                                        <!-- Image preview (initially hidden) -->
+                                                                        <img class="tvshow_genre_thumbnail_preview" src="..//assets/images/movie-thumb/krishna.webp" alt="image1"
+                                                                            style="display: none; max-width: 150px; max-height: 150px; object-fit: cover;" />
+                                                                        <!-- Remove button (initially hidden) -->
+                                                                        <button class="button remove_tvshow_genre_thumbnail_button streamit_remove_video_button position-absolute" style="display: none;">
+                                                                            <span class="remove-media-icon">X</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="imdb_rating">Enter
+                                                                    IMDb
+                                                                    Rating Manually</label>
+                                                                <input type="number" id="imdb_rating"
+                                                                    class="form-control" value="0" aria-invalid="false">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="select_related_product">Select Related
+                                                                    Product</label>
+                                                                <select id="select_related_product"
+                                                                    class="form-control select2-basic-multiple"  multiple>
+                                                                    <option>WordPress Pennant </option>
+                                                                    <option>Logo Collection </option>
+                                                                    <option>
+                                                                        Beanie with Logo </option>
+                                                                    <option>T-Shirt with Logo </option>
+                                                                    <option>Single </option>
+                                                                    <option>Album </option>
+                                                                    <option>Polo </option>
+                                                                    <option>Long Sleeve Tee </option>
+                                                                    <option>Hoodie with Zipper </option>
+                                                                    <option>Hoodie with Pocket </option>
+                                                                    <option>Sunglasses </option>
+                                                                    <option>Cap </option>
+                                                                    <option>Belt </option>
+                                                                    <option>Beanie </option>
+                                                                    <option>T-Shirt </option>
+                                                                    <option>Hoodie with Logo </option>
+                                                                    <option>Hoodie </option>
+                                                                    <option>V-Neck T-Shirt </option>
+                                                                    <option>Round Neck T-Shirt </option>
+                                                                    <option>Magic Hat </option>
+                                                                    <option>Spider Cover </option>
+                                                                    <option>Sleeping Mask </option>
+                                                                    <option>Phone Cover </option>
+                                                                    <option>Black Bow </option>
+                                                                    <option>Coffee Cup </option>
+                                                                    <option>Boxing Gloves </option>
+                                                                    <option>Crown </option>
+                                                                    <option>Bag Pack </option>
+                                                                    <option>Vehicle Keychain </option>
+                                                                    <option>Green Specs </option>
+                                                                    <option>Cartoon Character </option>
+                                                                    <option>Red &amp; Black T-Shirt </option>
+                                                                    <option>Logo T-Shirt </option>
+                                                                    <option>Believe Mask </option>
+                                                                    <option>Keychain </option>
+                                                                    <option>Socks </option>
+                                                                    <option>Harry T-Shirt </option>
+                                                                    <option>Sunglasses </option>
+                                                                    <option>Black Cap </option>
+                                                                    <option>Round Badges </option>
+                                                                    <option>Carry Bag </option>
+                                                                    <option>Glossy Mug </option>
+                                                                    <option>Spider Pillow logo </option>
+                                                                    <option>Daily Diary </option>
+                                                                    <option>Floral Badges </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label class="d-block form-label">Notification</label>
+                                                            <div class="checkbox mb-3">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="flexCheckDefault31">
+                                                                    <label class="form-check-label"
+                                                                        for="flexCheckDefault31">
+                                                                        Notify User
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="membershipLevel_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label flex-grow-1" for="pmp_levels">Choose
+                                                            PMP
+                                                            Levels</label>
+                                                        <select id="pmp_levels"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                            <option>free </option>
+                                                            <option>Monthly level </option>
+                                                            <option>Annual </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="offcanvas-footer border-top">
+                <div class="d-flex gap-3 p-3">
+                    <button type="submit" class="btn btn-primary d-flex align-items-center gap-2">
+                        <i class="ph-fill ph-floppy-disk-back"></i>Save
+                    </button>
+                    <button type="button" class="btn btn-outline-primary d-flex align-items-center gap-2" data-bs-dismiss="offcanvas"
+                        aria-label="Close">
+                        <i class="ph ph-caret-double-left"></i>Close
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="offcanvas offcanvas-end offcanvas-width-80" tabindex="-1" id="season-offcanvas-edit">
+            <div class="offcanvas-header">
+                <h2 class="episode-playlist-title wp-heading-inline">
+                    <span class="position-relative ">
+                        Edit Movie </span>
+                </h2>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <form>
+                    <div class="section-form">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="genres">
+                                        Title
+                                    </label>
+                                    <input class="form-control" type="text" value="arrival 1999" data-id="multiple"
+                                        >
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="author1">Author</label>
+                                    <select id="author1" class="form-control select2-basic-single">
+                                        <option>admin</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="status1">Status</label>
+                                    <select id="status1" class="form-control select2-basic-single">
+                                        <option selected="">Published</option>
+                                        <option>Draft</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <label class="form-label flex-grow-1">Content</label>
+                            <div class="col-lg-12">
+                                <div id="editor1" style="height:200px"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="streamit-upload form-field form-group position-relative media-attachment-video media-option tvshow_genre_thumbnail_id_field">
+                                    <label class="form-label">Thumbnail</label>
+                                
+                                    <!-- Hidden file input (per-instance) -->
+                                    <input type="file" class="d-none upload_video_id">
+                                
+                                    <!-- Button to trigger file input -->
+                                    <div>
+                                        <a href="#" class="d-flex align-items-center flex-column justify-content-center gap-4 button streamit_upload_video_button tips edit-button">
+                                            <img class="tvshow_genre_thumbnail_previews img-fluid object-cover" src="~/admin/assets/images/movie-thumb/krishna.webp" alt="image"
+                                                style="width: 150px; height: 150px; object-fit: cover;"></a>
+                                    </div>
+                                
+                                
+                                    <!-- Hidden file input element (per-instance) -->
+                                    <input type="file" class="file_upload" style="display:none;" accept="image/*">
+                                
+                                    <div class="streamit_media_preview-wrap">
+                                        <div class="streamit_media_preview">
+                                            <!-- Remove button (per-instance) -->
+                                            <button class="button remove_tvshow_genre_thumbnail_buttons streamit_remove_video_button tips position-absolute" style="display: block;">
+                                                <span class="remove-media-icon">X</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="Description2">
+                                        Excerpt
+                                    </label>
+                                    <textarea id="Description2" class="form-control" rows="7"
+                                        placeholder="Enter excerpt content of the movie."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card streamit-tabs-card">
+                            <div class="card-body">
+                                <div class="row gy-4">
+                                    <div class="col-lg-3">
+                                        <div class="streamit-verticle-tab">
+                                            <div class="nav flex-column nav-pills me-0 me-lg-3 mb-3 mb-md-0 list-inline streamit-tabs"
+                                                role="tablist" aria-orientation="vertical">
+
+                                                <button class="nav-link active" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#general_tab1" role="tab" aria-selected="true">
+                                                    <span>General</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#recommendedMovies_tab1" role="tab"
+                                                    aria-selected="false">
+                                                    <span>Recommended Movies</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#relatedVideos_tab1" role="tab"
+                                                    aria-selected="false">
+                                                    <span>Related Videos</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#cast_tab1" role="tab" aria-selected="false">
+                                                    <span>Cast</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#crew_tab1" role="tab" aria-selected="false">
+                                                    <span>Crew</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#sources_tab1" role="tab" aria-selected="false">
+                                                    <span>Sources</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#genres_tab1" role="tab" aria-selected="false">
+                                                    <span>Genres</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#tags_tab1" role="tab" aria-selected="false">
+                                                    <span>Tags</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#additionData_tab1" role="tab" aria-selected="true">
+                                                    <span>Additional Data</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#membershipLevel_tab1" role="tab"
+                                                    aria-selected="false">
+                                                    <span>Membership Level</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 edit-tab-content">
+                                        <div class="tab-content" id="streamit-tabs-content">
+                                            <div class="tab-pane fade show active" id="general_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="movieMethod1">Choose Movie
+                                                                    Method</label>
+                                                                <select id="movieMethod1"
+                                                                    class="form-control select2-basic-multiple">
+                                                                    <option>Upload movie</option>
+                                                                    <option>Embed movie</option>
+                                                                    <option>Movie URL</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="streamit-upload form-group position-relative tvshow_genre_thumbnail_id_field">
+                                                                <label class="form-label flex-grow-1">Upload movie</label>
+                                                            
+                                                                <!-- Hidden file input (per-instance) -->
+                                                                <input type="file" class="d-none">
+                                                            
+                                                                <!-- Button to trigger file input -->
+                                                                <div>
+                                                                    <a href="#" class="d-flex align-items-center flex-column justify-content-center gap-4 button streamit_upload_video_button tips">
+                                                                        <!-- Default SVG icon (visible before image is selected) -->
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                            class="img-icon d-block">
+                                                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                                                        </svg>
+                                                                        <!-- Default text (visible before image is selected) -->
+                                                                        <span class="d-block">Choose Media to Upload</span>
+                                                                    </a>
+                                                                </div>
+                                                            
+                                                            
+                                                                <!-- Hidden file input element (per-instance) -->
+                                                                <input type="file" class="file_upload" style="display:none;" accept="image/*">
+                                                            
+                                                                <div class="streamit_media_preview-wrap">
+                                                                    <div class="streamit_media_preview">
+                                                                        <!-- Image preview (initially hidden) -->
+                                                                        <img class="tvshow_genre_thumbnail_preview" src="..//assets/images/movie-thumb/krishna.webp" alt="image1"
+                                                                            style="display: none; max-width: 150px; max-height: 150px; object-fit: cover;" />
+                                                                        <!-- Remove button (initially hidden) -->
+                                                                        <button class="button remove_tvshow_genre_thumbnail_button streamit_remove_video_button position-absolute" style="display: none;">
+                                                                            <span class="remove-media-icon">X</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1" for="genres">
+                                                                    Movie Release Date
+                                                                </label>
+                                                                <input class="form-control flatpickr_humandate_default"
+                                                                    type="text"
+                                                                    placeholder="Enter the release date of the movie."
+                                                                    data-id="multiple" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="row">
+                                                                <label class="form-label">Movie Time
+                                                                    Duration</label>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <input type="number" class="form-control"
+                                                                            name="hours" value="2" placeholder="Hours"
+                                                                            min="0" aria-invalid="false">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <input type="number" class="form-control"
+                                                                            name="minutes" value="30"
+                                                                            placeholder="Minutes" min="0" max="59"
+                                                                            aria-invalid="false">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Movie Censor
+                                                                    Rating</label>
+                                                                <input type="text" name="_movie_censor_rating"
+                                                                    id="_movie_censor_rating" value="U"
+                                                                    class="form-control"
+                                                                    placeholder="Enter the movie censor rating.">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="genres1">Language</label>
+                                                                <select id="genres1"
+                                                                    class="form-control select2-basic-multiple" multiple>
+                                                                    <option>
+                                                                        Afrikaans </option>
+                                                                    <option>
+                                                                        አማርኛ </option>
+                                                                    <option>
+                                                                        Aragonés </option>
+                                                                    <option>
+                                                                        العربية </option>
+                                                                    <option>
+                                                                        العربية المغربية </option>
+                                                                    <option>
+                                                                        অসমীয়া </option>
+                                                                    <option>
+                                                                        گؤنئی آذربایجان </option>
+                                                                    <option>
+                                                                        Azərbaycan dili </option>
+                                                                    <option>
+                                                                        Беларуская мова </option>
+                                                                    <option>
+                                                                        Български </option>
+                                                                    <option>
+                                                                        বাংলা </option>
+                                                                    <option>
+                                                                        བོད་ཡིག </option>
+                                                                    <option>
+                                                                        Bosanski </option>
+                                                                    <option>
+                                                                        Català </option>
+                                                                    <option>
+                                                                        Cebuano </option>
+                                                                    <option>
+                                                                        Čeština </option>
+                                                                    <option>
+                                                                        Cymraeg </option>
+                                                                    <option>
+                                                                        Dansk </option>
+                                                                    <option>
+                                                                        Deutsch (Schweiz) </option>
+                                                                    <option>
+                                                                        Deutsch </option>
+                                                                    <option>
+                                                                        Deutsch (Sie) </option>
+                                                                    <option>
+                                                                        Deutsch (Österreich) </option>
+                                                                    <option>
+                                                                        Deutsch (Schweiz, Du) </option>
+                                                                    <option>
+                                                                        Dolnoserbšćina </option>
+                                                                    <option>
+                                                                        རྫོང་ཁ </option>
+                                                                    <option>
+                                                                        Ελληνικά </option>
+                                                                    <option>
+                                                                        English (South Africa) </option>
+                                                                    <option>
+                                                                        English (Australia) </option>
+                                                                    <option>
+                                                                        English (UK) </option>
+                                                                    <option>
+                                                                        English (New Zealand) </option>
+                                                                    <option>
+                                                                        English (Canada) </option>
+                                                                    <option>
+                                                                        Esperanto </option>
+                                                                    <option>
+                                                                        Español de Perú </option>
+                                                                    <option>
+                                                                        Español de México </option>
+                                                                    <option>
+                                                                        Español de Colombia </option>
+                                                                    <option>
+                                                                        Español </option>
+                                                                    <option>
+                                                                        Español de Venezuela </option>
+                                                                    <option>
+                                                                        Español de Ecuador </option>
+                                                                    <option>
+                                                                        Español de República Dominicana </option>
+                                                                    <option>
+                                                                        Español de Uruguay </option>
+                                                                    <option>
+                                                                        Español de Puerto Rico </option>
+                                                                    <option>
+                                                                        Español de Guatemala </option>
+                                                                    <option>
+                                                                        Español de Costa Rica </option>
+                                                                    <option>
+                                                                        Español de Chile </option>
+                                                                    <option>
+                                                                        Español de Argentina </option>
+                                                                    <option>
+                                                                        Eesti </option>
+                                                                    <option>
+                                                                        Euskara </option>
+                                                                    <option>
+                                                                        (فارسی (افغانستان </option>
+                                                                    <option>
+                                                                        فارسی </option>
+                                                                    <option>
+                                                                        Suomi </option>
+                                                                    <option>
+                                                                        Français du Canada </option>
+                                                                    <option>
+                                                                        Français </option>
+                                                                    <option>
+                                                                        Français de Belgique </option>
+                                                                    <option>
+                                                                        Friulian </option>
+                                                                    <option>
+                                                                        Frysk </option>
+                                                                    <option>
+                                                                        Gàidhlig </option>
+                                                                    <option>
+                                                                        Galego </option>
+                                                                    <option>
+                                                                        ગુજરાતી </option>
+                                                                    <option>
+                                                                        هزاره گی </option>
+                                                                    <option>
+                                                                        עִבְרִית </option>
+                                                                    <option selected="">
+                                                                        हिन्दी </option>
+                                                                    <option>
+                                                                        Hrvatski </option>
+                                                                    <option>
+                                                                        Hornjoserbšćina </option>
+                                                                    <option>
+                                                                        Magyar </option>
+                                                                    <option>
+                                                                        Հայերեն </option>
+                                                                    <option>
+                                                                        Bahasa Indonesia </option>
+                                                                    <option>
+                                                                        Íslenska </option>
+                                                                    <option>
+                                                                        Italiano </option>
+                                                                    <option>
+                                                                        日本語 </option>
+                                                                    <option>
+                                                                        Basa Jawa </option>
+                                                                    <option>
+                                                                        ქართული </option>
+                                                                    <option>
+                                                                        Taqbaylit </option>
+                                                                    <option>
+                                                                        Қазақ тілі </option>
+                                                                    <option>
+                                                                        ភាសាខ្មែរ </option>
+                                                                    <option>
+                                                                        ಕನ್ನಡ </option>
+                                                                    <option>
+                                                                        한국어 </option>
+                                                                    <option>
+                                                                        كوردی‎ </option>
+                                                                    <option>
+                                                                        Кыргызча </option>
+                                                                    <option>
+                                                                        ພາສາລາວ </option>
+                                                                    <option>
+                                                                        Lietuvių kalba </option>
+                                                                    <option>
+                                                                        Latviešu valoda </option>
+                                                                    <option>
+                                                                        Македонски јазик </option>
+                                                                    <option>
+                                                                        മലയാളം </option>
+                                                                    <option>
+                                                                        Монгол </option>
+                                                                    <option>
+                                                                        मराठी </option>
+                                                                    <option>
+                                                                        Bahasa Melayu </option>
+                                                                    <option>
+                                                                        ဗမာစာ </option>
+                                                                    <option>
+                                                                        Norsk bokmål </option>
+                                                                    <option>
+                                                                        नेपाली </option>
+                                                                    <option>
+                                                                        Nederlands (Formeel) </option>
+                                                                    <option>
+                                                                        Nederlands (België) </option>
+                                                                    <option>
+                                                                        Nederlands </option>
+                                                                    <option>
+                                                                        Norsk nynorsk </option>
+                                                                    <option>
+                                                                        Occitan </option>
+                                                                    <option>
+                                                                        ਪੰਜਾਬੀ </option>
+                                                                    <option>
+                                                                        Polski </option>
+                                                                    <option>
+                                                                        پښتو </option>
+                                                                    <option>
+                                                                        Português (AO90) </option>
+                                                                    <option>
+                                                                        Português do Brasil </option>
+                                                                    <option>
+                                                                        Português de Angola </option>
+                                                                    <option>
+                                                                        Português </option>
+                                                                    <option>
+                                                                        Ruáinga </option>
+                                                                    <option>
+                                                                        Română </option>
+                                                                    <option>
+                                                                        Русский </option>
+                                                                    <option>
+                                                                        Сахалыы </option>
+                                                                    <option>
+                                                                        سنڌي </option>
+                                                                    <option>
+                                                                        සිංහල </option>
+                                                                    <option>
+                                                                        Slovenčina </option>
+                                                                    <option>
+                                                                        سرائیکی </option>
+                                                                    <option>
+                                                                        Slovenščina </option>
+                                                                    <option>
+                                                                        Shqip </option>
+                                                                    <option>
+                                                                        Српски језик </option>
+                                                                    <option>
+                                                                        Svenska </option>
+                                                                    <option>
+                                                                        Kiswahili </option>
+                                                                    <option>
+                                                                        Ślōnskŏ gŏdka </option>
+                                                                    <option>
+                                                                        தமிழ் </option>
+                                                                    <option>
+                                                                        தமிழ் </option>
+                                                                    <option>
+                                                                        తెలుగు </option>
+                                                                    <option>
+                                                                        ไทย </option>
+                                                                    <option>
+                                                                        Tagalog </option>
+                                                                    <option>
+                                                                        Türkçe </option>
+                                                                    <option>
+                                                                        Татар теле </option>
+                                                                    <option>
+                                                                        Reo Tahiti </option>
+                                                                    <option>
+                                                                        ئۇيغۇرچە </option>
+                                                                    <option>
+                                                                        Українська </option>
+                                                                    <option>
+                                                                        اردو </option>
+                                                                    <option>
+                                                                        O‘zbekcha </option>
+                                                                    <option>
+                                                                        Tiếng Việt </option>
+                                                                    <option>
+                                                                        简体中文 </option>
+                                                                    <option>
+                                                                        繁體中文 </option>
+                                                                    <option>
+                                                                        香港中文 </option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="recommendedMovies_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group mb-0">
+                                                        <label class="form-label flex-grow-1"
+                                                            for="recommended_movies1">Recommended
+                                                            Movies</label>
+                                                        <select id="recommended_movies1"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                            <option selected="">Pushpa </option>
+                                                            <option>The Conjuring </option>
+                                                            <option>Giikre </option>
+                                                            <option>Another Danger </option>
+                                                            <option>Kung Fu Panda </option>
+                                                            <option>John Wick </option>
+                                                            <option>Spiderman </option>
+                                                            <option>War For The Planet </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="relatedVideos_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group mb-0">
+                                                        <label class="form-label flex-grow-1"
+                                                            for="related_videos1">Related
+                                                            Videos</label>
+                                                        <select id="related_videos1"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                            <option selected="">Little Krishna </option>
+                                                            <option>Red Dog </option>
+                                                            <option>Frozen </option>
+                                                            <option>Titanic </option>
+                                                            <option>Adventure </option>
+                                                            <option>Kung Fu Panda </option>
+                                                            <option>Red </option>
+                                                            <option>The Crew </option>
+                                                            <option>Synchronic </option>
+                                                            <option>Lost In Space </option>
+                                                            <option>The Dragon King </option>
+                                                            <option>Sonil </option>
+                                                            <option>Guilty </option>
+                                                            <option>Toddler </option>
+                                                            <option>Charlie Chaplin </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="cast_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group mb-0">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="choose_cast1">Choose
+                                                                    Cast</label>
+                                                                <div class="d-flex gap-2">
+                                                                    <select id="choose_cast1"
+                                                                        class="form-control select2-basic-multiple">
+                                                                        <option>Select Cast </option>
+                                                                        <option>Ava Monroe </option>
+                                                                        <option>Charles Melton </option>
+                                                                        <option>Jack Nicholson </option>
+                                                                        <option>James Stewart </option>
+                                                                        <option>Jeff Bridges </option>
+                                                                        <option>Jordan Grant </option>
+                                                                        <option>Mark Smith </option>
+                                                                        <option>Maxwell Carter </option>
+                                                                        <option>Ruby Scott </option>
+                                                                        <option>Michael Fox </option>
+                                                                        <option>Ryan Pierce </option>
+                                                                        <option>John Abraham </option>
+                                                                        <option>Leena Burton </option>
+                                                                        <option>Davina Decorous </option>
+                                                                        <option>Thomas Bailey </option>
+                                                                        <option>Kelly Reilly </option>
+                                                                        <option>Smith Jonas </option>
+                                                                        <option>Angel Louis </option>
+                                                                        <option>Millar Joseph </option>
+                                                                        <option>Mark Wilson </option>
+                                                                        <option>Jack Walker </option>
+                                                                        <option>Benjamin Hayes </option>
+                                                                        <option>Olivia Foster </option>
+                                                                        <option>Ethan Crawford </option>
+                                                                        <option>Oliver Turner </option>
+                                                                        <option>Maria Rodriguez </option>
+                                                                    </select>
+                                                                    <button type="button"
+                                                                        class="btn btn-primary">Add</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="crew_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group mb-0">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="choose_crew1">Choose
+                                                                    Crew
+                                                                    Member</label>
+                                                                <div class="d-flex gap-2">
+                                                                    <select id="choose_crew1"
+                                                                        class="form-control select2-basic-multiple">
+                                                                        <option>Select Crew </option>
+                                                                        <option>Ava Monroe </option>
+                                                                        <option>Charles Melton </option>
+                                                                        <option>Jack Nicholson </option>
+                                                                        <option>James Stewart </option>
+                                                                        <option>Jeff Bridges </option>
+                                                                        <option>Jordan Grant </option>
+                                                                        <option>Mark Smith </option>
+                                                                        <option>Maxwell Carter </option>
+                                                                        <option>Ruby Scott </option>
+                                                                        <option>Michael Fox </option>
+                                                                        <option>Ryan Pierce </option>
+                                                                        <option>John Abraham </option>
+                                                                        <option>Leena Burton </option>
+                                                                        <option>Davina Decorous </option>
+                                                                        <option>Thomas Bailey </option>
+                                                                        <option>Kelly Reilly </option>
+                                                                        <option>Smith Jonas </option>
+                                                                        <option>Angel Louis </option>
+                                                                        <option>Millar Joseph </option>
+                                                                        <option>Mark Wilson </option>
+                                                                        <option>Jack Walker </option>
+                                                                        <option>Benjamin Hayes </option>
+                                                                        <option>Olivia Foster </option>
+                                                                        <option>Ethan Crawford </option>
+                                                                        <option>Oliver Turner </option>
+                                                                        <option>Maria Rodriguez </option>
+                                                                    </select>
+                                                                    <button type="button"
+                                                                        class="btn btn-primary">Add</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="sources_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <!-- Add Source Button -->
+                                                    <button id="add-movie-source1"
+                                                        class="btn btn-primary">Add
+                                                        Source</button>
+                                                        <div id="source-container1" class="source-container">
+                                                            <!-- Dynamically added sources will appear here -->
+                                                        </div>
+                                                        <div id="source-data-template1" style="display: none;">
+                                                            <div id="source-data-container"
+                                                                class="streamit_source_data streamit-metabox-content pt-3 mt-3 pb-3 d-none">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Name
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="name"
+                                                                                placeholder="Enter the source name of the movie.">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Quality
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="quality"
+                                                                                placeholder="Enter the source quality of the movie.">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Choose Method
+                                                                            </label>
+                                                                            <select class="form-control"
+                                                                                name="Choose Method">
+                                                                                <option>Embed Movie</option>
+                                                                                <option>Movie URL</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="Description3">
+                                                                                Embed Movie
+                                                                            </label>
+                                                                            <textarea id="Description3"
+                                                                                class="form-control" rows="7"
+                                                                                placeholder="Enter the embed content to the movie."></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Language
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="Language"
+                                                                                placeholder="Enter the source name of the movie.">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Date Added
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="Date Added"
+                                                                                placeholder="Enter the source quality of the movie.">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Player
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="Player"
+                                                                                placeholder="Enter the source quality of the movie.">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="form-label flex-grow-1"
+                                                                                for="genres">
+                                                                                Download URL
+                                                                            </label>
+                                                                            <input type="text" class="form-control"
+                                                                                name="Download URL"
+                                                                                placeholder="Enter the source quality of the movie.">
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="genres_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label flex-grow-1"
+                                                            for="choice_genres1">Choose
+                                                            Movie
+                                                            Genres</label>
+                                                        <select id="choice_genres1"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                            <option selected="">Action </option>
+                                                            <option>Adventure </option>
+                                                            <option>Animation </option>
+                                                            <option>Crime </option>
+                                                            <option>Horror </option>
+                                                            <option>Mystery </option>
+                                                            <option>Romance </option>
+                                                            <option>Action moview </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tags_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label flex-grow-1" for="choice_tags1">Choose
+                                                            Movie
+                                                            Tags</label>
+                                                        <select id="choice_tags1"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                            <option>Action </option>
+                                                            <option selected="">Adventure </option>
+                                                            <option>Animation </option>
+                                                            <option>Assassin </option>
+                                                            <option>Comedy </option>
+                                                            <option>Drama </option>
+                                                            <option>Family </option>
+                                                            <option>Fantasy </option>
+                                                            <option>History </option>
+                                                            <option>Hitman </option>
+                                                            <option>Horror </option>
+                                                            <option>Mystery </option>
+                                                            <option>Recommended </option>
+                                                            <option>Revenge </option>
+                                                            <option>Sci-Fi </option>
+                                                            <option>Thriller </option>
+                                                            <option>Animated Tag </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="additionData_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1" for="genres">
+                                                                    Trailer Link
+                                                                </label>
+                                                                <input type="text" class="form-control"
+                                                                    name="Download URL"
+                                                                    placeholder="Enter the trailer link."
+                                                                    value="https://www.youtube.com/">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label class="d-block form-label">Upcoming</label>
+                                                            <div class="checkbox mb-3">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="flexCheckDefault32">
+                                                                    <label class="form-check-label"
+                                                                        for="flexCheckDefault32">
+                                                                        This Is Upcoming Movie
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="streamit-upload form-field form-group position-relative media-attachment-video media-option tvshow_genre_thumbnail_id_field">
+                                                                <label class="form-label">Thumbnail</label>
+                                                            
+                                                                <!-- Hidden file input (per-instance) -->
+                                                                <input type="file" class="d-none upload_video_id">
+                                                            
+                                                                <!-- Button to trigger file input -->
+                                                                <div>
+                                                                    <a href="#" class="d-flex align-items-center flex-column justify-content-center gap-4 button streamit_upload_video_button tips edit-button">
+                                                                        <img class="tvshow_genre_thumbnail_previews img-fluid object-cover" src="~/admin/assets/images/movie-thumb/krishna.webp" alt="image"
+                                                                            style="width: 150px; height: 150px; object-fit: cover;"></a>
+                                                                </div>
+                                                            
+                                                            
+                                                                <!-- Hidden file input element (per-instance) -->
+                                                                <input type="file" class="file_upload" style="display:none;" accept="image/*">
+                                                            
+                                                                <div class="streamit_media_preview-wrap">
+                                                                    <div class="streamit_media_preview">
+                                                                        <!-- Remove button (per-instance) -->
+                                                                        <button class="button remove_tvshow_genre_thumbnail_buttons streamit_remove_video_button tips position-absolute" style="display: block;">
+                                                                            <span class="remove-media-icon">X</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="imdb_rating1">Enter
+                                                                    IMDb
+                                                                    Rating Manually</label>
+                                                                <input type="number" id="imdb_rating1"
+                                                                    class="form-control" value="5" aria-invalid="false">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1"
+                                                                    for="select_related_product1">Select Related
+                                                                    Product</label>
+                                                                <select id="select_related_product1"
+                                                                    class="form-control select2-basic-multiple"
+                                                                    multiple>
+                                                                    <option>WordPress Pennant </option>
+                                                                    <option>Logo Collection </option>
+                                                                    <option>
+                                                                        Beanie with Logo </option>
+                                                                    <option selected="">T-Shirt with Logo </option>
+                                                                    <option>Single </option>
+                                                                    <option>Album </option>
+                                                                    <option>Polo </option>
+                                                                    <option>Long Sleeve Tee </option>
+                                                                    <option>Hoodie with Zipper </option>
+                                                                    <option>Hoodie with Pocket </option>
+                                                                    <option>Sunglasses </option>
+                                                                    <option>Cap </option>
+                                                                    <option>Belt </option>
+                                                                    <option>Beanie </option>
+                                                                    <option>T-Shirt </option>
+                                                                    <option>Hoodie with Logo </option>
+                                                                    <option>Hoodie </option>
+                                                                    <option>V-Neck T-Shirt </option>
+                                                                    <option>Round Neck T-Shirt </option>
+                                                                    <option>Magic Hat </option>
+                                                                    <option>Spider Cover </option>
+                                                                    <option>Sleeping Mask </option>
+                                                                    <option>Phone Cover </option>
+                                                                    <option>Black Bow </option>
+                                                                    <option>Coffee Cup </option>
+                                                                    <option>Boxing Gloves </option>
+                                                                    <option>Crown </option>
+                                                                    <option>Bag Pack </option>
+                                                                    <option>Vehicle Keychain </option>
+                                                                    <option>Green Specs </option>
+                                                                    <option>Cartoon Character </option>
+                                                                    <option>Red &amp; Black T-Shirt </option>
+                                                                    <option>Logo T-Shirt </option>
+                                                                    <option>Believe Mask </option>
+                                                                    <option>Keychain </option>
+                                                                    <option>Socks </option>
+                                                                    <option>Harry T-Shirt </option>
+                                                                    <option>Sunglasses </option>
+                                                                    <option>Black Cap </option>
+                                                                    <option>Round Badges </option>
+                                                                    <option>Carry Bag </option>
+                                                                    <option>Glossy Mug </option>
+                                                                    <option>Spider Pillow logo </option>
+                                                                    <option>Daily Diary </option>
+                                                                    <option>Floral Badges </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label class="d-block form-label">Notification</label>
+                                                            <div class="checkbox mb-3">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="flexCheckDefault33">
+                                                                    <label class="form-check-label"
+                                                                        for="flexCheckDefault33">
+                                                                        Notify User
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="membershipLevel_tab1" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label flex-grow-1" for="pmp_levels1">Choose
+                                                            PMP
+                                                            Levels</label>
+                                                        <select id="pmp_levels1"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                            <option>free </option>
+                                                            <option>Monthly level </option>
+                                                            <option>Annual </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="offcanvas-footer border-top">
+                <div class="d-flex gap-3 p-3">
+                    <button type="submit" class="btn btn-primary d-flex align-items-center gap-2">
+                        <i class="ph-fill ph-floppy-disk-back"></i>Save
+                    </button>
+                    <button type="button" class="btn btn-outline-primary d-flex align-items-center gap-2" data-bs-dismiss="offcanvas"
+                        aria-label="Close">
+                        <i class="ph ph-caret-double-left"></i>Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>

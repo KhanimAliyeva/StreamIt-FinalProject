@@ -1,0 +1,29 @@
+﻿<div class="wrapper">
+    <section class="sign-in-page"
+             style="background-image: url('@Url.Content("~/assets/images/pages/01.webp")'); background-size: cover; background-position: center; min-height: 100vh; display: flex; align-items: center;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="sign-user_card p-5 text-center bg-dark bg-opacity-50 rounded">
+                        <br /><br />
+                        <a asp-action="Index" asp-controller="Home">
+                            <img class="img-fluid logo mb-3" src="~/admin/assets/images/logo-full.png" alt="#">
+                            </a>
+                            <div class="sign-in-page-data">
+                                <h3 class="mb-3 text-center text-white">Success !</h3>
+                                <p class="text-body text-white">
+                                    An email has been sent to your email address.
+                                    Please check for an email from the company and click on the included link to reset your password.
+                                </p>
+                                <a class="btn btn-primary w-100 custom-sign-btn mt-3" asp-action="Index" asp-controller="Home">
+                                    Back to Home
+                                </a>
+                                <br /><br />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>

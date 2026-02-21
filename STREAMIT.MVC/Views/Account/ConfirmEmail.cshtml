@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Email Confirmation";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background-image: url('@Url.Content("~/assets/images/pages/01.webp")');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 100vh;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .card {
+                background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(0,0,0,0.9) 100%);
+                color: #fff;
+                padding: 40px 30px;
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+                text-align: center;
+                max-width: 500px;
+                width: 100%;
+                backdrop-filter: blur(4px);
+            }
+
+                .card img {
+                    margin-bottom: 20px;
+                }
+
+                .card h2 {
+                    color: #e53935;
+                    margin-bottom: 20px;
+                }
+
+                .card p {
+                    font-size: 16px;
+                    margin-bottom: 30px;
+                    color: #f5f5f5;
+                }
+
+                .card a {
+                    text-decoration: none;
+                    background-color: #e53935;
+                    color: #fff;
+                    padding: 12px 25px;
+                    border-radius: 6px;
+                    font-weight: bold;
+                    font-size: 16px;
+                    transition: all 0.3s ease;
+                    display: inline-block;
+                }
+
+                    .card a:hover {
+                        background-color: #b71c1c;
+                        transform: scale(1.05);
+                        box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+                    }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+<img src="@Url.Content("~/assets/images/logo.png")" 
+     alt="Logo" 
+     width="100" 
+     style="display:block; margin: 0 auto;" />
+     <div style="height: 20px;"></div>
+            <h4>Email Confirmation</h4>
+            <p>@ViewBag.Message</p>
+            <a href="/Account/Login">Go to Login</a>
+        </div>
+    </div>
+</body>
+</html>

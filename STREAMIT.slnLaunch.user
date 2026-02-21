@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "STREAMIT.MVC\\STREAMIT.MVC.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

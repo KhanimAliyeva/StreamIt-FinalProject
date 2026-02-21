@@ -1,0 +1,85 @@
+﻿@model STREAMIT.Business.Dtos.MovieDtos.GetMovieDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Movie Details";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Movie Details</h2>
+        <a asp-area="Admin" asp-controller="Movie" asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+
+    <div class="card mb-4">
+        <div class="row g-0">
+            <div class="col-md-3">
+                <img src="@(string.IsNullOrWhiteSpace(Model.PosterUrl) ? Url.Content("~/admin/assets/images/movie-thumb/any-name.webp") : Model.PosterUrl)"
+                     class="img-fluid rounded-start" alt="Poster" />
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <h3 class="card-title">@Model.Title</h3>
+                    <p><strong>Release Date:</strong> @Model.ReleaseDate.ToString("yyyy-MM-dd")</p>
+                    <p><strong>Duration:</strong> @Model.Duration.ToString("0.##") minutes</p>
+                    <p><strong>IMDB:</strong> @Model.Imdb</p>
+                    <p><strong>Status:</strong> @Model.Status</p>
+                    <p><strong>Language:</strong> @Model.LanguageName</p>
+                    <p><strong>Membership:</strong> @Model.MembershipName</p>
+
+                    <p>
+                        <strong>Genres:</strong>
+                        @if (Model.Genres != null && Model.Genres.Any())
+                        {
+                            @string.Join(", ", Model.Genres.Select(g => g.Name))
+                        }
+                        else
+                        {
+                            <span>None</span>
+                        }
+                    </p>
+
+                    <p>
+                        <strong>Tags:</strong>
+                        @if (Model.Tags != null && Model.Tags.Any())
+                        {
+                            @string.Join(", ", Model.Tags)
+                        }
+                        else
+                        {
+                            <span>None</span>
+                        }
+                    </p>
+
+                    <p>
+                        <strong>People:</strong>
+                        @if (Model.People != null && Model.People.Any())
+                        {
+                            @string.Join(", ", Model.People.Select(p => p.Name))
+                        }
+                        else
+                        {
+                            <span>None</span>
+                        }
+                    </p>
+
+                    @if (!string.IsNullOrWhiteSpace(Model.TrailerUrl))
+                    {
+                        <p>
+                            <strong>Trailer:</strong>
+                            <a href="@Model.TrailerUrl" target="_blank" class="btn btn-sm btn-info">Watch Trailer</a>
+                        </p>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(Model.MovieUrl))
+                    {
+                        <p>
+                            <strong>Movie Link:</strong>
+                            <a href="@Model.MovieUrl" target="_blank" class="btn btn-sm btn-success">Watch Movie</a>
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

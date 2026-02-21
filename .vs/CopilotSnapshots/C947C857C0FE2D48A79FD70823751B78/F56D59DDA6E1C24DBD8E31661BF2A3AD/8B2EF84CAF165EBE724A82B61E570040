@@ -1,0 +1,58 @@
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using STREAMIT.Core.Entities;
+using STREAMIT.Core.Entities.Common;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text;
+using DbContext = Microsoft.EntityFrameworkCore.DbContext;
+
+namespace STREAMIT.DataAccess.Contexts
+{
+    internal class AppDbContext(BaseAuditableInterceptor _interceptor, DbContextOptions options) : IdentityDbContext<AppUser, AppRole, string>(options)
+    {
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.AddInterceptors(_interceptor);
+            base.OnConfiguring(optionsBuilder);
+        }
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Entity<Movie>().HasQueryFilter(p=> !p.IsDeleted);
+            modelBuilder.Entity<TVShow>().HasQueryFilter(p => !p.IsDeleted);
+
+            base.OnModelCreating(modelBuilder);
+        }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<UserMovie> UserMovies { get; set; }
+        public DbSet<UserTvShow> UserTvShows { get; set; }
+        public DbSet<Person> People { get; set; }
+        public DbSet<TVShow> TVShows { get; set; }
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<Membership> Memberships { get; set; }
+        public DbSet<MovieGenre> MovieGenres { get; set; }
+        public DbSet<MovieTag> MovieTags { get; set; }
+        public DbSet<MoviePerson> MoviePeople { get; set; }
+        public DbSet<TvShowGenre> TvShowGenres { get; set; }
+        public DbSet<TvShowTag> TvShowTags { get; set; }
+        public DbSet<TvShowPerson> TvShowPeople { get; set; }
+        public DbSet<ReviewMovie> ReviewMovies { get; set; }
+        public DbSet<ReviewTvShow> ReviewTvShows { get; set; }
+        public DbSet<MovieStatistics> MovieStatistics { get; set; }
+        public DbSet<TvShowStatistics> TvShowStatistics { get; set; }
+        public DbSet<Season> Seasons { get; set; }
+        public DbSet<Episode> Episodes { get; set; }
+
+
+       
+
+    }
+}

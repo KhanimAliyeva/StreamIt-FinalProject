@@ -1,0 +1,1613 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "STREAMIT.Presentation",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Auth/Register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Auth/Login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenDtoResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenDtoResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenDtoResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Auth/Refresh": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenDtoResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenDtoResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessTokenDtoResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Auth/ConfirmEmail": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Genre": {
+      "post": {
+        "tags": [
+          "Genre"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGenreDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGenreDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGenreDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Genre"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGenreDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGenreDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGenreDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Genre"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Genre/{id}": {
+      "delete": {
+        "tags": [
+          "Genre"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Genre"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Membership": {
+      "get": {
+        "tags": [
+          "Membership"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Membership"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMembershipDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMembershipDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMembershipDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Membership/{id}": {
+      "get": {
+        "tags": [
+          "Membership"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Membership"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMembershipDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMembershipDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMembershipDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Membership"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Movie": {
+      "get": {
+        "tags": [
+          "Movie"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Movie"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Title": {
+                    "type": "string"
+                  },
+                  "Status": {
+                    "type": "string"
+                  },
+                  "Content": {
+                    "type": "string"
+                  },
+                  "Poster": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Trailer": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Movie": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "ReleaseDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Duration": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "MembershipId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "LanguageId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Imdb": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "GenreIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "TagIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "PersonIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "Title": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                },
+                "Content": {
+                  "style": "form"
+                },
+                "Poster": {
+                  "style": "form"
+                },
+                "Trailer": {
+                  "style": "form"
+                },
+                "Movie": {
+                  "style": "form"
+                },
+                "ReleaseDate": {
+                  "style": "form"
+                },
+                "Duration": {
+                  "style": "form"
+                },
+                "MembershipId": {
+                  "style": "form"
+                },
+                "LanguageId": {
+                  "style": "form"
+                },
+                "Imdb": {
+                  "style": "form"
+                },
+                "GenreIds": {
+                  "style": "form"
+                },
+                "TagIds": {
+                  "style": "form"
+                },
+                "PersonIds": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Movie/{id}": {
+      "delete": {
+        "tags": [
+          "Movie"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Movie"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Movie"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Title": {
+                    "type": "string"
+                  },
+                  "Status": {
+                    "type": "string"
+                  },
+                  "Content": {
+                    "type": "string"
+                  },
+                  "Poster": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Trailer": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Movie": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "ReleaseDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Duration": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "MembershipId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "LanguageId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Imdb": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "GenreIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "TagIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "PersonIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "Id": {
+                  "style": "form"
+                },
+                "Title": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                },
+                "Content": {
+                  "style": "form"
+                },
+                "Poster": {
+                  "style": "form"
+                },
+                "Trailer": {
+                  "style": "form"
+                },
+                "Movie": {
+                  "style": "form"
+                },
+                "ReleaseDate": {
+                  "style": "form"
+                },
+                "Duration": {
+                  "style": "form"
+                },
+                "MembershipId": {
+                  "style": "form"
+                },
+                "LanguageId": {
+                  "style": "form"
+                },
+                "Imdb": {
+                  "style": "form"
+                },
+                "GenreIds": {
+                  "style": "form"
+                },
+                "TagIds": {
+                  "style": "form"
+                },
+                "PersonIds": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Person": {
+      "post": {
+        "tags": [
+          "Person"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Gender": {
+                    "type": "string"
+                  },
+                  "Born": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Died": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Popularity": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "Biography": {
+                    "type": "string"
+                  },
+                  "Image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Name": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "Born": {
+                  "style": "form"
+                },
+                "Died": {
+                  "style": "form"
+                },
+                "Popularity": {
+                  "style": "form"
+                },
+                "Biography": {
+                  "style": "form"
+                },
+                "Image": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Person"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Gender": {
+                    "type": "string"
+                  },
+                  "Born": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Died": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Popularity": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "Biography": {
+                    "type": "string"
+                  },
+                  "Image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Id": {
+                  "style": "form"
+                },
+                "Name": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "Born": {
+                  "style": "form"
+                },
+                "Died": {
+                  "style": "form"
+                },
+                "Popularity": {
+                  "style": "form"
+                },
+                "Biography": {
+                  "style": "form"
+                },
+                "Image": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Person"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Person/{id}": {
+      "delete": {
+        "tags": [
+          "Person"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Person"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Tag": {
+      "get": {
+        "tags": [
+          "Tag"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tag"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTagDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTagDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTagDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Tag/{id}": {
+      "get": {
+        "tags": [
+          "Tag"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tag"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTagDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTagDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTagDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tag"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TvShow": {
+      "get": {
+        "tags": [
+          "TvShow"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TvShow"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Title": {
+                    "type": "string"
+                  },
+                  "MembershipId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "LanguageId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Status": {
+                    "type": "string"
+                  },
+                  "Content": {
+                    "type": "string"
+                  },
+                  "PosterUrl": {
+                    "type": "string"
+                  },
+                  "TrailerUrl": {
+                    "type": "string"
+                  },
+                  "ReleaseDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Imdb": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "GenreIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "TagIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "PersonIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "Title": {
+                  "style": "form"
+                },
+                "MembershipId": {
+                  "style": "form"
+                },
+                "LanguageId": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                },
+                "Content": {
+                  "style": "form"
+                },
+                "PosterUrl": {
+                  "style": "form"
+                },
+                "TrailerUrl": {
+                  "style": "form"
+                },
+                "ReleaseDate": {
+                  "style": "form"
+                },
+                "Imdb": {
+                  "style": "form"
+                },
+                "GenreIds": {
+                  "style": "form"
+                },
+                "TagIds": {
+                  "style": "form"
+                },
+                "PersonIds": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TvShow"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Title": {
+                    "type": "string"
+                  },
+                  "MembershipId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "LanguageId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Status": {
+                    "type": "string"
+                  },
+                  "Content": {
+                    "type": "string"
+                  },
+                  "PosterUrl": {
+                    "type": "string"
+                  },
+                  "TrailerUrl": {
+                    "type": "string"
+                  },
+                  "ReleaseDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Imdb": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "GenreIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "TagIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "PersonIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "Id": {
+                  "style": "form"
+                },
+                "Title": {
+                  "style": "form"
+                },
+                "MembershipId": {
+                  "style": "form"
+                },
+                "LanguageId": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                },
+                "Content": {
+                  "style": "form"
+                },
+                "PosterUrl": {
+                  "style": "form"
+                },
+                "TrailerUrl": {
+                  "style": "form"
+                },
+                "ReleaseDate": {
+                  "style": "form"
+                },
+                "Imdb": {
+                  "style": "form"
+                },
+                "GenreIds": {
+                  "style": "form"
+                },
+                "TagIds": {
+                  "style": "form"
+                },
+                "PersonIds": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TvShow/{id}": {
+      "get": {
+        "tags": [
+          "TvShow"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccessTokenDto": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiredDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "refreshTokenExpiredDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccessTokenDtoResultDto": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AccessTokenDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateGenreDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateMembershipDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "durationInDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "videoQuality": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxDevices": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasAds": {
+            "type": "boolean"
+          },
+          "canDownload": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "priorityLevel": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateTagDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "emailOrUsername": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterDto": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullname": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "confirmPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "acceptTerms": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResultDto": {
+        "type": "object",
+        "properties": {
+          "isSucceed": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateGenreDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateMembershipDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "durationInDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "videoQuality": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxDevices": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasAds": {
+            "type": "boolean"
+          },
+          "canDownload": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "priorityLevel": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTagDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Auth"
+    },
+    {
+      "name": "Genre"
+    },
+    {
+      "name": "Membership"
+    },
+    {
+      "name": "Movie"
+    },
+    {
+      "name": "Person"
+    },
+    {
+      "name": "Tag"
+    },
+    {
+      "name": "TvShow"
+    }
+  ]
+}

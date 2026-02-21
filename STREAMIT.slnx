@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="STREAMIT.Business/STREAMIT.Business.csproj" />
+  <Project Path="STREAMIT.Core/STREAMIT.Core.csproj" />
+  <Project Path="STREAMIT.DataAccess/STREAMIT.DataAccess.csproj" />
+  <Project Path="STREAMIT.MVC/STREAMIT.MVC.csproj" Id="836415dc-89a6-432a-824e-53cadc463be1" />
+  <Project Path="STREAMIT.Presentation/STREAMIT.Presentation.csproj" />
+</Solution>

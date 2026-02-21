@@ -1,0 +1,17 @@
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\bin\Debug\net10.0\STREAMIT.Business.deps.json
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\bin\Debug\net10.0\STREAMIT.Business.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\bin\Debug\net10.0\STREAMIT.Business.pdb
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\bin\Debug\net10.0\STREAMIT.Core.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\bin\Debug\net10.0\STREAMIT.DataAccess.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\bin\Debug\net10.0\STREAMIT.DataAccess.pdb
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\bin\Debug\net10.0\STREAMIT.Core.pdb
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\STREAMIT.Business.csproj.AssemblyReference.cache
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\STREAMIT.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\STREAMIT.Business.AssemblyInfoInputs.cache
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\STREAMIT.Business.AssemblyInfo.cs
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\STREAMIT.Business.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\STREAMIT.23EB108C.Up2Date
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\STREAMIT.Business.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\refint\STREAMIT.Business.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\STREAMIT.Business.pdb
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Business\obj\Debug\net10.0\ref\STREAMIT.Business.dll

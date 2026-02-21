@@ -1,0 +1,126 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos;
+using STREAMIT.Business.Dtos.GenreDtos;
+using STREAMIT.Business.Dtos.ResultDtos;
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class GenreController : Controller
+    {
+        private readonly HttpClient _httpClient;
+
+        public GenreController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClient = httpClientFactory.CreateClient("ApiClient");
+        }
+
+        #region INDEX
+        public async Task<IActionResult> Index()
+        {
+            var result = await SafeGetFromJson<ResultDto<List<GetGenreDto>>>("Genre");
+            var genres = result?.Data ?? new List<GetGenreDto>();
+            return View(genres);
+        }
+        #endregion
+
+        #region CREATE
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateGenreDto dto)
+        {
+            if (!ModelState.IsValid)
+                return View(dto);
+
+            var response = await _httpClient.PostAsJsonAsync("Genre", dto);
+
+            var result = await SafeReadJson<ResultDto<GetGenreDto>>(response);
+
+            if (result == null || !result.IsSucceed)
+            {
+                ModelState.AddModelError("", result?.Message ?? "Something went wrong...");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region UPDATE
+        public async Task<IActionResult> Update(int id)
+        {
+            var result = await SafeGetFromJson<ResultDto<UpdateGenreDto>>($"Genre/{id}");
+            if (result == null || result.Data == null) return NotFound();
+            return View(result.Data);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(UpdateGenreDto dto)
+        {
+            if (!ModelState.IsValid)
+                return View(dto);
+
+            var response = await _httpClient.PutAsJsonAsync($"Genre/{dto.Id}", dto);
+
+            var result = await SafeReadJson<ResultDto<GetGenreDto>>(response);
+
+            if (result == null || !result.IsSucceed)
+            {
+                ModelState.AddModelError("", result?.Message ?? "Something went wrong...");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region DELETE
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"Genre/{id}");
+
+            var result = await SafeReadJson<ResultDto>(response);
+
+            if (result == null || !result.IsSucceed)
+                return NotFound(result?.Message ?? "Something went wrong...");
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region HELPERS
+        private async Task<T?> SafeGetFromJson<T>(string endpoint)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"https://localhost:7107/api/{endpoint}");
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+
+        private async Task<T?> SafeReadJson<T>(HttpResponseMessage response)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+        #endregion
+    }
+}

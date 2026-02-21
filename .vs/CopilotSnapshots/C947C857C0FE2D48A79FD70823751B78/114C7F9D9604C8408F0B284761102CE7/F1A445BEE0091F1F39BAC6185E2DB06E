@@ -1,0 +1,30 @@
+﻿@model STREAMIT.Business.Dtos.GenreDtos.CreateGenreDto
+@{
+    Layout = "_Layout"; // Mövcud layout
+    ViewData["Title"] = "Add Genre";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header text-center">
+                <h2 class="mb-0">Add New Genre</h2>
+            </div>
+            <div class="card-body">
+                <form asp-area="Admin" asp-action="Create" asp-controller="Genre" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter genre name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Add Genre</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

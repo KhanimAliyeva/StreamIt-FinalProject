@@ -1,0 +1,193 @@
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using STREAMIT.Business.Dtos.MovieDtos;
+using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.Business.Exceptions;
+using STREAMIT.Business.Services.Abstractions;
+using STREAMIT.Core.Entities;
+using STREAMIT.DataAccess.Repositories.Abstractions;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace STREAMIT.Business.Services.Implementations
+{
+    public class MovieService : IMovieService
+    {
+        private readonly IMovieRepository _repository;
+        private readonly IMapper _mapper;
+        private readonly ICloudinaryService _cloudinaryService;
+
+        public MovieService(IMovieRepository repository, IMapper mapper, ICloudinaryService cloudinaryService)
+        {
+            _repository = repository;
+            _mapper = mapper;
+            _cloudinaryService = cloudinaryService;
+        }
+
+        public async Task<ResultDto> CreateAsync(CreateMovieDto dto)
+        {
+            var movie = _mapper.Map<Movie>(dto);
+
+            // Poster upload
+            var poster = await _cloudinaryService.FileCreateAsync(dto.Poster);
+            movie.PosterUrl = poster;
+
+            var trailer = await _cloudinaryService.FileCreateAsync(dto.Trailer);
+            movie.TrailerUrl = trailer;
+            var movieFile = await _cloudinaryService.FileCreateAsync(dto.Movie);
+            movie.MovieUrl = movieFile;
+
+            if (dto.GenreIds != null && dto.GenreIds.Any())
+            {
+                movie.MovieGenres = dto.GenreIds
+                    .Select(id => new MovieGenre { GenreId = id })
+                    .ToList();
+            }
+            if (dto.PersonIds != null && dto.PersonIds.Any())
+            {
+                movie.MoviePeople = dto.PersonIds
+                    .Select(id => new MoviePerson { PersonId = id })
+                    .ToList();
+            }
+
+
+            await _repository.AddAsync(movie);
+            await _repository.SaveChangesAsync();
+
+            return new ResultDto
+            {
+                IsSucceed = true,
+                Message = "Movie is created successfully.",
+                StatusCode = 201
+            };
+        }
+
+
+        public async Task<ResultDto> DeleteAsync(int id)
+        {
+            var movie = await _repository.GetByIdAsync(id);
+            if (movie == null)
+                throw new NotFoundException("Movie not found.");
+
+            _repository.Delete(movie);
+            await _repository.SaveChangesAsync();
+
+            if (!string.IsNullOrEmpty(movie.PosterUrl))
+                await _cloudinaryService.FileDeleteAsync(movie.PosterUrl);
+            if (!string.IsNullOrEmpty(movie.TrailerUrl))
+                await _cloudinaryService.FileDeleteAsync(movie.TrailerUrl);
+            if (!string.IsNullOrEmpty(movie.MovieUrl))
+                await _cloudinaryService.FileDeleteAsync(movie.MovieUrl);
+
+
+            return new ResultDto
+            {
+                IsSucceed = true,
+                Message = "Movie deleted successfully.",
+                StatusCode = 200
+            };
+        }
+
+        public async Task<List<GetMovieDto>> GetAllAsync()
+        {
+            var movies = await _repository.GetAll(true)
+
+                .Include(x => x.Language)
+                .Include(x => x.Membership)
+                .Include(x => x.MovieStatistics)
+                .Include(x => x.MovieGenres).ThenInclude(x => x.Genre)
+                .Include(x => x.MovieTags).ThenInclude(x => x.Tag)
+                .Include(x => x.MoviePeople).ThenInclude(x => x.Person)
+                .ToListAsync();
+
+
+            var dtos = _mapper.Map<List<GetMovieDto>>(movies);
+            return dtos;
+        }
+
+        public async Task<GetMovieDto> GetByIdAsync(int id)
+        {
+            var movie = await _repository.GetByIdAsync(id);
+
+            if (movie == null)
+                throw new NotFoundException("Movie not found.");
+
+            var dto = _mapper.Map<GetMovieDto>(movie);
+            return dto;
+        }
+
+        public async Task<ResultDto> UpdateAsync(UpdateMovieDto dto)
+        {
+            var movie = await _repository.GetByIdAsync(dto.Id);
+            if (movie == null)
+                throw new NotFoundException("Movie not found.");
+
+            if (dto.Poster != null)
+            {
+                var posterUrl = await _cloudinaryService.FileCreateAsync(dto.Poster);
+                if (!string.IsNullOrEmpty(movie.PosterUrl))
+                    await _cloudinaryService.FileDeleteAsync(movie.PosterUrl);
+                movie.PosterUrl = posterUrl;
+            }
+
+            if (dto.Trailer != null)
+            {
+                var trailerUrl = await _cloudinaryService.FileCreateAsync(dto.Trailer);
+                if (!string.IsNullOrEmpty(movie.TrailerUrl))
+                    await _cloudinaryService.FileDeleteAsync(movie.TrailerUrl);
+                movie.TrailerUrl = trailerUrl;
+            }
+
+            if (dto.Movie != null)
+            {
+                var movieUrl = await _cloudinaryService.FileCreateAsync(dto.Movie);
+                if (!string.IsNullOrEmpty(movie.MovieUrl))
+                    await _cloudinaryService.FileDeleteAsync(movie.MovieUrl);
+                movie.MovieUrl = movieUrl;
+            }
+
+
+            if (dto.GenreIds != null)
+            {
+                movie.MovieGenres = dto.GenreIds
+                    .Select(id => new MovieGenre { GenreId = id })
+                    .ToList();
+            }
+
+            if (dto.PersonIds?.Any() == true)
+            {
+                movie.MoviePeople = dto.PersonIds
+                    .Select(id => new MoviePerson
+                    {
+                        PersonId = id,
+                        MovieId = movie.Id
+                    })
+                    .ToList();
+            }
+
+            _mapper.Map(dto, movie);
+            _repository.Update(movie);
+            await _repository.SaveChangesAsync();
+
+            return new ResultDto
+            {
+                IsSucceed = true,
+                Message = "Movie updated successfully.",
+                StatusCode = 200
+            };
+        }
+
+        public async Task<List<Movie>> GetAllWithDetailsAsync()
+        {
+            return await _repository.GetAll()
+
+                .Include(x => x.Language)
+                .Include(x => x.Membership)
+                .Include(x => x.MovieStatistics)
+                .Include(x => x.MovieGenres).ThenInclude(x => x.Genre)
+                .Include(x => x.MovieTags).ThenInclude(x => x.Tag)
+                .Include(x => x.MoviePeople).ThenInclude(x => x.Person)
+                .ToListAsync();
+        }
+    }
+}

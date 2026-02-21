@@ -1,0 +1,92 @@
+﻿@model STREAMIT.Business.Dtos.UserDtos.RegisterDto
+
+<div class="sign-in-page vh-100"
+     style="background-image: url('@Url.Content("~/assets/images/pages/01.webp")'); background-size: cover; background-repeat: no-repeat;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center height-self-center vh-100">
+            <div class="col-lg-6 col-md-12 align-self-center">
+                <div class="user-login-card rounded-3">
+                    <a asp-action="Index" asp-controller="Home">
+                        <img class="img-fluid logo" src="~/assets/images/logo.png" alt="#">
+                        </a>
+                        <div class="sign-in-page-data">
+                            <h4 class="text-center mb-5">Create Your Account</h4>
+
+                            <form asp-action="Register" asp-controller="Account" method="post">
+                                <div class="row  g-2 g-lg-5">
+                                    <div asp-validation-summary="ModelOnly"></div>
+                                    <div class="row g-2">
+
+                                        <!-- First Name & Username -->
+                                        <div class="col-lg-6">
+                                            <label asp-for="Fullname" class="mb-2 custom-form-label">Full Name</label>
+                                            <input asp-for="Fullname" class="form-control mb-0" placeholder="Full Name" />
+                                            <span asp-validation-for="Fullname" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label asp-for="UserName" class="mb-2 custom-form-label">Username *</label>
+                                            <input asp-for="UserName" class="form-control mb-0" placeholder="Username" />
+                                            <span asp-validation-for="UserName" class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Email (full width) -->
+                                        <div class="col-12">
+                                            <label asp-for="Email" class="mb-2 custom-form-label" style="white-space: nowrap;">Email *</label>
+                                            <input asp-for="Email" type="email" class="form-control mb-0" placeholder="example@gmail.com" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Password & Confirm Password -->
+                                        <div class="col-lg-6">
+                                            <label asp-for="Password" class="mb-2 custom-form-label">Password *</label>
+                                            <div class="input-group custom-input-group mb-3">
+                                                <input asp-for="Password" type="password" placeholder="Password" class="mb-0 form-control" />
+                                                <span class="input-group-text"><i class="ph ph-eye-slash" id="togglePassword"></i></span>
+                                            </div>
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <label asp-for="ConfirmPassword" class="mb-2 custom-form-label">Confirm Password *</label>
+                                            <div class="input-group custom-input-group mb-3">
+                                                <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" class="mb-0 form-control" />
+                                                <span class="input-group-text"><i class="ph ph-eye-slash" id="toggleConfirmPassword"></i></span>
+                                            </div>
+                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <label class="list-group-item d-flex align-items-center mt-5 mb-3 text-white">
+                                    <input class="form-check-input m-0 me-2" type="checkbox" asp-for="AcceptTerms">
+                                        I've read and accept the <a href="terms-of-use.html" class="ms-1">terms & conditions*</a>
+                                    </label>
+                                    <span asp-validation-for="AcceptTerms" class="text-danger"></span>
+
+                                    <div class="row text-center">
+                                        <div class="col-lg-3"></div>
+                                        <div class="col-lg-6">
+                                            <div class="full-button">
+                                                <button type="submit"
+                                                        class="btn btn-primary text-capitalize position-relative w-100 my-3 rounded-3">
+                                                    <span class="button-text">Sign Up</span>
+                                                </button>
+                                                <p class="mt-2 mb-0 fw-normal">
+                                                    Already have an account?<a asp-action="Login" asp-controller="Account" class="ms-1">Login</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3"></div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
