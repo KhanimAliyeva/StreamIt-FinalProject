@@ -1,0 +1,309 @@
+﻿
+<!-- bread crumb -->
+<div class="iq-breadcrumb">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb" class="text-center">
+                    <ol class="breadcrumb justify-content-center text-white mt-0">
+                        <li class="breadcrumb-item active">Your Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section-padding">
+    <div class="container-fluid">
+
+        <!-- TOP PROFILE CARD -->
+        <div class="card border-0 mb-4 profile-top-card">
+            <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
+
+                <div class="d-flex align-items-center gap-3">
+                    <div class="profile-avatar">
+                        <img src="~/assets/images/user/user.jpg"
+                             class="img-fluid rounded-circle"
+                             alt="profile" />
+                    </div>
+
+                    <div class="profile-meta">
+                        <h4 class="mb-1 text-white" id="pfFullName">Loading...</h4>
+                        <div class="text-white-50 small" id="pfEmail"></div>
+                        <div class="text-white-50 small" id="pfUserName"></div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-2">
+                    <a class="btn btn-danger px-3" href="/Profile/Edit">
+                        <i class="ph ph-pencil-simple me-1"></i> Edit Profile
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- LEFT SIDEBAR -->
+            <div class="col-lg-3">
+                <div class="profile-side">
+
+                    <button type="button"
+                            class="profile-side-btn active"
+                            data-target="watchlist">
+                        Watchlist
+                    </button>
+
+                    <button type="button"
+                            class="profile-side-btn"
+                            data-target="favorites">
+                        Favorites
+                    </button>
+
+                    <button type="button"
+                            class="profile-side-btn"
+                            data-target="membership">
+                        Membership
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div class="col-lg-9">
+                <div class="profile-content">
+
+                    <!-- WATCHLIST -->
+                    <div id="panel-watchlist" class="profile-panel">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="mb-0 text-white">Watchlist</h5>
+                        </div>
+
+                        <div id="watchlistGrid"
+                             class="row gy-4 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-5">
+                            <p class="text-white-50">Loading...</p>
+                        </div>
+                    </div>
+
+                    <!-- FAVORITES -->
+                    <div id="panel-favorites" class="profile-panel d-none">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="mb-0 text-white">Favorites</h5>
+                        </div>
+
+                        <div id="favoritesGrid"
+                             class="row gy-4 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-5">
+                            <p class="text-white-50">No favorites yet.</p>
+                        </div>
+                    </div>
+
+                    <!-- MEMBERSHIP -->
+                    <div id="panel-membership" class="profile-panel d-none">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="mb-0 text-white">Membership</h5>
+                        </div>
+
+<div class="card border-0 membership-card">
+    <div class="card-body text-white">
+        <div class="d-flex justify-content-between flex-wrap gap-3">
+            <div>
+                <div class="text-white-50 small">Current Plan</div>
+                <div class="fw-semibold" id="mbPlan">Loading...</div>
+            </div>
+            <div>
+                <div class="text-white-50 small">Status</div>
+                <div class="fw-semibold" id="mbStatus">Loading...</div>
+            </div>
+        </div>
+        <hr class="opacity-25" />
+
+        <div class="row g-3 small text-white-50">
+            <div class="col-md-6">
+                <div>Start Date: <span id="mbStart">-</span></div>
+            </div>
+            <div class="col-md-6">
+                <div>End Date: <span id="mbEnd">-</span></div>
+            </div>
+            <div class="col-md-6">
+                <div>Payment Method: <span id="mbMethod">-</span></div>
+            </div>
+            <div class="col-md-6">
+                <div>Paid Amount: <span id="mbAmount">-</span></div>
+            </div>
+        </div>
+    </div>
+</div>                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    /* Top card */
+    .profile-top-card{
+        background: rgba(255,255,255,0.06);
+        border-radius: 14px;
+    }
+    .profile-avatar img{
+        width: 86px;
+        height: 86px;
+        object-fit: cover;
+        border: 3px solid rgba(255,255,255,0.18);
+    }
+
+    /* Sidebar */
+    .profile-side{
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .profile-side-btn{
+        width: 100%;
+        text-align: left;
+        padding: 14px 16px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(255,255,255,0.04);
+        color: #fff;
+        font-weight: 600;
+        transition: .2s;
+    }
+    .profile-side-btn:hover{
+        background: rgba(255,255,255,0.08);
+    }
+    .profile-side-btn.active{
+        background: #e50914;
+        border-color: #e50914;
+    }
+
+    /* Panels */
+    .profile-panel{
+        background: rgba(255,255,255,0.04);
+        border-radius: 14px;
+        padding: 18px;
+        border: 1px solid rgba(255,255,255,0.06);
+    }
+    .membership-card{
+        background: rgba(0,0,0,0.35);
+        border-radius: 14px;
+    }
+</style>
+
+<script>
+    // Sidebar navigation
+    document.querySelectorAll(".profile-side-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".profile-side-btn").forEach(x => x.classList.remove("active"));
+            btn.classList.add("active");
+
+            const target = btn.getAttribute("data-target");
+            document.querySelectorAll(".profile-panel").forEach(p => p.classList.add("d-none"));
+            document.getElementById("panel-" + target).classList.remove("d-none");
+        });
+    });
+
+    // Render simple movie card
+    function movieCard(x){
+        const detailUrl = "/Movie/Detail/" + x.movieId;
+        return `
+          <div class="col">
+            <div class="common_card">
+              <div class="image-box w-100">
+                <a href="${detailUrl}" class="d-block">
+                  <img src="${x.posterUrl ?? ''}" class="img-fluid" alt="${x.title ?? ''}">
+                </a>
+              </div>
+              <div class="css_prefix-detail-part">
+                <h6 class="text-capitalize line-count-1 mb-0">
+                  <a href="${detailUrl}" class="color-inherit">${x.title ?? ''}</a>
+                </h6>
+              </div>
+            </div>
+          </div>
+        `;
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+
+        // TOP USER INFO
+        try {
+            const meResp = await fetch("/Profile/Me");
+
+            if (meResp.status === 401) {
+                window.location.href = "/Account/Login?returnUrl=" + encodeURIComponent(location.pathname + location.search);
+                return;
+            }
+
+            if (meResp.ok) {
+                const me = await meResp.json();
+                document.getElementById("pfFullName").textContent = me.fullName ?? "-";
+                document.getElementById("pfEmail").textContent = me.email ?? "";
+                document.getElementById("pfUserName").textContent = me.userName ?? "";
+            }
+        } catch (e) {
+            console.warn("profile me load failed", e);
+        }
+
+        // WATCHLIST
+        try {
+            const grid = document.getElementById("watchlistGrid");
+            const wlResp = await fetch("/WatchList/List");
+
+            if (wlResp.status === 401) {
+                grid.innerHTML = `<p class="text-white-50">Please login.</p>`;
+            } else if (!wlResp.ok) {
+                grid.innerHTML = `<p class="text-white-50">Failed to load watchlist.</p>`;
+            } else {
+                const list = await wlResp.json();
+                if (!list || list.length === 0) {
+                    grid.innerHTML = `<p class="text-white-50">No watchlist available.</p>`;
+                } else {
+                    grid.innerHTML = list.map(movieCard).join("");
+                }
+            }
+        } catch (e) {
+            console.warn("watchlist load failed", e);
+            document.getElementById("watchlistGrid").innerHTML = `<p class="text-white-50">Failed to load watchlist.</p>`;
+        }
+
+        // MEMBERSHIP
+        try {
+            const mbResp = await fetch("/Profile/MyMembership");
+
+            if (mbResp.status === 401) {
+                document.getElementById("mbPlan").textContent = "Please login";
+                document.getElementById("mbStatus").textContent = "-";
+            } else if (!mbResp.ok) {
+                document.getElementById("mbPlan").textContent = "Failed to load";
+                document.getElementById("mbStatus").textContent = "-";
+            } else {
+                const mb = await mbResp.json();
+
+                document.getElementById("mbPlan").textContent = mb.planName ?? "Free";
+                document.getElementById("mbStatus").textContent = mb.isActive ? "Active" : "Inactive";
+                document.getElementById("mbStart").textContent = mb.startDate
+                    ? new Date(mb.startDate).toLocaleDateString()
+                    : "-";
+                document.getElementById("mbEnd").textContent = mb.endDate
+                    ? new Date(mb.endDate).toLocaleDateString()
+                    : "-";
+                document.getElementById("mbMethod").textContent = mb.paymentMethod ?? "-";
+                document.getElementById("mbAmount").textContent = mb.paidAmount
+                    ? `${mb.paidAmount} AZN`
+                    : "-";
+            }
+        } catch (e) {
+            console.warn("membership load failed", e);
+            document.getElementById("mbPlan").textContent = "Failed to load";
+            document.getElementById("mbStatus").textContent = "-";
+            document.getElementById("mbStart").textContent = "-";
+            document.getElementById("mbEnd").textContent = "-";
+            document.getElementById("mbMethod").textContent = "-";
+            document.getElementById("mbAmount").textContent = "-";
+        }
+    });
+</script>

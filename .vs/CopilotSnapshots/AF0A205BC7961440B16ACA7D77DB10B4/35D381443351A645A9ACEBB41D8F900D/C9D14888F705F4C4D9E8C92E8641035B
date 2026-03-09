@@ -1,0 +1,71 @@
+﻿<div class="iq-breadcrumb">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb" class="text-center">
+                    <ol class="breadcrumb justify-content-center text-white mt-0">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                        <li class="breadcrumb-item active">Watchlist</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>    <!--bread-crumb-->
+
+
+<section class="section-padding">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="border-bottom mb-5 watchlist-tab">
+                <div id="item-nav">
+                    <div class="item-list-tabs no-ajax css_prefix-tab-lists" id="object-nav">
+                        <!-- Watchlist Tabs -->
+                        <ul class="nav nav-underline data-search-tab" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-movie-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-movie" type="button" role="tab" aria-controls="pills-movie"
+                                        aria-selected="true">
+                                    Movie
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Playlist Tab Content -->
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade active show" id="pills-movie" role="tabpanel" tabindex="0"
+                     aria-labelledby="pills-movie-tab">
+                    <div class="row gy-4 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 data-listing">
+                        <div class="col">
+                            <div class="common_card">
+                                <div class="image-box w-100">
+                                    <a href="./movie-detail.html" class="d-block">
+                                        <img decoding="async" src="./assets/images/media/gameofhero.webp" alt="Game of Heros" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="css_prefix-detail-part">
+                                    <h6 class="text-capitalize line-count-1 mb-0">
+                                        <a href="./movie-detail.html" class="color-inherit">
+                                            Game of Heros
+                                        </a>
+                                    </h6>
+                                    <button class="btn in-watchlist btn-secondary watch-list-btn" data-post-id="32"
+                                            data-post-type="movie" data-action="remove" data-bs-toggle="tooltip" data-bs-title="Remove from watchlist"
+                                            data-bs-placement="top" tabindex="0">
+                                        <i class="icon-check-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+
+             
+
+
+            </div>
+        </div>
+    </div>
+</section>

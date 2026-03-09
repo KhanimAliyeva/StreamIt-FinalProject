@@ -1,0 +1,164 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.Business.ServiceRegistrations;
+using STREAMIT.DataAccess.Abstractions;
+using STREAMIT.DataAccess.ServiceRegistrations;
+using STREAMIT.Presentation.Middlewares;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
+namespace STREAMIT.Presentation;
+
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+
+        // --------------------------------------
+        // 1️⃣ Controllers & Model Validation
+        // --------------------------------------
+        builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
+        {
+            options.InvalidModelStateResponseFactory = context =>
+            {
+                var errors = context.ModelState
+                    .Where(x => x.Value!.Errors.Count > 0)
+                    .Select(x => new
+                    {
+                        Errors = x.Value!.Errors.Select(e => e.ErrorMessage)
+                    });
+
+                ResultDto resultDto = new()
+                {
+                    IsSucceed = false,
+                    StatusCode = 400,
+                    Message = string.Join(", ", errors.SelectMany(x => x.Errors))
+                };
+
+                return new BadRequestObjectResult(resultDto);
+            };
+        })
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+            options.JsonSerializerOptions.MaxDepth = 64;
+        });
+
+        // --------------------------------------
+        // 2️⃣ Authentication
+        // --------------------------------------
+
+        var jwtSection = builder.Configuration.GetSection("JWTOptions");
+
+        builder.Services.AddAuthentication(options =>
+        {
+            // Default authentication for MVC: Cookies
+            options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        })
+        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+        {
+            options.LoginPath = "/Account/Login";
+            options.AccessDeniedPath = "/Account/Login";
+        })
+        .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+        {
+            var secret = jwtSection["SecretKey"] ?? string.Empty;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidIssuer = jwtSection["Issuer"],
+                ValidateAudience = true,
+                ValidAudience = jwtSection["Audience"],
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret)),
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
+        });
+
+        builder.Services.AddAuthorization();
+
+        // --------------------------------------
+        // 3️⃣ OpenAPI / Swagger
+        // --------------------------------------
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+        builder.Services.AddOpenApi();
+
+        // --------------------------------------
+        // 4️⃣ CORS
+        // --------------------------------------
+        builder.Services.AddCors(o =>
+        {
+            var mvcOrigin = builder.Configuration["Mvc:BaseUrl"];
+            o.AddPolicy("MyPolicy", policy =>
+            {
+                if (!string.IsNullOrWhiteSpace(mvcOrigin))
+                {
+                    policy.WithOrigins(mvcOrigin.TrimEnd('/'))
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials();
+                }
+                else
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                }
+            });
+        });
+
+        // --------------------------------------
+        // 5️⃣ HTTP Client for API
+        // --------------------------------------
+        builder.Services.AddHttpClient("ApiClient", client =>
+        {
+            client.BaseAddress = new Uri("https://localhost:7108/");
+        });
+
+        // --------------------------------------
+        // 6️⃣ Business & Data Services
+        // --------------------------------------
+        builder.Services.AddDataAccessServices(builder.Configuration);
+        builder.Services.AddBusinessServices(builder.Configuration);
+
+        // --------------------------------------
+        // 7️⃣ Build App
+        // --------------------------------------
+        var app = builder.Build();
+
+        // Database initializer
+        using (var scope = app.Services.CreateScope())
+        {
+            var initializer = scope.ServiceProvider.GetRequiredService<IContextInitalizer>();
+            await initializer.InitDatabaseAsync();
+        }
+
+        // --------------------------------------
+        // 8️⃣ Middleware pipeline
+        // --------------------------------------
+        app.UseMiddleware<GlobalExceptionHandler>();
+
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
+        app.UseHttpsRedirection();
+
+        app.UseCors("MyPolicy");
+
+        app.UseAuthentication();  // JWT + Cookie validation
+        app.UseAuthorization();
+
+        app.MapControllers();
+
+        await app.RunAsync();
+    }
+}

@@ -453,6 +453,7 @@ wwwroot\admin\assets\images\avatars\17.png
 wwwroot\admin\assets\images\avatars\18.png
 wwwroot\admin\assets\images\avatars\19.png
 wwwroot\admin\assets\images\avatars\20.png
+wwwroot\admin\assets\images\avatars\admin.png
 wwwroot\admin\assets\images\brands\08.png
 wwwroot\admin\assets\images\brands\09.png
 wwwroot\admin\assets\images\brands\10.png
@@ -887,6 +888,7 @@ wwwroot\assets\css\rtl.css
 wwwroot\assets\css\rtl.min.css
 wwwroot\assets\css\streamit.css
 wwwroot\assets\css\streamit.min.css
+wwwroot\assets\images\ai-powered.png
 wwwroot\assets\images\audio\audio.mp3
 wwwroot\assets\images\blog\Animated-Family.webp
 wwwroot\assets\images\blog\Independent.webp
@@ -913,6 +915,7 @@ wwwroot\assets\images\blog\ott.webp
 wwwroot\assets\images\blog\rebirth-of-the-realm.webp
 wwwroot\assets\images\blog\short-movie.webp
 wwwroot\assets\images\blog\to-be-continue.webp
+wwwroot\assets\images\buffer-free.png
 wwwroot\assets\images\cast\angel-louis.webp
 wwwroot\assets\images\cast\ava-monroe.webp
 wwwroot\assets\images\cast\benjamin-hayes.webp
@@ -941,6 +944,8 @@ wwwroot\assets\images\cast\ruby-scott.webp
 wwwroot\assets\images\cast\ryan-pierce.webp
 wwwroot\assets\images\cast\smith-jonas.webp
 wwwroot\assets\images\cast\thomas-bailey.webp
+wwwroot\assets\images\content-Image-min.png
+wwwroot\assets\images\employee1.avif
 wwwroot\assets\images\favicon.ico
 wwwroot\assets\images\footer\01.webp
 wwwroot\assets\images\footer\02.webp
@@ -955,6 +960,9 @@ wwwroot\assets\images\genre\animation.webp
 wwwroot\assets\images\genre\horror.webp
 wwwroot\assets\images\genre\mystery.webp
 wwwroot\assets\images\genre\romance.webp
+wwwroot\assets\images\image.avif
+wwwroot\assets\images\imageback.jpg
+wwwroot\assets\images\lab-test-icon.png
 wwwroot\assets\images\loader.gif
 wwwroot\assets\images\logo-hotstar.webp
 wwwroot\assets\images\logo-hulu.webp
@@ -1162,6 +1170,7 @@ wwwroot\assets\images\pages\texure.webp
 wwwroot\assets\images\pages\trending-label.webp
 wwwroot\assets\images\player\demo_videos.mp4
 wwwroot\assets\images\player\player-poster.webp
+wwwroot\assets\images\secure-payment.png
 wwwroot\assets\images\shop\avatar.webp
 wwwroot\assets\images\shop\card\01.webp
 wwwroot\assets\images\shop\card\02.webp
@@ -1221,6 +1230,10 @@ wwwroot\assets\images\tags\14.webp
 wwwroot\assets\images\tags\15.webp
 wwwroot\assets\images\tags\16.webp
 wwwroot\assets\images\tags\17.webp
+wwwroot\assets\images\team1.webp
+wwwroot\assets\images\team2.webp
+wwwroot\assets\images\team3.webp
+wwwroot\assets\images\team4.webp
 wwwroot\assets\images\user\robert.jpg
 wwwroot\assets\images\user\user.jpg
 wwwroot\assets\images\user\user1.webp
@@ -1385,3 +1398,4 @@ wwwroot\assets\vendor\video\video.min.js
 wwwroot\assets\vendor\videojs-youtube-master\dist\Youtube.js
 wwwroot\assets\vendor\videojs-youtube-master\dist\Youtube.min.js
 wwwroot\assets\vendor\videojs-youtube-master\youtube.js
+wwwroot\uploads\blogs\9a546ae9cd0940a49beaba76d67ad4a8.jpg

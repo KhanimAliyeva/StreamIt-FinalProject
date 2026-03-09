@@ -11,7 +11,6 @@ namespace STREAMIT.Core.Entities
         public string Code { get; set; }=string.Empty;
 
         public ICollection<Movie> Movies { get; set; } = [];
-        public ICollection<TVShow> TVShows { get; set; } = [];
     }
 
     

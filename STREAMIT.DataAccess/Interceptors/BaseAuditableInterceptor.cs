@@ -30,18 +30,18 @@ internal class BaseAuditableInterceptor : SaveChangesInterceptor
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedDate = DateTime.UtcNow;
+                        entry.Entity.CreatedDate = DateTime.UtcNow.AddHours(4);
                         entry.Entity.CreatedBy = "Khanim";
                         break;
 
                     case EntityState.Modified:
                         entry.Entity.UpdatedBy = "Khanim";
-                        entry.Entity.UpdatedDate = DateTime.UtcNow;
+                        entry.Entity.UpdatedDate = DateTime.UtcNow.AddHours(4);
                         break;
 
                     case EntityState.Deleted:
                         entry.Entity.DeletedBy = "Khanim";
-                        entry.Entity.DeletedDate = DateTime.UtcNow;
+                        entry.Entity.DeletedDate = DateTime.UtcNow.AddHours(4);
                         entry.Entity.IsDeleted = true;
                         entry.State = EntityState.Modified;
                         break;

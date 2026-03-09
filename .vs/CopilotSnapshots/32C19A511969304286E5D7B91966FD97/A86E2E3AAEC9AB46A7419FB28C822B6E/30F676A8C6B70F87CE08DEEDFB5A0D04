@@ -1,0 +1,193 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos;
+using STREAMIT.Business.Dtos.GenreDtos;
+using STREAMIT.Business.Dtos.LanguageDtos;
+using STREAMIT.Business.Dtos.MembershipDtos;
+using STREAMIT.Business.Dtos.MovieDtos;
+using STREAMIT.Business.Dtos.PersonDtos;
+using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.Business.Dtos.TagDtos;
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Areas.Admin.Controllers;
+
+[Area("Admin")]
+public class MovieController(IHttpClientFactory httpClientFactory) : Controller
+{
+    private readonly HttpClient _httpClient = httpClientFactory.CreateClient("ApiClient");
+
+    #region CREATE
+    public async Task<IActionResult> Create()
+    {
+        await LoadDropdowns();
+        // Provide an initialized DTO so tag helpers (multi-selects) can read non-null collections
+        return View(new CreateMovieDto());
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateMovieDto dto)
+    {
+        if (!ModelState.IsValid)
+        {
+            await LoadDropdowns();
+            return View(dto);
+        }
+
+        using var content = BuildMultipartContent(dto);
+
+        var response = await _httpClient.PostAsync("Movie", content);
+        if (!response.IsSuccessStatusCode)
+        {
+            await LoadDropdowns();
+            var error = await SafeReadJson<ResultDto>(response);
+            ModelState.AddModelError("", error?.Message ?? "Something went wrong...");
+            return View(dto);
+        }
+
+        return RedirectToAction(nameof(Create)); //və ya Index
+    }
+    #endregion
+
+    #region HELPERS
+
+    private static MultipartFormDataContent BuildMultipartContent(object dto, bool isUpdate = false)
+    {
+        var content = new MultipartFormDataContent();
+
+        object? GetProp(string name)
+        {
+            var pi = dto.GetType().GetProperty(name);
+            return pi is null ? null : pi.GetValue(dto);
+        }
+
+        string GetPropAsString(string name)
+        {
+            var val = GetProp(name);
+            return val?.ToString() ?? string.Empty;
+        }
+
+        if (isUpdate)
+        {
+            var idVal = GetPropAsString("Id");
+            if (!string.IsNullOrEmpty(idVal))
+                content.Add(new StringContent(idVal), "Id");
+        }
+
+        content.Add(new StringContent(GetPropAsString("Title")), "Title");
+        content.Add(new StringContent(GetPropAsString("Status")), "Status");
+        content.Add(new StringContent(GetPropAsString("Content")), "Content");
+
+        var release = GetPropAsString("ReleaseDate");
+        if (!string.IsNullOrEmpty(release))
+            content.Add(new StringContent(release), "ReleaseDate");
+
+        var duration = GetPropAsString("Duration");
+        if (!string.IsNullOrEmpty(duration))
+            content.Add(new StringContent(duration), "Duration");
+
+        var membership = GetPropAsString("MembershipId");
+        if (!string.IsNullOrEmpty(membership))
+            content.Add(new StringContent(membership), "MembershipId");
+
+        var language = GetPropAsString("LanguageId");
+        if (!string.IsNullOrEmpty(language))
+            content.Add(new StringContent(language), "LanguageId");
+
+        var imdb = GetPropAsString("Imdb");
+        if (!string.IsNullOrEmpty(imdb))
+            content.Add(new StringContent(imdb), "Imdb");
+
+        var genreIds = GetProp("GenreIds") as IEnumerable<int> ?? new List<int>();
+        foreach (var genreId in genreIds)
+            content.Add(new StringContent(genreId.ToString()), "GenreIds");
+
+        var tagIds = GetProp("TagIds") as IEnumerable<int> ?? new List<int>();
+        foreach (var tagId in tagIds)
+            content.Add(new StringContent(tagId.ToString()), "TagIds");
+
+        var personIds = GetProp("PersonIds") as IEnumerable<int> ?? new List<int>();
+        foreach (var personId in personIds)
+            content.Add(new StringContent(personId.ToString()), "PersonIds");
+
+        var poster = GetProp("Poster") as IFormFile;
+        if (poster != null) AddFile(content, poster, "Poster");
+
+        var trailer = GetProp("Trailer") as IFormFile;
+        if (trailer != null) AddFile(content, trailer, "Trailer");
+
+        var movieFile = GetProp("Movie") as IFormFile;
+        if (movieFile != null) AddFile(content, movieFile, "Movie");
+
+        return content;
+    }
+
+    private static void AddFile(MultipartFormDataContent content, IFormFile file, string name)
+    {
+        var streamContent = new StreamContent(file.OpenReadStream());
+        streamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+        content.Add(streamContent, name, file.FileName);
+    }
+
+    private async Task LoadDropdowns()
+    {
+        // Genre → ResultDto içində data
+        var genresResult = await SafeGetFromJson<ResultDto<List<GenreDto>>>("Genre");
+        ViewBag.Genres = genresResult?.Data?.Where(x => x != null).ToList() ?? new List<GenreDto>();
+
+        // Tags → sadəcə List
+        var tagsResult = await SafeGetFromJson<List<TagDto>>("Tag");
+        ViewBag.Tags = tagsResult?.Where(x => x != null).ToList() ?? new List<TagDto>();
+
+        // People → sadəcə List
+        var peopleResult = await SafeGetFromJson<List<PersonDto>>("Person");
+        ViewBag.People = peopleResult?.Where(x => x != null).ToList() ?? new List<PersonDto>();
+
+        // Languages → sadəcə List
+        var languagesResult = await SafeGetFromJson<List<LanguageDto>>("Language");
+        ViewBag.Languages = languagesResult?.Where(x => x != null).ToList() ?? new List<LanguageDto>();
+
+        // Memberships → ResultDto içində data
+        var membershipsResult = await SafeGetFromJson<ResultDto<List<MembershipDto>>>("Membership");
+        ViewBag.Memberships = membershipsResult?.Data?.Where(x => x != null).ToList() ?? new List<MembershipDto>();
+    }
+
+    private async Task<List<T>> GetListSafe<T>(string endpoint)
+    {
+        try
+        {
+            // 1️⃣ ResultDto<List<T>> yoxla
+            var resultDto = await SafeGetFromJson<ResultDto<List<T>>>(endpoint);
+            if (resultDto?.Data != null)
+                return resultDto.Data;
+
+            // 2️⃣ Sadə List<T> yoxla
+            var list = await SafeGetFromJson<List<T>>(endpoint);
+            return list ?? new List<T>();
+        }
+        catch
+        {
+            return new List<T>();
+        }
+    }
+
+    private async Task<T?> SafeGetFromJson<T>(string endpoint)
+    {
+        var response = await _httpClient.GetAsync(endpoint);
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<T>();
+    }
+
+    private async Task<T?> SafeReadJson<T>(HttpResponseMessage response)
+    {
+        try
+        {
+            return await response.Content.ReadFromJsonAsync<T>();
+        }
+        catch
+        {
+            return default;
+        }
+    }
+
+    #endregion
+}

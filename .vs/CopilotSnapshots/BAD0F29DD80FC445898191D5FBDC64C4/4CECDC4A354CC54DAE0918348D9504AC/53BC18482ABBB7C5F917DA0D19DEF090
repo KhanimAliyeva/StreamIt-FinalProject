@@ -1,0 +1,93 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Services.Abstractions;
+using STREAMIT.Core.Entities;
+using STREAMIT.DataAccess.Contexts;
+using Microsoft.EntityFrameworkCore;
+
+
+[Route("api/[controller]")]
+[ApiController]
+public class PaymentController : ControllerBase
+{
+    private readonly IPaymentService _paymentService;
+    private readonly AppDbContext _context;
+
+    public PaymentController(IPaymentService paymentService, AppDbContext context)
+    {
+        _paymentService = paymentService;
+        _context = context;
+    }
+
+    [HttpPost("create")]
+    public async Task<IActionResult> Create([FromQuery] int membershipId)
+    {
+        var membership = await _context.Memberships.FindAsync(membershipId);
+        if (membership == null) return NotFound();
+
+        // Build create payment request
+        var createVm = new STREAMIT.Business.Dtos.PaymentDtos.MembershipCreateVM
+        {
+            Amount = Convert.ToInt32(Math.Ceiling(membership.Price)),
+            Currency = "AZN",
+            Description = $"Membership purchase: {membership.Name}",
+            // Redirect back to MVC membership controller action
+            RedirectUrl = "https://localhost:7108/Membership/RedirectPayment"
+        };
+
+        var purchase = await _paymentService.CreatePaymentAsync(createVm);
+        if (purchase == null || purchase.Membership == null)
+            return StatusCode(500, "Failed to create payment with provider");
+
+        // Determine user id if available
+        var userId = User?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
+
+        var payment = new STREAMIT.Core.Entities.Payment
+        {
+            UserId = userId,
+            MembershipId = membershipId,
+            Amount = membership.Price,
+            OrderId = purchase.Membership.Id.ToString(),
+            Status = "Pending",
+            RedirectUrl = createVm.RedirectUrl,
+            Currency = createVm.Currency,
+            CreatedDate = DateTime.UtcNow
+        };
+
+        _context.Payments.Add(payment);
+        await _context.SaveChangesAsync();
+
+        var checkoutUrl = $"{purchase.Membership.HppUrl}?id={purchase.Membership.Id}&password={purchase.Membership.Password}";
+        return Ok(new { checkoutUrl });
+    }
+
+    [HttpPost("callback")]
+    public async Task<IActionResult> Callback(KapitalBankCallbackModel model)
+    {
+        var payment = await _context.Payments.FirstOrDefaultAsync(x => x.OrderId == model.OrderId);
+
+        if (payment == null) return BadRequest();
+
+        if (model.Status == "success")
+        {
+            payment.Status = "Paid";
+
+            var userMembership = new UserMembership
+            {
+                UserId = payment.UserId,
+                MembershipId = payment.MembershipId,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow.AddDays(30),
+                IsActive = true
+            };
+
+            _context.UserMemberships.Add(userMembership);
+        }
+        else
+        {
+            payment.Status = "Failed";
+        }
+
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+}

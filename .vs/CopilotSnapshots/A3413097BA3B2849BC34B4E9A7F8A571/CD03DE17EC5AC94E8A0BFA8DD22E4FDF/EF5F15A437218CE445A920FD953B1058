@@ -1,0 +1,95 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using STREAMIT.Business.Dtos.SliderDtos; 
+using STREAMIT.Business.Dtos.MovieDtos;
+public class HomeController : Controller
+{
+
+    private readonly HttpClient _httpClient;
+
+    public HomeController(IHttpClientFactory httpClientFactory)
+    {
+        _httpClient = httpClientFactory.CreateClient("ApiClient"); 
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var errors = new List<string>();
+        List<SliderDto>? sliders = null;
+        try
+        {
+            var resp = await _httpClient.GetAsync("api/slider");
+            if (resp.IsSuccessStatusCode)
+                sliders = await resp.Content.ReadFromJsonAsync<List<SliderDto>>();
+            else
+                errors.Add($"slider: {(int)resp.StatusCode} - {await resp.Content.ReadAsStringAsync()}");
+        }
+        catch (Exception ex)
+        {
+            errors.Add("slider: " + ex.Message);
+        }
+
+        List<GetMovieDto>? upcomingMovies = null;
+        try
+        {
+            var resp = await _httpClient.GetAsync("api/movie/upcoming");
+            if (resp.IsSuccessStatusCode)
+                upcomingMovies = await resp.Content.ReadFromJsonAsync<List<GetMovieDto>>();
+            else
+                errors.Add($"upcoming: {(int)resp.StatusCode} - {await resp.Content.ReadAsStringAsync()}");
+        }
+        catch (Exception ex)
+        {
+            errors.Add("upcoming: " + ex.Message);
+        }
+        ViewBag.UpcomingMovies = upcomingMovies ?? new List<GetMovieDto>();
+
+        try
+        {
+            var resp = await _httpClient.GetAsync("api/movie/bestintv");
+            if (resp.IsSuccessStatusCode)
+                ViewBag.BestInTv = await resp.Content.ReadFromJsonAsync<List<GetMovieDto>>() ?? new List<GetMovieDto>();
+            else
+                errors.Add($"bestintv: {(int)resp.StatusCode} - {await resp.Content.ReadAsStringAsync()}");
+        }
+        catch (Exception ex)
+        {
+            errors.Add("bestintv: " + ex.Message);
+            ViewBag.BestInTv = new List<GetMovieDto>();
+        }
+
+        try
+        {
+            var resp = await _httpClient.GetAsync("api/movie/latest");
+            if (resp.IsSuccessStatusCode)
+                ViewBag.Latest = await resp.Content.ReadFromJsonAsync<List<GetMovieDto>>() ?? new List<GetMovieDto>();
+            else
+                errors.Add($"latest: {(int)resp.StatusCode} - {await resp.Content.ReadAsStringAsync()}");
+        }
+        catch (Exception ex)
+        {
+            errors.Add("latest: " + ex.Message);
+            ViewBag.Latest = new List<GetMovieDto>();
+        }
+
+        try
+        {
+            var resp = await _httpClient.GetAsync("api/slider2");
+            if (resp.IsSuccessStatusCode)
+                ViewBag.Slider2 = await resp.Content.ReadFromJsonAsync<List<Slider2Dto>>() ?? new List<Slider2Dto>();
+            else
+                errors.Add($"slider2: {(int)resp.StatusCode} - {await resp.Content.ReadAsStringAsync()}");
+        }
+        catch (Exception ex)
+        {
+            errors.Add("slider2: " + ex.Message);
+            ViewBag.Slider2 = new List<Slider2Dto>();
+        }
+
+        ViewBag.ApiErrors = errors;
+        return View(sliders ?? new List<SliderDto>());
+    }
+}

@@ -1,0 +1,97 @@
+﻿using AutoMapper;
+using STREAMIT.Business.Dtos.GenreDtos;
+using STREAMIT.Business.Dtos.LanguageDtos;
+using STREAMIT.Business.Dtos.MembershipDtos;
+using STREAMIT.Business.Dtos.MovieDtos;
+using STREAMIT.Business.Dtos.PersonDtos;
+using STREAMIT.Business.Dtos.ReviewDtos;
+using STREAMIT.Business.Dtos.TagDtos;
+using STREAMIT.Core.Entities;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace STREAMIT.Business.Profiles
+{
+    public class MovieProfile : Profile
+    {
+        public MovieProfile()
+        {
+            // Movie -> GetMovieDto mapping
+            CreateMap<Movie, GetMovieDto>()
+                .ForMember(dest => dest.Genres, opt => opt.MapFrom(
+                    src => src.MovieGenres != null
+                        ? src.MovieGenres
+                            .Where(mg => mg.Genre != null)
+                            .Select(mg => new GenreDto
+                            {
+                                Id = mg.Genre!.Id,
+                                Name = mg.Genre.Name
+                            })
+                            .ToList()
+                        : new List<GenreDto>()
+                ))
+                .ForMember(dest => dest.Tags, opt => opt.MapFrom(
+                    src => src.MovieTags != null
+                        ? src.MovieTags
+                            .Where(mt => mt.Tag != null)
+                            .Select(mt => new TagDto
+                            {
+                                Id = mt.Tag!.Id,
+                                Name = mt.Tag!.Name
+                            })
+                            .ToList()
+                        : new List<TagDto>()
+                ))
+                .ForMember(dest => dest.People, opt => opt.MapFrom(
+                    src => src.MoviePeople != null
+                        ? src.MoviePeople
+                            .Where(mp => mp.Person != null)
+                            .Select(mp => new PersonDto
+                            {
+                                Id = mp.Person!.Id,
+                                Name = mp.Person.Name,
+                                ImageUrl = mp.Person.ImageUrl,
+                                Role = mp.Role
+                            }).ToList()
+                        : new List<PersonDto>()
+                ))
+                .ForMember(dest => dest.MembershipName, opt => opt.MapFrom(
+                    src => src.Membership != null ? src.Membership.Name : string.Empty
+                ))
+                .ForMember(dest => dest.Reviews, opt => opt.MapFrom(
+                    src => src.Reviews != null
+                        ? src.Reviews
+                            .Where(r => r.User != null)
+                            .Select(r => new ReviewDto
+                            {
+                                UserName = r.User!.UserName!,
+                                ProfilePictureUrl = r.User.ProfilePictureUrl,
+                                Rating = r.Rating,
+                                Comment = r.Comment,
+                                CreatedDate = r.CreatedDate
+                            }).ToList()
+                        : new List<ReviewDto>()
+                ));
+
+            // CreateMovieDto -> Movie mapping
+            CreateMap<CreateMovieDto, Movie>()
+                .ForMember(dest => dest.MoviePeople, opt => opt.Ignore())
+                .ForMember(dest => dest.MovieGenres, opt => opt.Ignore())
+                .ForMember(dest => dest.MovieTags, opt => opt.Ignore());
+
+            // UpdateMovieDto -> Movie mapping
+            CreateMap<UpdateMovieDto, Movie>()
+                .ForMember(dest => dest.MoviePeople, opt => opt.Ignore())
+                .ForMember(dest => dest.MovieGenres, opt => opt.Ignore())
+                .ForMember(dest => dest.MovieTags, opt => opt.Ignore());
+
+            // Basic mappings
+            CreateMap<Genre, GenreDto>().ReverseMap();
+            CreateMap<Tag, TagDto>().ReverseMap();
+            CreateMap<Person, PersonDto>().ReverseMap();
+            CreateMap<MovieStatistics, STREAMIT.Business.Dtos.MovieStaticticsDtos.MovieStatisticsDto>().ReverseMap();
+            CreateMap<Language, LanguageDto>().ReverseMap();
+            CreateMap<Membership, MembershipDto>().ReverseMap();
+        }
+    }
+}

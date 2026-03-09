@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,5 +17,8 @@ namespace STREAMIT.Business.Helpers
         {
             return file.ContentType.Contains(type);
         }
+
     }
+
+
 }

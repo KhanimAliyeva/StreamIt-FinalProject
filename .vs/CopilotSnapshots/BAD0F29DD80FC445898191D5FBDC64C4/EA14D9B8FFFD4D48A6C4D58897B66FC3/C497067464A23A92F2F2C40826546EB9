@@ -1,0 +1,83 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using STREAMIT.Business.Dtos.ReviewDtos;
+using STREAMIT.Core.Entities;
+using STREAMIT.DataAccess.Contexts;
+using System.Security.Claims;
+using Microsoft.Data.SqlClient;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ReviewsController : ControllerBase
+{
+    private readonly AppDbContext _context;
+
+    public ReviewsController(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddReview(AddReviewDto dto)
+    {
+        // Require authenticated user and use server-side user id to avoid FK issues
+        var userId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrWhiteSpace(userId))
+            return Unauthorized("User must be authenticated to add a review.");
+
+        // enforce user id coming from token/cookie, ignore client supplied value
+        dto.UserId = userId;
+
+        var existingReview = await _context.ReviewMovies
+            .FirstOrDefaultAsync(x => x.MovieId == dto.MovieId && x.UserId == dto.UserId);
+
+        if (existingReview != null)
+        {
+            existingReview.Rating = dto.Rating;
+            existingReview.Comment = dto.Comment;
+        }
+        else
+        {
+            var review = new ReviewMovie
+            {
+                MovieId = dto.MovieId,
+                UserId = dto.UserId,
+                Rating = dto.Rating,
+                Comment = dto.Comment
+            };
+
+            await _context.ReviewMovies.AddAsync(review);
+        }
+
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateException dbEx)
+        {
+            // Try to surface inner exception message for FK/constraint errors
+            var sqlEx = dbEx.GetBaseException() as SqlException;
+            var detail = sqlEx != null ? sqlEx.Message : dbEx.GetBaseException()?.Message;
+            return Problem(detail ?? "An error occurred while saving the review.", statusCode: 500);
+        }
+
+        var movie = await _context.Movies
+            .Include(x => x.Reviews)
+            .FirstOrDefaultAsync(x => x.Id == dto.MovieId);
+
+        if (movie != null)
+        {
+            movie.RatingCount = movie.Reviews.Count;
+            movie.AverageRating = movie.Reviews.Any()
+                ? movie.Reviews.Average(x => x.Rating)
+                : 0;
+
+            await _context.SaveChangesAsync();
+        }
+
+        return Ok();
+    }
+
+   
+
+}

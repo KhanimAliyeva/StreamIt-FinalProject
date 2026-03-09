@@ -9,7 +9,16 @@ C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\STRE
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\AutoMapper.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Azure.Core.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Azure.Identity.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\BouncyCastle.Cryptography.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\CloudinaryDotNet.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\DocumentFormat.OpenXml.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\DocumentFormat.OpenXml.Framework.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\FluentValidation.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\FluentValidation.AspNetCore.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Humanizer.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\MailKit.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -39,6 +48,7 @@ C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Micr
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Microsoft.OpenApi.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\MimeKit.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Mono.TextTemplating.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Newtonsoft.Json.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -53,6 +63,7 @@ C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Syst
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\System.Composition.TypedParts.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\System.IO.Packaging.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\System.Memory.Data.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
@@ -152,6 +163,7 @@ C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\STRE
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\STREAMIT.Presentation.csproj.CoreCompileInputs.cache
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\STREAMIT.Presentation.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\STREAMIT.Presentation.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\STREAMIT.Presentation.sourcelink.json
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
@@ -168,11 +180,3 @@ C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\refi
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\STREAMIT.Presentation.pdb
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\STREAMIT.Presentation.genruntimeconfig.cache
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\obj\Debug\net10.0\ref\STREAMIT.Presentation.dll
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\CloudinaryDotNet.dll
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\FluentValidation.dll
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\FluentValidation.AspNetCore.dll
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\BouncyCastle.Cryptography.dll
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\MailKit.dll
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.Presentation\bin\Debug\net10.0\MimeKit.dll

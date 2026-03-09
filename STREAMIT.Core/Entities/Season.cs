@@ -10,8 +10,7 @@ namespace STREAMIT.Core.Entities
         public int TVShowId { get; set; }
         public int SeasonNumber { get; set; }
 
-        public TVShow? TVShow { get; set; }
-        public ICollection<Episode> Episodes { get; set; } = [];
+        public ICollection<Episode> Episodes { get; set; } = new List<Episode>();
     }
 
    

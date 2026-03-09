@@ -38,7 +38,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
         builder.Property(m => m.MovieUrl)
                .HasMaxLength(500);
 
-        builder.Property(m => m.TrailerUrl)
+        builder.Property(m => m.YoutubeUrl)
                .HasMaxLength(500);
 
         builder.Property(m => m.ReleaseDate)
@@ -47,8 +47,8 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
         builder.Property(m => m.Duration)
                .IsRequired();
 
-        builder.Property(m => m.Imdb)
-               .HasPrecision(3, 1);
+        //builder.Property(m => m.Imdb)
+        //       .HasPrecision(3, 1);
 
         // Relationships
 
@@ -99,7 +99,7 @@ public class MovieConfiguration : IEntityTypeConfiguration<Movie>
         // Indexes
         builder.HasIndex(m => m.Title);
         builder.HasIndex(m => m.ReleaseDate);
-        builder.HasIndex(m => m.Imdb);
+        //builder.HasIndex(m => m.Imdb);
 
 
     }

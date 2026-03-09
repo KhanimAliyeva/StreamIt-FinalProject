@@ -1,0 +1,74 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using STREAMIT.DataAccess.Contexts;
+using Microsoft.EntityFrameworkCore;
+using STREAMIT.Core.Entities;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
+
+// Allow anonymous users to participate in realtime, but only persist messages for authenticated users.
+public class CommunityHub : Hub
+{
+    private readonly AppDbContext _context;
+    private readonly ILogger<CommunityHub> _logger;
+    public CommunityHub(AppDbContext context, ILogger<CommunityHub> logger)
+    {
+        _context = context;
+        _logger = logger;
+    }
+
+    public async Task SendMessage(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return;
+        var userId = Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+        var userName = Context.User?.Identity?.Name ?? "User";
+        var sentAt = DateTime.UtcNow;
+
+        try
+        {
+            // Resolve actual user id: the NameIdentifier claim might contain username in some setups
+            string? resolvedUserId = null;
+            if (!string.IsNullOrWhiteSpace(userId))
+            {
+                // try find by Id first
+                var existsById = await _context.Users.AnyAsync(u => u.Id == userId);
+                if (existsById)
+                    resolvedUserId = userId;
+                else
+                {
+                    // maybe claim contains username, try to find user by username
+                    var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userId || u.NormalizedUserName == userId.ToUpper());
+                    if (user != null)
+                        resolvedUserId = user.Id;
+                }
+            }
+
+            // persist only when we have a valid user id (avoid FK errors)
+            if (!string.IsNullOrWhiteSpace(resolvedUserId))
+            {
+                var msg = new CommunityMessage
+                {
+                    UserId = resolvedUserId,
+                    Text = text.Trim(),
+                    SentAt = sentAt,
+                    GroupId = 1
+                };
+
+                _context.CommunityMessages.Add(msg);
+                await _context.SaveChangesAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger?.LogError(ex, "Failed to persist community message");
+            // don't rethrow – still broadcast to clients
+        }
+
+        await Clients.All.SendAsync("ReceiveMessage", new
+        {
+            userName,
+            text = text.Trim(),
+            sentAt
+        });
+    }
+}

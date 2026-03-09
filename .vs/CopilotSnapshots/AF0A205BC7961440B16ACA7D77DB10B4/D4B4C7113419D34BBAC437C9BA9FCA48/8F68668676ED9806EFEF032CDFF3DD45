@@ -1,0 +1,81 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Controllers
+{
+    [Authorize]
+    public class ProfileController : Controller
+    {
+        private readonly IHttpClientFactory _http;
+
+        public ProfileController(IHttpClientFactory http)
+        {
+            _http = http;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        // Səhifə
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        // View açılan kimi məlumatı gətiririk (JS bunu çağırır)
+        [HttpGet]
+        public async Task<IActionResult> Me()
+        {
+            var client = _http.CreateClient("ApiClient");
+
+            var resp = await client.GetAsync("api/user/me");
+
+            if (resp.StatusCode == HttpStatusCode.Unauthorized)
+                return Unauthorized();
+
+            var body = await resp.Content.ReadAsStringAsync();
+            if (!resp.IsSuccessStatusCode)
+                return StatusCode((int)resp.StatusCode, body);
+
+            return Content(body, "application/json");
+        }
+
+        // Save
+        [HttpPost]
+        public async Task<IActionResult> Update([FromBody] UpdateProfileVm vm)
+        {
+            if (vm == null) return BadRequest("Invalid payload");
+
+            var client = _http.CreateClient("ApiClient");
+
+            var resp = await client.PutAsJsonAsync("api/user/me", new
+            {
+                fullName = vm.FullName,
+                userName = vm.UserName,
+                email = vm.Email
+            });
+
+            if (resp.StatusCode == HttpStatusCode.Unauthorized)
+                return Unauthorized();
+
+            var text = await resp.Content.ReadAsStringAsync();
+            if (!resp.IsSuccessStatusCode)
+                return StatusCode((int)resp.StatusCode, text);
+
+            return Ok(new { ok = true });
+        }
+    }
+
+    public class UpdateProfileVm
+    {
+        public string FullName { get; set; } = "";
+        public string UserName { get; set; } = "";
+        public string Email { get; set; } = "";
+    }
+}

@@ -1,0 +1,122 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using STREAMIT.Business.Dtos.MovieDtos;
+using STREAMIT.Business.Dtos.ReviewDtos;
+using System.Net.Http.Headers;
+using System.Security.Claims;
+using System.Text;
+
+namespace STREAMIT.MVC.Controllers
+{
+    public class MovieController : Controller
+    {
+        private readonly HttpClient _httpClient;
+        private readonly ILogger<MovieController> _logger;
+
+        public MovieController(IHttpClientFactory factory, ILogger<MovieController> logger)
+        {
+            _httpClient = factory.CreateClient("ApiClient");
+            _logger = logger;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddReview([FromBody] AddReviewDto dto)
+        {
+            // Server-side user id əlavə et
+            var principalUserId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!string.IsNullOrWhiteSpace(principalUserId))
+                dto.UserId = principalUserId;
+
+            // Sadə PostAsJsonAsync istifadə et, token handler tərəfindən əlavə olunacaq
+            var response = await _httpClient.PostAsJsonAsync("api/reviews", dto);
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+
+            return Ok();
+        }
+        public async Task<IActionResult> Index()
+
+        {
+            var response = await _httpClient.GetAsync("api/movie");
+
+            if (!response.IsSuccessStatusCode)
+                return View(new List<GetMovieDto>());
+
+            var json = await response.Content.ReadAsStringAsync();
+            var movies = JsonConvert.DeserializeObject<List<GetMovieDto>>(json);
+
+            return View(movies);
+        }
+
+
+        [HttpGet("Movie/Details/{id}")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var response = await _httpClient.GetAsync($"api/movie/{id}");
+            if (!response.IsSuccessStatusCode)
+                return NotFound();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var movie = JsonConvert.DeserializeObject<GetMovieDto>(json);
+
+            var reviewsResp = await _httpClient.GetAsync($"api/reviews/movie/{id}");
+            if (reviewsResp.IsSuccessStatusCode)
+            {
+                var reviewsJson = await reviewsResp.Content.ReadAsStringAsync();
+                movie.Reviews = JsonConvert.DeserializeObject<List<ReviewDto>>(reviewsJson) ?? new List<ReviewDto>();
+            }
+            else
+            {
+                movie.Reviews = new List<ReviewDto>();
+            }
+
+            return View("Details", movie);
+        }
+
+        // Keep compatibility with URLs that use 'Detail' (singular)
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            // Delegate to the Details action and ensure the same view name is used
+            return await Details(id);
+        }
+
+        public async Task<IActionResult> Watch(int id)
+        {
+            var response = await _httpClient.GetAsync($"api/movie/{id}");
+            if (!response.IsSuccessStatusCode)
+                return NotFound();
+            var json = await response.Content.ReadAsStringAsync();
+            var movie = JsonConvert.DeserializeObject<GetMovieDto>(json);
+            return View(movie);
+        }
+
+        [HttpPost]
+        [IgnoreAntiforgeryToken]
+        public async Task<IActionResult> IncrementView(int id)
+        {
+            // Call Presentation API to increment view count for the movie
+            _logger.LogInformation("IncrementView called for movie {movieId}", id);
+            var resp = await _httpClient.PostAsync($"api/movie/increment-view/{id}", null);
+            var content = await resp.Content.ReadAsStringAsync();
+
+            _logger.LogInformation("IncrementView: API response status {status}. Content: {content}", resp.StatusCode, content);
+
+            if (!resp.IsSuccessStatusCode)
+                return StatusCode((int)resp.StatusCode, content);
+
+            // Try to parse returned view count and forward it to the client
+            try
+            {
+                var obj = JsonConvert.DeserializeObject<dynamic>(content);
+                int viewCount = obj?.viewCount ?? 0;
+                return Ok(new { viewCount });
+            }
+            catch
+            {
+                return Ok();
+            }
+        }
+    }
+}

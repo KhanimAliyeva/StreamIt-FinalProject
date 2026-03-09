@@ -164,13 +164,13 @@ public class AuthService : IAuthService
 
         var roles = await _userManager.GetRolesAsync(user);
         var claims = new List<Claim>
-        {
-            new Claim("Fullname", user.Fullname),
-            new Claim("Username", user.UserName!),
-            new Claim("Email", user.Email!),
-            new Claim("Role", roles.FirstOrDefault() ?? "")
-        };
-
+{
+    new Claim(ClaimTypes.NameIdentifier, user.Id),
+    new Claim(ClaimTypes.Name, user.UserName ?? "User"),
+    new Claim("FullName", user.Fullname ?? ""),
+    new Claim(ClaimTypes.Email, user.Email ?? ""),
+    new Claim(ClaimTypes.Role, roles.FirstOrDefault() ?? "Member")
+};
         var tokenResult = _jWTService.CreateAccessToken(claims);
 
         user.RefreshToken = tokenResult.RefreshToken;
@@ -201,12 +201,13 @@ public class AuthService : IAuthService
     {
         var roles = await _userManager.GetRolesAsync(user);
         var claims = new List<Claim>
-    {
-        new("Fullname", user.Fullname),
-        new("Username", user.UserName!),
-        new("Email", user.Email!),
-        new("Role", roles.FirstOrDefault() ?? "")
-    };
+{
+    new Claim(ClaimTypes.NameIdentifier, user.Id),
+    new Claim(ClaimTypes.Name, user.UserName ?? "User"),
+    new Claim("FullName", user.Fullname ?? ""),
+    new Claim(ClaimTypes.Email, user.Email ?? ""),
+    new Claim(ClaimTypes.Role, roles.FirstOrDefault() ?? "Member")
+};
 
         var tokenResult = _jWTService.CreateAccessToken(claims);
 

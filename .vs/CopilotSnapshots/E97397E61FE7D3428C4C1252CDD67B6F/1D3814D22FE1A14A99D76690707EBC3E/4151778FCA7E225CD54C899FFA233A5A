@@ -1,0 +1,272 @@
+﻿@{
+    var meName = User?.Identity?.Name ?? "User";
+}
+
+<div class="container-fluid section-padding">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-10">
+            <div class="card community-card">
+                <div class="card-header community-header d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="community-badge">C</div>
+                        <div>
+                            <div class="community-title">Community • General</div>
+                            <div class="community-subtitle">Public group • Everyone can join</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-light" type="button" title="Settings">
+                        <i class="ph ph-gear"></i>
+                    </button>
+                </div>
+
+                <div class="card-body community-body" id="chatBox">
+                    <div class="text-muted">Loading...</div>
+                </div>
+
+                <div class="card-footer community-footer">
+                    <div class="chat-input-wrap">
+                        <input id="msgInput" class="form-control chat-input" placeholder="Type a message..." />
+                        <button class="btn btn-danger chat-send" onclick="sendMsg()">Send</button>
+                    </div>
+                    <div class="chat-hint">
+                        Press <b>Enter</b> to send • <span id="connState" class="text-muted">connecting…</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .community-card{
+        background: rgba(18,18,18,.85);
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+    .community-header{
+        background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+        border-bottom: 1px solid rgba(255,255,255,.08);
+        padding: 16px 18px;
+    }
+    .community-badge{
+        width: 40px; height: 40px; border-radius: 12px;
+        display:flex; align-items:center; justify-content:center;
+        background: rgba(255,0,0,.18);
+        border: 1px solid rgba(255,0,0,.35);
+        color:#fff; font-weight:700;
+    }
+    .community-title{ color:#fff; font-weight:700; letter-spacing:.2px; }
+    .community-subtitle{ color: rgba(255,255,255,.6); font-size: 12px; margin-top:2px; }
+
+    .community-body{
+        height: 560px;
+        overflow: auto;
+        padding: 18px;
+        background: radial-gradient(1200px 500px at 20% 0%, rgba(255,0,0,.06), transparent 55%),
+                    radial-gradient(900px 500px at 80% 10%, rgba(255,255,255,.04), transparent 55%),
+                    rgba(0,0,0,.22);
+    }
+
+    .msg-row{ display:flex; gap:10px; margin-bottom: 14px; }
+    .msg-row.me{ justify-content:flex-end; }
+    .msg-row.other{ justify-content:flex-start; }
+
+    .msg-avatar{
+        width:34px; height:34px; border-radius: 12px;
+        display:flex; align-items:center; justify-content:center;
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.10);
+        color:#fff; font-weight:700; font-size: 13px;
+        flex: 0 0 34px;
+        margin-top: 18px;
+    }
+    .msg-row.me .msg-avatar{ display:none; }
+
+    .msg-bubble{
+        max-width: min(680px, 78%);
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,.10);
+        background: rgba(255,255,255,.06);
+        color:#fff;
+    }
+    .msg-row.me .msg-bubble{
+        background: rgba(255,0,0,.18);
+        border-color: rgba(255,0,0,.35);
+    }
+
+    .msg-meta{
+        display:flex; align-items:baseline; justify-content:space-between;
+        gap:10px;
+        margin-bottom: 4px;
+        opacity:.9;
+    }
+    .msg-name{ font-weight:700; font-size: 13px; color:#fff; }
+    .msg-time{ font-size: 11px; color: rgba(255,255,255,.65); }
+    .msg-text{ white-space: pre-wrap; word-break: break-word; font-size: 14px; color: rgba(255,255,255,.92); }
+
+    .community-footer{
+        border-top: 1px solid rgba(255,255,255,.08);
+        background: rgba(255,255,255,.03);
+        padding: 14px 16px;
+    }
+    .chat-input-wrap{ display:flex; gap:10px; }
+    .chat-input{
+        background: rgba(0,0,0,.35);
+        border: 1px solid rgba(255,255,255,.10);
+        color:#fff;
+        border-radius: 12px;
+        height: 44px;
+    }
+    .chat-input:focus{
+        box-shadow: none;
+        border-color: rgba(255,0,0,.45);
+    }
+    .chat-send{
+        border-radius: 12px;
+        height: 44px;
+        padding: 0 18px;
+        font-weight: 700;
+    }
+    .chat-hint{
+        margin-top: 8px;
+        font-size: 12px;
+        color: rgba(255,255,255,.55);
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script>
+    const API_BASE = "https://localhost:7108";
+    const chatBox = document.getElementById("chatBox");
+    const meName = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(meName));
+    const connStateEl = document.getElementById("connState");
+
+    function escapeHtml(text) {
+        return (text ?? "").replace(/[&<>"']/g, (c) => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+        }[c]));
+    }
+
+    function getInitial(name){
+        const s = (name ?? "").trim();
+        return s ? s[0].toUpperCase() : "U";
+    }
+
+    function isMe(userName){
+        return (userName ?? "").trim().toLowerCase() === (meName ?? "").trim().toLowerCase();
+    }
+
+    function renderMsg(m){
+        const userName = m.userName ?? "User";
+        const text = m.text ?? "";
+        const sentAt = m.sentAt ? new Date(m.sentAt) : null;
+        const mine = isMe(userName);
+
+        const row = document.createElement("div");
+        row.className = `msg-row ${mine ? "me" : "other"}`;
+
+        const avatar = document.createElement("div");
+        avatar.className = "msg-avatar";
+        avatar.textContent = getInitial(userName);
+
+        const bubble = document.createElement("div");
+        bubble.className = "msg-bubble";
+        bubble.innerHTML = `
+            <div class="msg-meta">
+                <div class="msg-name">${escapeHtml(userName)}</div>
+                <div class="msg-time">${sentAt ? sentAt.toLocaleString() : ""}</div>
+            </div>
+            <div class="msg-text">${escapeHtml(text)}</div>
+        `;
+
+        if (!mine) row.appendChild(avatar);
+        row.appendChild(bubble);
+
+        return row;
+    }
+
+    function appendMsg(m){
+        chatBox.appendChild(renderMsg(m));
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function loadHistory() {
+        chatBox.innerHTML = `<div class="text-muted">Loading...</div>`;
+        const resp = await fetch(`${API_BASE}/api/community/messages`, { credentials: "include" });
+
+        if (!resp.ok) {
+            chatBox.innerHTML = `<div class="text-danger">Failed to load messages (${resp.status})</div>`;
+            return;
+        }
+
+        const list = await resp.json();
+        chatBox.innerHTML = "";
+
+        if (!list || list.length === 0) {
+            chatBox.innerHTML = `<div class="text-muted">No messages yet. Say hi 👋</div>`;
+            return;
+        }
+
+        for (const m of list) appendMsg(m);
+    }
+
+    // ✅ tokeni MVC-dən alırıq (JS cookie oxumasa da işləyir)
+    async function getToken(){
+        const r = await fetch("/Community/Token", { credentials: "same-origin" });
+        if(!r.ok) return "";
+        return await r.text();
+    }
+
+    const conn = new signalR.HubConnectionBuilder()
+        .withUrl(`${API_BASE}/hubs/community`, {
+            accessTokenFactory: async () => await getToken()
+        })
+        .withAutomaticReconnect()
+        .build();
+
+    conn.on("ReceiveMessage", (m) => appendMsg(m));
+
+    conn.onclose(() => { connStateEl.textContent = "disconnected"; });
+    conn.onreconnecting(() => { connStateEl.textContent = "reconnecting…"; });
+    conn.onreconnected(() => { connStateEl.textContent = "connected"; });
+
+    async function startHub() {
+        try {
+            connStateEl.textContent = "connecting…";
+            await conn.start();
+            connStateEl.textContent = "connected";
+        } catch (e) {
+            console.log("SignalR start error:", e);
+            connStateEl.textContent = "failed";
+        }
+    }
+
+    async function sendMsg() {
+        const input = document.getElementById("msgInput");
+        const text = input.value.trim();
+        if (!text) return;
+
+        try {
+            if (conn.state !== "Connected") await startHub();
+            await conn.invoke("SendMessage", text);
+            input.value = "";
+            input.focus();
+        } catch (e) {
+            console.log("SendMessage error:", e);
+            alert("Send failed. Console-a bax (F12).");
+        }
+    }
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && document.activeElement?.id === "msgInput") {
+            e.preventDefault();
+            sendMsg();
+        }
+    });
+
+    loadHistory();
+    startHub();
+</script>

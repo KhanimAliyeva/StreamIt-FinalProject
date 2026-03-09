@@ -101,7 +101,6 @@ namespace STREAMIT.Business.Services.Implementations
         {
             var persons = await _repository.GetAll(true)
                 .Include(x => x.MoviePeople).ThenInclude(x => x.Movie)
-                .Include(x => x.TVShowPeople).ThenInclude(x => x.TvShow)
                 .ToListAsync();
 
             return _mapper.Map<List<GetPersonDto>>(persons);

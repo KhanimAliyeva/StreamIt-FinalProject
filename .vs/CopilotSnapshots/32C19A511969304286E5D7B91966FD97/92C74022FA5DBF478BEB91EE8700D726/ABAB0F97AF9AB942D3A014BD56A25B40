@@ -1,0 +1,200 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos;
+using STREAMIT.Business.Dtos.GenreDtos;
+using STREAMIT.Business.Dtos.LanguageDtos;
+using STREAMIT.Business.Dtos.MembershipDtos;
+using STREAMIT.Business.Dtos.MovieDtos;
+using STREAMIT.Business.Dtos.PersonDtos;
+using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.Business.Dtos.TagDtos;
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Areas.Admin.Controllers;
+
+[Area("Admin")]
+public class MovieController(IHttpClientFactory httpClientFactory) : Controller
+{
+    private readonly HttpClient _httpClient = httpClientFactory.CreateClient("ApiClient");
+
+    #region INDEX
+    public async Task<IActionResult> Index()
+    {
+        var movies = await SafeGetFromJson<List<GetMovieDto>>("Movie");
+        return View(movies ?? new List<GetMovieDto>());
+    }
+    #endregion
+
+    #region DELETE
+    public async Task<IActionResult> Delete(int id)
+    {
+        var response = await _httpClient.DeleteAsync($"Movie/{id}");
+        if (!response.IsSuccessStatusCode)
+        {
+            var error = await SafeReadJson<ResultDto>(response);
+            return NotFound(error?.Message ?? "Something went wrong...");
+        }
+        return RedirectToAction(nameof(Index));
+    }
+    #endregion
+
+    #region CREATE
+    public async Task<IActionResult> Create()
+    {
+        await LoadDropdowns();
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateMovieDto dto)
+    {
+        if (!ModelState.IsValid)
+        {
+            await LoadDropdowns();
+            return View(dto);
+        }
+
+        using var content = BuildMultipartContent(dto);
+
+        var response = await _httpClient.PostAsync("Movie", content);
+        if (!response.IsSuccessStatusCode)
+        {
+            await LoadDropdowns();
+            var error = await SafeReadJson<ResultDto>(response);
+            ModelState.AddModelError("", error?.Message ?? "Something went wrong...");
+            return View(dto);
+        }
+
+        return RedirectToAction(nameof(Index));
+    }
+    #endregion
+
+    #region UPDATE
+    public async Task<IActionResult> Update(int id)
+    {
+        var result = await SafeGetFromJson<ResultDto<UpdateMovieDto>>($"Movie/{id}");
+        if (result == null) return BadRequest();
+
+        await LoadDropdowns();
+        return View(result.Data);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Update(UpdateMovieDto dto)
+    {
+        if (!ModelState.IsValid)
+        {
+            await LoadDropdowns();
+            return View(dto);
+        }
+
+        using var content = BuildMultipartContent(dto, isUpdate: true);
+
+        var response = await _httpClient.PutAsync($"Movie/{dto.Id}", content);
+        if (!response.IsSuccessStatusCode)
+        {
+            await LoadDropdowns();
+            var error = await SafeReadJson<ResultDto>(response);
+            ModelState.AddModelError("", error?.Message ?? "Something went wrong...");
+            return View(dto);
+        }
+
+        return RedirectToAction(nameof(Index));
+    }
+    #endregion
+
+    public async Task<IActionResult> Details(int id)
+    {
+        var result = await SafeGetFromJson<ResultDto<GetMovieDto>>($"Movie/{id}");
+        if (result == null) return BadRequest();
+        return View(result.Data);
+    }
+
+    #region HELPERS
+
+    private static MultipartFormDataContent BuildMultipartContent(dynamic dto, bool isUpdate = false)
+    {
+        var content = new MultipartFormDataContent();
+
+        if (isUpdate)
+            content.Add(new StringContent(dto.Id.ToString()), "Id");
+
+        content.Add(new StringContent(dto.Title), "Title");
+        content.Add(new StringContent(dto.Status), "Status");
+        content.Add(new StringContent(dto.Content), "Content");
+        content.Add(new StringContent(dto.ReleaseDate.ToString("O")), "ReleaseDate");
+        content.Add(new StringContent(dto.Duration.ToString()), "Duration");
+        content.Add(new StringContent(dto.MembershipId.ToString()), "MembershipId");
+        content.Add(new StringContent(dto.LanguageId.ToString()), "LanguageId");
+        content.Add(new StringContent(dto.Imdb.ToString()), "Imdb");
+
+        foreach (var genreId in dto.GenreIds)
+            content.Add(new StringContent(genreId.ToString()), "GenreIds");
+
+        foreach (var tagId in dto.TagIds)
+            content.Add(new StringContent(tagId.ToString()), "TagIds");
+
+        foreach (var personId in dto.PersonIds)
+            content.Add(new StringContent(personId.ToString()), "PersonIds");
+
+        if (dto.Poster != null) AddFile(content, dto.Poster, "Poster");
+        if (dto.Trailer != null) AddFile(content, dto.Trailer, "Trailer");
+        if (dto.Movie != null) AddFile(content, dto.Movie, "Movie");
+
+        return content;
+    }
+
+    private static void AddFile(MultipartFormDataContent content, IFormFile file, string name)
+    {
+        var streamContent = new StreamContent(file.OpenReadStream());
+        streamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+        content.Add(streamContent, name, file.FileName);
+    }
+
+    private async Task LoadDropdowns()
+    {
+        ViewBag.Genres = await GetListSafe<GenreDto>("Genre");
+        ViewBag.Tags = await GetListSafe<TagDto>("Tag");
+        ViewBag.People = await GetListSafe<PersonDto>("Person");
+        ViewBag.Languages = await GetListSafe<LanguageDto>("Language");
+        ViewBag.Memberships = await GetListSafe<MembershipDto>("Membership");
+    }
+
+    private async Task<List<T>> GetListSafe<T>(string endpoint)
+    {
+        // Əvvəlcə ResultDto<List<T>> yoxla
+        var resultDto = await SafeGetFromJson<ResultDto<List<T>>>(endpoint);
+        if (resultDto != null) return resultDto.Data ?? new List<T>();
+
+        // Əgər ResultDto yoxdursa, birbaşa List<T> cəhd et
+        var rawList = await SafeGetFromJson<List<T>>(endpoint);
+        return rawList ?? new List<T>();
+    }
+
+    private async Task<T?> SafeGetFromJson<T>(string endpoint)
+    {
+        try
+        {
+            var response = await _httpClient.GetAsync($"https://localhost:7107/api/{endpoint}");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<T>();
+        }
+        catch
+        {
+            return default;
+        }
+    }
+
+    private async Task<T?> SafeReadJson<T>(HttpResponseMessage response)
+    {
+        try
+        {
+            return await response.Content.ReadFromJsonAsync<T>();
+        }
+        catch
+        {
+            return default;
+        }
+    }
+
+    #endregion
+}

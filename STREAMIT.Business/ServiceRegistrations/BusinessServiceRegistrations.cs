@@ -30,7 +30,6 @@ namespace STREAMIT.Business.ServiceRegistrations
             services.AddScoped<IJWTService, JWTService>();
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IGenreService, GenreService>();
-            services.AddScoped<ITvShowService, TvShowService>();
             services.AddScoped<IPersonService, PersonService>();
             services.AddScoped<ICloudinaryService, CloudinaryService>();
             services.AddScoped<ILanguageService, LanguageService>();
@@ -39,32 +38,18 @@ namespace STREAMIT.Business.ServiceRegistrations
             services.AddScoped<IMembershipService, MembershipService>();
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<IEmailService, EmailService>();
-           // services.AddScoped<IEmailService, FakeEmailService>();
+            services.AddScoped<IPaymentService, KapitalBankPaymentService>();
+
+            // services.AddScoped<IEmailService, FakeEmailService>();
 
 
 
 
             services.AddAutoMapper(_ => { }, typeof(BusinessServiceRegistrations).Assembly);
+            // JWT options are read by services that need them. Authentication is configured in the Presentation project
+            // (Program.cs) to avoid registering authentication schemes multiple times across projects.
+            // Keep JWTOptions available for other services to consume.
             JWTOptionsDto options = configuration.GetSection("JWTOptions").Get<JWTOptionsDto>() ?? new();
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(config =>
-            {
-                config.TokenValidationParameters = new()
-                {
-                    RoleClaimType = "Role",
-                    ValidateAudience = true,
-                    ValidateIssuer = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = options.Issuer,
-                    ValidAudience = options.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.SecretKey))
-                };
-
-            });
         }
     }
 }

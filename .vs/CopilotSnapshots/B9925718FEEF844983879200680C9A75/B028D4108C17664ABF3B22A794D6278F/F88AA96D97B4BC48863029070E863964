@@ -1,0 +1,342 @@
+﻿@using STREAMIT.Business.Dtos.ReviewDtos
+@model STREAMIT.Business.Dtos.MovieDtos.GetMovieDto
+
+<div class="poition-relative">
+    @{
+        var movieUrl = Model?.MovieUrl ?? string.Empty;
+        var posterUrl = Model?.PosterUrl ?? string.Empty;
+        bool isYouTube = !string.IsNullOrEmpty(movieUrl) && (movieUrl.Contains("youtube.com") || movieUrl.Contains("youtu.be"));
+        string youtubeId = string.Empty;
+        if (isYouTube)
+        {
+            var url = movieUrl;
+            if (url.Contains("v="))
+            {
+                var idx = url.IndexOf("v=") + 2;
+                var amp = url.IndexOf('&', idx);
+                youtubeId = amp > 0 ? url.Substring(idx, amp - idx) : url.Substring(idx);
+            }
+            else if (url.Contains("youtu.be/"))
+            {
+                var lastSlash = url.LastIndexOf('/');
+                if (lastSlash >= 0) youtubeId = url.Substring(lastSlash + 1);
+            }
+            else if (url.Contains("embed/"))
+            {
+                var lastSlash = url.LastIndexOf('/');
+                if (lastSlash >= 0) youtubeId = url.Substring(lastSlash + 1);
+            }
+        }
+
+        var embedUrl = !string.IsNullOrEmpty(youtubeId)
+            ? $"https://www.youtube.com/embed/{youtubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist={youtubeId}&rel=0&modestbranding=1"
+            : string.Empty;
+    }
+
+    <div class="iq-main-slider site-video position-relative" style="overflow: hidden; height: 100vh;">
+        <div class="video-bg position-absolute top-0 start-0 end-0 bottom-0 w-100 h-100" style="z-index:0;">
+            @if (!string.IsNullOrEmpty(embedUrl))
+            {
+                <iframe src="@embedUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+                        style="width:100%; height:100%; border:0; display:block;"></iframe>
+            }
+            else if (!string.IsNullOrEmpty(movieUrl))
+            {
+                <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block; border:0;">
+                    <source src="@movieUrl" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            }
+            else if (!string.IsNullOrEmpty(posterUrl))
+            {
+                <div style="width:100%; height:100%; background-image:url('@posterUrl'); background-size:cover; background-position:center;"></div>
+            }
+        </div>
+    </div>
+
+    <div class="movie-detail-part position-relative">
+        <div class="trending-info pt-0 pb-0">
+            <div class="details-parts">
+
+                <!-- Movie Genres -->
+                <ul class="p-0 mb-2 list-inline d-flex flex-wrap movie-tag">
+                    @foreach (var genre in Model.Genres ?? Enumerable.Empty<STREAMIT.Business.Dtos.GenreDtos.GenreDto>())
+                    {
+                        <li class="trending-list"><a class="" href="./view-all-movie.html">@genre.Name</a></li>
+                    }
+                </ul>
+
+                <div class="d-block d-lg-flex align-items-center">
+                    <h3 class="trending-text fw-bold texture-text text-uppercase my-0 fadeInLeft animated d-inline-block"
+                        data-animation-in="fadeInLeft" data-delay-in="0.6" style="opacity: 1; animation-delay: 0.6s">
+                        @Model.Title
+                    </h3>
+                </div>
+
+                <div class="movie-description mt-3 mb-4" id="readmore-wrapper">
+                    <p class="line-count-3 RightAnimate-two mb-0">@Model.Content</p>
+                    <div class="iq-blog-meta-cat-tag iq-blogtag readmore-tags">
+                        <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#viewMoreDataModal" class="position-relative">Read More</a>
+                    </div>
+                </div>
+
+                <ul class="list-inline mb-0 mx-0 p-0 d-flex align-items-center flex-wrap gap-3 movie-metalist">
+                    <li>
+                        <span class="d-flex align-items-center gap-1">
+                            <span class="fw-medium">@Model.ReleaseDate.Year</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="d-flex align-items-center gap-1">
+                            <span class="d-flex align-items-center justify-content-center"><i class="ph ph-clock"></i></span>
+                            @Model.Duration mins
+                        </span>
+                    </li>
+                    <li>
+                        <div class="d-flex align-items-center gap-1">
+                            <i class="ph ph-eye"></i>
+                            <span class="">@Model.MovieStatistics?.ViewCount </span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="d-flex align-items-center gap-1">
+                            <span class="fw-medium">
+                                <span>@Model.AverageRating</span>
+                                <span class="imdb-logo ms-1">
+                                    <img src="~/assets/images/pages/imdb-logo.svg" loading="lazy" decoding="async" alt="imdb logo"
+                                         class="img-fluid imdb-logo1">
+                                </span>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="video-language d-flex align-items-center gap-1 mt-2">
+                    <i class="ph ph-translate"></i>
+                    <ul class="list-inline m-0 p-0 d-inline-flex align-items-center gap-3 flex-wrap">
+                        <li><small class="text-capitalize">@Model.LanguageName</small></li>
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-center flex-wrap gap-3 gap-md-4 my-5">
+                    <div class="iq-play-button iq-button">
+                        <a href="movie-player.html" class="btn btn-primary w-100 rounded d-flex align-items-center justify-content-center gap-2 lh-1">
+                            <span><i class="ph-fill ph-play"></i></span>
+                            <span>Start Watching</span>
+                        </a>
+                    </div>
+
+                    <div class="watchlist-button-wrapper">
+                        <a href="./watchlist-detail.html" class="btn btn-secondary border rounded" data-bs-toggle="tooltip"
+                               data-bs-placement="top" data-bs-original-title="Add to watchlist" data-bs-trigger="focus">
+                            <span class="d-flex align-items-center justify-content-center gap-2">
+                                <span class="fw-semibold"><i class="ph ph-plus"></i></span>
+                                <span class="fw-semibold">Watch List</span>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 flex-wrap">
+                        <button type="button" class="action-btn btn btn-secondary border" data-bs-toggle="modal" data-bs-target="#likeModal"
+                                id="like-toggle">
+                            <span id="like-movies">
+                                <span class="h-100 w-100 d-block" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Like">
+                                    <i class="ph ph-heart heart-icon"></i>
+                                </span>
+                            </span>
+                        </button>
+
+                        <button type="button" class="action-btn btn btn-secondary border" data-bs-toggle="modal"
+                                data-bs-target="#shareModal">
+                            <span class="h-100 w-100 d-block" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Share">
+                                <i class="ph ph-share-network"></i>
+                            </span>
+                        </button>
+
+                        <button type="button" class="btn btn-secondary action-btn border" data-bs-toggle="modal"
+                                data-bs-target="#playlistModal">
+                            <span class="h-100 w-100 d-block" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Playlist">
+                                <i class="ph ph-playlist"></i>
+                            </span>
+                        </button>
+
+                        <button type="button" class="btn btn-secondary action-btn border" data-bs-toggle="modal"
+                                data-bs-target="#downloadModal">
+                            <span class="h-100 w-100 d-block" data-bs-toggle="tooltip" data-bs-placement="top"
+                                  data-bs-original-title="Download">
+                                <i class="ph ph-download-simple"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Movie Description End -->
+                <!-- Modals Start -->
+                @* Playlist, Share, Create Playlist Modals... (keep original code, no change) *@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="overflow-hidden">
+        <!-- Recommended Slider (no change needed) -->
+        <!-- Starring / People -->
+        <div class="favourite-person-block">
+            <div class="overflow-hidden">
+                <div class="d-flex align-items-center justify-content-between px-1 mb-2 pb-1 mb-md-4 pb-md-0">
+                    <h4 class="main-title text-capitalize mb-0">Starring</h4>
+                </div>
+                <div class="position-relative swiper swiper-card" data-slide="11" data-laptop="11" data-tab="4" data-mobile="2"
+                     data-mobile-sm="2" data-autoplay="false" data-loop="false" data-navigation="true" data-pagination="true">
+                    <ul class="p-0 swiper-wrapper m-0  list-inline personality-card">
+                        @foreach (var person in Model.People ?? Enumerable.Empty<STREAMIT.Business.Dtos.PersonDtos.PersonDto>())
+                        {
+                            <li class="swiper-slide">
+                                <a href="person-detail.html">
+                                    <img src="@person.ImageUrl" alt="@person.Name" class="img-fluid object-cover mb-3 rounded-3 personality-img">
+                                </a>
+                                <div class="text-center">
+                                    <h6 class="mb-0">
+                                        <a href="person-detail.html" class="font-size-14 text-decoration-none cast-title text-capitalize">@person.Name</a>
+                                    </h6>
+                                    <a href="person-detail.html" class="font-size-12 fw-semibold text-decoration-none text-capitalize text-body">@person.Role&nbsp;&nbsp;</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    <div class="swiper-button swiper-button-next d-none d-lg-block"></div>
+                    <div class="swiper-button swiper-button-prev d-none d-lg-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="section-padding-bottom">
+            <div class="rate-review-details">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+                    <h5 class="main-title text-capitalize m-0 fw-medium">Review</h5>
+                    <div class="d-flex align-items-center gap-3">
+                        <a id="openReviewButton" class="btn btn-link p-0 custom-fs-14 openReviewButton" data-bs-toggle="offcanvas"
+                               href="#offcanvasReview" role="button" aria-controls="offcanvasReview">
+                            Add Review
+                        </a>
+                        <a class="btn btn-link p-0 custom-fs-14" href="./view-more.html">View More</a>
+                    </div>
+                </div>
+
+                <div class="comments-section">
+                    @if (Model.Reviews == null || !Model.Reviews.Any())
+                    {
+                        <p class="text-muted">No reviews available.</p>
+                    }
+                    else
+                    {
+                        @foreach (var review in Model.Reviews)
+                        {
+                            <div class="review-card">
+                                <div class="review-detail rounded-3">
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                                        <div class="d-flex align-items-center justify-content-center gap-3">
+                                            <img src="@review.ProfilePictureUrl" class="img-fluid user-img rounded-circle" alt="@review.UserName">
+                                            <div>
+                                                <h6 class="line-count-1 m-0">@review.UserName</h6>
+                                                <p class="mb-0 mt-1 small-date-font">@review.CreatedDate.ToString("yyyy-MM-dd HH:mm")</p>
+                                            </div>
+                                        </div>
+                                        <div class="star-rating" data-rating="@review.Rating">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                if (i <= review.Rating)
+                                                {
+                                                    <i class="ph-fill ph-star text-warning"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="ph-fill ph-star"></i>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <p class="mb-0 mt-3 pt-3 border-top fw-medium">@review.Comment</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View More Modal -->
+<div class="modal fade view-more-data-modal trending-info" id="viewMoreDataModal" tabindex="-1" aria-modal="true"
+     role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <h3 class="text-uppercase m-0 texture-text texture-text-modal fw-bold">@Model.Title</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-1">
+                <ul class="list-inline d-flex align-items-center flex-wrap gap-3 mt-4">
+                    <li>
+                        <span class="fw-medium">@Model.ReleaseDate.Year</span>
+                    </li>
+                    <li>
+                        <span class="d-flex align-items-center gap-1">
+                            <i class="icon-eye-2"></i> @Model.MovieStatistics?.ViewCount ?? 0 views
+                        </span>
+                    </li>
+                    <li>
+                        <span class="d-flex align-items-center gap-1">
+                            <span class="fw-medium">@Model.AverageRating</span>
+                            <span class="imdb-logo ms-1">
+                                <img src="./assets/images/pages/imdb-logo.svg" loading="lazy" decoding="async"
+                                     alt="imdb logo" class="img-fluid imdb-logo1">
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-baseline flex-wrap gap-2 mt-md-1 mt-2">
+                    <h6 class="m-0">Genres:</h6>
+                    <ul class="p-0 mb-0 list-inline d-flex flex-wrap movie-tag">
+                        @foreach (var genre in Model.Genres ?? Enumerable.Empty<STREAMIT.Business.Dtos.GenreDtos.GenreDto>())
+                        {
+                            <li class="trending-list"><a href="./view-all-movie.html">@genre.Name</a></li>
+                        }
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-baseline flex-wrap gap-2 mt-3">
+                    <h6 class="m-0">Tags:</h6>
+                    <ul class="iq-blog-meta-cat-tag iq-blogtag mb-0 list-inline d-flex flex-wrap align-items-center gap-1 gap-md-3 mt-2 mt-md-3  tvshow-tags">
+                        @foreach (var tag in Model.Tags ?? Enumerable.Empty<string>())
+                        {
+                            <li><a href="./blog/blog-tag.html" class="position-relative">@tag</a></li>
+                        }
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-center gap-1 mt-4">
+                    <i class="icon-translate"></i>
+                    <ul class="list-inline m-0 d-inline-flex align-items-center gap-2">
+                        <li><small>@Model.LanguageName</small></li>
+                    </ul>
+                </div>
+
+                <p class="mt-4 mb-0">@Model.Content</p>
+
+                <div class="d-flex align-items-baseline row-gap-1 column-gap-2 mt-4">
+                    <h6 class="m-0">Cast:</h6>
+                    <ul class="list-inline m-0 p-0 d-flex align-items-center flex-wrap row-gap-1 column-gap-2 cast-crew-list">
+                        @foreach (var person in Model.People ?? Enumerable.Empty<STREAMIT.Business.Dtos.PersonDtos.PersonDto>())
+                        {
+                            <li><a href="#" class="color-inherit">@person.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

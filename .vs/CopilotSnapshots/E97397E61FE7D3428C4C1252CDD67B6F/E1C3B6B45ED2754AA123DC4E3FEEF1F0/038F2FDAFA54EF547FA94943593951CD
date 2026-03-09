@@ -1,0 +1,110 @@
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using STREAMIT.DataAccess.Contexts;
+using STREAMIT.Core.Entities;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.EntityFrameworkCore;
+
+// Allow anonymous connections so negotiate doesn't fail; resolve user inside SendMessage
+[AllowAnonymous]
+public class CommunityHub : Hub
+{
+    private readonly AppDbContext _db;
+    public CommunityHub(AppDbContext db) => _db = db;
+
+    public async Task SendMessage(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return;
+        // Try to resolve user id and display name from SignalR context (claims) first
+        string? userId = Context.User?.FindFirstValue(ClaimTypes.NameIdentifier)
+                         ?? Context.User?.FindFirstValue(JwtRegisteredClaimNames.Sub);
+
+        string? fullName = Context.User?.FindFirst("name")?.Value
+                         ?? Context.User?.FindFirstValue(ClaimTypes.Name);
+
+        // If no user info in Context.User, try to read token from query string (access_token) or cookie
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            try
+            {
+                var http = Context.GetHttpContext();
+                string? token = null;
+
+                // 1) query string (access_token) - SignalR client may send token here
+                if (http?.Request?.Query != null && http.Request.Query.TryGetValue("access_token", out var atoks))
+                    token = atoks.FirstOrDefault();
+
+                // 2) cookie fallback
+                if (string.IsNullOrWhiteSpace(token))
+                    token = http?.Request?.Cookies?["AccessToken"];
+
+                if (!string.IsNullOrWhiteSpace(token))
+                {
+                    if (token.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                        token = token.Substring(7).Trim();
+
+                    var handler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+                    if (handler.CanReadToken(token))
+                    {
+                        var jt = handler.ReadJwtToken(token);
+                        var idClaim = jt.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == JwtRegisteredClaimNames.Sub || c.Type == "nameid" || c.Type == "id");
+                        var nameClaim = jt.Claims.FirstOrDefault(c => c.Type == "name" || c.Type == ClaimTypes.Name || c.Type == "unique_name");
+
+                        if (idClaim != null)
+                        {
+                            var maybe = idClaim.Value;
+                            // check if this value is actual user id
+                            var exists = await _db.Users.AnyAsync(u => u.Id == maybe);
+                            if (exists) userId = maybe;
+                            else
+                            {
+                                var u = await _db.Users.FirstOrDefaultAsync(u => u.UserName == maybe || u.NormalizedUserName == maybe.ToUpper());
+                                if (u != null) userId = u.Id;
+                            }
+                        }
+
+                        if (string.IsNullOrWhiteSpace(fullName) && nameClaim != null)
+                            fullName = nameClaim.Value;
+                    }
+                }
+            }
+            catch { /* ignore parse errors; we'll broadcast anonymously */ }
+        }
+
+        // default display name
+        fullName ??= "User";
+
+        CommunityMessage? msg = null;
+
+        // Persist only if we resolved a valid user id
+        if (!string.IsNullOrWhiteSpace(userId))
+        {
+            msg = new CommunityMessage
+            {
+                UserId = userId,
+                Text = text.Trim(),
+                SentAt = DateTime.UtcNow.AddHours(4),
+                GroupId = 1
+            };
+
+            try
+            {
+                _db.CommunityMessages.Add(msg);
+                await _db.SaveChangesAsync();
+            }
+            catch
+            {
+                // swallow persistence errors but continue broadcasting
+            }
+        }
+
+        await Clients.All.SendAsync("ReceiveMessage", new
+        {
+            userName = fullName,
+            text = text.Trim(),
+            sentAt = (msg != null ? msg.SentAt : DateTime.UtcNow.AddHours(4))
+        });
+    }
+}

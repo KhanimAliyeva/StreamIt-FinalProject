@@ -1,0 +1,45 @@
+﻿{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "Default": "Server=localhost;Database=StreamItMPA201Db;Trusted_Connection=true;TrustServerCertificate=true;"
+  },
+  "CloudinarySettings": {
+    "CloudName": "dgpf0kufs",
+    "ApiKey": "859693839396857",
+    "ApiSecret": "5NrKP78bC1PihMV4wdqAKFCI-s8"
+
+  },
+
+  "AdminSettings": {
+    "Fullname": "Admin Admin",
+    "Email": "admin@gmail.com",
+    "Password": "Admin123!",
+    "Username": "Admin",
+    "EmailConfirmed": true
+  },
+
+  "JWTOptions": {
+    "Audience": "localhost",
+    "Issuer": "localhost",
+    "SecretKey": "06a3b7c8-131a-475c-af7f-bfd0e1076b43",
+    "ExpiredDate": 60
+  },
+  "EmailSettings": {
+    "From": "aliyevakhanim386@gmail.com",
+    "SmtpServer": "smtp.gmail.com",
+    "Port": "587",
+    "Username": "aliyevakhanim386@gmail.com",
+    "Password": "txohefebbnzupaac"
+  },
+  "KapitalBankOptions": {
+    "Username": "TerminalSys/kapital",
+    "Password": "kapital123"
+  }
+
+}

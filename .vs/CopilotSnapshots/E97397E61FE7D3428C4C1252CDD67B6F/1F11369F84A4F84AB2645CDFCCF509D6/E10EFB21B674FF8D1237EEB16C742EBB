@@ -1,0 +1,69 @@
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddSignalR();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var jwt = builder.Configuration.GetSection("JWTOptions");
+var key = jwt["SecretKey"] ?? throw new Exception("JWTOptions:SecretKey missing");
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = "Smart";
+    options.DefaultChallengeScheme = "Smart";
+})
+.AddPolicyScheme("Smart", "JWT or Cookie", options =>
+{
+    options.ForwardDefaultSelector = ctx =>
+    {
+        var auth = ctx.Request.Headers["Authorization"].ToString();
+        if (!string.IsNullOrWhiteSpace(auth) && auth.StartsWith("Bearer "))
+            return JwtBearerDefaults.AuthenticationScheme;
+
+        return "Cookies";
+    };
+})
+.AddCookie("Cookies") // ✅ bunu yazmasan həmin xətanı alacaqsan
+.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => { });
+builder.Services.AddAuthorization();
+
+// ✅ CORS: MVC origin-i konkret yazılmalıdır (AllowAnyOrigin + credentials olmaz)
+var mvcOrigin = builder.Configuration["Mvc:BaseUrl"]?.TrimEnd('/');
+builder.Services.AddCors(o =>
+{
+    o.AddPolicy("Cors", p =>
+    {
+        p.WithOrigins(mvcOrigin ?? "https://localhost:7107")
+         .AllowAnyHeader()
+         .AllowAnyMethod()
+         .AllowCredentials();
+    });
+});
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+app.UseRouting();
+
+app.UseCors("Cors");          // ✅ routing-dən sonra
+app.UseAuthentication();      // ✅
+app.UseAuthorization();       // ✅
+
+app.MapControllers();
+
+app.MapHub<CommunityHub>("/hubs/community")
+   .RequireCors("Cors");
+
+app.Run();

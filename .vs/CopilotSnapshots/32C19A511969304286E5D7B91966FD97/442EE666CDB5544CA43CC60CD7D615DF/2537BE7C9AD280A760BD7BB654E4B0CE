@@ -1,0 +1,68 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos.MovieDtos;
+using STREAMIT.Business.Dtos.SliderDtos;
+
+[Area("Admin")]
+public class SliderController : Controller
+{
+    private readonly HttpClient _httpClient;
+
+    public SliderController(IHttpClientFactory factory)
+    {
+        _httpClient = factory.CreateClient("api");
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var sliders = await _httpClient
+            .GetFromJsonAsync<List<SliderDto>>("slider");
+
+        return View(sliders);
+    }
+
+    // CREATE GET
+    public async Task<IActionResult> Create()
+    {
+        var movies = await _httpClient
+            .GetFromJsonAsync<List<GetMovieDto>>("movie");
+
+        ViewBag.Movies = movies;
+        return View();
+    }
+
+    // CREATE POST
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateSliderDto dto)
+    {
+        await _httpClient.PostAsJsonAsync("slider", dto);
+        return RedirectToAction("Index");
+    }
+
+    // EDIT GET
+    public async Task<IActionResult> Edit(int id)
+    {
+        var slider = await _httpClient
+            .GetFromJsonAsync<UpdateSliderDto>($"slider/{id}");
+
+        var movies = await _httpClient
+            .GetFromJsonAsync<List<GetMovieDto>>("movie");
+
+        ViewBag.Movies = movies;
+        return View(slider);
+    }
+
+    // EDIT POST
+    [HttpPost]
+    public async Task<IActionResult> Edit(UpdateSliderDto dto)
+    {
+        await _httpClient.PutAsJsonAsync("slider", dto);
+        return RedirectToAction("Index");
+    }
+
+    // DELETE
+    public async Task<IActionResult> Delete(int id)
+    {
+        await _httpClient.DeleteAsync($"slider/{id}");
+        return RedirectToAction("Index");
+    }
+}

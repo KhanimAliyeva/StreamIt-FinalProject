@@ -1,0 +1,94 @@
+﻿@model STREAMIT.Business.Dtos.MovieDtos.GetMovieDto  
+
+<section class="section-padding">
+    <div class="rate-review-details">
+        <div class="container-fluid">
+            <div class="row gy-4">
+                <!-- Sol tərəf: Movie info + rating -->
+                <div class="col-md-4 col-xl-3">
+                    <div class="card mb-4 border-0">
+                        <div class="card-body p-4">
+                            <div class="css_prefix-card">
+                                <div class="block-images position-relative w-100">
+                                    <div class="image-box w-100">
+                                        <img src="@Model.PosterUrl" alt="@Model.Title"
+                                             class="img-fluid object-cover w-100 d-block border-0">
+                                    </div>
+                                    <div class="card-description with-transition">
+                                        <h5 class="css_prefix-title text-capitalize line-count-1 mb-0">
+                                            @Model.Title
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <div class="ratting-card">
+                                <div class="d-flex flex-wrap align-items-center gap-4 mb-4">
+                                    <h2 class="m-0">@Model.AverageRating.ToString("0.00")</h2>
+                                    <div class="data">
+                                        <ul class="list-inline m-0 p-0 d-flex align-items-center gap-1">
+                                            @{
+                                                int fullStars = (int)Math.Floor(Model.AverageRating);
+                                                for (int i = 0; i < 5; i++)
+                                                {
+                                                    <li class="@(i < fullStars ? "text-warning" : "text-muted")">
+                                                        <i class="icon-star-fill-icon"></i>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+                                        <p class="m-0">Based on individual rating</p>
+                                    </div>
+                                </div>
+                                <!-- Burada rating distribution (5,4,3...) -->
+                                @* Əgər MovieDetailDto-da statistik varsa göstər, yoxdursa sadəcə sil *@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sağ tərəf: Reviews -->
+                <div class="col-md-8 col-xl-9">
+                    <div class="mb-2 d-flex align-items-center justify-content-between">
+                        <h5>@Model.Reviews.Count Reviews for @Model.Title</h5>
+                        <a class="btn btn-link p-0 custom-fs-14" href="#offcanvasReview" data-bs-toggle="offcanvas">Add Review</a>
+                    </div>
+
+                    <div class="review-list-inner comments-section data-listing">
+                        @foreach (var review in Model.Reviews)
+                        {
+                            <div class="review-card">
+                                <div class="review-detail rounded-3">
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                                        <div class="d-flex align-items-center justify-content-center gap-3">
+                                            <img src="@review.User!.ProfilePictureUrl "
+                                                 class="img-fluid user-img rounded-circle" alt="@review.User.UserName">
+
+                                            <div>
+                                                <h6 class="line-count-1 m-0">@review.User.UserName</h6>
+                                                <p class="mb-0 mt-1 small">@review.CreatedDate.ToString("yyyy-MM-dd HH:mm")</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="star-rating d-flex gap-1 align-items-center">
+                                            @for (int i = 0; i < 5; i++)
+                                            {
+                                                <i class="ph-fill ph-star @(i < review.Rating ? "text-warning" : "")"></i>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <p class="mb-0 mt-3 pt-3 border-top fw-medium">@review.Comment</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

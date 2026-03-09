@@ -16,6 +16,10 @@ namespace STREAMIT.Business.Services.Abstractions
         Task<List<GetMovieDto>> GetAllAsync();
         Task<GetMovieDto> GetByIdAsync(int id);
         Task<List<Movie>> GetAllWithDetailsAsync();
+        Task<List<GetMovieDto>> GetUpcomingMoviesAsync();
+        Task<List<GetMovieDto>> GetLatestMoviesAsync();
+        Task<List<GetMovieDto>> GetBestInTvAsync();
+
 
     }
 }

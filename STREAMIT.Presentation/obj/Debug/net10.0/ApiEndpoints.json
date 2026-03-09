@@ -109,6 +109,203 @@
     ]
   },
   {
+    "ContainingType": "BlogController",
+    "Method": "GetAll",
+    "RelativePath": "api/Blog",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogController",
+    "Method": "Create",
+    "RelativePath": "api/Blog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "AuthorName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogController",
+    "Method": "GetById",
+    "RelativePath": "api/Blog/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogController",
+    "Method": "Update",
+    "RelativePath": "api/Blog/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AuthorName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlogController",
+    "Method": "Delete",
+    "RelativePath": "api/Blog/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CommunityController",
+    "Method": "MarkRead",
+    "RelativePath": "api/community/mark-read",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CommunityController",
+    "Method": "GetMessages",
+    "RelativePath": "api/community/messages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CommunityController",
+    "Method": "GetUnreadCount",
+    "RelativePath": "api/community/unread-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.API.Controllers.DashboardController",
+    "Method": "GetDashboard",
+    "RelativePath": "api/Dashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.FavoriteController",
+    "Method": "GetUserFavorites",
+    "RelativePath": "api/favorite",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.FavoriteController",
+    "Method": "Toggle",
+    "RelativePath": "api/favorite/toggle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.FavoriteDtos.FavoriteDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "STREAMIT.Presentation.Controllers.GenreController",
     "Method": "Create",
     "RelativePath": "api/Genre",
@@ -170,6 +367,80 @@
     "ContainingType": "STREAMIT.Presentation.Controllers.GenreController",
     "Method": "GetById",
     "RelativePath": "api/Genre/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.LanguageController",
+    "Method": "Create",
+    "RelativePath": "api/Language",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.LanguageDtos.CreateLanguageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.LanguageController",
+    "Method": "Update",
+    "RelativePath": "api/Language",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.LanguageDtos.UpdateLanguageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.LanguageController",
+    "Method": "GetAll",
+    "RelativePath": "api/Language",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.LanguageController",
+    "Method": "Delete",
+    "RelativePath": "api/Language/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.LanguageController",
+    "Method": "GetById",
+    "RelativePath": "api/Language/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -262,6 +533,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "STREAMIT.API.Controllers.MembershipController",
+    "Method": "GetUserMembership",
+    "RelativePath": "api/Membership/user-membership",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "STREAMIT.Presentation.Controllers.MovieController",
     "Method": "GetAll",
     "RelativePath": "api/Movie",
@@ -300,8 +587,8 @@
         "IsRequired": false
       },
       {
-        "Name": "Trailer",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "Name": "YoutubeUrl",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -327,11 +614,6 @@
       {
         "Name": "LanguageId",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Imdb",
-        "Type": "System.Decimal",
         "IsRequired": false
       },
       {
@@ -418,8 +700,8 @@
         "IsRequired": false
       },
       {
-        "Name": "Trailer",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "Name": "YoutubeUrl",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -445,11 +727,6 @@
       {
         "Name": "LanguageId",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Imdb",
-        "Type": "System.Decimal",
         "IsRequired": false
       },
       {
@@ -476,6 +753,105 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "STREAMIT.Presentation.Controllers.MovieController",
+    "Method": "GetBestInTv",
+    "RelativePath": "api/Movie/bestintv",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.MovieController",
+    "Method": "IncrementView",
+    "RelativePath": "api/Movie/increment-view/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.MovieController",
+    "Method": "GetLatest",
+    "RelativePath": "api/Movie/latest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.MovieController",
+    "Method": "GetSuggestedMovies",
+    "RelativePath": "api/Movie/suggested/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.MovieController",
+    "Method": "GetUpcoming",
+    "RelativePath": "api/Movie/upcoming",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PaymentController",
+    "Method": "Callback",
+    "RelativePath": "api/Payment/callback",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "STREAMIT.Core.Entities.KapitalBankCallbackModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PaymentController",
+    "Method": "Create",
+    "RelativePath": "api/Payment/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "membershipId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "STREAMIT.Presentation.Controllers.PersonController",
     "Method": "Create",
     "RelativePath": "api/Person",
@@ -510,6 +886,11 @@
       },
       {
         "Name": "Biography",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Role",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -565,8 +946,18 @@
         "IsRequired": false
       },
       {
+        "Name": "Role",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "Image",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "ExistingImageUrl",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -615,6 +1006,232 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RatingsController",
+    "Method": "GetAllRatings",
+    "RelativePath": "api/Ratings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[STREAMIT.Business.Dtos.RatingDtos.RatingDto, STREAMIT.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RatingsController",
+    "Method": "Delete",
+    "RelativePath": "api/Ratings/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ReviewsController",
+    "Method": "AddReview",
+    "RelativePath": "api/Reviews",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.ReviewDtos.AddReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ReviewsController",
+    "Method": "Debug",
+    "RelativePath": "api/Reviews/debug",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ReviewsController",
+    "Method": "GetByMovie",
+    "RelativePath": "api/Reviews/movie/{movieId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SliderController",
+    "Method": "GetAll",
+    "RelativePath": "api/Slider",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SliderController",
+    "Method": "Create",
+    "RelativePath": "api/Slider",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.SliderDtos.CreateSliderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SliderController",
+    "Method": "Update",
+    "RelativePath": "api/Slider",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.SliderDtos.UpdateSliderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SliderController",
+    "Method": "Get",
+    "RelativePath": "api/Slider/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SliderController",
+    "Method": "Delete",
+    "RelativePath": "api/Slider/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.Slider2Controller",
+    "Method": "GetAll",
+    "RelativePath": "api/Slider2",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.Slider2Controller",
+    "Method": "Create",
+    "RelativePath": "api/Slider2",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.SliderDtos.CreateSliderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.Slider2Controller",
+    "Method": "Update",
+    "RelativePath": "api/Slider2",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.SliderDtos.UpdateSliderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.Slider2Controller",
+    "Method": "Get",
+    "RelativePath": "api/Slider2/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.Slider2Controller",
+    "Method": "Delete",
+    "RelativePath": "api/Slider2/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "STREAMIT.Presentation.Controllers.TagController",
     "Method": "GetAll",
     "RelativePath": "api/Tag",
@@ -634,7 +1251,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "STREAMIT.Business.Dtos.TagDtos.STREAMIT.Business.Dtos.TagDtos.CreateTagDto",
+        "Type": "STREAMIT.Business.Dtos.TagDtos.CreateTagDto",
         "IsRequired": true
       }
     ],
@@ -671,7 +1288,7 @@
       },
       {
         "Name": "dto",
-        "Type": "STREAMIT.Business.Dtos.TagDtos.STREAMIT.Business.Dtos.TagDtos.UpdateTagDto",
+        "Type": "STREAMIT.Business.Dtos.TagDtos.UpdateTagDto",
         "IsRequired": true
       }
     ],
@@ -694,9 +1311,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "STREAMIT.Presentation.Controllers.TvShowController",
-    "Method": "GetAllTvShows",
-    "RelativePath": "api/TvShow",
+    "ContainingType": "STREAMIT.API.Controllers.UserController",
+    "Method": "GetAll",
+    "RelativePath": "api/User",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -704,163 +1321,100 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "STREAMIT.Presentation.Controllers.TvShowController",
-    "Method": "CreateTvShow",
-    "RelativePath": "api/TvShow",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Title",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "MembershipId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "LanguageId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Status",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Content",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PosterUrl",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "TrailerUrl",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ReleaseDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "Imdb",
-        "Type": "System.Decimal",
-        "IsRequired": false
-      },
-      {
-        "Name": "GenreIds",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "TagIds",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "PersonIds",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "STREAMIT.Presentation.Controllers.TvShowController",
-    "Method": "UpdateTvShow",
-    "RelativePath": "api/TvShow",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Title",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "MembershipId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "LanguageId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Status",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Content",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PosterUrl",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "TrailerUrl",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ReleaseDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "Imdb",
-        "Type": "System.Decimal",
-        "IsRequired": false
-      },
-      {
-        "Name": "GenreIds",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "TagIds",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "PersonIds",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "STREAMIT.Presentation.Controllers.TvShowController",
-    "Method": "GetTvShowById",
-    "RelativePath": "api/TvShow/{id}",
+    "ContainingType": "STREAMIT.API.Controllers.UserController",
+    "Method": "GetById",
+    "RelativePath": "api/User/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.API.Controllers.UserController",
+    "Method": "Me",
+    "RelativePath": "api/User/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.API.Controllers.UserController",
+    "Method": "UpdateMe",
+    "RelativePath": "api/User/me",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.API.Controllers.EditProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WatchHistoryController",
+    "Method": "ContinueWatching",
+    "RelativePath": "api/WatchHistory/continue-watching/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WatchHistoryController",
+    "Method": "Update",
+    "RelativePath": "api/WatchHistory/update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.WatchHistoryDtos.UpdateWatchHistoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.WatchListController",
+    "Method": "GetUserWatchList",
+    "RelativePath": "api/watchlist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "STREAMIT.Presentation.Controllers.WatchListController",
+    "Method": "Toggle",
+    "RelativePath": "api/watchlist/toggle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.WatchlistDtos.WatchListDto",
         "IsRequired": true
       }
     ],

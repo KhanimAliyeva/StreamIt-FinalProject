@@ -1,0 +1,162 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos.PersonDtos;
+using STREAMIT.Business.Dtos.ResultDtos;
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class CastController : Controller
+    {
+        private readonly HttpClient _httpClient;
+
+        public CastController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClient = httpClientFactory.CreateClient("ApiClient");
+        }
+
+        #region INDEX
+        public async Task<IActionResult> Index()
+        {
+            var result = await SafeGetFromJson<ResultDto<List<GetPersonDto>>>("Person");
+            var persons = result?.Data ?? new List<GetPersonDto>();
+            return View(persons);
+        }
+        #endregion
+
+        #region CREATE
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreatePersonDto dto)
+        {
+            if (!ModelState.IsValid)
+                return View(dto);
+
+            var response = await _httpClient.PostAsJsonAsync("api/Person", dto);
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                ViewBag.RawResponse = content;
+                ViewBag.DebugStatusCode = (int)response.StatusCode;
+                ModelState.AddModelError("", $"API Error {(int)response.StatusCode}: {content}");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+        #region EDIT GET
+        public async Task<IActionResult> Edit(int id)
+        {
+            var result = await SafeGetFromJson<ResultDto<GetPersonDto>>($"Person/{id}");
+
+            if (result == null || result.Data == null)
+                return NotFound();
+
+            var updateDto = new UpdatePersonDto
+            {
+                Id = result.Data.Id,
+                Name = result.Data.Name,
+                Gender = result.Data.Gender,
+                Born = result.Data.Born,
+                Died = result.Data.Died,
+                Popularity = result.Data.Popularity,
+                Biography = result.Data.Biography,
+
+                //// Mövcud şəkli göstərmək üçün ayrıca property lazımdır
+                //ExistingImageUrl = result.Data.ImageUrl
+            };
+
+            return View(updateDto);
+        }
+        #endregion
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(UpdatePersonDto dto)
+        {
+            if (!ModelState.IsValid)
+                return View(dto);
+
+            var content = new MultipartFormDataContent();
+
+            content.Add(new StringContent(dto.Id.ToString()), "Id");
+            content.Add(new StringContent(dto.Name ?? ""), "Name");
+            content.Add(new StringContent(dto.Gender ?? ""), "Gender");
+            content.Add(new StringContent(dto.Born.ToString("o")), "Born");
+            content.Add(new StringContent(dto.Popularity.ToString()), "Popularity");
+            content.Add(new StringContent(dto.Biography ?? ""), "Biography");
+
+            if (dto.Died.HasValue)
+                content.Add(new StringContent(dto.Died.Value.ToString("o")), "Died");
+
+            // IMAGE
+            if (dto.Image != null)
+            {
+                var streamContent = new StreamContent(dto.Image.OpenReadStream());
+                streamContent.Headers.ContentType =
+                    new System.Net.Http.Headers.MediaTypeHeaderValue(dto.Image.ContentType);
+
+                content.Add(streamContent, "Image", dto.Image.FileName);
+            }
+
+            var response = await _httpClient.PutAsync("api/Person", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                ModelState.AddModelError("", error);
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        #region DELETE
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/Person/{id}");
+
+            var result = await SafeReadJson<ResultDto>(response);
+
+            if (result == null || !result.IsSucceed)
+                return NotFound(result?.Message ?? "Something went wrong...");
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region HELPERS
+        private async Task<T?> SafeGetFromJson<T>(string endpoint)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"api/{endpoint}");
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+
+        private async Task<T?> SafeReadJson<T>(HttpResponseMessage response)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+        #endregion
+    }
+}

@@ -1,0 +1,83 @@
+﻿<div class="container py-4">
+    <div class="card">
+        <div class="card-header">Community • General</div>
+
+        <div class="card-body" style="height:420px; overflow:auto;" id="chatBox">
+            <div class="text-muted">Loading...</div>
+        </div>
+
+        <div class="card-footer d-flex gap-2">
+            <input id="msgInput" class="form-control" placeholder="Type a message..." />
+            <button class="btn btn-primary" onclick="sendMsg()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<script>
+    const API_BASE = "https://localhost:7108"; // <-- BURANI öz API portuna görə dəyiş
+    const chatBox = document.getElementById("chatBox");
+
+    function escapeHtml(text) {
+    return (text ?? "").replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+    }[c]));
+    }
+
+    function appendMsg(userName, text, sentAt) {
+    const div = document.createElement("div");
+    div.className = "mb-2";
+    div.innerHTML = `<strong>${escapeHtml(userName)}</strong>
+    <span class="text-muted" style="font-size:12px;">${sentAt ? new Date(sentAt).toLocaleString() : ""}</span>
+    <div>${escapeHtml(text)}</div>`;
+    chatBox.appendChild(div);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function loadHistory() {
+    chatBox.innerHTML = `<div class="text-muted">Loading...</div>`;
+
+    const resp = await fetch(`${API_BASE}/api/community/messages`);
+    if (!resp.ok) {
+    chatBox.innerHTML = `<div class="text-danger">Failed to load messages (${resp.status})</div>`;
+    return;
+    }
+
+    const list = await resp.json(); // DTO lazım deyil
+    chatBox.innerHTML = "";
+
+    if (!list || list.length === 0) {
+    chatBox.innerHTML = `<div class="text-muted">No messages yet. Say hi 👋</div>`;
+    return;
+    }
+
+    for (const m of list) {
+    appendMsg(m.userName ?? "User", m.text ?? "", m.sentAt);
+    }
+    }
+
+    const conn = new signalR.HubConnectionBuilder()
+    .withUrl(`${API_BASE}/hubs/community`) // matches Presentation Program.cs MapHub<CommunityHub>("/hubs/community")
+    .withAutomaticReconnect()
+    .build();
+
+    conn.on("ReceiveMessage", (m) => {
+    appendMsg(m.userName ?? "User", m.text ?? "", m.sentAt);
+    });
+
+    async function startHub() {
+    await conn.start();
+    }
+
+    async function sendMsg() {
+    const input = document.getElementById("msgInput");
+    const text = input.value.trim();
+    if (!text) return;
+
+    await conn.invoke("SendMessage", text);
+    input.value = "";
+    }
+
+    loadHistory();
+    startHub();
+</script>

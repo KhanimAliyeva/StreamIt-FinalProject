@@ -1,0 +1,117 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.Business.ServiceRegistrations;
+using STREAMIT.DataAccess.Abstractions;
+using STREAMIT.DataAccess.ServiceRegistrations;
+using STREAMIT.Presentation.Middlewares;
+
+namespace STREAMIT.Presentation;
+
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+
+        // Add services to the container.
+
+        builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
+        {
+            options.InvalidModelStateResponseFactory = context =>
+            {
+                var errors = context.ModelState
+                    .Where(x => x.Value!.Errors.Count > 0)
+                    .Select(x => new
+                    {
+                        Errors = x.Value!.Errors.Select(e => e.ErrorMessage)
+                    });
+
+                ResultDto resultDto = new()
+                {
+                    IsSucceed = false,
+                    StatusCode = 400,
+                    Message = string.Join(", ", errors.SelectMany(x => x.Errors))
+                };
+
+                return new BadRequestObjectResult(resultDto);
+            };
+        });
+        builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        options.JsonSerializerOptions.MaxDepth = 64;
+    });
+
+
+
+        builder.Services.AddOpenApi();
+ 
+        builder.Services.AddCors(o => {
+            var mvcOrigin = builder.Configuration["Mvc:BaseUrl"];
+            o.AddPolicy("MyPolicy", policy =>
+            {
+                if (!string.IsNullOrWhiteSpace(mvcOrigin))
+                {
+                    policy.WithOrigins(mvcOrigin.TrimEnd('/'))
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials();
+                }
+                else
+                {
+                    // fallback to permissive policy (no credentials)
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                }
+            });
+        });
+
+
+
+
+        //builder.Services.AddDbContext<AppDbContext>
+
+        builder.Services.AddDataAccessServices(builder.Configuration);
+        builder.Services.AddBusinessServices(builder.Configuration);
+
+
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+
+        builder.Services.AddHttpClient("ApiClient", client =>
+        {
+            client.BaseAddress = new Uri("https://localhost:7108/"); // API portu
+        });
+        var app = builder.Build();
+
+        var scope = app.Services.CreateScope();
+        var initalizer = scope.ServiceProvider.GetRequiredService<IContextInitalizer>();
+
+        await initalizer.InitDatabaseAsync();
+
+        app.UseMiddleware<GlobalExceptionHandler>();
+
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger(); // Enables middleware to serve generated Swagger as a JSON endpoint
+            app.UseSwaggerUI(); // Enables middleware to serve swagger-ui (HTML, JS, CSS, etc.)
+        }
+
+        app.UseHttpsRedirection();
+
+        // Enable CORS before authentication/authorization
+        app.UseCors("MyPolicy");
+
+        // Enable authentication middleware so JWT from requests is validated
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+
+        app.MapControllers();
+
+        await app.RunAsync();
+    }
+}

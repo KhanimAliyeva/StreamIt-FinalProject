@@ -1,0 +1,17 @@
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace STREAMIT.Business.Dtos.BlogDtos
+{
+    public class CreateBlogDto
+    {
+        public string Title { get; set; }= string.Empty;
+        public string Description { get; set; }=string.Empty;
+        public IFormFile? ImageFile { get; set; } = null;
+        public string AuthorName { get; set; }= string.Empty;
+    }
+
+   
+}

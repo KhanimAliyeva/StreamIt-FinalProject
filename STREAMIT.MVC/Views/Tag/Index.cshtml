@@ -1,0 +1,38 @@
+﻿@using STREAMIT.Business.Dtos.TagDtos
+@model List<TagDto>
+
+<div class="iq-breadcrumb">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb" class="text-center">
+                    <ol class="breadcrumb justify-content-center text-white mt-0">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                        <li class="breadcrumb-item active">Tags</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>    <!--bread-crumb-->
+
+<section class="section-padding">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h4 class="main-title text-capitalize mb-0">Movie Tag</h4>
+        </div>
+        <div class="row g-3 g-lg-4 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6">
+            @foreach (var tag in Model)
+            {
+            <div class="col">
+                <a href="@Url.Action("MoviesByTag", "Tag", new { id = tag.Id })" class="iq-tag-box">
+                    <span class="iq-tag">
+                        @tag.Name
+                    </span>
+                </a>
+            </div>
+            }
+
+        </div>
+    </div>
+</section>

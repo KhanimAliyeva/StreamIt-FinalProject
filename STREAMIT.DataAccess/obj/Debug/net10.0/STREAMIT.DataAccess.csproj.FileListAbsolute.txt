@@ -1,4 +1,5 @@
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\bin\Debug\net10.0\STREAMIT.DataAccess.deps.json
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\bin\Debug\net10.0\STREAMIT.DataAccess.runtimeconfig.json
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\bin\Debug\net10.0\STREAMIT.DataAccess.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\bin\Debug\net10.0\STREAMIT.DataAccess.pdb
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\bin\Debug\net10.0\STREAMIT.Core.dll
@@ -8,10 +9,10 @@ C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\STREAM
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\STREAMIT.DataAccess.AssemblyInfoInputs.cache
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\STREAMIT.DataAccess.AssemblyInfo.cs
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\STREAMIT.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\STREAMIT.DataAccess.sourcelink.json
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\STREAMIT.9DACB8F4.Up2Date
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\STREAMIT.DataAccess.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\refint\STREAMIT.DataAccess.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\STREAMIT.DataAccess.pdb
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\ref\STREAMIT.DataAccess.dll
-C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\bin\Debug\net10.0\STREAMIT.DataAccess.runtimeconfig.json
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\STREAMIT.DataAccess.genruntimeconfig.cache
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.DataAccess\obj\Debug\net10.0\ref\STREAMIT.DataAccess.dll

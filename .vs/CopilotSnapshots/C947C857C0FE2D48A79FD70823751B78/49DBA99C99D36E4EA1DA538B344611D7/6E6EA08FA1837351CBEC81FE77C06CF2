@@ -1,0 +1,123 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.Business.Dtos.TagDtos;
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class TagController : Controller
+    {
+        private readonly HttpClient _httpClient;
+
+        public TagController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClient = httpClientFactory.CreateClient("ApiClient");
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var result = await SafeGetFromJson<ResultDto<List<GetTagDto>>>("Tag");
+            var tags = result?.Data ?? new List<GetTagDto>();
+            return View(tags);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateTagDto dto)
+        {
+            if (!ModelState.IsValid)
+                return View(dto);
+
+            var response = await _httpClient.PostAsJsonAsync("api/Tag", dto);
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                ViewBag.RawResponse = content;
+                ViewBag.DebugStatusCode = (int)response.StatusCode;
+                ModelState.AddModelError("", $"API Error {(int)response.StatusCode}: {content}");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var getResult = await SafeGetFromJson<ResultDto<GetTagDto>>($"Tag/{id}");
+            if (getResult == null || getResult.Data == null) return NotFound();
+
+            var updateDto = new UpdateTagDto
+            {
+                Id = getResult.Data.Id,
+                Name = getResult.Data.Name
+            };
+
+            return View(updateDto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(UpdateTagDto dto)
+        {
+            if (!ModelState.IsValid)
+                return View(dto);
+
+            var response = await _httpClient.PutAsJsonAsync("api/Tag", dto);
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                ViewBag.RawResponse = content;
+                ViewBag.DebugStatusCode = (int)response.StatusCode;
+                ModelState.AddModelError("", $"API Error {(int)response.StatusCode}: {content}");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/Tag/{id}");
+            var result = await SafeReadJson<ResultDto>(response);
+
+            if (result == null || !result.IsSucceed)
+                return NotFound(result?.Message ?? "Something went wrong...");
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        private async Task<T?> SafeGetFromJson<T>(string endpoint)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"api/{endpoint}");
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+
+        private async Task<T?> SafeReadJson<T>(HttpResponseMessage response)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+    }
+}

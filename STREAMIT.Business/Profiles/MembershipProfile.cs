@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using STREAMIT.Business.Dtos.LanguageDtos.STREAMIT.Business.Dtos.LanguageDtos;
+using STREAMIT.Business.Dtos.LanguageDtos;
 using STREAMIT.Business.Dtos.MembershipDtos;
 using STREAMIT.Core.Entities;
 using System;

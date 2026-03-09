@@ -1,0 +1,32 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using STREAMIT.DataAccess.Contexts;
+
+[ApiController]
+[Route("api/community")]
+public class CommunityController : ControllerBase
+{
+    private readonly AppDbContext _context;
+    public CommunityController(AppDbContext context) => _context = context;
+
+    [HttpGet("messages")]
+    [AllowAnonymous]
+    public async Task<IActionResult> GetMessages()
+    {
+        var msgs = await _context.CommunityMessages
+            .OrderByDescending(x => x.SentAt)
+            .Take(50)
+            .OrderBy(x => x.SentAt)
+            .Select(x => new
+            {
+                id = x.Id,
+                userName = x.User.UserName,
+                text = x.Text,
+                sentAt = x.SentAt
+            })
+            .ToListAsync();
+
+        return Ok(msgs);
+    }
+}

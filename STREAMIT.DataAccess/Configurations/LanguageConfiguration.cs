@@ -33,11 +33,7 @@ namespace STREAMIT.DataAccess.Configurations
                    .HasForeignKey(m => m.LanguageId)
                    .OnDelete(DeleteBehavior.Restrict);
 
-            // Language -> TVShows (One to Many)
-            builder.HasMany(l => l.TVShows)
-                   .WithOne(t => t.Language)
-                   .HasForeignKey(t => t.LanguageId)
-                   .OnDelete(DeleteBehavior.Restrict);
+         
 
 
             // Language code unikaldır (en, az, tr və s.)

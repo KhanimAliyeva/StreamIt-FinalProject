@@ -1,0 +1,89 @@
+﻿    <div class="iq-breadcrumb">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-12">
+                    <nav aria-label="breadcrumb" class="text-center">
+                        <ol class="breadcrumb justify-content-center text-white mt-0">
+                            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                            <li class="breadcrumb-item active">Blog Pagination</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>    <!--bread-crumb-->
+
+@model IEnumerable<STREAMIT.Business.Dtos.BlogDtos.ResultBlogDto>
+
+    <div class="blog-pagination section-padding">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 gy-5">
+            @if (Model != null)
+            {
+                foreach (var blog in Model)
+                {
+                    <div class="col-lg-4 col-sm-4">
+                        <div class="iq-blog-box">
+                            <div class="iq-blog-image clearfix">
+                                <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id">
+                                    <img src="@blog.ImageUrl" alt="@blog.Title" class="img-fluid w-100 rounded-3" />
+                                </a>
+                            </div>
+                            <div class="iq-blog-detail">
+                                <div class="iq-blog-meta d-flex align-item-center flex-wrap">
+                                    <ul class="list-inline mb-0">
+                                        <li class="posted-by">
+                                            <span class="post-date d-flex align-item-center gap-1">
+                                                <i class="ph ph-user"></i>
+                                                <a>@blog.AuthorName</a>
+                                            </span>
+                                        </li>
+                                        <li class="posted-on">
+                                            <span class="post-author d-flex align-item-center gap-1">
+                                                <i class="icon icon-calendar-2"></i>
+                                                <span>@blog.CreatedDate.ToString("MMMM d, yyyy")</span>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <h4 class="mb-3 blog-heading">
+                                    <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id">@blog.Title</a>
+                                </h4>
+
+                                <p class="line-count-2">@blog.Description</p>
+                                <div class="">
+                                    <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id"
+                                        class="btn btn-link blog-readMore p-0 text-capitalize position-relative font-size-14">
+                                        <span>Read More</span>
+                                        <span><i class="ph ph-caret-right align-middle"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <!-- Static Pagination Controls -->
+        <div class="pagination justify-content-center mt-4">
+            <ul class="pagination blog-pagination gap-2" id="pagination">
+                <li class="page-item">
+                    <a class="page-link rounded-3" href="#"><i class="ph ph-caret-left pageicon-lineheight"></i></a>
+                </li>
+                <li class="page-item active">
+                    <a class="page-link d-flex justify-content-center pageicon-lineheight rounded-3" href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link d-flex justify-content-center pageicon-lineheight rounded-3" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link d-flex justify-content-center pageicon-lineheight rounded-3" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link rounded-3" href="#"><i class="ph ph-caret-right pageicon-lineheight"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

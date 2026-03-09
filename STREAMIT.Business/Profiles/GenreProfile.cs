@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using STREAMIT.Business.Dtos.GenreDtos;
+using STREAMIT.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace STREAMIT.Business.Profiles
             {
                 CreateMap<Core.Entities.Genre,CreateGenreDto>().ReverseMap();
                 CreateMap<Core.Entities.Genre,UpdateGenreDto>().ReverseMap();
-                CreateMap<Core.Entities.Genre,GetGenreDto>().ReverseMap();
+            CreateMap<Genre, GetGenreDto>().ReverseMap();
         }
     }
 }

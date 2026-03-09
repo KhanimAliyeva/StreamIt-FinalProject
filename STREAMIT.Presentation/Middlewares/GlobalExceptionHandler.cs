@@ -6,11 +6,12 @@ namespace STREAMIT.Presentation.Middlewares
     public class GlobalExceptionHandler
     {
         private readonly RequestDelegate _next;
+        private readonly IWebHostEnvironment _env;
 
-
-        public GlobalExceptionHandler(RequestDelegate next)
+        public GlobalExceptionHandler(RequestDelegate next, IWebHostEnvironment env)
         {
             _next = next;
+            _env = env;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -22,6 +23,7 @@ namespace STREAMIT.Presentation.Middlewares
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
+
                 ResultDto errorResult = new()
                 {
                     IsSucceed = false,
@@ -34,12 +36,19 @@ namespace STREAMIT.Presentation.Middlewares
                     errorResult.Message = ex.Message;
                     errorResult.StatusCode = baseException.StatusCode;
                 }
+
+                // In Development include exception details to aid debugging
+                if (_env.IsDevelopment())
+                {
+                    errorResult.Message = ex.Message;
+                    var details = ex.StackTrace ?? string.Empty;
+                    errorResult.Message += " | " + details;
+                }
+
+                context.Response.StatusCode = errorResult.StatusCode;
+                context.Response.ContentType = "application/json";
                 await context.Response.WriteAsJsonAsync(errorResult);
             }
-
-
         }
-
-
     }
 }

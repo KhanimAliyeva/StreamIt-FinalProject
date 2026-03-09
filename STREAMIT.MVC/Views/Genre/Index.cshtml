@@ -1,0 +1,40 @@
+﻿@using STREAMIT.Business.Dtos.GenreDtos
+@model IEnumerable<GenreDto>
+<div class="iq-breadcrumb">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb" class="text-center">
+                    <ol class="breadcrumb justify-content-center text-white mt-0">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                        <li class="breadcrumb-item active">Genres</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>    <!--bread-crumb-->
+
+<section class="section-padding">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h4 class="main-title text-capitalize mb-0"> Genres</h4>
+        </div>
+        <div class="genres-grid gy-4 row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            @foreach (var genre in Model)
+            {
+                <div class="col">
+                    <div class="iq-card-geners position-relative card-hover-style-two">
+                        <div class="img-box position-relative" >
+
+                            <a href="@Url.Action("MoviesByGenre", "Genre", new { id = genre.Id })">
+                                <img src="~/assets/images/imageback.jpg" alt="geners-img" class="img-fluid">
+                                <h6 class="blog-description">@genre.Name</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -6,6 +6,7 @@ using STREAMIT.Business.Dtos.CloudinaryDtos;
 using STREAMIT.Business.Services.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Text;
 
@@ -28,22 +29,40 @@ namespace STREAMIT.Business.Services.Implementations
             _cloudinary.Api.Secure = true;
         }
 
-        public async Task<string> FileCreateAsync(IFormFile file)
+        public async Task<string> FileCreateAsync(IFormFile file, string resourceType = "image")
         {
-            string fileName = string.Concat(Guid.NewGuid(), file.FileName.Substring(file.FileName.LastIndexOf('.')));
+            if (file == null || file.Length == 0)
+                return string.Empty;
 
-            var uploadResult = new ImageUploadResult();
-            if (file.Length > 0)
+            var ext = Path.GetExtension(file.FileName) ?? string.Empty;
+            string fileName = string.Concat(Guid.NewGuid().ToString(), ext);
+
+            string url = string.Empty;
+
+            using (var stream = file.OpenReadStream())
             {
-                using var stream = file.OpenReadStream();
-                var uploadParams = new ImageUploadParams
+                if (resourceType.ToLower() == "video")
                 {
-                    File = new FileDescription(fileName, stream),
-                    Folder = "StreamIt"
-                };
-                uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                    var uploadParams = new VideoUploadParams
+                    {
+                        File = new FileDescription(fileName, stream),
+                        Folder = "StreamIt"
+                    };
+                    var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                    // For video uploads SecureUrl may be null; fallback to Url
+                    url = uploadResult.SecureUrl?.ToString() ?? uploadResult.Url?.ToString() ?? string.Empty;
+                }
+                else
+                {
+                    var uploadParams = new ImageUploadParams
+                    {
+                        File = new FileDescription(fileName, stream),
+                        Folder = "StreamIt"
+                    };
+                    var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                    url = uploadResult.SecureUrl?.ToString() ?? uploadResult.Url?.ToString() ?? string.Empty;
+                }
             }
-            string url = uploadResult.SecureUrl.ToString();
 
             return url;
         }

@@ -18,11 +18,6 @@ namespace STREAMIT.DataAccess.Configurations
             builder.Property(s => s.SeasonNumber)
                    .IsRequired();
 
-            // TVShow → Season (1-to-many)
-            builder.HasOne(s => s.TVShow)
-                   .WithMany(t => t.Seasons)
-                   .HasForeignKey(s => s.TVShowId)
-                   .OnDelete(DeleteBehavior.Cascade);
 
             // 1 TVShow-da eyni season number təkrarlanmasın
             builder.HasIndex(s => new { s.TVShowId, s.SeasonNumber })

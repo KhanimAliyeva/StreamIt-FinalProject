@@ -1,0 +1,63 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Services.Abstractions;
+using STREAMIT.Core.Entities;
+using STREAMIT.DataAccess.Contexts;
+using Microsoft.EntityFrameworkCore;
+
+
+[Route("api/[controller]")]
+[ApiController]
+public class PaymentController : ControllerBase
+{
+    private readonly IPaymentService _paymentService;
+    private readonly AppDbContext _context;
+
+    public PaymentController(IPaymentService paymentService, AppDbContext context)
+    {
+        _paymentService = paymentService;
+        _context = context;
+    }
+
+    //[HttpPost("create")]
+    //public async Task<IActionResult> Create(int membershipId)
+    //{
+    //    var membership = await _context.Memberships.FindAsync(membershipId);
+    //    if (membership == null) return NotFound();
+
+    //    //string checkoutUrl = await _paymentService.CreatePaymentAsync(
+    //    //    membershipId, membership.Price, membership.Name, "https://localhost:7108/Membership/RedirectPayment");
+
+    //    return Ok(new { checkoutUrl });
+    //}
+
+    [HttpPost("callback")]
+    public async Task<IActionResult> Callback(KapitalBankCallbackModel model)
+    {
+        var payment = await _context.Payments.FirstOrDefaultAsync(x => x.OrderId == model.OrderId);
+
+        if (payment == null) return BadRequest();
+
+        if (model.Status == "success")
+        {
+            payment.Status = "Paid";
+
+            var userMembership = new UserMembership
+            {
+                UserId = payment.UserId,
+                MembershipId = payment.MembershipId,
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow.AddDays(30),
+                IsActive = true
+            };
+
+            _context.UserMemberships.Add(userMembership);
+        }
+        else
+        {
+            payment.Status = "Failed";
+        }
+
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+}

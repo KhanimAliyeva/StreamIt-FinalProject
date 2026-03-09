@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using STREAMIT.Business.Dtos.ResultDtos;
 using STREAMIT.Business.Dtos.TokenDtos;
 using STREAMIT.Business.Dtos.UserDtos;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Net.Http.Json;
 using System.Security.Claims;
@@ -58,8 +59,27 @@ public class AccountController : Controller
         var token = result.Data.Token;
         var refresh = result.Data.RefreshToken;
 
-        Response.Cookies.Append("AccessToken", token, new CookieOptions { HttpOnly = true, Secure = Request.IsHttps, Expires = result.Data.ExpiredDate });
-        Response.Cookies.Append("RefreshToken", refresh, new CookieOptions { HttpOnly = true, Secure = Request.IsHttps, Expires = result.Data.RefreshTokenExpiredDate });
+        Response.Cookies.Append("AccessToken", token, new CookieOptions
+        {
+            HttpOnly = true,
+            Secure = true,                 // ⚠️ VACIB
+            SameSite = SameSiteMode.None,  // ⚠️ VACIB
+            Expires = result.Data.ExpiredDate,
+            Path = "/",
+            IsEssential = true
+        });
+
+        var refreshOpts = new CookieOptions
+        {
+            HttpOnly = true,
+            Secure = true,              
+            SameSite = SameSiteMode.None,
+            Expires = result.Data.RefreshTokenExpiredDate,
+            Path = "/",
+            IsEssential = true
+        };
+
+        Response.Cookies.Append("RefreshToken", refresh, refreshOpts);
 
         var claims = ExtractClaimsFromJwt(token).ToList();
         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -73,6 +93,13 @@ public class AccountController : Controller
 
         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
             return Redirect(returnUrl);
+
+    
+        if(dto.EmailOrUsername=="admin" || dto.EmailOrUsername=="admin@gmail.com" && dto.Password == "Admin123!")
+        {
+            return RedirectToAction("Dashboard", "Admin");
+
+        }
 
         return RedirectToAction("Index", "Home");
     }
@@ -177,31 +204,47 @@ public class AccountController : Controller
     {
         try
         {
-            var parts = jwt.Split('.');
-            if (parts.Length < 2) return Array.Empty<Claim>();
+            var handler = new JwtSecurityTokenHandler();
+            var token = handler.ReadJwtToken(jwt);
 
-            var payload = parts[1];
-            payload = payload.PadRight(payload.Length + (4 - payload.Length % 4) % 4, '=');
-            var bytes = Convert.FromBase64String(payload.Replace('-', '+').Replace('_', '/'));
-            var json = System.Text.Encoding.UTF8.GetString(bytes);
-            using var doc = JsonDocument.Parse(json);
-            var root = doc.RootElement;
             var claims = new List<Claim>();
 
-            if (root.TryGetProperty("Fullname", out var fullname))
-                claims.Add(new Claim(ClaimTypes.Name, fullname.GetString() ?? string.Empty));
+            var userId = token.Claims.FirstOrDefault(x =>
+                x.Type == ClaimTypes.NameIdentifier ||
+                x.Type == JwtRegisteredClaimNames.Sub)?.Value;
 
-            if (root.TryGetProperty("Email", out var email))
-                claims.Add(new Claim(ClaimTypes.Email, email.GetString() ?? string.Empty));
+            var userName = token.Claims.FirstOrDefault(x =>
+                x.Type == ClaimTypes.Name ||
+                x.Type == "Username")?.Value;
 
-            if (root.TryGetProperty("Username", out var username))
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, username.GetString() ?? string.Empty));
+            var fullName = token.Claims.FirstOrDefault(x =>
+                x.Type == "FullName" ||
+                x.Type == "Fullname")?.Value;
 
-            if (root.TryGetProperty("Role", out var role))
-                claims.Add(new Claim(ClaimTypes.Role, role.GetString() ?? string.Empty));
+            var email = token.Claims.FirstOrDefault(x =>
+                x.Type == ClaimTypes.Email ||
+                x.Type == JwtRegisteredClaimNames.Email ||
+                x.Type == "Email")?.Value;
 
-            if (root.TryGetProperty("sub", out var sub))
-                claims.Add(new Claim(ClaimTypes.NameIdentifier, sub.GetString() ?? string.Empty));
+            var role = token.Claims.FirstOrDefault(x =>
+                x.Type == ClaimTypes.Role ||
+                x.Type == "Role" ||
+                x.Type == "role")?.Value;
+
+            if (!string.IsNullOrWhiteSpace(userId))
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, userId));
+
+            if (!string.IsNullOrWhiteSpace(userName))
+                claims.Add(new Claim(ClaimTypes.Name, userName));
+
+            if (!string.IsNullOrWhiteSpace(fullName))
+                claims.Add(new Claim("FullName", fullName));
+
+            if (!string.IsNullOrWhiteSpace(email))
+                claims.Add(new Claim(ClaimTypes.Email, email));
+
+            if (!string.IsNullOrWhiteSpace(role))
+                claims.Add(new Claim(ClaimTypes.Role, role));
 
             return claims;
         }

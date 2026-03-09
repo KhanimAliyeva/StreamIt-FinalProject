@@ -1,0 +1,33 @@
+﻿using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+
+namespace STREAMIT.MVC.Handlers
+{
+    public class AuthHeaderHandler : DelegatingHandler
+    {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public AuthHeaderHandler(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var httpContext = _httpContextAccessor.HttpContext;
+            if (httpContext != null)
+            {
+                // Cookie-də JWT varsa, header-ə əlavə et
+                var token = httpContext.Request.Cookies["jwt"];
+                if (!string.IsNullOrEmpty(token))
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                }
+            }
+
+            return base.SendAsync(request, cancellationToken);
+        }
+    }
+}

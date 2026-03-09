@@ -55,11 +55,6 @@ namespace STREAMIT.DataAccess.Configurations
                    .HasForeignKey(movie => movie.MembershipId)
                    .OnDelete(DeleteBehavior.Restrict);
 
-            // Membership -> TVShows (One to Many)
-            builder.HasMany(m => m.TVShows)
-                   .WithOne(tv => tv.Membership)
-                   .HasForeignKey(tv => tv.MembershipId)
-                   .OnDelete(DeleteBehavior.Restrict);
 
             // Membership -> UserMemberships (One to Many)
             builder.HasMany(m => m.UserMemberships)

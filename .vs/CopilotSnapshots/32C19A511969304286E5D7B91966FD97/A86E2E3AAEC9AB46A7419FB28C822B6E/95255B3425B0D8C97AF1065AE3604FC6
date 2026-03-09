@@ -1,0 +1,28 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos.MovieDtos;
+using STREAMIT.Business.Dtos.ReviewDtos;
+
+public class MovieController : Controller
+{
+    private readonly HttpClient _httpClient;
+
+    public MovieController(IHttpClientFactory httpClientFactory)
+    {
+        _httpClient = httpClientFactory.CreateClient("ApiClient");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Detail(int id)
+    {
+        if (id <= 0)
+            return BadRequest();
+
+        var movie = await _httpClient
+            .GetFromJsonAsync<GetMovieDto>($"movies/{id}");
+
+        if (movie == null)
+            return NotFound();
+
+        return View(movie);
+    }
+}

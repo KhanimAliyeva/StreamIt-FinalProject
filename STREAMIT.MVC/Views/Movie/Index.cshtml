@@ -1,0 +1,96 @@
+﻿@model IEnumerable<STREAMIT.Business.Dtos.MovieDtos.GetMovieDto>
+<style>
+
+</style>
+<div class="section-padding">
+    <div class="container-fluid">
+
+        <div class="d-flex align-items-center justify-content-between px-1 mb-4">
+            <h4 class="main-title text-capitalize mb-0 fw-medium">
+                All Movies
+            </h4>
+        </div>
+
+        <div class="row row-cols-xl-6 row-cols-lg-4 row-cols-md-3 row-cols-2 g-3">
+
+            @foreach (var movie in Model)
+            {
+                <div class="col">
+                    <div class="iq-card card-hover h-100">
+                        <div class="block-images position-relative w-100 h-100">
+
+                            <div class="img-box">
+                                <a asp-controller="Movie"
+                                       asp-action="Detail"
+                                       asp-route-id="@movie.Id">
+                                    <img src="@(string.IsNullOrWhiteSpace(movie.PosterUrl)
+                                                                                                                             ? Url.Content("~/assets/images/default-poster.jpg")
+                                                                                                                             : movie.PosterUrl)"
+                                         class="w-100 d-block border-0"
+                                         alt="@movie.Title">
+                                </a>
+                            </div>
+
+                            <div class="card-description with-transition">
+                                <ul class="genres-list p-0 mb-2 d-flex align-items-center flex-wrap list-inline">
+                                    @if (movie.Genres != null)
+                                    {
+                                        foreach (var genre in movie.Genres.Take(2))
+                                        {
+                                            <li class="fw-semi-bold me-2">
+                                                <span class="font-size-14">@genre.Name</span>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+
+                                <div class="cart-content">
+                                    <div class="content-left">
+                                        <h5 class="iq-title text-capitalize">
+                                            <a asp-controller="Movie"
+                                                   asp-action="Detail"
+                                                   asp-route-id="@movie.Id">
+                                                @movie.Title
+                                            </a>
+                                        </h5>
+
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <i class="ph ph-translate"></i>
+                                                <small class="font-size-12">
+                                                    @movie.LanguageName
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center justify-content-center gap-2 mt-3">
+                                    <button type="button"
+                                            class="add-to-wishlist-btn btn btn-secondary"
+                                            data-movie-id="@movie.Id"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Add to Watchlist">
+                                        <i class="ph ph-plus font-size-18"></i>
+                                    </button>
+
+                                    <div class="iq-play-button iq-button">
+                                        <a asp-controller="Movie"
+                                               asp-action="Detail"
+                                               asp-route-id="@movie.Id"
+                                               class="btn btn-primary w-100">
+                                            Play Now
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

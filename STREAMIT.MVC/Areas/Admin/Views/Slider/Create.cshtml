@@ -1,0 +1,48 @@
+﻿@model STREAMIT.Business.Dtos.SliderDtos.CreateSliderDto
+@using STREAMIT.Business.Dtos.MovieDtos
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create Slider";
+    var movies = ViewBag.Movies as List<GetMovieDto>;
+}
+
+<div class="container-fluid py-4">
+    <h3 class="mb-4">Add Slider</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label">Movie</label>
+                    <select asp-for="MovieId" class="form-select">
+                        <option value="">-- Select Movie --</option>
+                        @foreach (var movie in movies!)
+                        {
+                            <option value="@movie.Id">@movie.Title</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Order" class="form-label"></label>
+                    <input asp-for="Order" class="form-control" />
+                </div>
+
+                <div class="form-check mb-3">
+                    <input asp-for="IsActive" class="form-check-input" />
+                    <label asp-for="IsActive" class="form-check-label"></label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Create
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary ms-2">
+                    Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

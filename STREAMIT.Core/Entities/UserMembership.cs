@@ -26,4 +26,6 @@ namespace STREAMIT.Core.Entities
         public Membership? Membership { get; set; }
     }
 
+
+
 }

@@ -1,0 +1,45 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using STREAMIT.Business.Dtos.SliderDtos; 
+using STREAMIT.Business.Dtos.MovieDtos;
+public class HomeController : Controller
+{
+
+    private readonly HttpClient _httpClient;
+
+    public HomeController(IHttpClientFactory httpClientFactory)
+    {
+        _httpClient = httpClientFactory.CreateClient("ApiClient"); 
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        try
+        {
+            var sliders = await _httpClient.GetFromJsonAsync<List<SliderDto>>("slider");
+
+            var upcomingMovies = await _httpClient.GetFromJsonAsync<List<GetMovieDto>>("movie/upcoming");
+            ViewBag.UpcomingMovies = upcomingMovies ?? new List<GetMovieDto>();
+
+            var bestInTv = await _httpClient.GetFromJsonAsync<List<GetMovieDto>>("api/movie/bestintv");
+            
+            ViewBag.BestInTv = bestInTv ?? new List<GetMovieDto>();
+            var latest = await _httpClient.GetFromJsonAsync<List<GetMovieDto>>("api/movie/latest");
+            ViewBag.Latest = latest ?? new List<GetMovieDto>();
+
+            var slider2 = await _httpClient.GetFromJsonAsync<List<Slider2Dto>>("api/slider2");
+            ViewBag.Slider2 = slider2 ?? new List<Slider2Dto>();
+
+            return View(sliders ?? new List<SliderDto>());
+        }
+        catch (HttpRequestException ex)
+        {
+            ViewBag.ApiErrors = ex.Message;
+            ViewBag.UpcomingMovies = new List<GetMovieDto>();
+            return View(new List<SliderDto>());
+        }
+    }
+}

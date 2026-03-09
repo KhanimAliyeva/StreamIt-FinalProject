@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using STREAMIT.Business.Dtos.LanguageDtos;
-using STREAMIT.Business.Dtos.LanguageDtos.STREAMIT.Business.Dtos.LanguageDtos;
 using STREAMIT.Core.Entities;
 
 namespace STREAMIT.Business.Profiles

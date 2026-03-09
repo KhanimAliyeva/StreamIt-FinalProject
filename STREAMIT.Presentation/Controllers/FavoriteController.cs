@@ -1,0 +1,89 @@
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using STREAMIT.Business.Dtos.FavoriteDtos;
+using STREAMIT.Core.Entities;
+using STREAMIT.DataAccess.Contexts;
+using System.Security.Claims;
+
+namespace STREAMIT.Presentation.Controllers
+{
+    [ApiController]
+    [Route("api/favorite")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public class FavoriteController : ControllerBase
+    {
+        private readonly AppDbContext _context;
+        private readonly ILogger<FavoriteController> _logger;
+
+        public FavoriteController(AppDbContext context, ILogger<FavoriteController> logger)
+        {
+            _context = context;
+            _logger = logger;
+        }
+
+        [HttpPost("toggle")]
+        public async Task<IActionResult> Toggle([FromBody] FavoriteDto dto)
+        {
+            if (dto == null || dto.MovieId <= 0)
+                return BadRequest("Invalid movieId");
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(userId))
+                return Unauthorized();
+
+            var movieExists = await _context.Movies
+                .AnyAsync(m => m.Id == dto.MovieId);
+
+            if (!movieExists)
+                return NotFound("Movie not found");
+
+            var exist = await _context.Favorites
+                .FirstOrDefaultAsync(x => x.MovieId == dto.MovieId && x.UserId == userId);
+
+            if (exist != null)
+            {
+                _context.Favorites.Remove(exist);
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation("Favorite removed: user={userId}, movie={movieId}", userId, dto.MovieId);
+
+                return Ok(new { status = "removed" });
+            }
+
+            _context.Favorites.Add(new Favorite
+            {
+                MovieId = dto.MovieId,
+                UserId = userId
+            });
+
+            await _context.SaveChangesAsync();
+            _logger.LogInformation("Favorite added: user={userId}, movie={movieId}", userId, dto.MovieId);
+
+            return Ok(new { status = "added" });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserFavorites()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrWhiteSpace(userId))
+                return Unauthorized();
+
+            var list = await _context.Favorites
+                .Where(x => x.UserId == userId)
+                .Include(x => x.Movie)
+                .Select(x => new GetFavoriteDto
+                {
+                    MovieId = x.MovieId,
+                    Title = x.Movie.Title,
+                    PosterUrl = x.Movie.PosterUrl
+                })
+                .ToListAsync();
+
+            return Ok(list);
+        }
+    }
+}

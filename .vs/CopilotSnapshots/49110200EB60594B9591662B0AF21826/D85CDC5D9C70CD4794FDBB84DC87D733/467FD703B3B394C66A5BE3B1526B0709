@@ -1,0 +1,123 @@
+﻿@model IEnumerable<STREAMIT.Business.Dtos.BlogDtos.ResultBlogDto>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="streamit-wraper-table">
+
+                <!-- Header -->
+                <div class="card-header d-flex justify-content-between gap-3 flex-wrap align-items-center mb-4">
+                    <h2 class="episode-playlist-title wp-heading-inline">
+                        <span class="position-relative">
+                            Blog List
+                        </span>
+                    </h2>
+
+                    <!-- Create -->
+                    <a asp-area="Admin"
+                           asp-controller="Blog"
+                           asp-action="Create"
+                           class="btn btn-primary">
+                        <i class="fa-solid fa-plus me-2"></i>
+                        Add New
+                    </a>
+                </div>
+
+                <!-- Table -->
+                <div class="table-view table-space">
+                    <table class="table custom-table movie_table">
+                        <thead>
+                            <tr class="text-uppercase">
+                                <th>
+                                    <input type="checkbox" class="form-check-input" />
+                                </th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @if (Model != null && Model.Any())
+                            {
+                                foreach (var blog in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="form-check-input" />
+                                        </td>
+
+                                        <!-- Image -->
+                                        <td>
+                                            <div class="d-flex">
+                                                <img src="@(!string.IsNullOrWhiteSpace(blog.ImageUrl)
+                                                                                                                                                 ? blog.ImageUrl
+                                                                                                                                                 : Url.Content("~/assets/images/blog/default.webp"))"
+                                                     class="rounded-2 avatar avatar-55 img-fluid" />
+                                            </div>
+                                        </td>
+
+                                        <!-- Title -->
+                                        <td>@blog.Title</td>
+
+                                        <!-- Author -->
+                                        <td>@blog.AuthorName</td>
+
+                                        <!-- Date -->
+                                        <td>
+                                            @blog.CreatedDate.ToString("yyyy-MM-dd")
+                                        </td>
+
+                                        <!-- Actions -->
+                                        <td>
+                                            <div class="d-flex align-items-center list-user-action gap-2">
+
+                                                <!-- Edit -->
+                                                <a asp-area="Admin"
+                                                       asp-controller="Blog"
+                                                       asp-action="Update"
+                                                       asp-route-id="@blog.Id"
+                                                       class="btn btn-sm btn-icon btn-success-subtle rounded"
+                                                       title="Edit">
+                                                    <i class="ph ph-pencil-simple fs-6"></i>
+                                                </a>
+
+                                                <!-- Delete -->
+                                                <a asp-area="Admin"
+                                                       asp-controller="Blog"
+                                                       asp-action="Delete"
+                                                       asp-route-id="@blog.Id"
+                                                       class="btn btn-sm btn-icon btn-danger-subtle rounded"
+                                                       title="Delete"
+                                                       onclick="return confirm('Are you sure?');">
+                                                    <i class="ph ph-trash-simple fs-6"></i>
+                                                </a>
+
+                                                <!-- Details -->
+                                              
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        No blogs found.
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

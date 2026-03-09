@@ -1,0 +1,47 @@
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using STREAMIT.DataAccess.Contexts;
+using STREAMIT.Core.Entities;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+public class CommunityHub : Hub
+{
+    private readonly AppDbContext _db;
+    public CommunityHub(AppDbContext db) => _db = db;
+
+    public async Task SendMessage(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return;
+
+        var userId = Context.User?.FindFirstValue(ClaimTypes.NameIdentifier)
+                     ?? Context.User?.FindFirstValue(JwtRegisteredClaimNames.Sub);
+
+        var fullName = Context.User?.FindFirst("name")?.Value
+                       ?? Context.User?.FindFirstValue(ClaimTypes.Name)
+                       ?? "User";
+
+        if (string.IsNullOrWhiteSpace(userId))
+            throw new HubException("Not authenticated");
+
+        var msg = new CommunityMessage
+        {
+            UserId = userId,
+            Text = text.Trim(),
+            SentAt = DateTime.UtcNow.AddHours(4),
+            GroupId = 1
+        };
+
+        _db.CommunityMessages.Add(msg);
+        await _db.SaveChangesAsync();
+
+        await Clients.All.SendAsync("ReceiveMessage", new
+        {
+            userName = fullName,     // ✅ msg.User null problemi yoxdur
+            text = msg.Text,
+            sentAt = msg.SentAt
+        });
+    }
+}

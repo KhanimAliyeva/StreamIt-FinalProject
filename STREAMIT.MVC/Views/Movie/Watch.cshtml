@@ -1,0 +1,159 @@
+﻿@using STREAMIT.Business.Dtos.MovieDtos
+@model GetMovieDto
+@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>StreamIT | Watch Movie</title>
+
+    <link rel="shortcut icon" href="~/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="~/assets/css/core/libs.min.css" />
+    <link rel="stylesheet" href="~/assets/vendor/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/assets/vendor/iconly/css/style.css" />
+    <link rel="stylesheet" href="~/assets/vendor/animate.min.css" />
+    <link rel="stylesheet" href="~/assets/css/streamit.min.css?v=5.4.0" />
+    <link rel="stylesheet" href="~/assets/css/custom.min.css?v=5.4.0" />
+    <link rel="stylesheet" href="~/assets/css/rtl.min.css?v=5.4.0" />
+    <link rel="stylesheet" href="~/assets/vendor/phosphor-icons/Fonts/regular/style.css">
+        <link rel="stylesheet" href="~/assets/vendor/phosphor-icons/Fonts/duotone/style.css">
+            <link rel="stylesheet" href="~/assets/vendor/phosphor-icons/Fonts/fill/style.css">
+                <link rel="stylesheet" href="~/assets/vendor/streamit-font/iconly.css">
+
+                    <style>
+                            body {
+                                background-color: #000;
+                            }
+
+                            .video-container {
+                                max-width: 1100px;
+                                margin: 80px auto 40px auto;
+                                padding: 0 20px;
+                            }
+
+                            #my-video {
+                                width: 100%;
+                                height: auto;
+                                display: block;
+                                background: #000;
+                                border-radius: 12px;
+                            }
+
+                            .back-btn {
+                                position: fixed;
+                                top: 20px;
+                                left: 20px;
+                                z-index: 9999;
+                            }
+                    </style>
+                </head>
+
+                <body class="custom-header-relative">
+                    <span class="screen-darken"></span>
+
+                    <div class="loader simple-loader">
+                        <div class="loader-body">
+                            <img src="~/assets/images/loader.gif" alt="loader" class="img-fluid" width="300">
+                            </div>
+                        </div>
+
+                        <main class="main-content">
+                            <div class="back-btn">
+                                <a class="btn btn-link text-white text-decoration-none p-0"
+                                       asp-action="Details"
+                                       asp-route-id="@Model.Id">
+                                    <i class="ph ph-x"></i>
+                                </a>
+                            </div>
+
+                            <div class="video-container">
+                                <video id="my-video"
+                                       controls
+                                       preload="metadata"
+                                       poster="@Model.PosterUrl"
+                                       data-movie-id="@Model.Id">
+                                    <source src="@Model.MovieUrl" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </main>
+
+                        <div id="back-to-top" class="back-to-top" style="display: none;">
+                            <a class="p-0 btn bg-primary btn-sm position-fixed top border-0 rounded-circle text-white" id="top" href="#top">
+                                <i class="ph ph-caret-up fw-bold"></i>
+                            </a>
+                        </div>
+
+                        <script src="~/assets/js/core/libs.min.js"></script>
+                        <script src="~/assets/vendor/lodash/lodash.min.js"></script>
+                        <script src="~/assets/js/core/external.min.js"></script>
+                        <script src="~/assets/js/plugins/countdown.js"></script>
+                        <script src="~/assets/js/utility.js"></script>
+                        <script src="~/assets/js/setting.js"></script>
+                        <script src="~/assets/js/setting-init.js" defer></script>
+                        <script src="~/assets/js/streamit.js" defer></script>
+                        <script src="~/assets/js/swiper.js" defer></script>
+
+                        <script>
+                                const video = document.getElementById("my-video");
+                                const movieId = @Model.Id;
+                                let lastSent = -1;
+
+                                video.addEventListener("loadedmetadata", function () {
+                                    console.log("duration =", video.duration);
+                                });
+
+                                async function sendProgress(force = false) {
+                                    try {
+                                        if (!video) return;
+                                        if (isNaN(video.duration) || video.duration <= 0) return;
+
+                                        const currentMinutes = Math.floor(video.currentTime / 60);
+                                        const durationMinutes = Math.ceil(video.duration / 60);
+
+                                        if (durationMinutes <= 0) return;
+
+                                        if (!force && currentMinutes === lastSent) return;
+
+                                        lastSent = currentMinutes;
+
+                                        const payload = {
+                                            movieId: movieId,
+                                            watchedMinutes: currentMinutes,
+                                            duration: durationMinutes
+                                        };
+
+                                        const response = await fetch("/Movie/UpdateWatchHistory", {
+                                            method: "POST",
+                                            headers: {
+                                                "Content-Type": "application/json"
+                                            },
+                                            body: JSON.stringify(payload)
+                                        });
+
+                                        const text = await response.text();
+                                        console.log("UpdateWatchHistory status:", response.status);
+                                        console.log("UpdateWatchHistory response:", text);
+                                    } catch (err) {
+                                        console.error("WatchHistory error:", err);
+                                    }
+                                }
+
+                                video.addEventListener("timeupdate", function () {
+                                    sendProgress(false);
+                                });
+
+                                video.addEventListener("pause", function () {
+                                    sendProgress(true);
+                                });
+
+                                video.addEventListener("ended", function () {
+                                    sendProgress(true);
+                                });
+                        </script>
+                    </body>
+                </html>

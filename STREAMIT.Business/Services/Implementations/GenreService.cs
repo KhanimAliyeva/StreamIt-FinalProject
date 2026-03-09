@@ -41,10 +41,19 @@ namespace STREAMIT.Business.Services.Implementations
 
         public async Task<List<GetGenreDto>> GetAllAsync()
         {
-            var genre = await _repository.GetAll(true).Include(x=>x.MovieGenres).ToListAsync();
-            var dtos = _mapper.Map<List<GetGenreDto>>(genre);
-            return dtos;
+            var genres = await _repository.GetAll(true)
+       .Include(g => g.MovieGenres)
+           .ThenInclude(mg => mg.Movie)
+      
+       .ToListAsync();
 
+            var dtos = genres.Select(g => new GetGenreDto
+            {
+                Id = g.Id,
+                Name = g.Name,
+                MovieCount = g.MovieGenres.Count(mg => mg.MovieId != 0),   // Id yox MovieId sayılır
+            }).ToList();
+            return dtos;
         }
 
         public async Task<GetGenreDto> GetByIdAsync(int id)

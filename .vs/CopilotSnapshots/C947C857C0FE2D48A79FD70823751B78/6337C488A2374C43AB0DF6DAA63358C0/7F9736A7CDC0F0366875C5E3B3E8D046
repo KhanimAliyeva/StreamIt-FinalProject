@@ -1,0 +1,81 @@
+﻿@model IEnumerable<STREAMIT.Business.Dtos.PersonDtos.GetPersonDto>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Persons";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="streamit-wraper-table">
+            <div class="card-header d-flex justify-content-between gap-3 flex-wrap align-items-center mb-4">
+                <h2 class="episode-playlist-title wp-heading-inline">
+                    <span class="position-relative ">
+                        Persons List
+                    </span>
+                </h2>
+                <a asp-area="Admin" asp-controller="Cast" asp-action="Create" class="btn btn-primary">
+                    <i class="fa-solid fa-plus me-2"></i>Add New
+                </a>
+            </div>
+
+            <div class="table-view table-space">
+                <table id="personTable" class="data-tables table custom-table movie_table data-table-one" data-toggle="data-table1">
+                    <thead>
+                        <tr class="text-uppercase">
+                            <th></th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Born</th>
+                            <th>Popularity</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var person in Model)
+                            {
+                                <tr>
+                                    <td><input type="checkbox" class="form-check-input" /></td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <img src="@(!string.IsNullOrWhiteSpace(person.ImageUrl) ? person.ImageUrl : Url.Content("~/assets/images/author/ava-monroe.webp"))" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                        </div>
+                                    </td>
+                                    <td>@person.Name</td>
+                                    <td>@person.Born.ToString("yyyy-MM-dd")</td>
+                                    <td>@person.Popularity</td>
+                                    <td>
+                                        <div class="d-flex align-items-center list-user-action gap-2">
+                                            <a asp-area="Admin" asp-controller="Cast" asp-action="Edit" asp-route-id="@person.Id" class="btn btn-sm btn-icon btn-success-subtle rounded" title="Edit">
+                                                <i class="ph ph-pencil-simple fs-6"></i>
+                                            </a>
+
+                                            <form asp-area="Admin" asp-controller="Cast" asp-action="Delete" asp-route-id="@person.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this person?');" class="d-inline">
+                                                @Html.AntiForgeryToken()
+                                                <button type="submit" class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" title="Delete">
+                                                    <i class="ph ph-trash-simple fs-6"></i>
+                                                </button>
+                                            </form>
+
+                                            <a asp-area="Admin" asp-controller="Cast" asp-action="Edit" asp-route-id="@person.Id" class="btn btn-sm btn-icon btn-info-subtle rounded" title="View">
+                                                <i class="ph ph-eye fs-6"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">No persons found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

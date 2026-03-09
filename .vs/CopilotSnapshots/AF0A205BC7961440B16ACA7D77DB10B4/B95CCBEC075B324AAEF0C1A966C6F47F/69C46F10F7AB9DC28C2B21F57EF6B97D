@@ -1,0 +1,78 @@
+﻿@model IEnumerable<STREAMIT.Business.Dtos.UserDtos.GetUserDto>
+
+<div class="table-view table-space">
+    <table id="userTable" class="table custom-table movie_table">
+        <thead>
+            <tr class="text-uppercase">
+                <th>Profile</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Membership</th>
+                <th>Favorites</th>
+                <th>Reviews</th>
+                <th>Status</th>
+                <th>Join Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var u in Model)
+                {
+                    var favoritesTotal = u.FavoriteMoviesCount ;
+                    var reviewsTotal = u.MovieReviewsCount ;
+
+                    <tr>
+                        <td>
+                            <img src="@(string.IsNullOrWhiteSpace(u.ProfilePictureUrl) ? Url.Content("~/assets/images/author/ava-monroe.webp") : u.ProfilePictureUrl)"
+                                 class="rounded-2 avatar avatar-55 img-fluid"
+                                 alt="@(string.IsNullOrWhiteSpace(u.Fullname) ? u.UserName : u.Fullname)" />
+                        </td>
+
+                        <td>@(string.IsNullOrWhiteSpace(u.Fullname) ? u.UserName : u.Fullname)</td>
+                        <td>@u.Email</td>
+                        <td>@(string.IsNullOrWhiteSpace(u.Role) ? "—" : u.Role)</td>
+                        <td>@(string.IsNullOrWhiteSpace(u.MembershipName) ? "None" : u.MembershipName)</td>
+                        <td>@favoritesTotal</td>
+                        <td>@reviewsTotal</td>
+
+                        <td>
+                            @if (u.EmailConfirmed)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">Pending</span>
+                            }
+                        </td>
+
+                        <td>@(u.CreatedAt == default ? "—" : u.CreatedAt.ToString("yyyy-MM-dd"))</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="9" class="text-center">No users found.</td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr class="text-uppercase">
+                <th>Profile</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Membership</th>
+                <th>Favorites</th>
+                <th>Reviews</th>
+                <th>Status</th>
+                <th>Join Date</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

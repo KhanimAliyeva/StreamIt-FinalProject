@@ -1,0 +1,70 @@
+﻿@model STREAMIT.Business.Dtos.PersonDtos.CreatePersonDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Add Person";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header text-center">
+                <h2 class="mb-0">Add New Person</h2>
+            </div>
+            <div class="card-body">
+                <form asp-area="Admin" asp-controller="Cast" asp-action="Create" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label">Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Gender" class="form-label">Gender</label>
+                        <input asp-for="Gender" class="form-control" />
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Born" class="form-label">Born</label>
+                            <input asp-for="Born" type="date" class="form-control" />
+                            <span asp-validation-for="Born" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Died" class="form-label">Died (optional)</label>
+                            <input asp-for="Died" type="date" class="form-control" />
+                            <span asp-validation-for="Died" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Popularity" class="form-label">Popularity</label>
+                        <input asp-for="Popularity" type="number" step="0.1" class="form-control" />
+                        <span asp-validation-for="Popularity" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Biography" class="form-label">Biography</label>
+                        <textarea asp-for="Biography" class="form-control" rows="6"></textarea>
+                        <span asp-validation-for="Biography" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Image" class="form-label">Image</label>
+                        <input asp-for="Image" type="file" class="form-control" accept="image/*" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid mt-3">
+                        <button type="submit" class="btn btn-primary btn-lg">Create Person</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,6 @@ namespace STREAMIT.Core.Entities
         public string Name { get; set; }=string.Empty;
 
         public ICollection<MovieTag> MovieTags { get; set; } = [];
-        public ICollection<TvShowTag> TVShowTags { get; set; }= [];
     }
 
 

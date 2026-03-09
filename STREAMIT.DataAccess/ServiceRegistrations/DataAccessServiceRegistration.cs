@@ -52,7 +52,6 @@ namespace STREAMIT.DataAccess.ServiceRegistrations
 
             // Custom repositories
             services.AddScoped<IMovieRepository, MovieRepository>();
-            services.AddScoped<ITvShowRepository, TvShowRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<ITagRepository, TagRepository>();

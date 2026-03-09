@@ -1,0 +1,53 @@
+﻿using STREAMIT.Business.Abstractions;
+using STREAMIT.Business.Dtos.ResultDtos;
+
+namespace STREAMIT.Presentation.Middlewares
+{
+    public class GlobalExceptionHandler
+    {
+        private readonly IWebHostEnvironment _env;
+
+        public GlobalExceptionHandler(IWebHostEnvironment env)
+        {
+            _env = env;
+        }
+
+        // Note: Accept RequestDelegate as a parameter to InvokeAsync so DI does not need to provide it.
+        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+        {
+            try
+            {
+                await next(context);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+
+                ResultDto errorResult = new()
+                {
+                    IsSucceed = false,
+                    Message = "An unexpected error occurred. Please try again later.",
+                    StatusCode = 500
+                };
+
+                if (ex is IBaseException baseException)
+                {
+                    errorResult.Message = ex.Message;
+                    errorResult.StatusCode = baseException.StatusCode;
+                }
+
+                // In Development include exception details to aid debugging
+                if (_env.IsDevelopment())
+                {
+                    errorResult.Message = ex.Message;
+                    var details = ex.StackTrace ?? string.Empty;
+                    errorResult.Message += " | " + details;
+                }
+
+                context.Response.StatusCode = errorResult.StatusCode;
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsJsonAsync(errorResult);
+            }
+        }
+    }
+}

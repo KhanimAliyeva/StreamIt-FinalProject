@@ -9,7 +9,7 @@ namespace STREAMIT.Business.Dtos.PersonDtos
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
-        public string Role { get; set; } = string.Empty; // Actor, Director, Writer və s.
+        public string Role { get; set; } = string.Empty; 
     }
 
 }

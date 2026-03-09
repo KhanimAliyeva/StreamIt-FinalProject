@@ -1,0 +1,87 @@
+﻿@model IEnumerable<STREAMIT.Business.Dtos.PersonDtos.GetPersonDto>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="streamit-wraper-table">
+
+                <!-- Header -->
+                <div class="card-header d-flex justify-content-between gap-3 flex-wrap align-items-center mb-4">
+                    <h2 class="episode-playlist-title wp-heading-inline">Persons List</h2>
+
+                    <a asp-area="Admin" asp-controller="Cast" asp-action="Create" class="btn btn-primary">
+                        <i class="fa-solid fa-plus me-2"></i> Add New
+                    </a>
+                </div>
+
+                <!-- Table -->
+                <div class="table-view table-space">
+                    <table id="userTable" class="table custom-table movie_table">
+                        <thead>
+                            <tr class="text-uppercase">
+                                <th style="width:40px;"><input type="checkbox" class="form-check-input" /></th>
+                                <th style="width:80px;">Image</th>
+                                <th>Name</th>
+                                <th style="width:140px;">Born</th>
+                                <th style="width:100px;">Popularity</th>
+                                <th style="width:140px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                foreach (var person in Model)
+                                {
+                                    <tr>
+                                        <td><input type="checkbox" class="form-check-input" /></td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="@(string.IsNullOrWhiteSpace(person.ImageUrl) ? Url.Content("~/assets/images/author/ava-monroe.webp") : person.ImageUrl)"
+                                                     alt="@person.Name" class="rounded-2 avatar avatar-55 img-fluid" />
+                                            </div>
+                                        </td>
+                                        <td>@person.Name</td>
+                                        <td>@(person.Born == default ? "N/A" : person.Born.ToString("yyyy-MM-dd"))</td>
+                                        <td>@string.Format("{0:0.0}", person.Popularity)</td>
+                                        <td>
+                                            <div class="d-flex align-items-center list-user-action gap-2">
+                                                <a asp-area="Admin" asp-controller="Cast" asp-action="Edit" asp-route-id="@person.Id" class="btn btn-sm btn-icon btn-success-subtle rounded" title="Edit">
+                                                    <i class="ph ph-pencil-simple fs-6"></i>
+                                                </a>
+
+                                                <form asp-area="Admin" asp-controller="Cast" asp-action="Delete" asp-route-id="@person.Id" method="post" class="d-inline" onsubmit="return confirm('Are you sure?');">
+                                                    @Html.AntiForgeryToken()
+                                                    <button type="submit" class="btn btn-sm btn-icon btn-danger-subtle rounded" title="Delete">
+                                                        <i class="ph ph-trash-simple fs-6"></i>
+                                                    </button>
+                                                </form>
+
+                                                <a asp-area="Admin" asp-controller="Cast" asp-action="Details" asp-route-id="@person.Id" class="btn btn-sm btn-icon btn-info-subtle rounded" title="View">
+                                                    <i class="ph ph-eye fs-6"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="6" class="text-center">No persons found.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                @if (ViewBag.DebugStatusCode != null)
+                {
+                    <div class="mt-3 alert alert-warning">
+                        <strong>API Debug:</strong> Status Code: @ViewBag.DebugStatusCode
+                        <pre class="mt-2">@ViewBag.RawResponse</pre>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

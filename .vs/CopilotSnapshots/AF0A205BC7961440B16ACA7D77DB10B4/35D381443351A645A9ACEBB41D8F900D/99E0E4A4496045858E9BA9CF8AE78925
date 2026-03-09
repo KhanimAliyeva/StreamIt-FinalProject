@@ -1,0 +1,15 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http.Json;
+using STREAMIT.Business.Dtos.WatchlistDtos;
+
+
+namespace STREAMIT.MVC.Controllers
+{
+    public class WatchListController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+}

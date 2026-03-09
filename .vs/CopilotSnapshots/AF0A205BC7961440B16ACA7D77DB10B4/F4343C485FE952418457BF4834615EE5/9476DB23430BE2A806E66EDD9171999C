@@ -1,0 +1,113 @@
+﻿@model STREAMIT.Business.Dtos.BlogDtos.ResultBlogDto
+
+<!--bread-crumb-->
+<div class="iq-breadcrumb">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb" class="text-center">
+                    <ol class="breadcrumb justify-content-center text-white mt-0">
+                        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                        <li class="breadcrumb-item active">The Most Anticipated Movies</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>    <!--bread-crumb-->
+
+
+<div class="section-padding blog-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="iq-blog blog-detail">
+                    <a asp-action="Detail" asp-controller="Blog" asp-route-id="@Model.Id" class="blog-image d-block overflow-hidden">
+                        <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Url.Content("~/assets/images/blog/blog1.webp") : Model.ImageUrl)" alt="blog-image" class="img-fluid w-100 mb-5">
+                    </a>
+
+                    <div class="iq-blog-box">
+
+
+                        <div class="iq-blogs-meta">
+                        <ul class="iq-blogtag list-inline d-flex  align-items-center flex-wrap mb-0 ">
+                            <li class="d-flex align-items-center gap-1">
+                                <i class="ph ph-user" aria-hidden="true"></i>
+                                <span class="ms-1">@Model.AuthorName</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-1 ms-3">
+                                <i class="icon icon-calendar-2" aria-hidden="true"></i>
+                                <span class="ms-1">@Model.CreatedDate.ToString("MMMM d, yyyy")</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="mb-3">@Model.Title</h3>
+
+                    <h6 class="text-white my-3">@Model.Description</h6>
+
+                    <p class="mb-0 blog-gallery-desc">@Model.Description</p>
+
+                    @* Tags are not available in ResultBlogDto; keep static placeholder or extend DTO if needed *@
+                    <ul class="iq-blogtag p-0 m-0 list-unstyled gap-2 widget_tags widget-tags-product">
+                        <li><a href="#" class="position-relative">Uncategorized</a></li>
+                    </ul>
+
+                    <div class="iq-blog-tag">
+                        <div class="blog-nav row mt-3 mt-md-0 mb-5 mb-lg-0">
+                            <div class="blog-prev-post col-6 ">
+                                <a href="../blog/blog-detail.html">
+                                    <span class="fw-semibold d-none d-md-block">Why Amy Adams Always Dreamed of Working </span>
+                                    <div class="blog-arrow mt-3 d-flex align-items-center">
+                                        <i class="ph ph-arrow-left"></i>
+                                        <span class="previous fw-semibold fst-italic"> Previous Post</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="blog-next-post col-6 text-end">
+                                <a href="../blog/blog-audio.html">
+                                    <span class="fw-semibold d-none d-md-block">Gillian Anderson Shares the Photos From The Crown</span>
+                                    <div class="blog-arrow mt-3 d-flex align-items-center justify-content-end">
+                                        <span class="next fw-semibold fst-italic"> Next Post</span>
+                                        <i class="ph ph-arrow-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="comments-title mb-4 pb-2">
+                            <span>0 Comments</span>
+                        </h3>
+                        <h3 class="mb-4">Leave a Reply </h3>
+                        <form>
+                            <p class="mb-5">
+                                Logged in as Jenny. <a href="../shop/my-account.html">Edit your profile.</a><a href="#">
+                                Log out?
+                            </a>
+                            Required fields are marked *
+                        </p>
+                        <div class="pt-3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea class="form-control rounded-3" name="comment" cols="5" rows="8" required=""
+                                              placeholder="Comment*"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-submit mt-5">
+                                    <button name="submit" type="submit" id="submit"
+                                            class="btn btn-primary position-relative rounded-3" value="Submit">
+                                        <span class="button-text">Post Comment</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>

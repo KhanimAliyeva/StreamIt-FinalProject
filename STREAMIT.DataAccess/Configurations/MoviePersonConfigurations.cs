@@ -36,7 +36,7 @@ public class MoviePersonConfiguration : IEntityTypeConfiguration<MoviePerson>
         builder.HasOne(mp => mp.Person)
                .WithMany(p => p.MoviePeople)
                .HasForeignKey(mp => mp.PersonId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .OnDelete(DeleteBehavior.Cascade);
 
         // Constraints / Indexes
 

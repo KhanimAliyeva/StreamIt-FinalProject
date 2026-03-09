@@ -7,7 +7,8 @@ namespace STREAMIT.Business.Services.Abstractions
 {
     public interface ICloudinaryService
     {
-        Task<string> FileCreateAsync(IFormFile file);
+        Task<string> FileCreateAsync(IFormFile file, string resourceType = "image");
         Task<bool> FileDeleteAsync(string filePath);
+        
     }
 }

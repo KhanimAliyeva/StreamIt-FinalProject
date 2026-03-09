@@ -1,7 +1,9 @@
-﻿@model IEnumerable<STREAMIT.Business.Dtos.MovieDtos.GetMovieDto>
+﻿@using STREAMIT.MVC.Areas.Admin.ViewModels
+@model PagedMovieViewModel
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var startIndex = (Model.CurrentPage > 0 ? (Model.CurrentPage - 1) * Model.PageSize : 0);
 }
 
 <div class="content-inner container-fluid pb-0" id="page_layout">
@@ -9,17 +11,26 @@
         <div class="col-sm-12">
             <div class="streamit-wraper-table">
                 <div class="card-header d-flex justify-content-between gap-3 flex-wrap align-items-center mb-4">
-                    <h2 class="episode-playlist-title wp-heading-inline">Movies</h2>
-                    
+                    <h2 class="episode-playlist-title wp-heading-inline">
+                        <span class="position-relative">Movies</span>
+                    </h2>
+
                     <a asp-area="Admin" asp-controller="Movie" asp-action="Create" class="btn btn-primary">
                         <i class="fa-solid fa-plus me-2"></i> Add Movie
                     </a>
                 </div>
 
-                <div class="table-view table-space">
-                    <table id="seasonTable" class="table table-striped table-hover w-100">
+                @if (TempData["DeleteError"] != null)
+                {
+                    <div class="alert alert-danger mb-3">
+                        @TempData["DeleteError"]
+                    </div>
+                }
+
+                <div class="table-view table-space streamit-wraper-table3">
+                    <table id="seasonTable" class="data-tables table custom-table movie_table custom-table-height">
                         <colgroup>
-                            <col />
+                            <col style="width:70px;" />
                             <col style="width:60px;" />
                             <col />
                             <col />
@@ -29,8 +40,8 @@
                             <col style="width:170px" />
                         </colgroup>
                         <thead>
-                            <tr>
-                                <th><input type="checkbox" class="form-check-input" /></th>
+                            <tr class="text-uppercase">
+                                <th>#</th>
                                 <th>Image</th>
                                 <th>Title</th>
                                 <th>Author</th>
@@ -41,34 +52,65 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (Model != null && Model.Any())
+                            @if (Model.Movies != null && Model.Movies.Any())
                             {
-                                foreach (var movie in Model)
+                                @foreach (var item in Model.Movies.Select((value, index) => new { value, index }))
                                 {
                                     <tr>
-                                        <td><input type="checkbox" class="form-check-input" /></td>
+                                        <td>@(startIndex + item.index + 1)</td>
                                         <td>
                                             <img asp-append-version="true"
-                                                 src="@(string.IsNullOrWhiteSpace(movie.PosterUrl) ? Url.Content("~/admin/assets/images/movie-thumb/any-name.webp") : movie.PosterUrl)"
+                                                 src="@(string.IsNullOrWhiteSpace(item.value.PosterUrl) ? Url.Content("~/admin/assets/images/movie-thumb/any-name.webp") : item.value.PosterUrl)"
                                                  alt="poster"
                                                  class="rounded-2 avatar avatar-55 img-fluid" />
                                         </td>
-                                        <td>@movie.Title</td>
-                                        <td>@movie.MembershipName</td>
-                                        <td>@movie.ReleaseDate.ToString("yyyy-MM-dd HH:mm")</td>
-                                        <td>@(movie.MovieStatistics?.ViewCount ?? 0)</td>
+                                        <td>@item.value.Title</td>
+                                        <td>@item.value.MembershipName</td>
+                                        <td>@item.value.ReleaseDate.ToString("yyyy-MM-dd HH:mm")</td>
+                                        <td>@(item.value.MovieStatistics?.ViewCount ?? 0)</td>
                                         <td>
-                                            <input type="checkbox" class="form-check-input" disabled="disabled" @(movie.Status == "Published" ? "checked" : "") />
+                                            <input type="checkbox"
+                                                   class="form-check-input"
+                                                   disabled
+                                            @(item.value.Status == "Published" ? "checked" : null) />
                                         </td>
                                         <td>
-                                            <div class="d-flex gap-2">
-                                                <a asp-area="Admin" asp-controller="Movie" asp-action="Update" asp-route-id="@movie.Id" class="btn btn-sm btn-outline-primary" title="Edit">Edit</a>
+                                            <div class="d-flex align-items-center list-user-action gap-2">
 
-                                                <form asp-area="Admin" asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.Id" method="post" onsubmit="return confirm('Delete this movie?');" class="d-inline">
-                                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                                <a asp-area="Admin"
+                                                       asp-controller="Movie"
+                                                       asp-action="Update"
+                                                       asp-route-id="@item.value.Id"
+                                                       class="btn btn-sm btn-icon btn-success-subtle rounded"
+                                                       title="Edit">
+                                                    <i class="ph ph-pencil-simple fs-6"></i>
+                                                </a>
+
+                                                <form asp-area="Admin"
+                                                      asp-controller="Movie"
+                                                      asp-action="Delete"
+                                                      asp-route-id="@item.value.Id"
+                                                      method="post"
+                                                      class="d-inline"
+                                                      onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                    @Html.AntiForgeryToken()
+
+                                                    <button type="submit"
+                                                            class="btn btn-sm btn-icon btn-danger-subtle rounded"
+                                                            title="Delete">
+                                                        <i class="ph ph-trash-simple fs-6"></i>
+                                                    </button>
                                                 </form>
 
-                                                <a asp-area="Admin" asp-controller="Movie" asp-action="Details" asp-route-id="@movie.Id" class="btn btn-sm btn-outline-info" title="View">View</a>
+                                                <a asp-area="Admin"
+                                                       asp-controller="Movie"
+                                                       asp-action="Details"
+                                                       asp-route-id="@item.value.Id"
+                                                       class="btn btn-sm btn-icon btn-info-subtle rounded"
+                                                       title="View">
+                                                    <i class="ph ph-eye fs-6"></i>
+                                                </a>
+
                                             </div>
                                         </td>
                                     </tr>
@@ -82,6 +124,46 @@
                             }
                         </tbody>
                     </table>
+
+                    @if (Model.TotalPages > 1)
+                    {
+                        <nav aria-label="Page navigation" class="mt-3">
+                            <ul class="pagination">
+                                <li class="page-item @(Model.CurrentPage <= 1 ? "disabled" : "")">
+                                    <a class="page-link"
+                                           asp-area="Admin"
+                                           asp-controller="Movie"
+                                           asp-action="Index"
+                                           asp-route-page="@(Model.CurrentPage - 1)">
+                                        Previous
+                                    </a>
+                                </li>
+
+                                @for (int i = 1; i <= Model.TotalPages; i++)
+                                {
+                                    <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                        <a class="page-link"
+                                               asp-area="Admin"
+                                               asp-controller="Movie"
+                                               asp-action="Index"
+                                               asp-route-page="@i">
+                                            @i
+                                        </a>
+                                    </li>
+                                }
+
+                                <li class="page-item @(Model.CurrentPage >= Model.TotalPages ? "disabled" : "")">
+                                    <a class="page-link"
+                                           asp-area="Admin"
+                                           asp-controller="Movie"
+                                           asp-action="Index"
+                                           asp-route-page="@(Model.CurrentPage + 1)">
+                                        Next
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    }
                 </div>
             </div>
         </div>

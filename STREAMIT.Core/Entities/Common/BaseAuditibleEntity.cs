@@ -8,7 +8,7 @@ public abstract class BaseAuditableEntity : BaseEntity
 {
     public string CreatedBy { get; set; } = string.Empty;
 
-    public DateTime CreatedDate { get; set; }
+    public DateTime CreatedDate { get; set; } = DateTime.UtcNow.AddHours(4);
 
     public string? UpdatedBy { get; set; }
 

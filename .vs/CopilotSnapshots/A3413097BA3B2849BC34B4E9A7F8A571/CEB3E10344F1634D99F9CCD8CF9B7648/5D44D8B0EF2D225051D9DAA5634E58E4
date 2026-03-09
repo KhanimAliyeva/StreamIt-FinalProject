@@ -1,0 +1,335 @@
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.Business.Dtos.TvShowDtos;
+using STREAMIT.Business.Dtos.GenreDtos;
+using STREAMIT.Business.Exceptions;
+using STREAMIT.Business.Services.Abstractions;
+using STREAMIT.Core.Entities;
+using STREAMIT.DataAccess.Contexts;
+using STREAMIT.DataAccess.Repositories.Abstractions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace STREAMIT.Business.Services.Implementations
+{
+    public class TvShowService : ITvShowService
+    {
+        private readonly ITvShowRepository _repository;
+        private readonly IMapper _mapper;
+        private readonly ICloudinaryService _cloudinaryService;
+        private readonly AppDbContext _context;
+        private readonly Microsoft.Extensions.Logging.ILogger<TvShowService> _logger;
+
+        public TvShowService(
+            ITvShowRepository repository,
+            IMapper mapper,
+            ICloudinaryService cloudinaryService,
+            AppDbContext context,
+            Microsoft.Extensions.Logging.ILogger<TvShowService> logger)
+        {
+            _repository = repository;
+            _mapper = mapper;
+            _cloudinaryService = cloudinaryService;
+            _context = context;
+            _logger = logger;
+        }
+
+        public async Task<ResultDto> CreateAsync(CreateTvShowDto dto)
+        {
+            var tvShow = _mapper.Map<TVShow>(dto);
+
+            if (dto.PosterUrl != null)
+            {
+                var posterUrl = await _cloudinaryService.FileCreateAsync(dto.PosterUrl, "image");
+                tvShow.PosterUrl = posterUrl;
+            }
+
+            tvShow.TrailerUrl = dto.YoutubeUrl;
+
+            if (dto.GenreIds?.Any() == true)
+                tvShow.TvShowGenres = dto.GenreIds.Select(id => new TvShowGenre { GenreId = id }).ToList();
+
+            if (dto.PersonIds?.Any() == true)
+                tvShow.TvShowPeople = dto.PersonIds.Select(id => new TvShowPerson { PersonId = id }).ToList();
+
+            if (dto.TagIds?.Any() == true)
+                tvShow.TvShowTags = dto.TagIds.Select(id => new TvShowTag { TagId = id }).ToList();
+
+            if (dto.Seasons?.Any() == true)
+            {
+                var seasons = new List<Season>();
+                foreach (var s in dto.Seasons)
+                {
+                    var season = new Season
+                    {
+                        SeasonNumber = s.SeasonNumber,
+                        Episodes = new List<Episode>()
+                    };
+
+                    if (s.Episodes != null && s.Episodes.Any())
+                    {
+                        foreach (var ep in s.Episodes)
+                        {
+                            var episode = new Episode
+                            {
+                                EpisodeNumber = ep.EpisodeNumber,
+                                Title = ep.Title,
+                                Duration = ep.Duration
+                            };
+
+                            if (ep.Video != null)
+                            {
+                                var videoUrl = await _cloudinaryService.FileCreateAsync(ep.Video, "video");
+                                episode.VideoUrl = videoUrl;
+                                _logger.LogInformation("Uploaded episode video for TVShow '{Title}' season {Season} episode {EpisodeNumber}: {Url}", dto.Title, s.SeasonNumber, ep.EpisodeNumber, videoUrl);
+                            }
+                            else
+                            {
+                                _logger.LogInformation("No video uploaded for TVShow '{Title}' season {Season} episode {EpisodeNumber}", dto.Title, s.SeasonNumber, ep.EpisodeNumber);
+                            }
+
+                            season.Episodes.Add(episode);
+                        }
+                    }
+
+                    seasons.Add(season);
+                }
+
+                tvShow.Seasons = seasons;
+            }
+
+            await _repository.AddAsync(tvShow);
+            await _repository.SaveChangesAsync();
+
+            return new ResultDto
+            {
+                IsSucceed = true,
+                Message = "TV Show created successfully",
+                StatusCode = 201
+            };
+        }
+
+        public async Task<ResultDto> UpdateAsync(UpdateTvShowDto dto)
+        {
+            var tvShow = await _repository.GetByIdAsync(dto.Id);
+            if (tvShow is null)
+                throw new NotFoundException("TV Show not found.");
+
+            if (dto.PosterUrl != null)
+            {
+                var posterUrl = await _cloudinaryService.FileCreateAsync(dto.PosterUrl, "image");
+                if (!string.IsNullOrEmpty(tvShow.PosterUrl))
+                    await _cloudinaryService.FileDeleteAsync(tvShow.PosterUrl);
+                tvShow.PosterUrl = posterUrl;
+            }
+
+            //tvShow.TrailerUrl = dto.YoutubeUrl;
+            _mapper.Map(dto, tvShow);
+
+            if (dto.GenreIds != null)
+            {
+                tvShow.TvShowGenres.Clear();
+                tvShow.TvShowGenres = dto.GenreIds.Select(id => new TvShowGenre { TvShowId = dto.Id, GenreId = id }).ToList();
+            }
+
+            if (dto.PersonIds != null)
+            {
+                tvShow.TvShowPeople.Clear();
+                tvShow.TvShowPeople = dto.PersonIds.Select(id => new TvShowPerson { TvShowId = dto.Id, PersonId = id }).ToList();
+            }
+
+            if (dto.TagIds != null)
+            {
+                tvShow.TvShowTags.Clear();
+                tvShow.TvShowTags = dto.TagIds.Select(id => new TvShowTag { TvShowId = dto.Id, TagId = id }).ToList();
+            }
+
+            if (dto.Seasons != null && dto.Seasons.Any())
+            {
+                tvShow.Seasons.Clear();
+                var seasons = new List<Season>();
+                foreach (var s in dto.Seasons)
+                {
+                    var season = new Season
+                    {
+                        SeasonNumber = s.SeasonNumber,
+                        Episodes = new List<Episode>()
+                    };
+
+                    if (s.Episodes != null && s.Episodes.Any())
+                    {
+                        foreach (var ep in s.Episodes)
+                        {
+                            var episode = new Episode
+                            {
+                                EpisodeNumber = ep.EpisodeNumber,
+                                Title = ep.Title,
+                                Duration = ep.Duration
+                            };
+
+                            if (ep.Video != null)
+                            {
+                                var videoUrl = await _cloudinaryService.FileCreateAsync(ep.Video, "video");
+                                episode.VideoUrl = videoUrl;
+                            }
+
+                            season.Episodes.Add(episode);
+                        }
+                    }
+
+                    seasons.Add(season);
+                }
+
+                tvShow.Seasons = seasons;
+            }
+
+            _repository.Update(tvShow);
+            await _repository.SaveChangesAsync();
+
+            return new ResultDto
+            {
+                IsSucceed = true,
+                Message = "TV Show updated successfully",
+                StatusCode = 200
+            };
+        }
+
+        public async Task<ResultDto> DeleteAsync(int id)
+        {
+            var tvShow = await _repository.GetByIdAsync(id);
+            if (tvShow is null)
+                throw new NotFoundException("TV Show not found.");
+
+            if (!string.IsNullOrEmpty(tvShow.PosterUrl))
+                await _cloudinaryService.FileDeleteAsync(tvShow.PosterUrl);
+
+            _repository.Delete(tvShow);
+            await _repository.SaveChangesAsync();
+
+            return new ResultDto
+            {
+                IsSucceed = true,
+                Message = "TV Show deleted successfully",
+                StatusCode = 200
+            };
+        }
+
+        public async Task<List<GetTvShowDto>> GetAllAsync()
+        {
+            var tvShows = await _repository.GetAll(true)
+                .Include(x => x.TvShowGenres).ThenInclude(x => x.Genre)
+                .Include(x => x.TvShowPeople).ThenInclude(x => x.Person)
+                .Include(x => x.TvShowTags).ThenInclude(x => x.Tag)
+                .Include(x => x.Seasons)
+                .Include(x => x.Membership)
+                .Include(x => x.Language)
+                .ToListAsync();
+
+            return _mapper.Map<List<GetTvShowDto>>(tvShows);
+        }
+
+        public async Task<GetTvShowDto> GetByIdAsync(int id)
+        {
+            var tvShow = await _repository.GetAll(true)
+                .Include(x => x.TvShowGenres).ThenInclude(x => x.Genre)
+                .Include(x => x.TvShowPeople).ThenInclude(x => x.Person)
+                .Include(x => x.TvShowTags).ThenInclude(x => x.Tag)
+                .Include(x => x.Seasons)
+                .Include(x => x.Membership)
+                .Include(x => x.Language)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (tvShow is null)
+                throw new NotFoundException("TV Show not found.");
+
+            return _mapper.Map<GetTvShowDto>(tvShow);
+        }
+
+        public async Task<List<GetTvShowDto>> GetUpcomingTvShowsAsync()
+        {
+            var upcoming = await _repository.GetAll(true)
+                .Where(x => x.ReleaseDate > DateTime.UtcNow)
+                .Include(x => x.TvShowGenres).ThenInclude(x => x.Genre)
+                .Select(x => new GetTvShowDto
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    PosterUrl = x.PosterUrl,
+                    LanguageName = x.Language.Name,
+                    Genres = x.TvShowGenres.Select(g => new GenreDto { Id = g.Genre.Id, Name = g.Genre.Name }).ToList()
+                })
+                .ToListAsync();
+
+            return upcoming;
+        }
+
+        public async Task<ResultDto> IncrementViewAsync(int id)
+        {
+            var tvShow = await _repository.GetByIdAsync(id);
+            if (tvShow is null)
+                throw new NotFoundException("TV Show not found.");
+
+            if (tvShow.TvShowStatistics == null)
+            {
+                tvShow.TvShowStatistics = new TvShowStatistics
+                {
+                    TvShowId = id,
+                    ViewCount = 1
+                };
+            }
+            else
+            {
+                tvShow.TvShowStatistics.ViewCount += 1;
+            }
+
+            _repository.Update(tvShow);
+            await _repository.SaveChangesAsync();
+            return new ResultDto
+            {
+                IsSucceed = true,
+                Message = "View count incremented successfully",
+                StatusCode = 200
+            };
+        }
+
+        public async Task<List<GetTvShowDto>> GetLatestTvShowsAsync()
+        {
+            var latest = await _repository.GetAll(true)
+                .OrderByDescending(x => x.CreatedDate)
+                .Take(10)
+                .Include(x => x.TvShowGenres).ThenInclude(x => x.Genre)
+                .ToListAsync();
+
+            return _mapper.Map<List<GetTvShowDto>>(latest);
+        }
+
+        public async Task<List<GetTvShowDto>> GetBestInTvShowsAsync()
+        {
+            var best = await _repository.GetAll(true)
+                .Where(x => x.AverageRating > 0)
+                .OrderByDescending(x => x.AverageRating)
+                .Take(10)
+                .Include(x => x.TvShowGenres).ThenInclude(x => x.Genre)
+                .Include(x => x.Membership)
+                .Include(x => x.Language)
+                .Select(x => new GetTvShowDto
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    PosterUrl = x.PosterUrl,
+                    AverageRating = x.AverageRating,
+                    LanguageName = x.Language.Name,
+                    MembershipName = x.Membership.Name,
+                    Genres = x.TvShowGenres.Select(g => new GenreDto { Id = g.Genre.Id, Name = g.Genre.Name }).ToList()
+                })
+                .ToListAsync();
+
+            return best;
+        }
+
+       
+    }
+}

@@ -1,0 +1,84 @@
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using STREAMIT.Business.Dtos.KapitalBankOptionsDtos;
+using STREAMIT.Business.Dtos.PaymentDtos;
+using STREAMIT.Business.Services.Abstractions;
+using STREAMIT.Core.Entities;
+using STREAMIT.DataAccess.Contexts;
+using System;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
+
+namespace STREAMIT.Business.Services.Implementations
+{
+    public class KapitalBankPaymentService : IPaymentService
+    {
+        private readonly HttpClient httpClient;
+        private readonly KapitalBankOptions _optionsVM;
+
+
+        public KapitalBankPaymentService(HttpClient httpClient, IConfiguration configuration)
+        {
+            this.httpClient = httpClient;
+
+            _optionsVM = configuration.GetSection("KapitalBankOptions").Get<KapitalBankOptions>() ?? new();
+        }
+
+
+        public async Task<PurchaseVM> CreatePaymentAsync(MembershipCreateVM vm)
+        {
+            // payload matching the curl example (amount as string to match the sample)
+            var payload = new
+            {
+                order = new
+                {
+                    typeRid = "Order_SMS",
+                    amount = vm.Amount.ToString().Replace(",", "."),
+                    currency = vm.Currency,
+                    language = "az",
+                    description = vm.Description,
+                    hppRedirectUrl = vm.RedirectUrl,
+                    hppCofCapturePurposes = new[] { "Cit" }
+                }
+            };
+
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+            var json = JsonSerializer.Serialize(payload, options);
+
+            using var request = new HttpRequestMessage(HttpMethod.Post, "https://txpgtst.kapitalbank.az/api/order/");
+            request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var username = _optionsVM.Username;
+            var password = _optionsVM.Password;
+            var basicValue = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{username}:{password}"));
+            request.Headers.Authorization = new AuthenticationHeaderValue("Basic", basicValue);
+
+            using var response = await httpClient.SendAsync(request);
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new InvalidOperationException($"Payment request failed: {response.StatusCode} - {content}");
+            }
+
+
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<PurchaseVM>(content) ?? new();
+
+
+            return result;
+
+
+
+
+
+        }
+        public async Task<string> GetPaymentStatusAsync(string orderId)
+        {
+            return "FullyPaid"; // test üçün
+        }
+
+    
+    }
+}

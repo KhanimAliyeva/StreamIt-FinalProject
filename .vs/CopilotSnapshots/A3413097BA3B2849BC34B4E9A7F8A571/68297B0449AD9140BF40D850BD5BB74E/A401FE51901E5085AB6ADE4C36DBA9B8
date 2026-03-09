@@ -1,0 +1,85 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using STREAMIT.Business.Dtos.RatingDtos; // your DTO
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class RatingController : Controller
+    {
+        private readonly HttpClient _httpClient;
+
+        public RatingController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClient = httpClientFactory.CreateClient("ApiClient");
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("api/Ratings");
+                var content = await response.Content.ReadAsStringAsync();
+                ViewBag.RawResponse = content;
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    ViewBag.DebugStatusCode = (int)response.StatusCode;
+                    ViewBag.RawResponse = content;
+                    ViewBag.ApiErrors = new List<string> { $"Ratings: {(int)response.StatusCode} - {content}" };
+                    return View(new List<RatingDto>());
+                }
+
+                List<RatingDto>? ratings = null;
+                try
+                {
+                    // try to parse wrapper { data: [...] } or raw array
+                    if (!string.IsNullOrWhiteSpace(content) && content.TrimStart().StartsWith("{"))
+                    {
+                        var j = Newtonsoft.Json.Linq.JObject.Parse(content);
+                        JToken? dataToken = null;
+                        if (j.TryGetValue("data", StringComparison.OrdinalIgnoreCase, out var d)) dataToken = d;
+                        else if (j.Properties().Any(p => p.Value.Type == Newtonsoft.Json.Linq.JTokenType.Array))
+                            dataToken = j.Properties().First(p => p.Value.Type == Newtonsoft.Json.Linq.JTokenType.Array).Value;
+
+                        if (dataToken != null && dataToken.Type == Newtonsoft.Json.Linq.JTokenType.Array)
+                            ratings = dataToken.ToObject<List<RatingDto>>();
+                    }
+                    else
+                    {
+                        ratings = Newtonsoft.Json.JsonConvert.DeserializeObject<List<RatingDto>>(content);
+                    }
+                }
+                catch { }
+
+                ratings ??= new List<RatingDto>();
+                return View(ratings);
+            }
+            catch (HttpRequestException ex)
+            {
+                ViewBag.ApiErrors = new List<string> { ex.Message };
+                return View(new List<RatingDto>());
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"api/Ratings/{id}");
+                if (response.IsSuccessStatusCode)
+                    return RedirectToAction(nameof(Index));
+
+                ViewBag.ApiErrors = await response.Content.ReadAsStringAsync();
+                return BadRequest();
+            }
+            catch (HttpRequestException ex)
+            {
+                ViewBag.ApiErrors = ex.Message;
+                return BadRequest();
+            }
+        }
+    }
+}

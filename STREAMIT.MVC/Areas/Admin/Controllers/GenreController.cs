@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using STREAMIT.Business.Dtos;
+using Newtonsoft.Json.Linq;
 using STREAMIT.Business.Dtos.GenreDtos;
 using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.MVC.Areas.Admin.ViewModels;
 using System.Net.Http.Json;
 
 namespace STREAMIT.MVC.Areas.Admin.Controllers
@@ -17,71 +18,76 @@ namespace STREAMIT.MVC.Areas.Admin.Controllers
         }
 
         #region INDEX
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            var result = await SafeGetFromJson<ResultDto<List<GetGenreDto>>>("Genre");
-            var genres = result?.Data ?? new List<GetGenreDto>();
-            return View(genres);
+            var genres = await SafeGetListFromApi<GetGenreDto>("api/Genre");
+
+            int pageSize = 5;
+            int totalCount = genres.Count;
+
+            var pagedGenres = genres
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var model = new PagedGenreViewModel
+            {
+                Genres = pagedGenres,
+                CurrentPage = page,
+                PageSize = pageSize,
+                TotalCount = totalCount,
+                TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize)
+            };
+
+            return View(model);
         }
         #endregion
 
         #region CREATE
-        public IActionResult Create()
-        {
-            return View();
-        }
+        public IActionResult Create() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateGenreDto dto)
         {
-            if (!ModelState.IsValid)
-                return View(dto);
+            if (!ModelState.IsValid) return View(dto);
 
-            // post to API controller route (api/Genre)
             var response = await _httpClient.PostAsJsonAsync("api/Genre", dto);
-
             var content = await response.Content.ReadAsStringAsync();
 
             if (!response.IsSuccessStatusCode)
             {
-                // show API response for easier debugging
                 ViewBag.RawResponse = content;
                 ViewBag.DebugStatusCode = (int)response.StatusCode;
                 ModelState.AddModelError("", $"API Error {(int)response.StatusCode}: {content}");
                 return View(dto);
             }
 
-            // Success — redirect. API may return a non-generic ResultDto or a generic one; we don't require the payload here.
             return RedirectToAction(nameof(Index));
         }
         #endregion
 
-        #region UPDATE
+        #region EDIT
         public async Task<IActionResult> Edit(int id)
         {
-            // API returns GetGenreDto for GET by id; request that and map to UpdateGenreDto for the edit form
-            var getResult = await SafeGetFromJson<ResultDto<GetGenreDto>>($"Genre/{id}");
-            if (getResult == null || getResult.Data == null) return NotFound();
+            var genre = await SafeGetFromApi<GetGenreDto>($"api/Genre/{id}");
+            if (genre == null) return NotFound();
 
             var updateDto = new UpdateGenreDto
             {
-                Id = getResult.Data.Id,
-                Name = getResult.Data.Name
+                Id = genre.Id,
+                Name = genre.Name
             };
 
             return View(updateDto);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(UpdateGenreDto dto)
         {
-            if (!ModelState.IsValid)
-                return View(dto);
+            if (!ModelState.IsValid) return View(dto);
 
-            // API expects PUT to /api/Genre with the DTO in body
-            var response = await _httpClient.PutAsJsonAsync($"api/Genre", dto);
+            var response = await _httpClient.PutAsJsonAsync("api/Genre", dto);
             var content = await response.Content.ReadAsStringAsync();
 
             if (!response.IsSuccessStatusCode)
@@ -92,34 +98,89 @@ namespace STREAMIT.MVC.Areas.Admin.Controllers
                 return View(dto);
             }
 
-            // Success — redirect
             return RedirectToAction(nameof(Index));
         }
         #endregion
 
         #region DELETE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _httpClient.DeleteAsync($"api/Genre/{id}");
-
             var result = await SafeReadJson<ResultDto>(response);
 
             if (result == null || !result.IsSucceed)
-                return NotFound(result?.Message ?? "Something went wrong...");
+            {
+                TempData["DeleteError"] = result?.Message ?? "Something went wrong...";
+                return RedirectToAction(nameof(Index));
+            }
 
             return RedirectToAction(nameof(Index));
         }
         #endregion
 
         #region HELPERS
-        private async Task<T?> SafeGetFromJson<T>(string endpoint)
+        private async Task<List<T>> SafeGetListFromApi<T>(string endpoint)
         {
             try
             {
-                // use relative api path so client BaseAddress is respected
-                var response = await _httpClient.GetAsync($"api/{endpoint}");
-                response.EnsureSuccessStatusCode();
-                return await response.Content.ReadFromJsonAsync<T>();
+                var response = await _httpClient.GetAsync(endpoint);
+                if (!response.IsSuccessStatusCode) return new List<T>();
+
+                var content = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(content)) return new List<T>();
+
+                try
+                {
+                    var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultDto<List<T>>>(content);
+                    if (result != null && result.Data != null) return result.Data;
+                }
+                catch { }
+
+                if (content.TrimStart().StartsWith("{"))
+                {
+                    var j = JObject.Parse(content);
+                    JToken? dataToken = j["data"];
+                    if (dataToken != null && dataToken.Type == JTokenType.Array)
+                        return dataToken.ToObject<List<T>>() ?? new List<T>();
+                }
+
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<List<T>>(content) ?? new List<T>();
+            }
+            catch
+            {
+                return new List<T>();
+            }
+        }
+
+        private async Task<T?> SafeGetFromApi<T>(string endpoint)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync(endpoint);
+                if (!response.IsSuccessStatusCode) return default;
+
+                var content = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(content)) return default;
+
+                try
+                {
+                    var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultDto<T>>(content);
+                    if (result != null && result.Data != null)
+                        return result.Data;
+                }
+                catch { }
+
+                if (content.TrimStart().StartsWith("{"))
+                {
+                    var j = JObject.Parse(content);
+                    var dataToken = j["data"];
+                    if (dataToken != null && dataToken.Type == JTokenType.Object)
+                        return dataToken.ToObject<T>();
+                }
+
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(content);
             }
             catch
             {

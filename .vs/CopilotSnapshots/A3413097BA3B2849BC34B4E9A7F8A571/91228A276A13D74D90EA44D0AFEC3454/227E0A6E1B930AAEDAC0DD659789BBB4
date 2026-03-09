@@ -1,0 +1,260 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos;
+using STREAMIT.Business.Dtos.GenreDtos;
+using STREAMIT.Business.Dtos.LanguageDtos;
+using STREAMIT.Business.Dtos.MembershipDtos;
+using STREAMIT.Business.Dtos.PersonDtos;
+using STREAMIT.Business.Dtos.ResultDtos;
+using STREAMIT.Business.Dtos.TagDtos;
+using STREAMIT.Business.Dtos.TvShowDtos;
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class TvShowController(IHttpClientFactory httpClientFactory) : Controller
+    {
+        private readonly HttpClient _httpClient = httpClientFactory.CreateClient("ApiClient");
+
+        public async Task<IActionResult> Index()
+        {
+            var tvshows = await SafeGetFromJson<List<GetTvShowDto>>("TvShow");
+            return View(tvshows ?? new List<GetTvShowDto>());
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/TvShow/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await SafeReadJson<ResultDto>(response);
+                return NotFound(error?.Message ?? "Something went wrong...");
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            await LoadDropdowns();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateTvShowDto dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                await LoadDropdowns();
+                return View(dto);
+            }
+
+            var content = new MultipartFormDataContent();
+
+            content.Add(new StringContent(dto.Title), "Title");
+            content.Add(new StringContent(dto.MembershipId.ToString()), "MembershipId");
+            content.Add(new StringContent(dto.LanguageId.ToString()), "LanguageId");
+            content.Add(new StringContent(dto.Status), "Status");
+            content.Add(new StringContent(dto.Content), "Content");
+            content.Add(new StringContent(dto.YoutubeUrl), "YoutubeUrl");
+            content.Add(new StringContent(dto.ReleaseDate.ToString("o")), "ReleaseDate");
+
+            // File əlavə edirik
+            if (dto.PosterUrl != null)
+            {
+                var streamContent = new StreamContent(dto.PosterUrl.OpenReadStream());
+                streamContent.Headers.ContentType =
+                    new System.Net.Http.Headers.MediaTypeHeaderValue(dto.PosterUrl.ContentType);
+
+                content.Add(streamContent, "PosterUrl", dto.PosterUrl.FileName);
+            }
+
+            // List-lər
+            foreach (var id in dto.GenreIds)
+                content.Add(new StringContent(id.ToString()), "GenreIds");
+
+            foreach (var id in dto.TagIds)
+                content.Add(new StringContent(id.ToString()), "TagIds");
+
+            foreach (var id in dto.PersonIds)
+                content.Add(new StringContent(id.ToString()), "PersonIds");
+
+            // Seasons & Episodes
+            if (dto.Seasons != null && dto.Seasons.Any())
+            {
+                for (int s = 0; s < dto.Seasons.Count; s++)
+                {
+                    var season = dto.Seasons[s];
+                    content.Add(new StringContent(season.SeasonNumber.ToString()), $"Seasons[{s}].SeasonNumber");
+
+                    if (season.Episodes != null && season.Episodes.Any())
+                    {
+                        for (int e = 0; e < season.Episodes.Count; e++)
+                        {
+                            var ep = season.Episodes[e];
+                            content.Add(new StringContent(ep.EpisodeNumber.ToString()), $"Seasons[{s}].Episodes[{e}].EpisodeNumber");
+                            content.Add(new StringContent(ep.Title ?? string.Empty), $"Seasons[{s}].Episodes[{e}].Title");
+                            content.Add(new StringContent(ep.Duration.ToString(System.Globalization.CultureInfo.InvariantCulture)), $"Seasons[{s}].Episodes[{e}].Duration");
+
+                            if (ep.Video != null)
+                            {
+                                var vStream = new StreamContent(ep.Video.OpenReadStream());
+                                vStream.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(ep.Video.ContentType);
+                                content.Add(vStream, $"Seasons[{s}].Episodes[{e}].Video", ep.Video.FileName);
+                            }
+                        }
+                    }
+                }
+            }
+
+            var response = await _httpClient.PostAsync("api/TvShow", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                await LoadDropdowns();
+                var error = await SafeReadJson<ResultDto>(response);
+                ModelState.AddModelError("", error?.Message ?? "Something went wrong...");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Update(int id)
+        {
+            var result = await SafeGetFromJson<ResultDto<UpdateTvShowDto>>($"api/TvShow/{id}");
+            if (result == null || result.Data == null) return BadRequest();
+
+            await LoadDropdowns();
+            return View(result.Data);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateTvShowDto dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                await LoadDropdowns();
+                return View(dto);
+            }
+
+            // Build multipart form data because Update endpoint expects multipart (contains files)
+            var content = new MultipartFormDataContent();
+            content.Add(new StringContent(dto.Id.ToString()), "Id");
+            content.Add(new StringContent(dto.Title), "Title");
+            content.Add(new StringContent(dto.MembershipId.ToString()), "MembershipId");
+            content.Add(new StringContent(dto.LanguageId.ToString()), "LanguageId");
+            content.Add(new StringContent(dto.Status), "Status");
+            content.Add(new StringContent(dto.Content), "Content");
+            content.Add(new StringContent(dto.YoutubeUrl), "YoutubeUrl");
+            content.Add(new StringContent(dto.ReleaseDate.ToString("o")), "ReleaseDate");
+
+            if (dto.PosterUrl != null)
+            {
+                var streamContent = new StreamContent(dto.PosterUrl.OpenReadStream());
+                streamContent.Headers.ContentType =
+                    new System.Net.Http.Headers.MediaTypeHeaderValue(dto.PosterUrl.ContentType);
+
+                content.Add(streamContent, "PosterUrl", dto.PosterUrl.FileName);
+            }
+
+            foreach (var id in dto.GenreIds)
+                content.Add(new StringContent(id.ToString()), "GenreIds");
+
+            foreach (var id in dto.TagIds)
+                content.Add(new StringContent(id.ToString()), "TagIds");
+
+            foreach (var id in dto.PersonIds)
+                content.Add(new StringContent(id.ToString()), "PersonIds");
+
+            // Seasons & Episodes for update
+            if (dto.Seasons != null && dto.Seasons.Any())
+            {
+                for (int s = 0; s < dto.Seasons.Count; s++)
+                {
+                    var season = dto.Seasons[s];
+                    content.Add(new StringContent(season.SeasonNumber.ToString()), $"Seasons[{s}].SeasonNumber");
+
+                    if (season.Episodes != null && season.Episodes.Any())
+                    {
+                        for (int e = 0; e < season.Episodes.Count; e++)
+                        {
+                            var ep = season.Episodes[e];
+                            content.Add(new StringContent(ep.EpisodeNumber.ToString()), $"Seasons[{s}].Episodes[{e}].EpisodeNumber");
+                            content.Add(new StringContent(ep.Title ?? string.Empty), $"Seasons[{s}].Episodes[{e}].Title");
+                            content.Add(new StringContent(ep.Duration.ToString(System.Globalization.CultureInfo.InvariantCulture)), $"Seasons[{s}].Episodes[{e}].Duration");
+
+                            if (ep.Video != null)
+                            {
+                                var vStream = new StreamContent(ep.Video.OpenReadStream());
+                                vStream.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(ep.Video.ContentType);
+                                content.Add(vStream, $"Seasons[{s}].Episodes[{e}].Video", ep.Video.FileName);
+                            }
+                        }
+                    }
+                }
+            }
+
+            var response = await _httpClient.PutAsync($"api/TvShow/{dto.Id}", content);
+            if (!response.IsSuccessStatusCode)
+            {
+                await LoadDropdowns();
+                var error = await SafeReadJson<ResultDto>(response);
+                ModelState.AddModelError("", error?.Message ?? "Something went wrong...");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var result = await SafeGetFromJson<ResultDto<GetTvShowDto>>($"api/TvShow/{id}");
+            if (result == null) return BadRequest();
+            return View(result.Data);
+        }
+
+        private async Task LoadDropdowns()
+        {
+            ViewBag.Genres = await GetListSafe<GenreDto>("Genre");
+            ViewBag.Tags = await GetListSafe<TagDto>("Tag");
+            ViewBag.People = await GetListSafe<PersonDto>("Person");
+            ViewBag.Languages = await GetListSafe<LanguageDto>("Language");
+            ViewBag.Memberships = await GetListSafe<MembershipDto>("Membership");
+        }
+
+        private async Task<List<T>> GetListSafe<T>(string endpoint)
+        {
+            var resultDto = await SafeGetFromJson<ResultDto<List<T>>>(endpoint);
+            if (resultDto != null) return resultDto.Data ?? new List<T>();
+
+            var rawList = await SafeGetFromJson<List<T>>(endpoint);
+            return rawList ?? new List<T>();
+        }
+
+        private async Task<T?> SafeGetFromJson<T>(string endpoint)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"api/{endpoint}");
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+
+        private async Task<T?> SafeReadJson<T>(HttpResponseMessage response)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+    }
+}

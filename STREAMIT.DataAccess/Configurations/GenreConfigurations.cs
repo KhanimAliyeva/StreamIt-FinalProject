@@ -29,12 +29,7 @@ namespace STREAMIT.DataAccess.Configurations
                    .HasForeignKey(mg => mg.GenreId)
                    .OnDelete(DeleteBehavior.Cascade);
 
-            // Genre -> TvShowGenres (One to Many)
-            builder.HasMany(g => g.TVShowGenres)
-                   .WithOne(tg => tg.Genre)
-                   .HasForeignKey(tg => tg.GenreId)
-                   .OnDelete(DeleteBehavior.Cascade);
-
+     
             // Constraints / Indexes
 
             builder.HasIndex(g => g.Name)

@@ -1,0 +1,49 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos.RatingDtos; // your DTO
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class RatingController : Controller
+    {
+        private readonly HttpClient _httpClient;
+
+        public RatingController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClient = httpClientFactory.CreateClient("ApiClient");
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var movieRatings = await _httpClient.GetFromJsonAsync<List<RatingDto>>("api/ratings/movies");
+            var tvRatings = await _httpClient.GetFromJsonAsync<List<RatingDto>>("api/ratings/tvshows");
+
+            var allRatings = movieRatings!.Concat(tvRatings!)
+                                         .OrderByDescending(r => r.Rating)
+                                         .ToList();
+
+            return View(allRatings);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, string category)
+        {
+            HttpResponseMessage response;
+
+            if (category == "Movie")
+            {
+                response = await _httpClient.DeleteAsync($"api/ratings/movies/{id}");
+            }
+            else
+            {
+                response = await _httpClient.DeleteAsync($"api/ratings/tvshows/{id}");
+            }
+
+            if (response.IsSuccessStatusCode)
+                return RedirectToAction(nameof(Index));
+
+            return BadRequest();
+        }
+    }
+}

@@ -4,6 +4,7 @@ using STREAMIT.Business.Dtos.LanguageDtos;
 using STREAMIT.Business.Dtos.MembershipDtos;
 using STREAMIT.Business.Dtos.MovieStaticticsDtos;
 using STREAMIT.Business.Dtos.PersonDtos;
+using STREAMIT.Business.Dtos.ReviewDtos;
 using STREAMIT.Business.Dtos.TagDtos;
 using STREAMIT.Core.Entities;
 using System;
@@ -21,10 +22,15 @@ namespace STREAMIT.Business.Dtos.MovieDtos
         public string PosterUrl { get; set; } = string.Empty;
         public string TrailerUrl { get; set; } = string.Empty;
         public string MovieUrl { get; set; } = string.Empty;
+        public string YoutubeUrl { get; set; } = string.Empty;
+        public string Content { get; set; } = string.Empty;
         public DateTime ReleaseDate { get; set; }
         public float Duration { get; set; }
-        public decimal Imdb { get; set; }
         public string Status { get; set; } = string.Empty;
+        public bool IsInWatchList { get; set; }
+
+        public decimal AverageRating { get; set; }
+        public int RatingCount { get; set; }
 
 
         public string MembershipName { get; set; } = string.Empty;
@@ -33,8 +39,9 @@ namespace STREAMIT.Business.Dtos.MovieDtos
         public MovieStatisticsDto? MovieStatistics { get; set; }
 
         public List<GenreDto> Genres { get; set; } = new();
-        public List<string> Tags { get; set; } = new();
+        public List<TagDto> Tags { get; set; } = new();
         public List<PersonDto> People { get; set; } = new();
+        public List<ReviewDto> Reviews { get; set; } = new();
     }
 
 }

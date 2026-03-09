@@ -1,6 +1,4 @@
-﻿namespace STREAMIT.Business.Dtos.TagDtos
-{
-    namespace STREAMIT.Business.Dtos.TagDtos
+﻿    namespace STREAMIT.Business.Dtos.TagDtos
     {
         public class UpdateTagDto
         {
@@ -9,4 +7,3 @@
         }
     }
 
-}

@@ -167,6 +167,9 @@ namespace STREAMIT.DataAccess.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -201,6 +204,9 @@ namespace STREAMIT.DataAccess.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ProfilePictureUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
@@ -228,6 +234,131 @@ namespace STREAMIT.DataAccess.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.CommunityGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CommunityGroups");
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.CommunityMessage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CommunityMessages");
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.CommunityMessageRead", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<long>("MessageId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("ReadAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("CommunityMessageReads");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.Episode", b =>
@@ -265,6 +396,33 @@ namespace STREAMIT.DataAccess.Migrations
                         .IsUnique();
 
                     b.ToTable("Episodes", (string)null);
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.Favorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Favorites");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.Genre", b =>
@@ -398,6 +556,9 @@ namespace STREAMIT.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<decimal>("AverageRating")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasMaxLength(2000)
@@ -419,10 +580,6 @@ namespace STREAMIT.DataAccess.Migrations
                     b.Property<float>("Duration")
                         .HasColumnType("real");
 
-                    b.Property<decimal>("Imdb")
-                        .HasPrecision(3, 1)
-                        .HasColumnType("decimal(3,1)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -442,6 +599,9 @@ namespace STREAMIT.DataAccess.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int>("RatingCount")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
@@ -455,20 +615,18 @@ namespace STREAMIT.DataAccess.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("TrailerUrl")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.Property<string>("YoutubeUrl")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
-                    b.HasIndex("Imdb");
+                    b.HasKey("Id");
 
                     b.HasIndex("LanguageId");
 
@@ -587,6 +745,48 @@ namespace STREAMIT.DataAccess.Migrations
                     b.ToTable("MovieTags");
                 });
 
+            modelBuilder.Entity("STREAMIT.Core.Entities.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MembershipId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OrderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RedirectUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Payments");
+                });
+
             modelBuilder.Entity("STREAMIT.Core.Entities.Person", b =>
                 {
                     b.Property<int>("Id")
@@ -623,6 +823,10 @@ namespace STREAMIT.DataAccess.Migrations
 
                     b.Property<float>("Popularity")
                         .HasColumnType("real");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -689,62 +893,6 @@ namespace STREAMIT.DataAccess.Migrations
                     b.ToTable("ReviewMovies");
                 });
 
-            modelBuilder.Entity("STREAMIT.Core.Entities.ReviewTvShow", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("Rating")
-                        .HasPrecision(2, 1)
-                        .HasColumnType("decimal(2,1)");
-
-                    b.Property<int>("TvShowId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TvShowId");
-
-                    b.HasIndex("UserId", "TvShowId")
-                        .IsUnique();
-
-                    b.ToTable("ReviewTvShows", (string)null);
-                });
-
             modelBuilder.Entity("STREAMIT.Core.Entities.Season", b =>
                 {
                     b.Property<int>("Id")
@@ -767,7 +915,7 @@ namespace STREAMIT.DataAccess.Migrations
                     b.ToTable("Seasons", (string)null);
                 });
 
-            modelBuilder.Entity("STREAMIT.Core.Entities.TVShow", b =>
+            modelBuilder.Entity("STREAMIT.Core.Entities.Slider", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -775,79 +923,44 @@ namespace STREAMIT.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("nvarchar(2000)");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Imdb")
-                        .HasPrecision(3, 1)
-                        .HasColumnType("decimal(3,1)");
-
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("LanguageId")
+                    b.Property<int>("MovieId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MembershipId")
+                    b.Property<int>("Order")
                         .HasColumnType("int");
-
-                    b.Property<string>("PosterUrl")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<DateTime>("ReleaseDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("TrailerUrl")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Imdb");
+                    b.HasIndex("MovieId");
 
-                    b.HasIndex("LanguageId");
+                    b.ToTable("Sliders");
+                });
 
-                    b.HasIndex("MembershipId");
+            modelBuilder.Entity("STREAMIT.Core.Entities.Slider2", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.HasIndex("ReleaseDate");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.HasIndex("Title");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
-                    b.ToTable("TVShows", (string)null);
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("Sliders2");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.Tag", b =>
@@ -869,117 +982,6 @@ namespace STREAMIT.DataAccess.Migrations
                         .IsUnique();
 
                     b.ToTable("Tags", (string)null);
-                });
-
-            modelBuilder.Entity("STREAMIT.Core.Entities.TvShowGenre", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("GenreId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TvShowId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GenreId");
-
-                    b.HasIndex("TvShowId", "GenreId")
-                        .IsUnique();
-
-                    b.ToTable("TvShowGenres", (string)null);
-                });
-
-            modelBuilder.Entity("STREAMIT.Core.Entities.TvShowPerson", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CastOrder")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("TvShowId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId");
-
-                    b.HasIndex("TvShowId", "CastOrder");
-
-                    b.HasIndex("TvShowId", "PersonId")
-                        .IsUnique();
-
-                    b.ToTable("TvShowPeople", (string)null);
-                });
-
-            modelBuilder.Entity("STREAMIT.Core.Entities.TvShowStatistics", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("LikeCount")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.Property<int>("TvShowId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ViewCount")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TvShowId")
-                        .IsUnique();
-
-                    b.ToTable("TvShowStatistics", (string)null);
-                });
-
-            modelBuilder.Entity("STREAMIT.Core.Entities.TvShowTag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TvShowId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TagId");
-
-                    b.HasIndex("TvShowId", "TagId")
-                        .IsUnique();
-
-                    b.ToTable("TvShowTags", (string)null);
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.UserMembership", b =>
@@ -1092,7 +1094,7 @@ namespace STREAMIT.DataAccess.Migrations
                     b.ToTable("UserMovies", (string)null);
                 });
 
-            modelBuilder.Entity("STREAMIT.Core.Entities.UserTvShow", b =>
+            modelBuilder.Entity("STREAMIT.Core.Entities.WatchHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1100,30 +1102,47 @@ namespace STREAMIT.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CreatedBy")
+                    b.Property<string>("AppUserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DeletedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("TvShowId")
+                    b.Property<int>("Duration")
                         .HasColumnType("int");
 
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("LastWatchedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WatchedMinutes")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("WatchHistories");
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.WatchList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -1131,12 +1150,11 @@ namespace STREAMIT.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TvShowId");
+                    b.HasIndex("MovieId");
 
-                    b.HasIndex("UserId", "TvShowId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
-                    b.ToTable("UserTvShows", (string)null);
+                    b.ToTable("WatchLists");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1190,6 +1208,36 @@ namespace STREAMIT.DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("STREAMIT.Core.Entities.CommunityMessage", b =>
+                {
+                    b.HasOne("STREAMIT.Core.Entities.CommunityGroup", "Group")
+                        .WithMany("Messages")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("STREAMIT.Core.Entities.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.CommunityMessageRead", b =>
+                {
+                    b.HasOne("STREAMIT.Core.Entities.CommunityMessage", "Message")
+                        .WithMany("Reads")
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Message");
+                });
+
             modelBuilder.Entity("STREAMIT.Core.Entities.Episode", b =>
                 {
                     b.HasOne("STREAMIT.Core.Entities.Season", "Season")
@@ -1199,6 +1247,25 @@ namespace STREAMIT.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Season");
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.Favorite", b =>
+                {
+                    b.HasOne("STREAMIT.Core.Entities.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("STREAMIT.Core.Entities.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.Movie", b =>
@@ -1250,7 +1317,7 @@ namespace STREAMIT.DataAccess.Migrations
                     b.HasOne("STREAMIT.Core.Entities.Person", "Person")
                         .WithMany("MoviePeople")
                         .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Movie");
@@ -1307,121 +1374,26 @@ namespace STREAMIT.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("STREAMIT.Core.Entities.ReviewTvShow", b =>
+            modelBuilder.Entity("STREAMIT.Core.Entities.Slider", b =>
                 {
-                    b.HasOne("STREAMIT.Core.Entities.TVShow", "TvShow")
-                        .WithMany("Reviews")
-                        .HasForeignKey("TvShowId")
+                    b.HasOne("STREAMIT.Core.Entities.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("STREAMIT.Core.Entities.AppUser", "User")
-                        .WithMany("TvShowReviews")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TvShow");
-
-                    b.Navigation("User");
+                    b.Navigation("Movie");
                 });
 
-            modelBuilder.Entity("STREAMIT.Core.Entities.Season", b =>
+            modelBuilder.Entity("STREAMIT.Core.Entities.Slider2", b =>
                 {
-                    b.HasOne("STREAMIT.Core.Entities.TVShow", "TVShow")
-                        .WithMany("Seasons")
-                        .HasForeignKey("TVShowId")
+                    b.HasOne("STREAMIT.Core.Entities.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("TVShow");
-                });
-
-            modelBuilder.Entity("STREAMIT.Core.Entities.TVShow", b =>
-                {
-                    b.HasOne("STREAMIT.Core.Entities.Language", "Language")
-                        .WithMany("TVShows")
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("STREAMIT.Core.Entities.Membership", "Membership")
-                        .WithMany("TVShows")
-                        .HasForeignKey("MembershipId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Language");
-
-                    b.Navigation("Membership");
-                });
-
-            modelBuilder.Entity("STREAMIT.Core.Entities.TvShowGenre", b =>
-                {
-                    b.HasOne("STREAMIT.Core.Entities.Genre", "Genre")
-                        .WithMany("TVShowGenres")
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("STREAMIT.Core.Entities.TVShow", "TvShow")
-                        .WithMany("TvShowGenres")
-                        .HasForeignKey("TvShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Genre");
-
-                    b.Navigation("TvShow");
-                });
-
-            modelBuilder.Entity("STREAMIT.Core.Entities.TvShowPerson", b =>
-                {
-                    b.HasOne("STREAMIT.Core.Entities.Person", "Person")
-                        .WithMany("TVShowPeople")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("STREAMIT.Core.Entities.TVShow", "TvShow")
-                        .WithMany("TvShowPeople")
-                        .HasForeignKey("TvShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Person");
-
-                    b.Navigation("TvShow");
-                });
-
-            modelBuilder.Entity("STREAMIT.Core.Entities.TvShowStatistics", b =>
-                {
-                    b.HasOne("STREAMIT.Core.Entities.TVShow", "TVShow")
-                        .WithOne("TvShowStatistics")
-                        .HasForeignKey("STREAMIT.Core.Entities.TvShowStatistics", "TvShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TVShow");
-                });
-
-            modelBuilder.Entity("STREAMIT.Core.Entities.TvShowTag", b =>
-                {
-                    b.HasOne("STREAMIT.Core.Entities.Tag", "Tag")
-                        .WithMany("TVShowTags")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("STREAMIT.Core.Entities.TVShow", "TvShow")
-                        .WithMany("TvShowTags")
-                        .HasForeignKey("TvShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tag");
-
-                    b.Navigation("TvShow");
+                    b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.UserMembership", b =>
@@ -1462,21 +1434,40 @@ namespace STREAMIT.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("STREAMIT.Core.Entities.UserTvShow", b =>
+            modelBuilder.Entity("STREAMIT.Core.Entities.WatchHistory", b =>
                 {
-                    b.HasOne("STREAMIT.Core.Entities.TVShow", "TVShow")
-                        .WithMany("UserTvShows")
-                        .HasForeignKey("TvShowId")
+                    b.HasOne("STREAMIT.Core.Entities.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("STREAMIT.Core.Entities.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.WatchList", b =>
+                {
+                    b.HasOne("STREAMIT.Core.Entities.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("STREAMIT.Core.Entities.AppUser", "User")
-                        .WithMany("UserTvShows")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("TVShow");
+                    b.Navigation("Movie");
 
                     b.Navigation("User");
                 });
@@ -1485,34 +1476,34 @@ namespace STREAMIT.DataAccess.Migrations
                 {
                     b.Navigation("MovieReviews");
 
-                    b.Navigation("TvShowReviews");
-
                     b.Navigation("UserMemberships");
 
                     b.Navigation("UserMovies");
+                });
 
-                    b.Navigation("UserTvShows");
+            modelBuilder.Entity("STREAMIT.Core.Entities.CommunityGroup", b =>
+                {
+                    b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.CommunityMessage", b =>
+                {
+                    b.Navigation("Reads");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.Genre", b =>
                 {
                     b.Navigation("MovieGenres");
-
-                    b.Navigation("TVShowGenres");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.Language", b =>
                 {
                     b.Navigation("Movies");
-
-                    b.Navigation("TVShows");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.Membership", b =>
                 {
                     b.Navigation("Movies");
-
-                    b.Navigation("TVShows");
 
                     b.Navigation("UserMemberships");
                 });
@@ -1535,8 +1526,6 @@ namespace STREAMIT.DataAccess.Migrations
             modelBuilder.Entity("STREAMIT.Core.Entities.Person", b =>
                 {
                     b.Navigation("MoviePeople");
-
-                    b.Navigation("TVShowPeople");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.Season", b =>
@@ -1544,28 +1533,9 @@ namespace STREAMIT.DataAccess.Migrations
                     b.Navigation("Episodes");
                 });
 
-            modelBuilder.Entity("STREAMIT.Core.Entities.TVShow", b =>
-                {
-                    b.Navigation("Reviews");
-
-                    b.Navigation("Seasons");
-
-                    b.Navigation("TvShowGenres");
-
-                    b.Navigation("TvShowPeople");
-
-                    b.Navigation("TvShowStatistics");
-
-                    b.Navigation("TvShowTags");
-
-                    b.Navigation("UserTvShows");
-                });
-
             modelBuilder.Entity("STREAMIT.Core.Entities.Tag", b =>
                 {
                     b.Navigation("MovieTags");
-
-                    b.Navigation("TVShowTags");
                 });
 #pragma warning restore 612, 618
         }

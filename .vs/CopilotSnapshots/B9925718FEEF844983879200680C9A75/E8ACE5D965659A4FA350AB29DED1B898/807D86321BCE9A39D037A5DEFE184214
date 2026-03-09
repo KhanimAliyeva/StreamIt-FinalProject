@@ -1,0 +1,669 @@
+﻿@model STREAMIT.Business.Dtos.MovieDtos.GetMovieDto
+
+<div class="poition-relative">
+  <div class="iq-main-slider site-video position-relative">
+    <video id="my-video" poster="@Model.PosterUrl"
+      class="my-video video-js vjs-big-play-centered w-100" loop autoplay muted preload="auto" data-setup='{
+                  "techOrder": ["youtube"],
+                  "sources": [{
+                      "type": "video/youtube",
+                      "src": "@Model.YoutubeUrl"
+                  }],
+                  "youtube": {         
+                      "modestbranding": 1,
+                      "rel": 0,
+                      "showinfo": 0,
+                      "autoplay": 1
+                  },
+                  "fullscreen": true
+              }'>
+    </video>
+  </div>
+
+
+  <div class="movie-detail-part position-relative">
+    <div class="trending-info pt-0 pb-0">
+      <div class="details-parts">
+        <!-- Movie Description Start-->
+        <ul class="p-0 mb-2 list-inline d-flex flex-wrap movie-tag">
+         @foreach (var genre in Model.Genres)
+                    {
+                        <li class="trending-list"><a class="" href="./view-all-movie.html">@genre.Name</a></li>
+                    }
+        </ul>
+
+        <div class="d-block d-lg-flex align-items-center">
+          <h3 class="trending-text fw-bold texture-text text-uppercase my-0 fadeInLeft animated d-inline-block"
+            data-animation-in="fadeInLeft" data-delay-in="0.6" style="opacity: 1; animation-delay: 0.6s">
+            @Model.Title
+          </h3>
+        </div>
+        <div class="movie-description mt-3 mb-4" id="readmore-wrapper">
+          <p class="line-count-3 RightAnimate-two mb-0">@Model.Content</p>
+          <div class="iq-blog-meta-cat-tag iq-blogtag readmore-tags">
+            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#viewMoreDataModal" class="position-relative">Read More</a>
+          </div>
+        </div>
+        
+        
+        
+        <ul class="list-inline mb-0 mx-0 p-0 d-flex align-items-center flex-wrap gap-3 movie-metalist">
+        
+          <!-- Movie Releas data  -->
+          <li>
+            <span class="d-flex align-items-center gap-1">
+              <span class="fw-medium">
+                @Model.ReleaseDate.Year </span>
+            </span>
+          </li>
+        
+          <!-- Movie Runtime  -->
+          <li>
+            <span class="d-flex align-items-center gap-1">
+              <span class="d-flex align-items-center justify-content-center"><i class="ph ph-clock"></i></span>
+             @Model.Duration.ToString("0.##") mins
+          </span>
+          </li>
+        
+          <!-- Movie Views  -->
+          <li>
+            <div class="d-flex align-items-center gap-1">
+              <i class="ph ph-eye"></i>
+              <span class="">@Model.MovieStatistics?.ViewCount ?? 0 views</span>
+            </div>
+          </li>
+        
+          <!-- Movie IMDP Rating  -->
+          <li>
+            <span class="d-flex align-items-center gap-1">
+              <span class="fw-medium">
+                <span>
+                @Model.AverageRating </span>
+                <span class="imdb-logo ms-1">
+                  <img src="./assets/images/pages/imdb-logo.svg" loading="lazy" decoding="async" alt="imdb logo"
+                    class="img-fluid imdb-logo1">
+                </span>
+              </span>
+            </span>
+          </li>
+        
+          <!-- Movie Censor Rating -->
+     
+        
+        </ul>
+        
+        <div class="video-language d-flex align-items-center gap-1 mt-2">
+          <i class="ph ph-translate"></i>
+          <ul class="list-inline m-0 p-0 d-inline-flex align-items-center gap-3 flex-wrap">
+
+            <li>
+              <small class="text-capitalize">@Model.LanguageName</small>
+            </li>
+        
+            <!-- Display additional languages count if applicable -->
+          </ul>
+        </div>
+        <div class="d-flex align-items-center flex-wrap gap-3 gap-md-4 my-5">
+          <div class="iq-play-button iq-button">
+            <a href="movie-player.html" class="btn btn-primary w-100 rounded d-flex align-items-center justify-content-center gap-2 lh-1">
+                <span><i class="ph-fill ph-play"></i></span>
+                <span>Start Watching</span>
+            </a>
+          </div>
+        
+          <div class="watchlist-button-wrapper">
+        
+            <a href="./watchlist-detail.html" class="btn btn-secondary border rounded" data-bs-toggle="tooltip"
+              data-bs-placement="top" data-bs-original-title="Add to watchlist" data-bs-trigger="focus">
+              <span class="d-flex align-items-center justify-content-center gap-2">
+                <span class="fw-semibold"><i class="ph ph-plus"></i></span>
+                <span class="fw-semibold">Watch List</span>
+              </span>
+            </a>
+          </div>
+          <div class="d-flex align-items-center gap-3 flex-wrap">
+            <button type="button" class="action-btn btn btn-secondary border" data-bs-toggle="modal" data-bs-target="#likeModal"
+              id="like-toggle">
+              <span id="like-movies">
+                <span class="h-100 w-100 d-block" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Like">
+                  <i class="ph ph-heart heart-icon"></i>
+                </span>
+              </span>
+            </button>
+        
+            <button type="button" class="action-btn btn btn-secondary border" data-bs-toggle="modal"
+              data-bs-target="#shareModal">
+              <span class="h-100 w-100 d-block" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Share">
+                <i class="ph ph-share-network"></i>
+              </span>
+            </button>
+        
+            <button type="button" class="btn btn-secondary action-btn border" data-bs-toggle="modal"
+              data-bs-target="#playlistModal">
+              <span class="h-100 w-100 d-block" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Playlist">
+                <i class="ph ph-playlist"></i>
+              </span>
+            </button>
+        
+            <button type="button" class="btn btn-secondary action-btn border" data-bs-toggle="modal"
+              data-bs-target="#downloadModal">
+              <span class="h-100 w-100 d-block" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-original-title="Download">
+                <i class="ph ph-download-simple"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+        <!-- Movie Description End -->
+        
+
+
+
+
+
+
+
+
+
+        <!-- Modals -->
+        <div class="modal fade view-more-data-modal" id="playlistModal" tabindex="-1" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-dialog-centered share-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Select Playlist</h5>
+                        <button type="button" class="btn-close me-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body py-0">
+                        <div class="playlist-modal-content">
+                            <div class="form-check"><input id="26" class="st_manage_playlist form-check-input" type="checkbox"
+                                    data-playlist_id="26" data-post_id="32" data-post_type="movie"><label for="26">222</label>
+                            </div>
+                            <div class="form-check"><input id="14" class="st_manage_playlist form-check-input" type="checkbox"
+                                    data-playlist_id="14" data-post_id="32" data-post_type="movie"><label for="14">90s
+                                    Throwback</label></div>
+                            <div class="form-check"><input id="11" class="st_manage_playlist form-check-input" type="checkbox"
+                                    data-playlist_id="11" data-post_id="32" data-post_type="movie" checked=""><label
+                                    for="11">Action</label>
+                            </div>
+                            <div class="form-check"><input id="10" class="st_manage_playlist form-check-input" type="checkbox"
+                                    data-playlist_id="10" data-post_id="32" data-post_type="movie" checked=""><label
+                                    for="10">Blockbuster</label>
+                            </div>
+                            <div class="form-check"><input id="9" class="st_manage_playlist form-check-input" type="checkbox"
+                                    data-playlist_id="9" data-post_id="32" data-post_type="movie"><label for="9">Dramas</label>
+                            </div>
+                            <div class="form-check"><input id="13" class="st_manage_playlist form-check-input" type="checkbox"
+                                    data-playlist_id="13" data-post_id="32" data-post_type="movie"><label
+                                    for="13">Horror</label></div>
+                            <div class="form-check"><input id="15" class="st_manage_playlist form-check-input" type="checkbox"
+                                    data-playlist_id="15" data-post_id="32" data-post_type="movie"><label for="15">Road Trip
+                                    Movies</label>
+                            </div>
+                            <div class="form-check"><input id="12" class="st_manage_playlist form-check-input" type="checkbox"
+                                    data-playlist_id="12" data-post_id="32" data-post_type="movie"><label for="12">Romantic
+                                    ...</label></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 p-4">
+                        <button type="button" class="playlist-action-btn btn btn-secondary border" data-bs-toggle="modal"
+                            data-bs-target="#creatplaylistModal">
+                            Create Playlist </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade view-more-data-modal" id="creatplaylistModal" tabindex="-1" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-dialog-centered share-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Create Playlist</h5>
+                        <button type="button" class="btn-close me-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-0">
+                        <form id="st_creat_playlist" action="#" method="post">
+                            <input type="hidden" id="st_playlist_post_type" value="movie">
+                            <div class="form-group mb-4">
+                                <label class="form-label">Playlist Title</label>
+                                <span class="text-danger">*</span>
+                                <input class="form-control" type="text" id="st_playlist_title" value="">
+                            </div>
+                            <div class="iq-button d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary position-relative" data-bs-toggle="modal"
+                                    data-bs-target="#addNewPlaylist">
+                                    <span class="button-text">Create Playlist</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade view-more-data-modal" id="shareModal" tabindex="-1" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-dialog-centered share-modal">
+                <div class="modal-content">
+                    <div class="modal-header pb-0">
+                        <h5 class="modal-title" id="exampleModalLabelshare">Share</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="share-media-box">
+                            <div class="media-box">
+                                <a href="https://www.facebook.com/" target="_blank">
+                                    <span class="image-icon">
+                                        <i class="icon-facebook-icon"></i>
+                                    </span>
+                                    <span class="titles">Facebook</span>
+                                </a>
+                            </div>
+                            <div class="media-box">
+                                <a href="https://twitter.com/" target="_blank">
+                                    <span class="image-icon">
+                                        <i class="icon-twitter-icon"></i>
+                                    </span>
+                                    <span class="titles text-center">Twitter</span>
+                                </a>
+                            </div>
+                            <div class="media-box">
+                                <a href="https://www.linkedin.com" target="_blank">
+                                    <span class="image-icon">
+                                        <i class="icon-instagram-icon"></i>
+                                    </span>
+                                    <span class="titles">Instagram</span>
+                                </a>
+                            </div>
+                            <div class="media-box">
+                                <a href="https://api.whatsapp.com" target="_blank">
+                                    <span class="image-icon">
+                                        <i class="icon-whatsapp-icon"></i>
+                                    </span>
+                                    <span class="titles">Whatsapp</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="copy-link">
+                            <h6 id="basic-addon1">Copy Link </h6>
+                            <div class="input-group mb-0">
+                                <input type="text" id="copyInput" class="form-control copy-post-url" placeholder="Username"
+                                    value="https://templates.iqonic.design/streamit-dist/frontend/html/index.html"
+                                    aria-label="Username" readonly="">
+                                <button class="input-group-text copy-url-btn" id="copyButton"><i class="ph ph-copy-simple"
+                                        id="copyIcon"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modals End -->      </div>
+    </div>
+  </div>
+</div>
+<!-- Banner End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="overflow-hidden">
+    <div class="recommended-block section-padding-top">
+      <div class="d-flex align-items-center justify-content-between px-1 mb-2 pb-1 mb-md-4 pb-md-0">
+        <h4 class="main-title text-capitalize mb-0">Recommended</h4>
+      </div>
+      <div class="card-style-slider">
+        <div class="position-relative swiper swiper-card" data-slide="6 " data-laptop="6" data-tab="3" data-mobile="2"
+          data-mobile-sm="2" data-autoplay="false" data-loop="false" data-navigation="true" data-pagination="true">
+          <ul class="p-0 swiper-wrapper m-0  list-inline">
+              @* RECOMMENDED MOVIES *@
+            <li class="swiper-slide">
+              <div class="iq-card card-hover">
+                <div class="block-images position-relative w-100">
+                  <div class="img-box w-100">
+                    <a href="./movie-detail.html" class="position-relative top-0 bottom-0 start-0 end-0">
+                      <img src="./assets/images/media/rabbit-portrait.webp" alt="movie-card"
+                        class="img-fluid object-cover w-100 d-block border-0 rounded-3">
+                    </a>
+                  </div>
+                  <div class="card-description with-transition">
+                    <ul class="genres-list p-0 mb-2 d-flex align-items-center flex-wrap list-inline">
+                      <li class="fw-semi-bold">
+                        <a href="./view-all-movie.html" tabindex="0" class="font-size-14 ">
+                          Action </a>
+                      </li>
+                    </ul>
+                    <div class="cart-content">
+                      <div class="content-left">
+                        <h5 class="iq-title text-capitalize">
+                          <a href="./movie-detail.html">Rabbit</a>
+                        </h5>
+                        <div class="d-flex align-items-center gap-3">
+                          <div class="d-flex align-items-center gap-2">
+                            <i class="ph ph-translate"></i>
+                            <small class="font-size-12">English (UK)</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center gap-2 mt-3">
+                      <a href="./watchlist-detail.html"
+                        class="d-flex align-items-center justify-content-center flex-shrink-0 border-0 add-to-wishlist-btn btn btn-secondary"
+                        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                        data-bs-title="Add to Watchlist">
+                        <i class="ph ph-plus font-size-18"></i>
+                      </a>
+                      <div class="iq-play-button iq-button">
+                        <a href="./movie-detail.html" class="btn btn-primary w-100">Play Now
+                        </a>
+                      </div>
+                    </div>
+              
+                  </div>
+                  <div class="position-absolute z-1 primium-product d-flex align-items-center justify-content-center"
+                    data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Premium" data-bs-original-title="Premium">
+                    <i class="ph-fill ph-crown "></i>
+                  </div>
+                </div>
+              
+              </div>
+            </li>
+
+ 
+          </ul>
+          <div class="swiper-button swiper-button-next d-none d-lg-block"></div>
+          <div class="swiper-button swiper-button-prev d-none d-lg-block"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="favourite-person-block">
+      <div class="overflow-hidden">
+        <div class="d-flex align-items-center justify-content-between px-1 mb-2 pb-1 mb-md-4 pb-md-0">
+          <h4 class="main-title text-capitalize mb-0">Starring</h4>
+        </div>
+        <div class="position-relative swiper swiper-card" data-slide="11" data-laptop="11" data-tab="4" data-mobile="2"
+          data-mobile-sm="2" data-autoplay="false" data-loop="false" data-navigation="true" data-pagination="true">
+          <ul class="p-0 swiper-wrapper m-0  list-inline personality-card">
+
+              @* CAST PEOPLE *@
+                <li class="swiper-slide">
+                  <a href="person-detail.html">
+                  <img src="./assets/images/cast/olivia-foster.webp" alt="personality" class="img-fluid object-cover mb-3 rounded-3 personality-img">
+                  </a>
+                  <div class="text-center">
+                      <h6 class="mb-0">
+                          <a href="person-detail.html" class="font-size-14 text-decoration-none cast-title text-capitalize">Olivia Foster</a>
+                      </h6>
+                      <a href="person-detail.html" class="font-size-12 fw-semibold text-decoration-none text-capitalize text-body">actress&nbsp;&nbsp;</a>
+                  </div>               </li>               
+             
+          </ul>
+          <div class="swiper-button swiper-button-next d-none d-lg-block"></div>
+          <div class="swiper-button swiper-button-prev d-none d-lg-block"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Upcoming Start -->
+    <div class="upcomimg-block">
+      <div class="d-flex align-items-center justify-content-between px-1 mb-2 pb-1 mb-md-4 pb-md-0">
+        <h4 class="main-title text-capitalize mb-0">Upcoming</h4>
+      </div>
+      <div class="card-style-slider">
+        <div class="position-relative swiper swiper-card" data-slide="6" data-laptop="6" data-tab="3" data-mobile="2"
+          data-mobile-sm="2" data-autoplay="false" data-loop="false" data-navigation="true" data-pagination="true">
+          <ul class="p-0 swiper-wrapper m-0  list-inline">
+                        @* UPCOMING MOVIES *@
+            <li class="swiper-slide">
+              <div class="iq-card card-hover">
+                <div class="block-images position-relative w-100">
+                  <div class="img-box w-100">
+                    <a href="./movie-detail.html" class="position-relative top-0 bottom-0 start-0 end-0">
+                      <img src="./assets/images/media/the-first-of-us-portrait.webp" alt="movie-card"
+                        class="img-fluid object-cover w-100 d-block border-0 rounded-3">
+                    </a>
+                  </div>
+                  <div class="card-description with-transition">
+                    <ul class="genres-list p-0 mb-2 d-flex align-items-center flex-wrap list-inline">
+                      <li class="fw-semi-bold">
+                        <a href="./view-all-movie.html" tabindex="0" class="font-size-14 ">
+                          Action </a>
+                      </li>
+                    </ul>
+                    <div class="cart-content">
+                      <div class="content-left">
+                        <h5 class="iq-title text-capitalize">
+                          <a href="./movie-detail.html">the first of us</a>
+                        </h5>
+                        <div class="d-flex align-items-center gap-3">
+                          <div class="d-flex align-items-center gap-2">
+                            <i class="ph ph-translate"></i>
+                            <small class="font-size-12">English</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center gap-2 mt-3">
+                      <a href="./watchlist-detail.html"
+                        class="d-flex align-items-center justify-content-center flex-shrink-0 border-0 add-to-wishlist-btn btn btn-secondary"
+                        data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                        data-bs-title="Add to Watchlist">
+                        <i class="ph ph-plus font-size-18"></i>
+                      </a>
+                      <div class="iq-play-button iq-button">
+                        <a href="./movie-detail.html" class="btn btn-primary w-100">Play Now
+                        </a>
+                      </div>
+                    </div>
+              
+                  </div>
+                </div>
+              
+              </div>
+            </li>
+     
+          </ul>
+          <div class="swiper-button swiper-button-next"></div>
+          <div class="swiper-button swiper-button-prev"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Upcoming End -->
+
+        <div class="section-padding-bottom">
+            <div class="rate-review-details">
+                <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+                    <h5 class="main-title text-capitalize m-0 fw-medium">Review</h5>
+                    <div class="d-flex align-items-center gap-3">
+                        <a id="openReviewButton" class="btn btn-link p-0 custom-fs-14 openReviewButton" data-bs-toggle="offcanvas"
+                               href="#offcanvasReview" role="button" aria-controls="offcanvasReview">
+                            Add Review
+                        </a>
+                        <a class="btn btn-link p-0 custom-fs-14" href="./view-more.html">View More</a>
+                    </div>
+                </div>
+                <div class="comments-section">
+                    <!-- Existing reviews will be rendered here dynamically -->
+                    @foreach (var review in Model.Reviews ?? new  List<>())
+                    {
+                        <div class="review-card">
+                            <div class="review-detail rounded-3">
+                                <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                                    <div class="d-flex align-items-center justify-content-center gap-3">
+                                        <img src="@review.User!.ProfilePictureUrl" class="img-fluid user-img rounded-circle" alt="@review.User.UserName">
+                                        <div>
+                                            <h6 class="line-count-1 m-0">@review.User.UserName</h6>
+                                            <p class="mb-0 mt-1 small-date-font">@review.CreatedDate.ToString("yyyy-MM-dd HH:mm")</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="star-rating" data-rating="@review.Rating">
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            if (i <= review.Rating)
+                                            {
+                                                <i class="ph-fill ph-star text-warning"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="ph-fill ph-star"></i>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+
+                                <p class="mb-0 mt-3 pt-3 border-top fw-medium">@review.Comment</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Offcanvas review form -->
+            <div class="offcanvas overflow-y-auto widget-shopping-cart-content offcanvas-end offcanvas-sidebar sidebar-container on-rtl end border-left-0"
+                 tabindex="-1" id="offcanvasReview" aria-modal="true" role="dialog">
+                <div class="offcanvas-header position-relative border-bottom">
+                    <h5 class="offcanvas-title fw-500" id="offcanvasReviewLabel">
+                        Add Review
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form asp-action="AddReview" method="post">
+                        <!-- Hidden fields -->
+                        <input type="hidden" name="MovieId" value="@Model.Id" />
+                        <input type="hidden" name="UserId" value="@User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value" />
+
+                        <!-- Rating section -->
+                        <div class="form-group mb-4">
+                            <label class="form-label mb-3">Your Rating</label>
+                            <div class="star-rating" id="starRating">
+                                <input type="radio" id="star5" name="Rating" value="5">
+                                <label for="star5" title="5 stars"><i class="ph-fill ph-star"></i></label>
+                                <input type="radio" id="star4" name="Rating" value="4">
+                                <label for="star4" title="4 stars"><i class="ph-fill ph-star"></i></label>
+                                <input type="radio" id="star3" name="Rating" value="3">
+                                <label for="star3" title="3 stars"><i class="ph-fill ph-star"></i></label>
+                                <input type="radio" id="star2" name="Rating" value="2">
+                                <label for="star2" title="2 stars"><i class="ph-fill ph-star"></i></label>
+                                <input type="radio" id="star1" name="Rating" value="1">
+                                <label for="star1" title="1 star"><i class="ph-fill ph-star"></i></label>
+                            </div>
+                        </div>
+
+                        <!-- Comment -->
+                        <div class="form-group">
+                            <label class="form-label flex-grow-1" for="Comment">
+                                Your Review
+                            </label>
+                            <textarea id="Comment" name="Comment" class="form-control review-text-area" rows="8"></textarea>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="iq-button">
+                            <button type="submit" class="btn btn-primary text-capitalize">
+                                <span class="button-text">Submit Review</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade view-more-data-modal trending-info" id="viewMoreDataModal" tabindex="-1" aria-modal="true"
+    role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <h3 class="text-uppercase m-0 texture-text texture-text-modal fw-bold">@Model.Title</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-1">
+                <ul class="list-inline d-flex align-items-center flex-wrap gap-3 mt-4">
+                    <li>
+                        <span class="fw-medium">@Model.ReleaseDate.Year</span>
+                    </li>
+                    <li>
+                        <span class="d-flex align-items-center gap-1">
+                            <i class="icon-eye-2"></i> @Model.MovieStatistics!.ViewCount views
+                        </span>
+                    </li>
+                    <li>
+                        <span class="d-flex align-items-center gap-1">
+                            <span class="fw-medium">5</span>
+                            <span class="imdb-logo ms-1">
+                                <img src="./assets/images/pages/imdb-logo.svg" loading="lazy" decoding="async"
+                                    alt="imdb logo" class="img-fluid imdb-logo1">
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-baseline flex-wrap gap-2 mt-md-1 mt-2">
+                    <h6 class="m-0">Genres:</h6>
+                    <ul class="p-0 mb-0 list-inline d-flex flex-wrap movie-tag">
+                        @foreach (var genre in Model.Genres)
+                        {
+                            <li class="trending-list"><a href="./view-all-movie.html">@genre.Name</a>
+                            </li>
+                        }
+                        
+                    </ul>
+                </div>
+
+                <div class="d-flex align-items-baseline flex-wrap gap-2 mt-3">
+                    <h6 class="m-0">Tags:</h6>
+                    <ul
+                        class="iq-blog-meta-cat-tag iq-blogtag mb-0 list-inline d-flex flex-wrap align-items-center gap-1 gap-md-3 mt-2 mt-md-3  tvshow-tags">
+                      
+                        @foreach (var tag in Model.Tags)
+                        {
+                             <li>
+                                @* <a href="./blog/blog-tag.html" class="position-relative">@tag.</a> *@
+                            </li>
+                        }
+                      
+                    </ul>
+                </div>
+
+                <div class="mt-4">
+                    <div class="d-flex align-items-center gap-1">
+                        <i class="icon-translate"></i>
+                        <ul class="list-inline m-0 d-inline-flex align-items-center gap-2">
+                            <li><small>@Model.LanguageName</small></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="mt-4 mb-0">
+                    @Model.Content
+                </p>
+
+                <div class="d-flex align-items-baseline row-gap-1 column-gap-2 mt-4">
+                    <h6 class="m-0">Cast:</h6>
+                    <ul
+                        class="list-inline m-0 p-0 d-flex align-items-center flex-wrap row-gap-1 column-gap-2 cast-crew-list">
+                      @foreach (var person in Model.People)
+                        {
+                            <li><a href="#" class="color-inherit">@person.Name</a></li>
+                        }
+                    </ul>
+                </div>
+
+            
+            </div>
+        </div>
+    </div>
+</div>

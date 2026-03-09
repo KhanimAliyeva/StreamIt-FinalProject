@@ -1,0 +1,157 @@
+﻿@model STREAMIT.Business.Dtos.MembershipDtos.MembershipCheckoutVM
+<!--bread-crumb-->
+<div class="iq-breadcrumb">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb" class="text-center">
+                    <ol class="breadcrumb justify-content-center text-white mt-0">
+                        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Checkout</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>    <!--bread-crumb-->
+
+<div class="checkout-page section-padding">
+    <div class="container">
+        <div class="main-cart mb-3 mb-md-5 pb-0 pb-md-5">
+            <ul class="cart-page-items d-flex justify-content-center list-inline align-items-center gap-3 gap-md-5 flex-wrap">
+                <li class="cart-page-item">
+                    <span class=" cart-pre-number  border-radius rounded-circle me-1"> 1 </span>
+                    <span class="cart-page-link ">
+                        Membership
+                    </span>
+                </li>
+                <li class="cart-page-item d-flex justify-content-center">
+                    <i class="ph ph-caret-circle-right fs-4"></i>
+                </li>
+                <li class="cart-page-item  active">
+                    <span class="cart-pre-heading badge cart-pre-number bg-primary border-radius rounded-circle me-1">
+                        2
+                    </span>
+                    <span class="cart-page-link ">
+                        Checkout
+                    </span>
+                </li>
+                <li class="cart-page-item d-flex justify-content-center">
+                    <i class="ph ph-caret-circle-right fs-4"></i>
+                </li>
+                <li class="cart-page-item ">
+                    <span class=" cart-pre-number  border-radius rounded-circle me-1"> 3 </span>
+                    <span class="cart-page-link ">
+                        Order Summary
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="mb-5 woocommerce-info-coupon">
+            <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
+                <div class="woocommerce-info">
+                    <span class="text-body ps-2">Have a coupon?</span>
+                    <a href="#" data-bs-toggle="collapse" data-bs-target="#apply-coupon">
+                        Click here
+                        to enter your code
+                    </a>
+                </div>
+            </div>
+            <div id="apply-coupon" class="collapse mt-5">
+                <form class="checkout-coupon">
+                    <p class="mt-0">If you have a coupon code, please apply it below.</p>
+                    <div class="iq-checkout-coupon">
+                        <input name="coupon-code" type="text" required="required" placeholder="Coupon code"
+                               class="form-control">
+                        <div class="mt-4">
+                            <a href="#" class="btn btn-primary text-capitalize position-relative rounded-3">
+                                <span class="button-text">apply coupon</span>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <form asp-controller="Membership" asp-action="Buy" method="post">
+                    @Html.AntiForgeryToken()
+                    <h3 class="mb-4">Billing details</h3>
+
+                    <input type="hidden" name="membershipId" value="@Model.Id" />
+
+                    <div class="form-group mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label asp-for="UserFirstName" class="form-label">First Name <span class="text-primary">*</span></label>
+                                <input asp-for="UserFirstName" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="UserLastName" class="form-label">Last Name <span class="text-primary">*</span></label>
+                                <input asp-for="UserLastName" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Email" class="form-label">Email address <span class="text-primary">*</span></label>
+                        <input asp-for="Email" type="email" class="form-control" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Phone" class="form-label">Phone <span class="text-primary">*</span></label>
+                        <input asp-for="Phone" class="form-control" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="City" class="form-label">City</label>
+                        <input asp-for="City" class="form-control" />
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-6">
+                <h3 class="mb-4">Your Order</h3>
+                <div class="order_review-box">
+                    <div class="checkout-review-order">
+                        <div class="table-responsive">
+                            <table class="table cart-table">
+                                <thead class="border-bottom">
+                                    <tr>
+                                        <th scope="col" class="font-size-18 fw-bold">Product</th>
+                                        <th scope="col" class="font-size-18 fw-bold text-end">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cart_item">
+                                        <td class="product-name">
+                                            <div class="text d-flex align-items-center gap-1">
+                                                <span class="text-body">@Model.Name</span>
+                                                <strong class="text-body">&nbsp;x&nbsp;1</strong>
+                                            </div>
+                                        </td>
+                                        <td class="product-total text-end">
+                                            <span class="Price-amount"><bdi class="text-body">@Model.Membership.Price.ToString("0.##") @Model.Currency</bdi></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td class="p-3 fw-bold font-size-18 border-0">Total</td>
+                                        <td class="p-3 fw-bold border-0 text-end">
+                                            <span class="mb-0">@Model.Membership.Price.ToString("0.##") @Model.Currency</span>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

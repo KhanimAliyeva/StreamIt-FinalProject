@@ -14,7 +14,10 @@ namespace STREAMIT.Business.Dtos.PersonDtos
         public DateTime? Died { get; set; }
         public float Popularity { get; set; }
         public string Biography { get; set; } = string.Empty;
+        public string Role { get; set; } = string.Empty;
+
 
         public IFormFile? Image { get; set; }
+        public string? ExistingImageUrl { get; set; }
     }
 }

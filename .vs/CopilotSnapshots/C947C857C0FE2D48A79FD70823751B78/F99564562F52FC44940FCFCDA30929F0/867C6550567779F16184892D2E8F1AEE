@@ -1,0 +1,161 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using STREAMIT.Business.Dtos.PersonDtos;
+using STREAMIT.Business.Dtos.ResultDtos;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+
+namespace STREAMIT.MVC.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class CastController : Controller
+    {
+        private readonly HttpClient _httpClient;
+
+        public CastController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClient = httpClientFactory.CreateClient("ApiClient");
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var result = await SafeGetFromJson<ResultDto<List<GetPersonDto>>>("Person");
+            var people = result?.Data ?? new List<GetPersonDto>();
+            return View(people);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreatePersonDto dto)
+        {
+            if (!ModelState.IsValid)
+                return View(dto);
+
+            using var content = new MultipartFormDataContent();
+            content.Add(new StringContent(dto.Name ?? string.Empty), "Name");
+            content.Add(new StringContent(dto.Gender ?? string.Empty), "Gender");
+            content.Add(new StringContent(dto.Born.ToString("O")), "Born");
+            content.Add(new StringContent(dto.Died?.ToString("O") ?? string.Empty), "Died");
+            content.Add(new StringContent(dto.Popularity.ToString()), "Popularity");
+            content.Add(new StringContent(dto.Biography ?? string.Empty), "Biography");
+
+            if (dto.Image != null)
+            {
+                var streamContent = new StreamContent(dto.Image.OpenReadStream());
+                streamContent.Headers.ContentType = new MediaTypeHeaderValue(dto.Image.ContentType);
+                content.Add(streamContent, "Image", dto.Image.FileName);
+            }
+
+            var response = await _httpClient.PostAsync("api/Person", content);
+            var resp = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                ViewBag.RawResponse = resp;
+                ViewBag.DebugStatusCode = (int)response.StatusCode;
+                ModelState.AddModelError("", $"API Error {(int)response.StatusCode}: {resp}");
+                return View(dto);
+            }
+
+            // Use PRG pattern: redirect to Index which will fetch fresh data from API
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var getResult = await SafeGetFromJson<ResultDto<GetPersonDto>>($"Person/{id}");
+            if (getResult == null || getResult.Data == null) return NotFound();
+
+            var updateDto = new UpdatePersonDto
+            {
+                Id = getResult.Data.Id,
+                Name = getResult.Data.Name,
+                Gender = getResult.Data.Gender,
+                Born = getResult.Data.Born,
+                Died = getResult.Data.Died,
+                Popularity = getResult.Data.Popularity,
+                Biography = getResult.Data.Biography
+            };
+
+            return View(updateDto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(UpdatePersonDto dto)
+        {
+            if (!ModelState.IsValid)
+                return View(dto);
+
+            using var content = new MultipartFormDataContent();
+            content.Add(new StringContent(dto.Id.ToString()), "Id");
+            content.Add(new StringContent(dto.Name ?? string.Empty), "Name");
+            content.Add(new StringContent(dto.Gender ?? string.Empty), "Gender");
+            content.Add(new StringContent(dto.Born.ToString("O")), "Born");
+            content.Add(new StringContent(dto.Died?.ToString("O") ?? string.Empty), "Died");
+            content.Add(new StringContent(dto.Popularity.ToString()), "Popularity");
+            content.Add(new StringContent(dto.Biography ?? string.Empty), "Biography");
+
+            if (dto.Image != null)
+            {
+                var streamContent = new StreamContent(dto.Image.OpenReadStream());
+                streamContent.Headers.ContentType = new MediaTypeHeaderValue(dto.Image.ContentType);
+                content.Add(streamContent, "Image", dto.Image.FileName);
+            }
+
+            var response = await _httpClient.PutAsync("api/Person", content);
+            var resp = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                ViewBag.RawResponse = resp;
+                ViewBag.DebugStatusCode = (int)response.StatusCode;
+                ModelState.AddModelError("", $"API Error {(int)response.StatusCode}: {resp}");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/Person/{id}");
+            var result = await SafeReadJson<ResultDto>(response);
+
+            if (result == null || !result.IsSucceed)
+                return NotFound(result?.Message ?? "Something went wrong...");
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        private async Task<T?> SafeGetFromJson<T>(string endpoint)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"api/{endpoint}");
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+
+        private async Task<T?> SafeReadJson<T>(HttpResponseMessage response)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+    }
+}

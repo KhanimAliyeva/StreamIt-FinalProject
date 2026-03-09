@@ -1,0 +1,64 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using STREAMIT.Business.Dtos.ReviewDtos;
+using STREAMIT.Core.Entities;
+using STREAMIT.DataAccess.Contexts;
+using System.Security.Claims;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ReviewsController : ControllerBase
+{
+    private readonly AppDbContext _context;
+    private readonly ILogger<ReviewsController> _logger;
+
+    public ReviewsController(AppDbContext context, ILogger<ReviewsController> logger)
+    {
+        _context = context;
+        _logger = logger;
+    }
+
+    // Debug endpoint to help diagnose authentication issues. Returns whether Authorization header
+    // was received and the validated claims. Call with a Bearer token to verify validation.
+    [HttpGet("debug")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult Debug()
+    {
+        var authHeader = Request.Headers["Authorization"].ToString();
+        var claims = User?.Claims?.Select(c => new { c.Type, c.Value })?.ToList() ?? new List<object>();
+        return Ok(new { AuthorizationHeader = !string.IsNullOrEmpty(authHeader), Claims = claims });
+    }
+
+    [HttpPost]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public async Task<IActionResult> AddReview(AddReviewDto dto)
+    {
+        // Log auth/debug info to help diagnose 401 issues
+        var authHeader = Request.Headers["Authorization"].ToString();
+        _logger.LogInformation("Received AddReview request. Authorization header present: {hasAuth}. User.Identity.IsAuthenticated: {isAuth}", !string.IsNullOrEmpty(authHeader), User?.Identity?.IsAuthenticated);
+
+        // Prefer user id provided by trusted server-side MVC client. Fall back to authenticated user claims.
+        var userId = !string.IsNullOrWhiteSpace(dto.UserId) ? dto.UserId : User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId))
+        {
+            _logger.LogWarning("Unauthorized AddReview attempt: no user id in DTO and no authenticated user.");
+            return Unauthorized();
+        }
+
+        var review = new ReviewMovie
+        {
+            MovieId = dto.MovieId,
+            UserId = userId,
+            Rating = dto.Rating,
+            Comment = dto.Comment
+        };
+
+        _context.ReviewMovies.Add(review);
+        await _context.SaveChangesAsync();
+
+        return Ok();
+    }
+}

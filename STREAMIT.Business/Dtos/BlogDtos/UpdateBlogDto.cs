@@ -1,0 +1,18 @@
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.AspNetCore.Http;
+
+namespace STREAMIT.Business.Dtos.BlogDtos
+{
+    public class UpdateBlogDto
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public IFormFile? ImageFile { get; set; }
+        public string? ImageUrl { get; set; }
+        public string AuthorName { get; set; } = string.Empty;
+    }
+}

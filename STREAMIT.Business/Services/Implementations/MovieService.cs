@@ -1,12 +1,17 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using STREAMIT.Business.Dtos.GenreDtos;
 using STREAMIT.Business.Dtos.MovieDtos;
 using STREAMIT.Business.Dtos.ResultDtos;
 using STREAMIT.Business.Exceptions;
 using STREAMIT.Business.Services.Abstractions;
 using STREAMIT.Core.Entities;
+using STREAMIT.DataAccess.Contexts;
 using STREAMIT.DataAccess.Repositories.Abstractions;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace STREAMIT.Business.Services.Implementations
@@ -16,31 +21,46 @@ namespace STREAMIT.Business.Services.Implementations
         private readonly IMovieRepository _repository;
         private readonly IMapper _mapper;
         private readonly ICloudinaryService _cloudinaryService;
+        private readonly AppDbContext _context;
 
-        public MovieService(IMovieRepository repository, IMapper mapper, ICloudinaryService cloudinaryService)
+        public MovieService(IMovieRepository repository, IMapper mapper, ICloudinaryService cloudinaryService, AppDbContext context)
         {
             _repository = repository;
             _mapper = mapper;
             _cloudinaryService = cloudinaryService;
+            _context = context;
         }
 
         public async Task<ResultDto> CreateAsync(CreateMovieDto dto)
         {
             var movie = _mapper.Map<Movie>(dto);
 
-            // Poster upload
-            var poster = await _cloudinaryService.FileCreateAsync(dto.Poster);
-            movie.PosterUrl = poster;
+            // Poster upload (only if file provided)
+            if (dto.Poster != null)
+            {
+                var poster = await _cloudinaryService.FileCreateAsync(dto.Poster, "image");
+                movie.PosterUrl = poster;
+            }
 
-            var trailer = await _cloudinaryService.FileCreateAsync(dto.Trailer);
-            movie.TrailerUrl = trailer;
-            var movieFile = await _cloudinaryService.FileCreateAsync(dto.Movie);
-            movie.MovieUrl = movieFile;
+            movie.YoutubeUrl = dto.YoutubeUrl;
+
+            // Movie file upload (only if file provided)
+            if (dto.Movie != null)
+            {
+                var movieFile = await _cloudinaryService.FileCreateAsync(dto.Movie, "video");
+                movie.MovieUrl = movieFile;
+            }
 
             if (dto.GenreIds != null && dto.GenreIds.Any())
             {
                 movie.MovieGenres = dto.GenreIds
                     .Select(id => new MovieGenre { GenreId = id })
+                    .ToList();
+            }
+            if (dto.TagIds != null && dto.TagIds.Any())
+            {
+                movie.MovieTags = dto.TagIds
+                    .Select(id => new MovieTag { TagId = id })
                     .ToList();
             }
             if (dto.PersonIds != null && dto.PersonIds.Any())
@@ -62,7 +82,6 @@ namespace STREAMIT.Business.Services.Implementations
             };
         }
 
-
         public async Task<ResultDto> DeleteAsync(int id)
         {
             var movie = await _repository.GetByIdAsync(id);
@@ -74,8 +93,8 @@ namespace STREAMIT.Business.Services.Implementations
 
             if (!string.IsNullOrEmpty(movie.PosterUrl))
                 await _cloudinaryService.FileDeleteAsync(movie.PosterUrl);
-            if (!string.IsNullOrEmpty(movie.TrailerUrl))
-                await _cloudinaryService.FileDeleteAsync(movie.TrailerUrl);
+            if (!string.IsNullOrEmpty(movie.YoutubeUrl))
+                await _cloudinaryService.FileDeleteAsync(movie.YoutubeUrl);
             if (!string.IsNullOrEmpty(movie.MovieUrl))
                 await _cloudinaryService.FileDeleteAsync(movie.MovieUrl);
 
@@ -107,7 +126,15 @@ namespace STREAMIT.Business.Services.Implementations
 
         public async Task<GetMovieDto> GetByIdAsync(int id)
         {
-            var movie = await _repository.GetByIdAsync(id);
+            // Load movie with related data so mapping has Genres/Tags/People populated
+            var movie = await _repository.GetAll(true)
+                .Include(x => x.Language)
+                .Include(x => x.Membership)
+                .Include(x => x.MovieStatistics)
+                .Include(x => x.MovieGenres).ThenInclude(x => x.Genre)
+                .Include(x => x.MovieTags).ThenInclude(x => x.Tag)
+                .Include(x => x.MoviePeople).ThenInclude(x => x.Person)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (movie == null)
                 throw new NotFoundException("Movie not found.");
@@ -118,39 +145,38 @@ namespace STREAMIT.Business.Services.Implementations
 
         public async Task<ResultDto> UpdateAsync(UpdateMovieDto dto)
         {
-            var movie = await _repository.GetByIdAsync(dto.Id);
-            if (movie == null)
+            var movie = await _context.Movies
+                .Include(m => m.MovieGenres)
+                .Include(m => m.MoviePeople)
+                .FirstOrDefaultAsync(m => m.Id == dto.Id); if (movie == null)
                 throw new NotFoundException("Movie not found.");
 
+            // Map scalar properties from DTO to entity first (this will not handle file uploads)
+            _mapper.Map(dto, movie);
+
+            // Poster upload (only if file provided)
             if (dto.Poster != null)
             {
-                var posterUrl = await _cloudinaryService.FileCreateAsync(dto.Poster);
+                var posterUrl = await _cloudinaryService.FileCreateAsync(dto.Poster, "image");
                 if (!string.IsNullOrEmpty(movie.PosterUrl))
                     await _cloudinaryService.FileDeleteAsync(movie.PosterUrl);
                 movie.PosterUrl = posterUrl;
             }
 
-            if (dto.Trailer != null)
-            {
-                var trailerUrl = await _cloudinaryService.FileCreateAsync(dto.Trailer);
-                if (!string.IsNullOrEmpty(movie.TrailerUrl))
-                    await _cloudinaryService.FileDeleteAsync(movie.TrailerUrl);
-                movie.TrailerUrl = trailerUrl;
-            }
-
+            // Movie file upload (only if file provided)
             if (dto.Movie != null)
             {
-                var movieUrl = await _cloudinaryService.FileCreateAsync(dto.Movie);
+                var movieUrl = await _cloudinaryService.FileCreateAsync(dto.Movie,"video");
                 if (!string.IsNullOrEmpty(movie.MovieUrl))
                     await _cloudinaryService.FileDeleteAsync(movie.MovieUrl);
                 movie.MovieUrl = movieUrl;
             }
 
-
+            // Update many-to-many / join collections explicitly and ensure FK values are set
             if (dto.GenreIds != null)
             {
                 movie.MovieGenres = dto.GenreIds
-                    .Select(id => new MovieGenre { GenreId = id })
+                    .Select(id => new MovieGenre { MovieId = movie.Id, GenreId = id })
                     .ToList();
             }
 
@@ -164,8 +190,6 @@ namespace STREAMIT.Business.Services.Implementations
                     })
                     .ToList();
             }
-
-            _mapper.Map(dto, movie);
             _repository.Update(movie);
             await _repository.SaveChangesAsync();
 
@@ -189,5 +213,87 @@ namespace STREAMIT.Business.Services.Implementations
                 .Include(x => x.MoviePeople).ThenInclude(x => x.Person)
                 .ToListAsync();
         }
+
+        public async Task<List<GetMovieDto>> GetUpcomingMoviesAsync()
+        {
+            return await _repository.GetAll(true)
+                .Where(m => m.ReleaseDate > DateTime.UtcNow)
+                .Select(m => new GetMovieDto
+                {
+                    Id = m.Id,
+                    Title = m.Title,
+                    PosterUrl = m.PosterUrl,
+                    LanguageName = m.Language.Name,
+                    Genres = m.MovieGenres
+                        .Select(g => new GenreDto
+                        {
+                            Id = g.Genre.Id,
+                            Name = g.Genre.Name
+                        }).ToList()
+                })
+                .ToListAsync();
+        }
+
+        public async Task IncrementViewCountAsync(int id)
+        {
+            var movie = await _repository.GetByIdAsync(id);
+            if (movie == null)
+                throw new NotFoundException("Movie not found.");
+            if (movie.MovieStatistics == null)
+            {
+                movie.MovieStatistics = new MovieStatistics
+                {
+                    MovieId = id,
+                    ViewCount = 1,
+                };
+            }
+            else
+            {
+                movie.MovieStatistics.ViewCount += 1;
+            }
+            _repository.Update(movie);
+            await _repository.SaveChangesAsync();
+        }
+
+        public async Task<List<GetMovieDto>> GetBestInTvAsync()
+        {
+            var movies = await _repository.GetAll(true)
+                .Where(x => x.AverageRating > 0)
+                .OrderByDescending(x => x.AverageRating)
+                .Take(10)
+                .Select(x => new GetMovieDto
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    PosterUrl = x.PosterUrl,
+                    AverageRating = x.AverageRating,
+                    LanguageName = x.Language.Name,
+                    MembershipName = x.Membership.Name,
+                    Genres = x.MovieGenres
+                        .Select(g => new GenreDto
+                        {
+                            Id = g.Genre.Id,
+                            Name = g.Genre.Name
+                        }).ToList()
+                })
+                .ToListAsync();
+
+            return movies;
+        }
+
+        public async Task<List<GetMovieDto>> GetLatestMoviesAsync()
+        {
+            var movies = await _repository.GetAll(true)
+                .Where(x=>x.CreatedDate<= DateTime.Now)
+                .OrderByDescending(x => x.CreatedDate)
+                .Take(10)
+                .Include(x => x.MovieGenres).ThenInclude(x => x.Genre)
+                .AsSplitQuery()
+                .ToListAsync();
+
+            return _mapper.Map<List<GetMovieDto>>(movies);
+        }
+
+   
     }
 }

@@ -1,0 +1,21 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http.Json;
+using STREAMIT.Business.Dtos.GenreDtos;
+
+public class GenreController : Controller
+{
+    private readonly HttpClient _httpClient;
+
+    public GenreController(IHttpClientFactory httpClientFactory)
+    {
+        _httpClient = httpClientFactory.CreateClient("ApiClient");
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var genres = await _httpClient
+            .GetFromJsonAsync<List<GenreDto>>("genres");
+
+        return View(genres);
+    }
+}

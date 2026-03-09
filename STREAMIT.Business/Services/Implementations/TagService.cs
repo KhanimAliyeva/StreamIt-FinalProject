@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using STREAMIT.Business.Dtos.ResultDtos;
 using STREAMIT.Business.Dtos.TagDtos;
-using STREAMIT.Business.Dtos.TagDtos.STREAMIT.Business.Dtos.TagDtos;
 using STREAMIT.Business.Exceptions;
 using STREAMIT.Business.Services.Abstractions;
 using STREAMIT.Core.Entities;

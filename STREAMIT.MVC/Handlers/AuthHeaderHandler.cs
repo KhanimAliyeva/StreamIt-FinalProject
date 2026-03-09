@@ -1,23 +1,26 @@
 ﻿using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
-namespace STREAMIT.MVC.Handlers;
-
-public class AuthHeaderHandler(IHttpContextAccessor accessor)
-    : DelegatingHandler
+namespace STREAMIT.MVC.Handlers
 {
-    protected override Task<HttpResponseMessage> SendAsync(
-        HttpRequestMessage request,
-        CancellationToken cancellationToken)
+    public class AuthHeaderHandler : DelegatingHandler
     {
-        var token = accessor.HttpContext?
-            .Request.Cookies["AccessToken"];
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        if (!string.IsNullOrEmpty(token))
+        public AuthHeaderHandler(IHttpContextAccessor httpContextAccessor)
         {
-            request.Headers.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        return base.SendAsync(request, cancellationToken);
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var token = _httpContextAccessor.HttpContext?.Request.Cookies["AccessToken"];
+            if (!string.IsNullOrWhiteSpace(token))
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            return base.SendAsync(request, cancellationToken);
+        }
     }
 }

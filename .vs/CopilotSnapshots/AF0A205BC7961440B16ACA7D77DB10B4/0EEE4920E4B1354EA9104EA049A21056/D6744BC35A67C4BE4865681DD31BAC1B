@@ -1,0 +1,43 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using STREAMIT.DataAccess.Contexts;
+using STREAMIT.Core.Entities;
+using System.Security.Claims;
+
+// Allow anonymous users to participate in realtime, but only persist messages for authenticated users.
+public class CommunityHub : Hub
+{
+    private readonly AppDbContext _context;
+    public CommunityHub(AppDbContext context) => _context = context;
+
+    public async Task SendMessage(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return;
+        var userId = Context.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+        var userName = Context.User?.Identity?.Name ?? "User";
+
+        var sentAt = DateTime.UtcNow;
+
+        // persist only for authenticated users (avoid FK issues for anonymous)
+        if (!string.IsNullOrWhiteSpace(userId))
+        {
+            var msg = new CommunityMessage
+            {
+                UserId = userId,
+                Text = text.Trim(),
+                SentAt = sentAt,
+                GroupId = 1 // General
+            };
+
+            _context.CommunityMessages.Add(msg);
+            await _context.SaveChangesAsync();
+        }
+
+        await Clients.All.SendAsync("ReceiveMessage", new
+        {
+            userName,
+            text = text.Trim(),
+            sentAt
+        });
+    }
+}

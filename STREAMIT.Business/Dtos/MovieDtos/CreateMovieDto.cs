@@ -12,7 +12,7 @@ namespace STREAMIT.Business.Dtos.MovieDtos
         public string Content { get; set; } = string.Empty;
 
         public IFormFile Poster { get; set; } = null!;
-        public IFormFile Trailer { get; set; }=null!;
+        public string YoutubeUrl { get; set; }=null!;
         public IFormFile Movie { get; set; } = null!;
 
         public DateTime ReleaseDate { get; set; }
@@ -21,7 +21,6 @@ namespace STREAMIT.Business.Dtos.MovieDtos
         public int MembershipId { get; set; }
         public int LanguageId { get; set; }
 
-        public decimal Imdb { get; set; }
 
         public List<int> GenreIds { get; set; } = new();
         public List<int> TagIds { get; set; } = new();

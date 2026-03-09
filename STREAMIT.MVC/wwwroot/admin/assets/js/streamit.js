@@ -339,39 +339,39 @@ Index Of Script
       }
 
       // Initialize second table if present
-      if ($('[data-toggle="data-table2"]').length) {
-        var table2 = $('[data-toggle="data-table2"]').DataTable({
-          "autoWidth": false,
-          "dom": '<"row align-items-center gy-2"<"px-0"f>><"table-responsive my-3" rt><"row align-items-center"<"col-md-6"i><"col-md-6"p>><"clear">',
-          "searching": false,
-          "pagingType": "full_numbers",
-          "language": {
-            "paginate": {
-              "first": "«",
-              "last": "»",
-              "next": "›",
-              "previous": "‹"
+        if ($('[data-toggle="data-table2"]').length) {
+            var table2 = $('[data-toggle="data-table2"]').DataTable({
+                autoWidth: false,
+                dom: '<"row align-items-center gy-2"<"px-0"f>><"table-responsive my-3" rt><"row align-items-center"<"col-md-6"i><"col-md-6"p>><"clear">',
+                searching: false,
+                paging: true,
+                pageLength: 2,
+                lengthChange: false,
+                info: true,
+                pagingType: "full_numbers",
+                language: {
+                    paginate: {
+                        first: "«",
+                        last: "»",
+                        next: "›",
+                        previous: "‹"
+                    }
+                },
+                buttons: []
+            });
+
+            function showPagination() {
+                $('[data-toggle="data-table2"]').parent().find('.dataTables_paginate ul.pagination').css({
+                    opacity: '1',
+                    position: 'relative'
+                });
             }
-          },
-          buttons: []
-        });
 
-        // Function to show pagination controls
-        function showPagination() {
-          $('[data-toggle="data-table2"]').parent().find('.dataTables_paginate ul.pagination').css({
-            'opacity': '1',
-            'position': 'relative'
-          });
-        }
-
-        // Call function initially and on every draw
-        showPagination();
-        table2.on('draw', function () {
-          showPagination();
-        });
-
-      }
-    });
+            showPagination();
+            table2.on('draw', function () {
+                showPagination();
+            });
+        }    });
 
 
     // Column hidden datatable

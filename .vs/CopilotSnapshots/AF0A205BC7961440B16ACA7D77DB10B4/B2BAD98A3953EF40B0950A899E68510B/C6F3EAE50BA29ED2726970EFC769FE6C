@@ -1,0 +1,91 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
+
+namespace STREAMIT.Presentation.Controllers
+{
+    public class WatchlistController : Controller
+    {
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public WatchlistController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
+
+        // 1) Watchlist page
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        // 2) API-dən user watchlist listini çək (JSON)
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var client = _httpClientFactory.CreateClient("api");
+
+            var token = GetAccessToken();
+            if (string.IsNullOrWhiteSpace(token))
+                return Unauthorized(new { message = "No token. Please login." });
+
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
+
+            var resp = await client.GetAsync("api/watchlist"); // API: GET api/watchlist
+
+            var body = await resp.Content.ReadAsStringAsync();
+            if (!resp.IsSuccessStatusCode)
+                return StatusCode((int)resp.StatusCode, body);
+
+            // body artıq JSON-dur, elə qaytarırıq
+            return Content(body, "application/json");
+        }
+
+        // 3) Toggle (added/removed) - API: POST api/watchlist/toggle
+        [HttpPost]
+        public async Task<IActionResult> Toggle([FromBody] ToggleWatchlistVm vm)
+        {
+            if (vm == null || vm.MovieId <= 0)
+                return BadRequest(new { message = "Invalid movieId" });
+
+            var client = _httpClientFactory.CreateClient("api");
+
+            var token = GetAccessToken();
+            if (string.IsNullOrWhiteSpace(token))
+                return Unauthorized(new { message = "No token. Please login." });
+
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
+
+            var json = JsonSerializer.Serialize(new { movieId = vm.MovieId });
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var resp = await client.PostAsync("api/watchlist/toggle", content);
+
+            var body = await resp.Content.ReadAsStringAsync();
+            if (!resp.IsSuccessStatusCode)
+                return StatusCode((int)resp.StatusCode, body);
+
+            return Content(body, "application/json");
+        }
+
+        private string? GetAccessToken()
+        {
+            var token = HttpContext.Session.GetString("access_token");
+            if (!string.IsNullOrWhiteSpace(token)) return token;
+
+            if (Request.Cookies.TryGetValue("access_token", out var cookieToken))
+                return cookieToken;
+
+            return null;
+        }
+    }
+
+    public class ToggleWatchlistVm
+    {
+        public int MovieId { get; set; }
+    }
+}

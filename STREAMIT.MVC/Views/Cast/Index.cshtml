@@ -1,0 +1,48 @@
+﻿@using STREAMIT.Business.Dtos.PersonDtos
+@model List<PersonDto>
+
+<!-- bread-crumb -->
+<div class="iq-breadcrumb">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb" class="text-center">
+                    <ol class="breadcrumb justify-content-center text-white mt-0">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active">Casts</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cast Section -->
+<section class="section-padding">
+    <div class="container-fluid">
+        <div class="data-listing personality-card row gy-5 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
+            @foreach (var person in Model)
+            {
+                <div class="col">
+                    <a asp-controller="Person" asp-action="Detail" asp-route-id="@person.Id">
+                        <img src="@person.ImageUrl "
+                             alt="@person.Name"
+                             class="img-fluid object-cover mb-3 rounded-3 personality-img" />
+                    </a>
+                    <div class="text-center">
+                        <h6 class="mb-0">
+                            <a asp-controller="Person" asp-action="Detail" asp-route-id="@person.Id"
+                                   class="font-size-14 text-decoration-none cast-title text-capitalize">
+                                @person.Name
+                            </a>
+                        </h6>
+                        <a asp-controller="Person" asp-action="Detail" asp-route-id="@person.Id"
+                               class="font-size-12 fw-semibold text-decoration-none text-capitalize text-body">
+                            @person.Role
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

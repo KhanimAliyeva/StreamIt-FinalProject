@@ -22,7 +22,6 @@ namespace STREAMIT.Core.Entities
         public int PriorityLevel { get; set; }
 
         public ICollection<Movie> Movies { get; set; } = [];
-        public ICollection<TVShow> TVShows { get; set; } = [];
         public ICollection<UserMembership> UserMemberships { get; set; } = [];
     }
 

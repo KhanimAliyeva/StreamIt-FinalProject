@@ -1,6 +1,5 @@
 ﻿using STREAMIT.Business.Dtos.ResultDtos;
 using STREAMIT.Business.Dtos.TagDtos;
-using STREAMIT.Business.Dtos.TagDtos.STREAMIT.Business.Dtos.TagDtos;
 using STREAMIT.Core.Entities;
 using System;
 using System.Collections.Generic;

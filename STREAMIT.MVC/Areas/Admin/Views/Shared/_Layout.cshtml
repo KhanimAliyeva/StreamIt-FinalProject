@@ -67,6 +67,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300&display=swap"
           rel="stylesheet">
+          <link href="https://cdn.jsdelivr.net/npm/phosphor-icons@1.4.1/dist/phosphor.css" rel="stylesheet">
 </head>
 
 <body class="  ">
@@ -82,7 +83,7 @@
     <aside class="sidebar sidebar-base sidebar-white sidebar-default navs-rounded-all " id="first-tour"
            data-toggle="main-sidebar" data-sidebar="responsive">
         <div class="sidebar-header d-flex align-items-center justify-content-start">
-            <a href="./index.html" class="navbar-brand">
+            <a asp-action="Index" asp-controller="Dashboard" asp-area="Admin" class="navbar-brand">
                 
                 <!--Logo start-->
                 <img class="logo-normal" src="~/admin/assets/images/logo.png" alt="#">
@@ -108,7 +109,7 @@
                 <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                               href="./index.html">
+                               asp-action="Index" asp-controller="Dashboard">
                             <i class="icon" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard"
                                    data-bs-original-title="Dashboard">
                                 <i class="ph ph-squares-four fs-4"></i>
@@ -116,24 +117,15 @@
                             <span class="item-name">Dashboard</span>
                         </a>
                     </li>
+       
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page"
-                               href="./dashboard.html">
-                            <i class="icon" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard 1"
-                                   data-bs-original-title="Dashboard 1">
-                                <i class="ph ph-squares-four fs-4"></i>
-                            </i>
-                            <span class="item-name">Dashboard 1</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page"
-                               href="./rating.html">
+                              asp-action="Index" asp-controller="Rating" >
                             <i class="ph ph-star-half fs-4"></i>
                             <span class="item-name">Rating</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    @* <li class="nav-item">
                         <a class="nav-link " aria-current="page"
                                href="./comment.html">
                             <i class="icon" data-bs-toggle="tooltip" title="Comment" data-bs-placement="right" aria-label="Comment"
@@ -142,248 +134,33 @@
                             </i>
                             <span class="item-name">Comments</span>
                         </a>
-                    </li>
+                    </li> *@
+            @* Users *@
                     <li class="nav-item">
                         <a class="nav-link "
-                               href="./app/user-list.html">
-                            <i class="icon" data-bs-toggle="tooltip" title="User" data-bs-placement="right" aria-label="User"
-                                   data-bs-original-title="User">
+                               asp-action="Index" asp-controller="Cast" >
+                            <i class="icon" data-bs-toggle="tooltip" title="Cast" data-bs-placement="right" aria-label="Cast"
+                                   data-bs-original-title="Cast">
                                 <i class="ph ph-user fs-5"></i>
                             </i>
-                            <span class="item-name">Users</span>
+                            <span class="item-name">Cast</span>
                         </a>
                     </li>
+            @* Movie *@
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-Movies" role="button" aria-expanded="false">
+                        <a class="nav-link"  role="button" aria-expanded="false" asp-action="Index" asp-controller="Movie">
                             <i class="icon" data-bs-toggle="tooltip" title="Movie List" data-bs-placement="right"
                                    aria-label="Movie List" data-bs-original-title="Movie List">
                                 <i class="ph ph-film-strip fs-4"></i>
                             </i>
                             <span class="item-name">Movie</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
+                        
                         </a>
-                        <ul class="sub-nav collapse" id="sidebar-Movies" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./movie/movie-list.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Movie List" data-bs-placement="right"
-                                           aria-label="Movie List" data-bs-original-title="Movie List">
-                                        <i class="ph ph-film-strip fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Movie List</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./movie/genres.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Genres" data-bs-placement="right"
-                                           aria-label="Movie List" data-bs-original-title="Genres">
-                                        <i class="ph ph-faders-horizontal fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Genres</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./movie/tags.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Movie Tags" data-bs-placement="right"
-                                           aria-label="Movie List" data-bs-original-title="Movie Tags">
-                                        <i class="ph ph-tag fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Tags</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./movie/play-list.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Play List" data-bs-placement="right"
-                                           aria-label="Play List" data-bs-original-title="Play List">
-                                        <i class="ph ph-playlist fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Movie Playlists</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
-                
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-Shows" role="button" aria-expanded="false">
-                            <i class="icon" data-bs-toggle="tooltip" title="TV Shows" data-bs-placement="right" aria-label="TV Shows"
-                                   data-bs-original-title="TV Shows">
-                                <i class="ph ph-television-simple fs-4"></i>
-                            </i>
-                            <span class="item-name">TV Shows</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="sidebar-Shows" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./tv-shows/show-list.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Show Lists" data-bs-placement="right"
-                                           aria-label="Show Lists" data-bs-original-title="Show Lists">
-                                        <i class="ph ph-monitor-play fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Show Lists</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./tv-shows/episodes.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Episodes" data-bs-placement="right"
-                                           aria-label="Episodes" data-bs-original-title="Episodes">
-                                        <i class="ph ph-monitor-play fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Episodes</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./tv-shows/general.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="general" data-bs-placement="right"
-                                           aria-label="general" data-bs-original-title="general">
-                                        <i class="ph ph-faders-horizontal fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Genres</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./tv-shows/tags.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="tags" data-bs-placement="right" aria-label="tags"
-                                           data-bs-original-title="tags">
-                                        <i class="ph ph-tag fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Tags</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./tv-shows/episodes-playlist.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="episodes-playlist" data-bs-placement="right"
-                                           aria-label="episodes-playlist" data-bs-original-title="episodes-playlist">
-                                        <i class="ph ph-playlist fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Episodes Playlist</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-video" role="button" aria-expanded="false"
-                               aria-controls="sidebar-video">
-                            <i class="icon" data-bs-toggle="tooltip" title="Videos" data-bs-placement="right" aria-label="TV Shows"
-                                   data-bs-original-title="Videos">
-                                <i class="ph ph-video-camera fs-4"></i>
-                            </i>
-                            <span class="item-name">Videos</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="sidebar-video" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./video/videos.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="videos" data-bs-placement="right"
-                                           aria-label="videos" data-bs-original-title="videos">
-                                        <i class="ph ph-video fs-5"></i>
-                                    </i>
-                                    <span class="item-name">videos</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./video/video-category.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Video Category" data-bs-placement="right"
-                                           aria-label="Video Category" data-bs-original-title="Video Category">
-                                        <i class="ph ph-queue fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Video Category</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./video/video-tags.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="videos-tags" data-bs-placement="right"
-                                           aria-label="Videos Tags" data-bs-original-title="videos-tags">
-                                        <i class="ph ph-video-camera fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Video Tags</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./video/video-playlist.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="video-playlist" data-bs-placement="right"
-                                           aria-label="Video Playlist" data-bs-original-title="Video Playlist">
-                                        <i class="ph ph-playlist fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Video Playlist</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-person" role="button" aria-expanded="false"
-                               aria-controls="sidebar-person">
-                            <i class="icon" data-bs-toggle="tooltip" title="Person" data-bs-placement="right" aria-label="Person"
-                                   data-bs-original-title="Person">
-                                <i class="ph ph-users-three fs-4"></i>
-                            </i>
-                            <span class="item-name">Persons</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="sidebar-person" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./persons/persons.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="person" data-bs-placement="right"
-                                           aria-label="person" data-bs-original-title="person">
-                                        <i class="ph ph-user-circle fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Person</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./persons/categories.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="categories" data-bs-placement="right"
-                                           aria-label="categories" data-bs-original-title="categories">
-                                        <i class="ph ph-user-circle-plus fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Categories</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="./persons/tags.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="tags" data-bs-placement="right" aria-label="tags"
-                                           data-bs-original-title="tags">
-                                        <i class="ph ph-tag fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Tags</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
+      
+
+            @* Review *@
+                    @* <li class="nav-item">
                         <a class="nav-link " href="./review/review.html">
                             <i class="icon" data-bs-toggle="tooltip" title="review" data-bs-placement="right" aria-label="review"
                                    data-bs-original-title="review">
@@ -391,606 +168,83 @@
                             </i>
                             <span class="item-name">Review</span>
                         </a>
+                    </li> *@
+
+                       <li class="nav-item">
+                        <a class="nav-link "
+                              asp-action="Index" asp-controller="User">
+                            <i class="icon" data-bs-toggle="tooltip" title="User" data-bs-placement="right" aria-label="User"
+                                   data-bs-original-title="User">
+                                <i class="ph ph-user fs-5"></i>
+                            </i>
+                            <span class="item-name">Users</span>
+                        </a>
                     </li>
+           <li class="nav-item">
+    <a class="nav-link" asp-controller="Genre" asp-action="Index">
+        <i class="ph ph-tag fs-5" data-bs-toggle="tooltip" title="Genre" data-bs-placement="right" aria-label="Genre"></i>
+        <span class="item-name">Genre</span>
+    </a>
+</li>
+
+            <li class="nav-item">
+    <a class="nav-link" asp-controller="Language" asp-action="Index">
+        <i class="ph ph-translate fs-5" data-bs-toggle="tooltip" title="Language" data-bs-placement="right" aria-label="Language"></i>
+        <span class="item-name">Language</span>
+    </a>
+</li>
+
+            <li class="nav-item">
+    <a class="nav-link" asp-controller="Tag" asp-action="Index">
+        <i class="ph ph-tag fs-5" data-bs-toggle="tooltip" title="Tags" data-bs-placement="right" aria-label="Tags"></i>
+        <span class="item-name">Tags</span>
+    </a>
+</li>
+
+
+   <li class="nav-item">
+                        <a class="nav-link "
+                             asp-action="Index" asp-controller="Membership">
+                            <i class="icon" data-bs-toggle="tooltip" title="Membership" data-bs-placement="right" aria-label="Membership"
+                                   data-bs-original-title="Membership">
+                                <i class="ph ph-money fs-5"></i>
+                            </i>
+                            <span class="item-name">Membership</span>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link "
-                               href="./special-pages/pricing.html">
-                            <i class="icon" data-bs-toggle="tooltip" title="Pricing" data-bs-placement="right" aria-label="Pricing"
-                                   data-bs-original-title="Pricing">
-                                <i class="ph ph-wallet fs-5"></i>
+                           asp-action="Index" asp-controller="Blog">
+                            <i class="icon" data-bs-toggle="tooltip" title="Blog" data-bs-placement="right" aria-label="Blog"
+                                   data-bs-original-title="Blog">
+                                <i class="ph ph-book fs-5"></i>
                             </i>
-                            <span class="item-name">Pricing</span>
+                            <span class="item-name">Blog</span>
                         </a>
                     </li>
-                
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-auth" role="button" aria-expanded="false"
-                               aria-controls="sidebar-auth">
-                            <i class="icon" data-bs-toggle="tooltip" title="Authentication" data-bs-placement="right"
-                                   aria-label="Authentication" data-bs-original-title="Authentication">
-                                <i class="ph ph-shield-check fs-5"></i>
-                            </i>
-                            <span class="item-name">Authentication</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="sidebar-auth" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link" href="./auth/sign-in.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Login" data-bs-placement="right" aria-label="Login"
-                                           data-bs-original-title="Login">
-                                        <i class="ph ph-sign-in fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Login</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./auth/sign-up.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Register" data-bs-placement="right"
-                                           aria-label="Register" data-bs-original-title="Register">
-                                        <i class="ph ph-trademark-registered fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Register</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./auth/recoverpw.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Recover Password" data-bs-placement="right"
-                                           aria-label="Recover Password" data-bs-original-title="Recover Password">
-                                        <i class="ph ph-voicemail fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Recover Password</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./auth/confirm-mail.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Confirm Mail" data-bs-placement="right"
-                                           aria-label="Confirm Mail" data-bs-original-title="Confirm Mail">
-                                        <i class="ph ph-file fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Confirm Mail</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./auth/two-factor.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Two Factor Authentication" data-bs-placement="right"
-                                           aria-label="Two Factor Authentication" data-bs-original-title="Two Factor Authentication">
-                                        <i class="ph ph-fingerprint fs-5"></i>
-                                    </i>
-                                    <span class="item-name">2FA</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./auth/account-deactivate.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Account Deactivate" data-bs-placement="right"
-                                           aria-label="Account Deactivate" data-bs-original-title="Account Deactivate">
-                                        <i class="ph ph-user-circle-minus fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Account Deactivate</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./auth/lock-screen.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Lock Screen" data-bs-placement="right"
-                                           aria-label="Lock Screen" data-bs-original-title="Lock Screen">
-                                        <i class="ph ph-lock fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Lock Screen</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#utilities-error" role="button" aria-expanded="false"
-                               aria-controls="utilities-error">
-                            <i class="icon" data-bs-toggle="tooltip" title="Utilities" data-bs-placement="right" aria-label="Utilities"
-                                   data-bs-original-title="Utilities">
-                                <i class="ph-fill ph-note fs-4"></i>
-                            </i>
-                            <span class="item-name">Utilities</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="utilities-error" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./errors/error404.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Error 404" data-bs-placement="right"
-                                           aria-label="Error 404" data-bs-original-title="Error 404">
-                                        <i class="ph ph-warning-circle fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Error 404</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./errors/error500.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Error 500" data-bs-placement="right"
-                                           aria-label="Error 500" data-bs-original-title="Error 500">
-                                        <i class="ph ph-warning-circle fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Error 500</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./errors/maintenance.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Maintenance" data-bs-placement="right"
-                                           aria-label="Maintenance" data-bs-original-title="Maintenance">
-                                        <i class="ph ph-archive fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Maintenance</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./errors/coming-soon.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Coming Soon" data-bs-placement="right"
-                                           aria-label="Coming Soon" data-bs-original-title="Coming Soon">
-                                        <i class="ph ph-clock fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Coming Soon</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="./blank-page.html">
-                            <i class="icon" data-bs-toggle="tooltip" title="Blank Page" data-bs-placement="right"
-                                   aria-label="Blank Page" data-bs-original-title="Blank Page">
-                                <i class="ph ph-note fs-5"></i>
-                            </i>
-                            <span class="item-name">Blank Page</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#ui" role="button" aria-expanded="false"
-                               aria-controls="utilities-error">
-                            <i class="icon" data-bs-toggle="tooltip" title="UI Elements" data-bs-placement="right"
-                                   aria-label="UI Elements" data-bs-original-title="UI Elements">
-                                <i class="ph ph-briefcase fs-4"></i>
-                            </i>
-                            <span class="item-name">UI Elements</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="ui" data-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-avatars.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Avatars" data-bs-placement="right"
-                                           aria-label="Avatars" data-bs-original-title="Avatars">
-                                        <i class="ph ph-user fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Avatars</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-alerts.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Alerts" data-bs-placement="right"
-                                           aria-label="Alerts" data-bs-original-title="Alerts">
-                                        <i class="ph ph-bell fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Alerts</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-badges.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Badges" data-bs-placement="right"
-                                           aria-label="Badges" data-bs-original-title="Badges">
-                                        <i class="ph-duotone ph-shield-check fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Badge</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-breadcrumb.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Breadcrumb" data-bs-placement="right"
-                                           aria-label="Breadcrumb" data-bs-original-title="Breadcrumb">
-                                        <i class="ph ph-list fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Breadcrumb</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-buttons.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Buttons" data-bs-placement="right"
-                                           aria-label="Buttons" data-bs-original-title="Buttons">
-                                        <i class="ph-duotone ph-device-tablet-camera fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Buttons</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-buttons-group.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Button Group" data-bs-placement="right"
-                                           aria-label="Button Group" data-bs-original-title="Button Group">
-                                        <i class="ph ph-rows fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Buttons Group</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-offcanvas.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Offcanvas" data-bs-placement="right"
-                                           aria-label="Offcanvas" data-bs-original-title="Offcanvas">
-                                        <i class="ph ph-corners-out fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Offcanvas</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-color.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Colors" data-bs-placement="right"
-                                           aria-label="Colors" data-bs-original-title="Colors">
-                                        <i class="ph ph-palette fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Colors</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-cards.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Cards" data-bs-placement="right" aria-label="Cards"
-                                           data-bs-original-title="Cards">
-                                        <i class="ph ph-identification-card fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Cards</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-carousel.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Carousel" data-bs-placement="right"
-                                           aria-label="Carousel" data-bs-original-title="Carousel">
-                                        <i class="ph-duotone ph-film-strip fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Carousel</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-grid.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Grid" data-bs-placement="right" aria-label="Grid"
-                                           data-bs-original-title="Grid">
-                                        <i class="ph ph-grid-four fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Grid</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-images.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Images" data-bs-placement="right"
-                                           aria-label="Images" data-bs-original-title="Images">
-                                        <i class="ph ph-image fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Images</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-list-group.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="List Group" data-bs-placement="right"
-                                           aria-label="List Group" data-bs-original-title="List Group">
-                                        <i class="ph ph-list-checks fs-5"></i>
-                                    </i>
-                                    <span class="item-name">List Group</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-modal.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Modal" data-bs-placement="right" aria-label="Modal"
-                                           data-bs-original-title="Modal">
-                                        <i class="ph ph-square-split-horizontal fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Modal</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-notifications.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Notifications" data-bs-placement="right"
-                                           aria-label="Notifications" data-bs-original-title="Notifications">
-                                        <i class="ph ph-bell fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Notifications</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-pagination.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Pagination" data-bs-placement="right"
-                                           aria-label="Pagination" data-bs-original-title="Pagination">
-                                        <i class="ph ph-dots-three-outline fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Pagination</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-popovers.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Popovers" data-bs-placement="right"
-                                           aria-label="Popovers" data-bs-original-title="Popovers">
-                                        <i class="ph ph-eraser fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Popovers</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-typography.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Typography" data-bs-placement="right"
-                                           aria-label="Typography" data-bs-original-title="Typography">
-                                        <i class="ph ph-keyboard fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Typography</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-tabs.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Tabs" data-bs-placement="right" aria-label="Tabs"
-                                           data-bs-original-title="Tabs">
-                                        <i class="ph ph-stack fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Tabs</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-tooltips.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Tooltips" data-bs-placement="right"
-                                           aria-label="Tooltips" data-bs-original-title="Tooltips">
-                                        <i class="ph ph-magnet fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Tooltips</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./ui-elements/ui-embed-video.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Video" data-bs-placement="right" aria-label="Video"
-                                           data-bs-original-title="Video">
-                                        <i class="ph ph-video-camera fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Video</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-widget" role="button" aria-expanded="false"
-                               aria-controls="sidebar-widget">
-                            <i class="icon" data-bs-toggle="tooltip" title="Widgets" data-bs-placement="right" aria-label="Widgets"
-                                   data-bs-original-title="Widgets">
-                                <i class="ph ph-browser fs-4"></i>
-                            </i>
-                            <span class="item-name">Widgets</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="sidebar-widget" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./widget/widgetbasic.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Widget Basic" data-bs-placement="right"
-                                           aria-label="Widget Basic" data-bs-original-title="Widget Basic">
-                                        <i class="ph ph-chart-bar fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Widget Basic</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./widget/widgetchart.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Widget Chart" data-bs-placement="right"
-                                           aria-label="Widget Chart" data-bs-original-title="Widget Chart">
-                                        <i class="ph ph-chart-line fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Widget Chart</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./widget/widgetcard.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Widget Card" data-bs-placement="right"
-                                           aria-label="Widget Card" data-bs-original-title="Widget Card">
-                                        <i class="ph ph-browsers fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Widget Card</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-form" role="button" aria-expanded="false"
-                               aria-controls="sidebar-form">
-                            <i class="icon" data-bs-toggle="tooltip" title="Form" data-bs-placement="right" aria-label="Form"
-                                   data-bs-original-title="Form">
-                                <i class="ph ph-note fs-4"></i>
-                            </i>
-                            <span class="item-name">Form</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="sidebar-form" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./form/form-element.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Elements" data-bs-placement="right"
-                                           aria-label="Elements" data-bs-original-title="Elements">
-                                        <i class="ph ph-book fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Elements</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./form/form-wizard.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Wizard" data-bs-placement="right"
-                                           aria-label="Wizard" data-bs-original-title="Wizard">
-                                        <i class="ph ph-magic-wand fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Wizard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./form/form-validation.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Validation" data-bs-placement="right"
-                                           aria-label="Validation" data-bs-original-title="Validation">
-                                        <i class="ph ph-note-pencil fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Validation</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-table" role="button" aria-expanded="false"
-                               aria-controls="sidebar-table">
-                            <i class="icon" data-bs-toggle="tooltip" title="Table" data-bs-placement="right" aria-label="Table"
-                                   data-bs-original-title="Table">
-                                <i class="ph-fill ph-table fs-4"></i>
-                            </i>
-                            <span class="item-name">Table</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="sidebar-table" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./table/bootstrap-table.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Bootstrap Table" data-bs-placement="right"
-                                           aria-label="Bootstrap Table" data-bs-original-title="Bootstrap Table">
-                                        <i class="fa-brands fa-bootstrap"></i>
-                                    </i>
-                                    <span class="item-name">Bootstrap Table</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./table/table-data.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Datatable" data-bs-placement="right"
-                                           aria-label="Datatable" data-bs-original-title="Datatable">
-                                        <i class="ph ph-table fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Datatable</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./table/border-table.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="Bordered Table" data-bs-placement="right"
-                                           aria-label="Bordered Table" data-bs-original-title="Bordered Table">
-                                        <i class="ph ph-table fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Bordered Table</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./table/fixed-table.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="FixedTable" data-bs-placement="right"
-                                           aria-label="Fixed Tabl" data-bs-original-title="Fixed Tabl">
-                                        <i class="ph ph-grid-nine fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Fixed Table</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-icons" role="button" aria-expanded="false"
-                               aria-controls="sidebar-icons">
-                            <i class="icon" data-bs-toggle="tooltip" title="Icons" data-bs-placement="right" aria-label="Icons"
-                                   data-bs-original-title="Icons">
-                                <i class="ph-duotone ph-circles-three-plus fs-4"></i>
-                            </i>
-                            <span class="item-name">Icons</span>
-                            <i class="right-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" class="icon-18" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </i>
-                        </a>
-                        <ul class="sub-nav collapse" id="sidebar-icons" data-bs-parent="#sidebar-menu">
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./icons/ph-regular.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="ph-regular" data-bs-placement="right"
-                                           aria-label="ph-regular" data-bs-original-title="ph-regular">
-                                        <i class="ph ph-currency-rub fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Ph Regular</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./icons/ph-bold.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="ph-bold" data-bs-placement="right"
-                                           aria-label="ph-bold" data-bs-original-title="ph-bold">
-                                        <i class="ph-bold ph-currency-rub fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Ph Bold</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link "
-                                       href="./icons/ph-fill.html">
-                                    <i class="icon" data-bs-toggle="tooltip" title="ph-fill" data-bs-placement="right"
-                                           aria-label="ph-fill" data-bs-original-title="ph-fill">
-                                        <i class="ph-fill ph-currency-rub fs-5"></i>
-                                    </i>
-                                    <span class="item-name">Ph Fill</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item mb-4">
+
+                       <li class="nav-item">
                         <a class="nav-link "
-                               href="./access-control.html">
-                            <i class="icon" data-bs-toggle="tooltip" title="Access Control" data-bs-placement="right"
-                                   aria-label="Access Control" data-bs-original-title="Access Control">
-                                <i class="ph ph-user-gear fs-4"></i>
+                           asp-action="Index" asp-controller="Slider">
+                            <i class="icon" data-bs-toggle="tooltip" title="Slider" data-bs-placement="right" aria-label="Slider"
+                                   data-bs-original-title="Slider">
+                                <i class="ph ph-sliders fs-5"></i>
                             </i>
-                            <span class="item-name">Access Control</span>
+                            <span class="item-name">Slider</span>
+                        </a>
+                    </li>                 
+                    <li class="nav-item">
+                        <a class="nav-link "
+                           asp-action="Index" asp-controller="Slider2">
+                            <i class="icon" data-bs-toggle="tooltip" title="Slider2" data-bs-placement="right" aria-label="Slider2"
+                                   data-bs-original-title="Slider2">
+                                <i class="ph ph-sliders fs-5"></i>
+                            </i>
+                            <span class="item-name">Slider2</span>
                         </a>
                     </li>
+                   
                 </ul>
                 
                 <!-- Sidebar Menu End -->
@@ -1037,164 +291,8 @@
                     </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0 ">
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link" id="search-drop" data-bs-toggle="dropdown">
-                                    <i class="ph ph-magnifying-glass fs-4 align-middle"></i>
-                                </a>
-                                <ul class="p-0 sub-drop dropdown-menu dropdown-menu-end" aria-labelledby="search-drop">
-                                    <li>
-                                        <div class="p-3 card-header justify-content-between border-bottom rounded-top">
-                                            <div class="header-title">
-                                                <div class="iq-search-bar device-search  position-relative">
-                                                    <form action="#" class="searchbox">
-                                                        <input type="text" class="text search-input form-control bg-primary-subtle w-100"
-                                                               placeholder="Search here...">
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="p-0 card-body all-notification">
-                                            <div class="d-flex align-items-center border-bottom search-hover py-2 px-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="~/admin/assets/images/avatars/01.png"
-                                                         class="align-self-center img-fluid avatar-50 rounded-pill" alt="#">
-                                                </div>
-                                                <div class="d-flex flex-column ms-3 w-100">
-                                                    <a href="javascript:void(0);" class="h5">Paige Turner</a>
-                                                    <span>Paige001</span>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center border-bottom search-hover py-2 px-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="~/admin/assets/images/avatars/02.png"
-                                                         class="align-self-center img-fluid avatar-50 rounded-pill" alt="#">
-                                                </div>
-                                                <div class="d-flex flex-column ms-3 w-100">
-                                                    <a href="javascript:void(0);" class="h5">Monty Carlo</a>
-                                                    <span>Carlo.m</span>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center search-hover py-2 px-3 border-bottom">
-                                                <div class="flex-shrink-0">
-                                                    <img src="~/admin/assets/images/avatars/03.png"
-                                                         class="align-self-center img-fluid avatar-50 rounded-pill" alt="#">
-                                                </div>
-                                                <div class="d-flex flex-column ms-3 w-100">
-                                                    <a href="javascript:void(0);" class="h5">Paul Molive</a>
-                                                    <span>Paul.45</span>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center border-bottom search-hover py-2 px-3">
-                                                <div class="flex-shrink-0">
-                                                    <img src="~/admin/assets/images/avatars/04.png"
-                                                         class="align-self-center img-fluid avatar-50 rounded-pill" alt="#">
-                                                </div>
-                                                <div class="d-flex flex-column ms-3 w-100">
-                                                    <a href="javascript:void(0);" class="h5">Monty Carlo</a>
-                                                    <span>Carlo.m</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link" id="langues-drop" data-bs-toggle="dropdown">
-                                    <i class="ph ph-translate fs-4 align-middle"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-content">
-                                    <li data-setting="attribute">
-                                        <div class="dropdown-item d-flex align-items-center">
-                                            <input type="radio" value="ltr" class="btn-check" name="theme_scheme_direction" data-prop="dir"
-                                                   id="theme-scheme-direction-ltr" checked>
-                                            <label class="d-block" for="theme-scheme-direction-ltr">
-                                                <span class="ms-2 mb-0"> LTR </span>
-                                            </label>
-            
-                                        </div>
-                                    </li>
-                                    <li data-setting="attribute">
-                                        <div class="dropdown-item d-flex align-items-center">
-                                            <input type="radio" value="rtl" class="btn-check" name="theme_scheme_direction" data-prop="dir"
-                                                   id="theme-scheme-direction-rtl">
-                                            <label class=" d-block" for="theme-scheme-direction-rtl">
-                                                <span class="ms-2 mb-0"> RTL </span>
-                                            </label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link" id="notification-drop" data-bs-toggle="dropdown">
-                                    <i class="ph-fill ph-bell fs-4 align-middle"></i>
-                                    <span class="bg-danger dots"></span>
-                                </a>
-                                <ul class="p-0 sub-drop dropdown-menu dropdown-menu-end" aria-labelledby="notification-drop">
-                                    <li class="p-0">
-                                        <div class="p-3 card-header d-flex justify-content-between bg-primary rounded-top">
-                                            <div class="header-title">
-                                                <h5 class="mb-0 text-white">All Notifications</h5>
-                                            </div>
-                                        </div>
-                                        <div class="p-0 card-body all-notification">
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="d-flex align-items-center">
-                                                    <img class="p-1 avatar-40 rounded-pill bg-primary-subtle"
-                                                         src="~/admin/assets/images/author/01.png" alt="img" loading="lazy">
-                                                    <div class="ms-3 w-100">
-                                                        <h6 class="mb-0 ">Emma Watson Bni</h6>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <p class="mb-0">95 MB</p>
-                                                            <small class="float-end font-size-12">Just Now</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="d-flex align-items-center">
-                                                    <div>
-                                                        <img class="p-1 avatar-40 rounded-pill bg-primary-subtle"
-                                                             src="~/admin/assets/images/author/02.png" alt="img" loading="lazy">
-                                                    </div>
-                                                    <div class="ms-3 w-100">
-                                                        <h6 class="mb-0 ">New customer is join</h6>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <p class="mb-0">Cyst Bni</p>
-                                                            <small class="float-end font-size-12">5 days ago</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="d-flex align-items-center">
-                                                    <img class="p-1 avatar-40 rounded-pill bg-primary-subtle"
-                                                         src="~/admin/assets/images/author/03.png" alt="img" loading="lazy">
-                                                    <div class="ms-3 w-100">
-                                                        <h6 class="mb-0 ">Two customer is left</h6>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <p class="mb-0">Cyst Bni</p>
-                                                            <small class="float-end font-size-12">2 days ago</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="d-flex align-items-center">
-                                                    <img class="p-1 avatar-40 rounded-pill bg-primary-subtle"
-                                                         src="~/admin/assets/images/author/04.png" alt="img" loading="lazy">
-                                                    <div class="w-100 ms-3">
-                                                        <h6 class="mb-0 ">New Mail from Fenny</h6>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <p class="mb-0">Cyst Bni</p>
-                                                            <small class="float-end font-size-12">3 days ago</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                      
+                      
                             <li class="nav-item theme-scheme-dropdown dropdown">
                                 <a href="#" class="nav-link" id="mode-drop" data-bs-toggle="dropdown">
                                     <i class="ph-duotone ph-sun fs-4 align-middle"></i>
@@ -1241,7 +339,7 @@
                             <li class="nav-item dropdown">
                                 <a class="py-0 nav-link d-flex align-items-center ps-3" href="#" id="profile-setting" role="button"
                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="~/admin/assets/images/user/01.jpg" alt="User-Profile"
+                                    <img src="~/admin/assets/images/avatars/admin.png" alt="User-Profile"
                                          class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded" loading="lazy">
                                     <img src="~/admin/assets/images/user/01.jpg" alt="User-Profile"
                                          class="theme-color-purple-img img-fluid avatar avatar-50 avatar-rounded" loading="lazy">
@@ -1254,22 +352,18 @@
                                     <img src="~/admin/assets/images/user/05.jpg" alt="User-Profile"
                                          class="theme-color-pink-img img-fluid avatar avatar-50 avatar-rounded" loading="lazy">
                                     <div class="caption ms-3 d-none d-md-block ">
-                                        <h6 class="mb-0 caption-title">Austin Robertson</h6>
-                                        <p class="mb-0 caption-sub-title">Administrator</p>
+                                        <h6 class="mb-0 caption-title">Khanim Aliyeva</h6>
+                                        <p class="mb-0 caption-sub-title">Admin</p>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile-setting">
-                                    <li><a class="dropdown-item" href="./app/user-profile.html">Profile</a></li>
-                                    <li>
-                                        <a class="dropdown-item" href="./app/user-privacy-setting.html">
-                                            Privacy
-                                            Setting
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="./auth/sign-in.html">Logout</a></li>
+                          
+                                                                                                                                                        <li>
+                                                                                                                                                            <form asp-controller="Account" asp-action="Logout" asp-area="" method="post" class="m-0">
+                                                                                                                                                                @Html.AntiForgeryToken()
+                                                                                                                                                                <button type="submit" class="dropdown-item">Logout</button>
+                                                                                                                                                            </form>
+                                                                                                                                                        </li>
                                 </ul>
                             </li>
                         </ul>
@@ -1277,8 +371,8 @@
                 </div>
             </nav>            <!--Nav End-->
         </div>
-
-        @RenderBody()
+                                                                                                                                                            @RenderSection("Scripts", required: false) <!-- burada əlavə et -->
+                                                                                                                                                            @RenderBody()
            <!-- Footer Section Start -->
         <footer class="footer">
             <div class="footer-body">
@@ -1295,6 +389,7 @@
                                 d="M15.85 2.50065C16.481 2.50065 17.111 2.58965 17.71 2.79065C21.401 3.99065 22.731 8.04065 21.62 11.5806C20.99 13.3896 19.96 15.0406 18.611 16.3896C16.68 18.2596 14.561 19.9196 12.28 21.3496L12.03 21.5006L11.77 21.3396C9.48102 19.9196 7.35002 18.2596 5.40102 16.3796C4.06102 15.0306 3.03002 13.3896 2.39002 11.5806C1.26002 8.04065 2.59002 3.99065 6.32102 2.76965C6.61102 2.66965 6.91002 2.59965 7.21002 2.56065H7.33002C7.61102 2.51965 7.89002 2.50065 8.17002 2.50065H8.28002C8.91002 2.51965 9.52002 2.62965 10.111 2.83065H10.17C10.21 2.84965 10.24 2.87065 10.26 2.88965C10.481 2.96065 10.69 3.04065 10.89 3.15065L11.27 3.32065C11.3618 3.36962 11.4649 3.44445 11.554 3.50912C11.6104 3.55009 11.6612 3.58699 11.7 3.61065C11.7163 3.62028 11.7329 3.62996 11.7496 3.63972C11.8354 3.68977 11.9247 3.74191 12 3.79965C13.111 2.95065 14.46 2.49065 15.85 2.50065ZM18.51 9.70065C18.92 9.68965 19.27 9.36065 19.3 8.93965V8.82065C19.33 7.41965 18.481 6.15065 17.19 5.66065C16.78 5.51965 16.33 5.74065 16.18 6.16065C16.04 6.58065 16.26 7.04065 16.68 7.18965C17.321 7.42965 17.75 8.06065 17.75 8.75965V8.79065C17.731 9.01965 17.8 9.24065 17.94 9.41065C18.08 9.58065 18.29 9.67965 18.51 9.70065Z"
                                 fill="currentColor"></path>
                         </svg>
+                        </span>
                 </div>
             </div>
         </footer>

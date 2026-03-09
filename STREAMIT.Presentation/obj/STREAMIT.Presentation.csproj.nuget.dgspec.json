@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[1.28.0, )"
             },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[3.4.1, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[12.1.1, )"
@@ -89,7 +93,7 @@
             },
             "MimeKit": {
               "target": "Package",
-              "version": "[4.15.0, )"
+              "version": "[4.15.1, )"
             }
           },
           "imports": [

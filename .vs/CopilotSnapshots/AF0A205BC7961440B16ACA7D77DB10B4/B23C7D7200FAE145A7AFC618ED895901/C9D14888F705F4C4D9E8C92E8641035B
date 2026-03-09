@@ -1,0 +1,56 @@
+﻿<script>
+    async function loadWatchlist() {
+      const container = document.getElementById("watchlistContainer");
+
+      try {
+        const resp = await fetch("https://localhost:7108/api/watchList", {
+          method: "GET",
+          credentials: "include"
+        });
+
+        console.log("status:", resp.status);
+
+        if (resp.status === 401) {
+          window.location.href = "/Account/Login";
+          return;
+        }
+
+        if (!resp.ok) {
+          container.innerHTML = `<p>Failed (${resp.status})</p>`;
+          return;
+        }
+
+        const list = await resp.json();
+
+        if (!list || list.length === 0) {
+          container.innerHTML = '<p class="text-center w-100">No watchlist available.</p>';
+          return;
+        }
+
+        container.innerHTML = list.map(x => `
+          <div class="col watchlist-item">
+            <div class="common_card">
+              <div class="image-box w-100">
+                <a href="/Movie/Details/${x.movieId}">
+                  <img src="${x.posterUrl}" class="img-fluid">
+                </a>
+              </div>
+              <div class="css_prefix-detail-part">
+                <h6>${x.title}</h6>
+                <button class="btn btn-secondary remove-watch"
+                  data-movie-id="${x.movieId}">
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join("");
+
+      } catch (e) {
+        console.error(e);
+        container.innerHTML = "<p>Error loading watchlist</p>";
+      }
+    }
+
+    loadWatchlist();
+</script>

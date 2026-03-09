@@ -1,0 +1,26 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using STREAMIT.Business.Dtos.MovieDtos;
+using STREAMIT.Business.Dtos.ReviewDtos;
+using STREAMIT.DataAccess.Contexts;
+
+public class MovieController : Controller
+{
+    private readonly HttpClient _httpClient;
+
+    public MovieController(IHttpClientFactory httpClientFactory)
+    {
+        _httpClient = httpClientFactory.CreateClient("ApiClient");
+         
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Details(int id)
+    {
+
+        if (movie == null)
+            return NotFound();
+
+        return View(movie);
+    }
+}

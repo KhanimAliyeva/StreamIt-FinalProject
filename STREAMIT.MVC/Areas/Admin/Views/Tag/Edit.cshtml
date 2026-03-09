@@ -1,0 +1,36 @@
+﻿@model      STREAMIT.Business.Dtos.TagDtos.UpdateTagDto
+
+@{
+    Layout = "_Layout"; // use admin layout
+    ViewData["Title"] = "Update Tag";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <div class="card-header text-center">
+                <h2 class="mb-0">Edit Tag</h2>
+            </div>
+            <div class="card-body">
+                <form asp-area="Admin" asp-action="Edit" asp-controller="Tag" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                    @* Id is required for update *@
+                    <input asp-for="Id" type="hidden" />
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter tag name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

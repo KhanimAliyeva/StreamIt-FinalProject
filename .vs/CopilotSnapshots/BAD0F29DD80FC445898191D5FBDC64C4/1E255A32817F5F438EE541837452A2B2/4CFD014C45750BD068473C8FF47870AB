@@ -1,0 +1,155 @@
+﻿using DocumentFormat.OpenXml.Drawing.Charts;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using STREAMIT.Business.Dtos.MembershipDtos;
+using STREAMIT.Business.Services.Abstractions;
+using STREAMIT.Core.Entities;
+using System.Text;
+using System.Text.Json;
+
+namespace STREAMIT.MVC.Controllers
+{
+    public class MembershipController : Controller
+    {
+        private readonly HttpClient _httpClient;
+        private readonly IPaymentService _paymentService;
+        
+
+        public MembershipController(IHttpClientFactory factory, IPaymentService paymentService)
+        {
+            _httpClient = factory.CreateClient("ApiClient");
+            _paymentService = paymentService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var json = await _httpClient.GetStringAsync("api/membership");
+
+            using var document = System.Text.Json.JsonDocument.Parse(json);
+
+            var valuesElement = document
+                .RootElement
+                .GetProperty("data")
+                .GetProperty("$values");
+
+            var memberships = System.Text.Json.JsonSerializer.Deserialize<List<GetMembershipDto>>(
+                valuesElement.GetRawText(),
+                new System.Text.Json.JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+            return View(memberships);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Checkout(int membershipId)
+        {
+            var response = await _httpClient.GetAsync($"api/membership/{membershipId}");
+            if (!response.IsSuccessStatusCode)
+                return NotFound();
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            // JSON objecti parse edirik
+            var jObject = Newtonsoft.Json.Linq.JObject.Parse(json);
+
+            // data hissəsini Membership obyektinə çeviririk
+            var membership = jObject["data"]!.ToObject<Membership>();
+
+            if (membership == null)
+                return NotFound();
+
+            // MembershipCheckoutVM-ə doldururuq
+            var vm = new MembershipCheckoutVM
+            {
+                Id = membership.Id,
+                Name = membership.Name,
+                Price = membership.Price,
+                Currency = "AZN",
+                Membership = membership // optional, lazım deyilsə silə bilərsən
+            };
+
+            return View(vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Buy(int membershipId)
+        {
+            // Call Presentation API to create payment and persist payment record in database
+            var response = await _httpClient.PostAsync($"api/payment/create?membershipId={membershipId}", null);
+            if (!response.IsSuccessStatusCode)
+                return BadRequest("Failed to initiate payment.");
+
+            var json = await response.Content.ReadAsStringAsync();
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(json);
+            if (result == null || result.checkoutUrl == null)
+                return BadRequest("Unexpected response from payment API.");
+
+            string checkoutUrl = (string)result.checkoutUrl;
+            return Redirect(checkoutUrl);
+        }
+
+        
+
+        public async Task<IActionResult> RedirectPayment(int ID)
+        {
+            var result = await _paymentService.GetPaymentInfoAsync(ID);
+
+            // Notify Presentation API to update payment record in DB
+            var callbackModel = new KapitalBankCallbackModel
+            {
+                OrderId = ID.ToString(),
+                Status = result.Order.Status
+            };
+
+            var content = new StringContent(JsonConvert.SerializeObject(callbackModel), Encoding.UTF8, "application/json");
+            // fire-and-forget update; handle response if needed
+            await _httpClient.PostAsync("api/payment/callback", content);
+
+            if (string.Equals(result.Order.Status, "FullyPaid", StringComparison.OrdinalIgnoreCase))
+            {
+                TempData["SuccessMessage"] = "Order successfully completed";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Payment not completed";
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        //    public async Task<IActionResult> Test()
+        //    {
+        //        var result = await _paymentService.CreatePaymentAsync(new()
+        //        {
+        //            Amount = 30,
+        //            Currency = "AZN",
+        //            Description = "Qardawlara catmalidir",
+        //            RedirectUrl = "https://localhost:7108/Membership/seyidakif"
+        //        });
+
+        //        if (result == null || result.Membership == null)
+        //        {
+        //            // Payment creation failed or returned unexpected shape. Return a clear error response.
+        //            return BadRequest("Payment creation failed: no purchase information returned from payment service.");
+        //        }
+
+        //        var membership = result.Membership;
+        //        if (string.IsNullOrWhiteSpace(membership.HppUrl))
+        //            return BadRequest("Payment creation failed: missing redirect URL from payment provider.");
+
+        //        string url = $"{membership.HppUrl}?password={membership.Password}&id={membership.Id}";
+
+        //        return Redirect(url);
+        //    }
+
+        //    public async Task<IActionResult> Seyidakif(int ID)
+        //    {
+        //        var result = await _payment_service.GetPaymentStatusAsync(ID.ToString());
+
+
+        //        return Json(result);
+
+        //    }
+        //}
+    }
+}

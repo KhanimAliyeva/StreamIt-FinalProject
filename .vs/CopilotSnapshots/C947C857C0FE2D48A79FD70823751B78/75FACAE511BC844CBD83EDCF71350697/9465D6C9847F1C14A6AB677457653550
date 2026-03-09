@@ -1,0 +1,944 @@
+﻿<div class="row">
+    <div class="col-sm-12">
+        <div class="streamit-wraper-table">
+            <div class="card-header d-flex justify-content-between gap-3 flex-wrap align-items-center mb-4">
+                <h2 class="episode-playlist-title wp-heading-inline">
+                    <span class="position-relative ">
+                        Persons List
+                    </span>
+                </h2>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#season-offcanvas" aria-controls="season-offcanvas">
+                    <i class="fa-solid fa-plus me-2"></i>Add New
+                </button>
+            </div>
+            <div class="table-view table-space">
+                <table id="seasonTable" class="data-tables table custom-table movie_table data-table-one"
+                       data-toggle="data-table1">
+                    <thead>
+                        <tr class="text-uppercase">
+                            <th>
+                                <input type="checkbox" class="form-check-input" />
+                            </th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Date and Time</th>
+                            <th>Views</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/ava-monroe.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                Ava Monroe
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2025-01-08 04:43:37
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/charles-melton.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                Charles Melton
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2024-11-27 08:36:04
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/jack-nicholson.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                Jack Nicholson
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2024-11-27 08:35:00
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/james-stewart.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                James Stewart
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2024-11-27 08:33:32
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/jeff-bridges.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                Jeff Bridges
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2024-11-27 08:32:28
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/jordan-grant.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                Jordan Grant
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2024-11-27 08:31:27
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/mark-smith.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                Mark Smith
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2024-11-27 08:29:43
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/maxwell-carter.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                Maxwell Carter
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2024-11-27 08:27:53
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/ruby-scott.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                Ruby Scott
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2024-11-27 08:26:50
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" />
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="../assets/images/author/michael-fox.webp" alt="image" class="rounded-2 avatar avatar-55 img-fluid" />
+                                </div>
+                            </td>
+                            <td>
+                                Michael Fox
+                            </td>
+                            <td>
+                                jenny
+                            </td>
+                            <td>
+                                2024-11-30 06:19:27
+                            </td>
+                            <td>
+                                0 views
+                            </td>
+                        
+                            <td>
+                                <div class="d-flex align-items-center list-user-action gap-2">
+                                    <button type="button" class="btn btn-sm btn-icon btn-success-subtle rounded" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Edit">
+                                        <i class="ph ph-pencil-simple fs-6" data-bs-toggle="offcanvas"
+                                           data-bs-target="#season-offcanvas-edit" aria-controls="season-offcanvas-edit"></i>
+                                    </button>
+                                    <a class="btn btn-sm btn-icon btn-danger-subtle delete-btn rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="Delete" href="#">
+                                        <i class="ph ph-trash-simple fs-6"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-icon btn-info-subtle  rounded" data-bs-toggle="tooltip"
+                                           data-bs-placement="top" title="View" href="#">
+                                        <i class="ph ph-eye fs-6"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="offcanvas offcanvas-end offcanvas-width-80" tabindex="-1" id="season-offcanvas">
+            <div class="offcanvas-header">
+                <h2 class="episode-playlist-title wp-heading-inline">
+                    <span class="position-relative ">
+                        Add New Person
+                    </span>
+                </h2>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <form>
+                    <div class="section-form">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="title1">
+                                        Person Title <span class="text-danger">*</span>
+                                    </label>
+                                    <input class="form-control" type="text" id="title1" placeholder="Enter title of the person."
+                                           data-id="multiple" required="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="author">Author</label>
+                                    <select id="author" class="form-control select2-basic-single">
+                                        <option>admin</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="status">Status</label>
+                                    <select id="status" class="form-control select2-basic-single">
+                                        <option>Published</option>
+                                        <option>Draft</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <label class="form-label flex-grow-1">Person Content</label>
+                            <div class="col-lg-12">
+                                <div id="editor" style="height:200px"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="streamit-upload form-group position-relative tvshow_genre_thumbnail_id_field">
+                                    <label class="form-label flex-grow-1">Thumbnail</label>
+                                
+                                    <!-- Hidden file input (per-instance) -->
+                                    <input type="file" class="d-none">
+                                
+                                    <!-- Button to trigger file input -->
+                                    <div>
+                                        <a href="#" class="d-flex align-items-center flex-column justify-content-center gap-4 button streamit_upload_video_button tips">
+                                            <!-- Default SVG icon (visible before image is selected) -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="img-icon d-block">
+                                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                                <polyline points="21 15 16 10 5 21"></polyline>
+                                            </svg>
+                                            <!-- Default text (visible before image is selected) -->
+                                            <span class="d-block">Choose Media to Upload</span>
+                                        </a>
+                                    </div>
+                                
+                                
+                                    <!-- Hidden file input element (per-instance) -->
+                                    <input type="file" class="file_upload" style="display:none;" accept="image/*">
+                                
+                                    <div class="streamit_media_preview-wrap">
+                                        <div class="streamit_media_preview">
+                                            <!-- Image preview (initially hidden) -->
+                                            <img class="tvshow_genre_thumbnail_preview" src="..//assets/images/movie-thumb/krishna.webp" alt="image1"
+                                                 style="display: none; max-width: 150px; max-height: 150px; object-fit: cover;" />
+                                            <!-- Remove button (initially hidden) -->
+                                            <button class="button remove_tvshow_genre_thumbnail_button streamit_remove_video_button position-absolute" style="display: none;">
+                                                <span class="remove-media-icon">X</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label class="form-label flex-grow-1" for="Description">
+                                        Person Excerpt
+                                    </label>
+                                    <textarea id="Description" class="form-control" rows="7"
+                                              placeholder="Enter excerpt content of the movie."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card streamit-tabs-card">
+                            <div class="card-body">
+                                <div class="row gy-4">
+                                    <div class="col-lg-3">
+                                        <div class="streamit-verticle-tab">
+                                            <div class="nav flex-column nav-pills me-0 me-lg-3 mb-3 mb-md-0 list-inline streamit-tabs"
+                                                 role="tablist" aria-orientation="vertical">
+                                                <button class="nav-link active" data-bs-toggle="pill" type="button"
+                                                        data-bs-target="#general_tab" role="tab" aria-selected="true">
+                                                    <span>General</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                        data-bs-target="#category_tab" role="tab" aria-selected="false">
+                                                    <span>Category</span>
+                                                </button>
+
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                        data-bs-target="#tags_tab" role="tab" aria-selected="false">
+                                                    <span>Tags</span>
+                                                </button>
+                                                <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                        data-bs-target="#personalData_tab" role="tab" aria-selected="true">
+                                                    <span>Personal Data</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 edit-tab-content">
+                                        <div class="tab-content" id="streamit-tabs-content">
+                                            <div class="tab-pane fade show active" id="general_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Also Known As</label>
+                                                                <input type="text" name="also_know_as"
+                                                                       id="also_know_as" class="form-control"
+                                                                       placeholder="Enter alternate names of the person">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Place of Birth</label>
+                                                                <input type="text" name="place_birth1"
+                                                                       id="place_birth1" class="form-control"
+                                                                       placeholder="Enter the movie censor rating.">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1" for="birth">
+                                                                    Birth Date
+                                                                </label>
+                                                                <input class="form-control flatpickr_humandate"
+                                                                       type="text"
+                                                                       placeholder="Enter the birth date of Person."
+                                                                       data-id="multiple" id="birth">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1" for="death">
+                                                                    Death Date
+                                                                </label>
+                                                                <input class="form-control flatpickr_humandate"
+                                                                       type="text"
+                                                                       placeholder="Enter the death date of Person."
+                                                                       data-id="multiple" id="death">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="category_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label flex-grow-1">Choose Person Category</label>
+                                                        <select id="video-category"
+                                                                class="form-control select2-basic-multiple" multiple>
+                                                            <option>Action</option>
+                                                            <option>Adventure</option>
+                                                            <option>Horror</option>
+                                                            <option>Circus</option>
+                                                            <option>Comedy</option>
+                                                            <option>Crime</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="tags_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label flex-grow-1">
+                                                            Choose
+                                                            Person Tags
+                                                        </label>
+                                                        <select id="video-tages"
+                                                                class="form-control select2-basic-multiple" multiple>
+                                                            <option>Action</option>
+                                                            <option>Adventure</option>
+                                                            <option>Animation</option>
+                                                            <option>Circus</option>
+                                                            <option>Comedy</option>
+                                                            <option>Crime</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="personalData_tab" role="tabpanel">
+                                                <div class="p-4 px-2">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1" for="awards">
+                                                                    Awards
+                                                                </label>
+                                                                <input type="text" class="form-control" id="awards" name="Awards">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1" for="Height">
+                                                                    Height
+                                                                </label>
+                                                                <input type="text" class="form-control" id="Height" name="Height">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="form-label flex-grow-1" for="OfficalURL">
+                                                                    Offical Site
+                                                                </label>
+                                                                <input type="text" id="OfficalURL" class="form-control"
+                                                                       name="Offical URL"
+                                                                       placeholder="https://www.imdb.com">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="offcanvas-footer border-top">
+                <div class="d-flex gap-3 p-3">
+                    <button type="submit" class="btn btn-primary d-flex align-items-center gap-2">
+                        <i class="ph-fill ph-floppy-disk-back"></i>Save
+                    </button>
+                    <button type="button" class="btn btn-outline-primary d-flex align-items-center gap-2" data-bs-dismiss="offcanvas"
+                            aria-label="Close">
+                        <i class="ph ph-caret-double-left"></i>Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end offcanvas-width-80" tabindex="-1" id="season-offcanvas-edit">
+        <div class="offcanvas-header">
+            <h2 class="episode-playlist-title wp-heading-inline">
+                <span class="position-relative ">
+                    Edit New Person
+                </span>
+            </h2>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form>
+                <div class="section-form">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-label flex-grow-1" for="title">
+                                    Person Title <span class="text-danger">*</span>
+                                </label>
+                                <input class="form-control" id="title" type="text" value="Arrival 1999" data-id="multiple"
+                                       required="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-label flex-grow-1" for="author1">Author</label>
+                                <select id="author1" class="form-control select2-basic-multiple">
+                                    <option selected="">admin</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-label flex-grow-1" for="status1">Status</label>
+                                <select id="status1" class="form-control select2-basic-multiple">
+                                    <option selected="">Published</option>
+                                    <option>Draft</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <label class="form-label flex-grow-1">Person Content</label>
+                        <div class="col-lg-12">
+                            <div id="editor1" style="height:200px"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="streamit-upload form-field form-group position-relative media-attachment-video media-option tvshow_genre_thumbnail_id_field">
+                                <label class="form-label">Thumbnail</label>
+                            
+                                <!-- Hidden file input (per-instance) -->
+                                <input type="file" class="d-none upload_video_id">
+                            
+                                <!-- Button to trigger file input -->
+                                <div>
+                                    <a href="#" class="d-flex align-items-center flex-column justify-content-center gap-4 button streamit_upload_video_button tips edit-button">
+                                        <img class="tvshow_genre_thumbnail_previews img-fluid object-cover" src="../assets/images/movie-thumb/krishna.webp" alt="image"
+                                             style="width: 150px; height: 150px; object-fit: cover;">
+                                    </a>
+                                </div>
+                            
+                            
+                                <!-- Hidden file input element (per-instance) -->
+                                <input type="file" class="file_upload" style="display:none;" accept="image/*">
+                            
+                                <div class="streamit_media_preview-wrap">
+                                    <div class="streamit_media_preview">
+                                        <!-- Remove button (per-instance) -->
+                                        <button class="button remove_tvshow_genre_thumbnail_buttons streamit_remove_video_button tips position-absolute" style="display: block;">
+                                            <span class="remove-media-icon">X</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="form-group">
+                                <label class="form-label flex-grow-1" for="Description1">
+                                    Person Excerpt
+                                </label>
+                                <textarea id="Description1" class="form-control" rows="7"
+                                          placeholder="Enter excerpt content of the movie."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card streamit-tabs-card">
+                        <div class="card-body">
+                            <div class="row gy-4">
+                                <div class="col-lg-3">
+                                    <div class="streamit-verticle-tab">
+                                        <div class="nav flex-column nav-pills me-0 me-lg-3 mb-3 mb-md-0 list-inline streamit-tabs"
+                                             role="tablist" aria-orientation="vertical">
+                                            <button class="nav-link active" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#general_tab1" role="tab" aria-selected="true">
+                                                <span>General</span>
+                                            </button>
+                                            <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#category_tab1" role="tab" aria-selected="false">
+                                                <span>Category</span>
+                                            </button>
+
+                                            <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#tags_tab1" role="tab" aria-selected="false">
+                                                <span>Tags</span>
+                                            </button>
+                                            <button class="nav-link" data-bs-toggle="pill" type="button"
+                                                    data-bs-target="#personalData_tab1" role="tab" aria-selected="true">
+                                                <span>Personal Data</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 edit-tab-content">
+                                    <div class="tab-content" id="streamit-tabs-contents">
+                                        <div class="tab-pane fade show active" id="general_tab1" role="tabpanel">
+                                            <div class="p-4 px-2">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Also Known As</label>
+                                                            <input type="text" name="_movie_censor_rating"
+                                                                   id="_movie_censor_rating" value="admin"
+                                                                   class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Place of Birth</label>
+                                                            <input type="text" name="place_birth"
+                                                                   id="place_birth" value="place"
+                                                                   class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label flex-grow-1" for="birthdate1">
+                                                                Birth Date
+                                                            </label>
+                                                            <input class="form-control flatpickr_humandate" type="text"
+                                                                   value="2025-01-01" id="birthdate1" data-id="multiple">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label flex-grow-1" for="dathdate1">
+                                                                Death Date
+                                                            </label>
+                                                            <input class="form-control flatpickr_humandate" type="text"
+                                                                   value="2025-01-17" id="dathdate1" data-id="multiple">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="category_tab1" role="tabpanel">
+                                            <div class="p-4 px-2">
+                                                <div class="form-group">
+                                                    <label class="form-label flex-grow-1">
+                                                        Choose
+                                                        Person
+                                                        Genres
+                                                    </label>
+                                                    <select id="choice_category"
+                                                            class="form-control select2-basic-multiple" multiple>
+                                                        <option selected="">Actor </option>
+                                                        <option>Actress </option>
+                                                        <option>Director </option>
+                                                        <option>Producer </option>
+                                                        <option>Singer </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tags_tab1" role="tabpanel">
+                                            <div class="p-4 px-2">
+                                                <div class="form-group">
+                                                    <label class="form-label flex-grow-1">
+                                                        Choose
+                                                        Person Tags
+                                                    </label>
+                                                    <select id="pmp_levels" class="form-control select2-basic-multiple"
+                                                            multiple>
+                                                        <option selected="">Actor </option>
+                                                        <option>Actress </option>
+                                                        <option>Director </option>
+                                                        <option>Producer </option>
+                                                        <option>Singer </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="personalData_tab1" role="tabpanel">
+                                            <div class="p-4 px-2">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label flex-grow-1" for="Awards1">
+                                                                Awards
+                                                            </label>
+                                                            <input type="text" class="form-control" id="Awards1" name="Awards"
+                                                                   value="IFFA Award">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="form-label flex-grow-1" for="Height1">
+                                                                Height
+                                                            </label>
+                                                            <input type="text" class="form-control" id="Height1" name="Height"
+                                                                   value="5'2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label class="form-label flex-grow-1" for="OfficalURL1">
+                                                                Offical Site
+                                                            </label>
+                                                            <input type="text" class="form-control" id="OfficalURL1" name="Offical URL"
+                                                                   placeholder="https://www.imdb.com"
+                                                                   value="https://templates.iqonic.design/streamit-dist/dashboard/html">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="offcanvas-footer border-top">
+            <div class="d-flex gap-3 p-3">
+                <button type="submit" class="btn btn-primary d-flex align-items-center gap-2">
+                    <i class="ph-fill ph-floppy-disk-back"></i>Save
+                </button>
+                <button type="button" class="btn btn-outline-primary d-flex align-items-center gap-2" data-bs-dismiss="offcanvas"
+                        aria-label="Close">
+                    <i class="ph ph-caret-double-left"></i>Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

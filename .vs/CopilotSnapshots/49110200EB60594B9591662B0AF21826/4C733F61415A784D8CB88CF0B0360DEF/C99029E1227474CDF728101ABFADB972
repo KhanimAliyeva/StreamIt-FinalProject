@@ -1,0 +1,77 @@
+﻿@model STREAMIT.Business.Dtos.BlogDtos.UpdateBlogDto
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="streamit-wraper">
+
+                <!-- Header -->
+                <div class="card-header mb-4">
+                    <h2 class="wp-heading-inline">
+                        <span class="position-relative">
+                            Update Blog
+                        </span>
+                    </h2>
+                </div>
+
+                <!-- Form -->
+                <div class="card">
+                    <div class="card-body">
+
+                        <form asp-area="Admin"
+                              asp-controller="Blog"
+                              asp-action="Update"
+                              method="post">
+
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" asp-for="Id" />
+
+                            <!-- Title -->
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input asp-for="Title" class="form-control" />
+                            </div>
+
+                            <!-- Author -->
+                            <div class="mb-3">
+                                <label class="form-label">Author Name</label>
+                                <input asp-for="AuthorName" class="form-control" />
+                            </div>
+
+                            <!-- Image -->
+                            <div class="mb-3">
+                                <label class="form-label">Image URL</label>
+                                <input asp-for="ImageUrl" class="form-control" />
+                            </div>
+
+                            <!-- Description -->
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea asp-for="Description"
+                                          rows="6"
+                                          class="form-control"></textarea>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-success">
+                                    Update
+                                </button>
+
+                                <a asp-area="Admin"
+                                       asp-controller="Blog"
+                                       asp-action="Index"
+                                       class="btn btn-secondary">
+                                    Cancel
+                                </a>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

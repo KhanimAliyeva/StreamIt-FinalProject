@@ -1,0 +1,34 @@
+﻿using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+
+namespace STREAMIT.MVC.Handlers
+{
+    public class AuthHeaderHandler : DelegatingHandler
+    {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public AuthHeaderHandler(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var httpContext = _httpContextAccessor.HttpContext;
+            if (httpContext != null)
+            {
+                // Try to read the access token cookie set by the MVC login flow.
+                // The cookie name used when signing in is "AccessToken". Keep a fallback to older "jwt" name.
+                var token = httpContext.Request.Cookies["AccessToken"] ?? httpContext.Request.Cookies["jwt"];
+                if (!string.IsNullOrEmpty(token) && request.Headers.Authorization == null)
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                }
+            }
+
+            return base.SendAsync(request, cancellationToken);
+        }
+    }
+}

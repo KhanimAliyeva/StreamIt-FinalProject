@@ -1,0 +1,155 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using STREAMIT.Business.Dtos.BlogDtos;
+using STREAMIT.Business.Dtos.ResultDtos;
+using System.Net.Http.Json;
+
+namespace STREAMIT.Web.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class BlogController : Controller
+    {
+        private readonly HttpClient _httpClient;
+        private readonly IWebHostEnvironment _env;
+
+        public BlogController(IHttpClientFactory httpClientFactory, IWebHostEnvironment env)
+        {
+            _httpClient = httpClientFactory.CreateClient("ApiClient");
+            _env = env;
+        }
+
+        #region INDEX
+        public async Task<IActionResult> Index()
+        {
+            var blogs = await SafeGetListFromApi<ResultBlogDto>("api/blog");
+            return View(blogs);
+        }
+        #endregion
+
+        #region CREATE
+        public IActionResult Create() => View();
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateBlogDto dto)
+        {
+            if (!ModelState.IsValid) return View(dto);
+
+            var response = await _httpClient.PostAsJsonAsync("api/blog", dto);
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                ViewBag.RawResponse = content;
+                ModelState.AddModelError("", $"API Error {(int)response.StatusCode}: {content}");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region UPDATE
+        public async Task<IActionResult> Update(int id)
+        {
+            var blog = (await SafeGetListFromApi<ResultBlogDto>($"api/blog/{id}")).FirstOrDefault();
+            if (blog == null) return NotFound();
+
+            var dto = new UpdateBlogDto
+            {
+                Id = blog.Id,
+                Title = blog.Title,
+                Description = blog.Description,
+                ImageUrl = blog.ImageUrl
+            };
+
+            return View(dto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(UpdateBlogDto dto)
+        {
+            if (!ModelState.IsValid) return View(dto);
+
+            var response = await _httpClient.PutAsJsonAsync("api/blog", dto);
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                ViewBag.RawResponse = content;
+                ModelState.AddModelError("", $"API Error {(int)response.StatusCode}: {content}");
+                return View(dto);
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region DELETE
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/blog/{id}");
+            var result = await SafeReadJson<ResultDto>(response);
+
+            if (result == null || !result.IsSucceed)
+                return NotFound(result?.Message ?? "Something went wrong...");
+
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region HELPERS
+        private async Task<List<T>> SafeGetListFromApi<T>(string endpoint)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync(endpoint);
+                if (!response.IsSuccessStatusCode) return new List<T>();
+
+                var content = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(content)) return new List<T>();
+
+                // 1️⃣ Try ResultDto<List<T>>
+                try
+                {
+                    var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultDto<List<T>>>(content);
+                    if (result != null && result.Data != null) return result.Data;
+                }
+                catch { }
+
+                // 2️⃣ Fallback: { data: [...] } wrapper
+                if (content.TrimStart().StartsWith("{"))
+                {
+                    var j = JObject.Parse(content);
+                    JToken? dataToken = j["data"];
+                    if (dataToken != null && dataToken.Type == JTokenType.Array)
+                        return dataToken.ToObject<List<T>>() ?? new List<T>();
+                }
+
+                // 3️⃣ Fallback: raw array
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<List<T>>(content) ?? new List<T>();
+            }
+            catch
+            {
+                return new List<T>();
+            }
+        }
+
+        private async Task<T?> SafeReadJson<T>(HttpResponseMessage response)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
+            catch
+            {
+                return default;
+            }
+        }
+        #endregion
+    }
+}
