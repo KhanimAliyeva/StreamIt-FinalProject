@@ -2,6 +2,8 @@
 @model GetMovieDto
 @{
     Layout = null;
+    var isComingSoon = Model.ReleaseDate > DateTime.Now;
+    var countdownDate = Model.ReleaseDate.ToString("MMM dd yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
 }
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
@@ -27,6 +29,16 @@
                     <style>
                             body {
                                 background-color: #000;
+                                overflow-x: hidden;
+                                margin: 0;
+                                padding: 0;
+                            }
+
+                            .back-btn {
+                                position: fixed;
+                                top: 20px;
+                                left: 20px;
+                                z-index: 9999;
                             }
 
                             .video-container {
@@ -40,14 +52,173 @@
                                 height: auto;
                                 display: block;
                                 background: #000;
-                                border-radius: 12px;
+                                border-radius: 16px;
                             }
 
-                            .back-btn {
-                                position: fixed;
-                                top: 20px;
-                                left: 20px;
-                                z-index: 9999;
+                            .coming-page {
+                                min-height: 100vh;
+                                position: relative;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 30px;
+                                background-image: url('/assets/images/pages/01.webp');
+                                background-size: cover;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                            }
+
+                                .coming-page::before {
+                                    content: "";
+                                    position: absolute;
+                                    inset: 0;
+                                    background: rgba(0, 0, 0, 0.72);
+                                }
+
+                            .coming-box {
+                                position: relative;
+                                z-index: 2;
+                                width: 100%;
+                                max-width: 980px;
+                                margin: auto;
+                                padding: 60px 40px;
+                                border-radius: 24px;
+                                background: rgba(0, 0, 0, 0.58);
+                                backdrop-filter: blur(12px);
+                                -webkit-backdrop-filter: blur(12px);
+                                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+                                text-align: center;
+                            }
+
+                            .coming-title {
+                                font-size: 72px;
+                                font-weight: 700;
+                                line-height: 1.1;
+                                color: #fff;
+                                margin-bottom: 14px;
+                            }
+
+                            .coming-subtitle {
+                                font-size: 21px;
+                                color: #cfcfcf;
+                                margin-bottom: 36px;
+                            }
+
+                            .movie-name {
+                                font-size: 34px;
+                                font-weight: 600;
+                                color: #fff;
+                                margin-bottom: 42px;
+                            }
+
+                            .countdown-wrapper {
+                                display: grid;
+                                grid-template-columns: repeat(4, minmax(140px, 1fr));
+                                gap: 24px;
+                                align-items: center;
+                                justify-content: center;
+                                max-width: 760px;
+                                margin: 0 auto;
+                            }
+
+                            .time-box {
+                                text-align: center;
+                                padding: 10px;
+                            }
+
+                            .time-value {
+                                font-size: 76px;
+                                font-weight: 700;
+                                line-height: 1;
+                                color: #fff;
+                                margin-bottom: 12px;
+                            }
+
+                            .time-label {
+                                font-size: 22px;
+                                color: #c9c9c9;
+                                margin: 0;
+                            }
+
+                            .release-date-text {
+                                margin-top: 38px;
+                                font-size: 18px;
+                                color: #b3b3b3;
+                            }
+
+                            @@media (max-width: 991px) {
+                                .coming-box {
+                                    padding: 50px 28px;
+                                }
+
+                                .coming-title {
+                                    font-size: 54px;
+                                }
+
+                                .movie-name {
+                                    font-size: 28px;
+                                }
+
+                                .countdown-wrapper {
+                                    grid-template-columns: repeat(2, minmax(130px, 1fr));
+                                    gap: 20px;
+                                }
+
+                                .time-value {
+                                    font-size: 58px;
+                                }
+
+                                .time-label {
+                                    font-size: 18px;
+                                }
+                            }
+
+                            @@media (max-width: 576px) {
+                                .coming-page {
+                                    padding: 20px;
+                                }
+
+                                .coming-box {
+                                    padding: 38px 20px;
+                                    border-radius: 18px;
+                                }
+
+                                .coming-title {
+                                    font-size: 40px;
+                                }
+
+                                .coming-subtitle {
+                                    font-size: 17px;
+                                    margin-bottom: 26px;
+                                }
+
+                                .movie-name {
+                                    font-size: 22px;
+                                    margin-bottom: 30px;
+                                }
+
+                                .countdown-wrapper {
+                                    grid-template-columns: repeat(2, 1fr);
+                                    gap: 16px;
+                                }
+
+                                .time-value {
+                                    font-size: 42px;
+                                }
+
+                                .time-label {
+                                    font-size: 16px;
+                                }
+
+                                .release-date-text {
+                                    font-size: 15px;
+                                    margin-top: 28px;
+                                }
+
+                                .back-btn {
+                                    top: 14px;
+                                    left: 14px;
+                                }
                             }
                     </style>
                 </head>
@@ -66,20 +237,60 @@
                                 <a class="btn btn-link text-white text-decoration-none p-0"
                                        asp-action="Details"
                                        asp-route-id="@Model.Id">
-                                    <i class="ph ph-x"></i>
+                                    <i class="ph ph-x fs-2"></i>
                                 </a>
                             </div>
 
-                            <div class="video-container">
-                                <video id="my-video"
-                                       controls
-                                       preload="metadata"
-                                       poster="@Model.PosterUrl"
-                                       data-movie-id="@Model.Id">
-                                    <source src="@Model.MovieUrl" type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
+                            @if (isComingSoon)
+                            {
+                                <div class="coming-page">
+                                    <div class="coming-box">
+                                        <h1 class="coming-title">Coming Soon</h1>
+                                        <p class="coming-subtitle">This movie is not released yet.</p>
+
+                                        <div class="movie-name">@Model.Title</div>
+
+                                        <div class="countdown-wrapper countdown" data-date="@countdownDate">
+                                            <div class="time-box">
+                                                <div class="time-value days" data-days>00</div>
+                                                <p class="time-label">Days</p>
+                                            </div>
+
+                                            <div class="time-box">
+                                                <div class="time-value hours" data-hours>00</div>
+                                                <p class="time-label">Hours</p>
+                                            </div>
+
+                                            <div class="time-box">
+                                                <div class="time-value minutes" data-minutes>00</div>
+                                                <p class="time-label">Minutes</p>
+                                            </div>
+
+                                            <div class="time-box">
+                                                <div class="time-value seconds" data-seconds>00</div>
+                                                <p class="time-label">Seconds</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="release-date-text">
+                                            Release Date: @Model.ReleaseDate.ToString("dd MMMM yyyy HH:mm")
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="video-container">
+                                    <video id="my-video"
+                                           controls
+                                           preload="metadata"
+                                           poster="@Model.PosterUrl"
+                                           data-movie-id="@Model.Id">
+                                        <source src="@Model.MovieUrl" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            }
                         </main>
 
                         <div id="back-to-top" class="back-to-top" style="display: none;">
@@ -98,62 +309,64 @@
                         <script src="~/assets/js/streamit.js" defer></script>
                         <script src="~/assets/js/swiper.js" defer></script>
 
-                        <script>
-                                const video = document.getElementById("my-video");
-                                const movieId = @Model.Id;
-                                let lastSent = -1;
+                        @if (!isComingSoon)
+                        {
+                            <script>
+                                    const video = document.getElementById("my-video");
+                                    const movieId = @Model.Id;
+                                    let lastSent = -1;
 
-                                video.addEventListener("loadedmetadata", function () {
-                                    console.log("duration =", video.duration);
-                                });
+                                    video.addEventListener("loadedmetadata", function () {
+                                        console.log("duration =", video.duration);
+                                    });
 
-                                async function sendProgress(force = false) {
-                                    try {
-                                        if (!video) return;
-                                        if (isNaN(video.duration) || video.duration <= 0) return;
+                                    async function sendProgress(force = false) {
+                                        try {
+                                            if (!video) return;
+                                            if (isNaN(video.duration) || video.duration <= 0) return;
 
-                                        const currentMinutes = Math.floor(video.currentTime / 60);
-                                        const durationMinutes = Math.ceil(video.duration / 60);
+                                            const currentMinutes = Math.floor(video.currentTime / 60);
+                                            const durationMinutes = Math.ceil(video.duration / 60);
 
-                                        if (durationMinutes <= 0) return;
+                                            if (durationMinutes <= 0) return;
+                                            if (!force && currentMinutes === lastSent) return;
 
-                                        if (!force && currentMinutes === lastSent) return;
+                                            lastSent = currentMinutes;
 
-                                        lastSent = currentMinutes;
+                                            const payload = {
+                                                movieId: movieId,
+                                                watchedMinutes: currentMinutes,
+                                                duration: durationMinutes
+                                            };
 
-                                        const payload = {
-                                            movieId: movieId,
-                                            watchedMinutes: currentMinutes,
-                                            duration: durationMinutes
-                                        };
+                                            const response = await fetch("/Movie/UpdateWatchHistory", {
+                                                method: "POST",
+                                                headers: {
+                                                    "Content-Type": "application/json"
+                                                },
+                                                body: JSON.stringify(payload)
+                                            });
 
-                                        const response = await fetch("/Movie/UpdateWatchHistory", {
-                                            method: "POST",
-                                            headers: {
-                                                "Content-Type": "application/json"
-                                            },
-                                            body: JSON.stringify(payload)
-                                        });
-
-                                        const text = await response.text();
-                                        console.log("UpdateWatchHistory status:", response.status);
-                                        console.log("UpdateWatchHistory response:", text);
-                                    } catch (err) {
-                                        console.error("WatchHistory error:", err);
+                                            const text = await response.text();
+                                            console.log("UpdateWatchHistory status:", response.status);
+                                            console.log("UpdateWatchHistory response:", text);
+                                        } catch (err) {
+                                            console.error("WatchHistory error:", err);
+                                        }
                                     }
-                                }
 
-                                video.addEventListener("timeupdate", function () {
-                                    sendProgress(false);
-                                });
+                                    video.addEventListener("timeupdate", function () {
+                                        sendProgress(false);
+                                    });
 
-                                video.addEventListener("pause", function () {
-                                    sendProgress(true);
-                                });
+                                    video.addEventListener("pause", function () {
+                                        sendProgress(true);
+                                    });
 
-                                video.addEventListener("ended", function () {
-                                    sendProgress(true);
-                                });
-                        </script>
+                                    video.addEventListener("ended", function () {
+                                        sendProgress(true);
+                                    });
+                            </script>
+                        }
                     </body>
                 </html>
