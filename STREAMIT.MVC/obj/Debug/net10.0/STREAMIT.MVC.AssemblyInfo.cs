@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STREAMIT.MVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4dfed29b4bfd582c87d2f2bef2b86f642cf2d52")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+125214d0608cc2417c99aeae997ac7f6f6bf1cc4")]
 [assembly: System.Reflection.AssemblyProductAttribute("STREAMIT.MVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STREAMIT.MVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

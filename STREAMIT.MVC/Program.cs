@@ -2,14 +2,17 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using STREAMIT.Business.ServiceRegistrations;
-using STREAMIT.MVC.Handlers;
 using STREAMIT.Business.Services.Abstractions;
 using STREAMIT.Business.Services.Implementations;
+using STREAMIT.MVC.Handlers;
+using STREAMIT.MVC.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<EmailSettings>(
+    builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<AuthHeaderHandler>();
 

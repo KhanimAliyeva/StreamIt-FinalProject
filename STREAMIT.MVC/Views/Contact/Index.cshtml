@@ -1,4 +1,5 @@
-﻿    <!--bread-crumb-->
+﻿@model STREAMIT.MVC.Models.ContactMessageVm
+  <!--bread-crumb-->
     <div class="iq-breadcrumb">
         <div class="container">
             <div class="row align-items-center">
@@ -180,41 +181,61 @@
               <h3 class="mb-3">Start the conversation</h3>
               <p class="mb-0">Fill out the contact form, and one of our team members will be in touch shortly</p>
             </div>
-            <form class="mb-5 mb-lg-0">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <input type="text" class="form-control font-size-14 rounded-3" placeholder="Your Name*" required>
-                </div>
-                <div class="col-md-6 mb-4">
-                  <input type="text" class="form-control font-size-14 rounded-3" placeholder="Last Name*" required>
-                </div>
-                <div class="col-md-6 mb-4">
-                  <input type="email" class="form-control font-size-14 rounded-3" placeholder="Your Email*" required>
-                </div>
-                <div class="col-md-6 mb-4">
-                  <input type="tel" class="form-control font-size-14 rounded-3" maxlength="140" minlength="10"
-                    placeholder="Phone Number*" required>
-                </div>
-                <div class="col-md-12 mb-4">
-                  <textarea class="form-control font-size-14 rounded-3" cols="40" rows="10"
-                    placeholder="Your Message"></textarea>
-                </div>
-                <div class="checkbox">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                    <label class="form-check-label" for="flexCheckDefault3">
-                      Save my name, email, and website in this browser for the next time I comment.
-                    </label>
-                  </div>
-                </div>
-                <div class="col-md-12 mt-5 pt-5">
-                  <div class="iq-button">
-                    <button type="submit" class="btn btn-primary w-100 fw-bold">Send Message</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
+                        <form asp-action="Index" asp-controller="Contact" method="post" class="mb-5 mb-lg-0">
+                            @Html.AntiForgeryToken()
+
+                            @if (TempData["SuccessMessage"] != null)
+                            {
+                                <div class="alert alert-success mb-4">
+                                    @TempData["SuccessMessage"]
+                                </div>
+                            }
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <input asp-for="FirstName" type="text" class="form-control font-size-14 rounded-3" placeholder="Your Name*" required>
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <input asp-for="LastName" type="text" class="form-control font-size-14 rounded-3" placeholder="Last Name*" required>
+                                            <span asp-validation-for="LastName" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6 mb-4">
+                                            <input asp-for="Email" type="email" class="form-control font-size-14 rounded-3" placeholder="Your Email*" required>
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="col-md-6 mb-4">
+                                                <input asp-for="PhoneNumber" type="tel" class="form-control font-size-14 rounded-3" maxlength="140" minlength="10" placeholder="Phone Number*" required>
+                                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="col-md-12 mb-4">
+                                                    <textarea asp-for="Message" class="form-control font-size-14 rounded-3" cols="40" rows="10" placeholder="Your Message"></textarea>
+                                                    <span asp-validation-for="Message" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="checkbox">
+                                                    <div class="form-check">
+                                                        <input asp-for="SaveInfo" class="form-check-input" type="checkbox" id="flexCheckDefault3">
+                                                            <label class="form-check-label" for="flexCheckDefault3">
+                                                                Save my name, email, and website in this browser for the next time I comment.
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12 mt-5 pt-5">
+                                                        <div class="iq-button">
+                                                            <button type="submit" class="btn btn-primary w-100 fw-bold">Send Message</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
         </div>
       </div>
       <div class="col-lg-1 d-none d-lg-block"></div>
