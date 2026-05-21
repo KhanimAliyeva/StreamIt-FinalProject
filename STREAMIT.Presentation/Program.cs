@@ -146,6 +146,8 @@ public class Program
         // --------------------------------------
         builder.Services.AddSignalR();
 
+
+
         // --------------------------------------
         // 5) CORS (MVC -> Presentation)
         // --------------------------------------
@@ -172,6 +174,11 @@ public class Program
                           .AllowAnyHeader();
                 }
             });
+        });
+        builder.Services.AddHttpClient("GroqClient", client =>
+        {
+            client.BaseAddress = new Uri("https://api.groq.com/");
+            client.Timeout = TimeSpan.FromSeconds(30);
         });
 
         // --------------------------------------

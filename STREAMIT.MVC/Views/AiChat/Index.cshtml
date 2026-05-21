@@ -1,0 +1,264 @@
+@{
+    ViewData["Title"] = "StreamBot AI";
+}
+
+<div class="ai-chat-page d-flex" style="flex:1; overflow:hidden;">
+
+    <!-- Sidebar -->
+    <div class="ai-sidebar d-none d-md-flex flex-column flex-shrink-0"
+         style="width:240px; background:#0a0a0a; border-right:1px solid #1e1e1e;">
+        <div class="p-3 border-bottom" style="border-color:#1e1e1e !important;">
+            <div class="d-flex align-items-center gap-2">
+                <span style="width:28px;height:28px;background:#e50914;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <i class="ph ph-sparkle text-white" style="font-size:14px;"></i>
+                </span>
+                <div>
+                    <div class="text-white fw-semibold" style="font-size:14px;line-height:1.2;">StreamBot</div>
+                    <div class="text-muted" style="font-size:11px;">AI Movie Companion</div>
+                </div>
+            </div>
+        </div>
+        <div class="p-3 flex-grow-1">
+            <p class="text-muted mb-2" style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;">Ask me about</p>
+            <ul class="list-unstyled mb-0" style="font-size:13px;">
+                <li class="mb-2 text-muted"><i class="ph ph-film-reel me-2" style="color:#e50914;"></i>Movie recommendations</li>
+                <li class="mb-2 text-muted"><i class="ph ph-star me-2" style="color:#e50914;"></i>Ratings &amp; reviews</li>
+                <li class="mb-2 text-muted"><i class="ph ph-users me-2" style="color:#e50914;"></i>Cast &amp; directors</li>
+                <li class="mb-2 text-muted"><i class="ph ph-television me-2" style="color:#e50914;"></i>TV show suggestions</li>
+                <li class="mb-2 text-muted"><i class="ph ph-tag me-2" style="color:#e50914;"></i>Genre exploration</li>
+            </ul>
+        </div>
+        <div class="p-3 border-top" style="border-color:#1e1e1e !important;">
+            <button id="clearBtn"
+                    class="btn btn-sm w-100 text-muted"
+                    style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:12px;">
+                <i class="ph ph-trash me-1"></i> Clear conversation
+            </button>
+        </div>
+    </div>
+
+    <!-- Chat column -->
+    <div class="d-flex flex-column flex-grow-1" style="overflow:hidden; background:#111;">
+
+        <!-- Messages -->
+        <div id="chatMessages" class="flex-grow-1 p-3 p-md-4" style="overflow-y:auto; scroll-behavior:smooth;">
+
+            <!-- Welcome bubble -->
+            <div class="d-flex align-items-start mb-4">
+                <div class="me-2 flex-shrink-0">
+                    <span style="width:32px;height:32px;background:#e50914;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                        <i class="ph ph-sparkle text-white" style="font-size:13px;"></i>
+                    </span>
+                </div>
+                <div class="chat-bubble bot-bubble px-3 py-2">
+                    <p class="mb-0 text-white" style="font-size:14px;">
+                        Hey! 👋 I'm <strong>StreamBot</strong> — your AI movie companion on STREAMIT.<br>
+                        Ask me anything about films, TV shows, or let me find something perfect to watch tonight!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input bar -->
+        <div class="p-3" style="background:#0d0d0d; border-top:1px solid #1e1e1e;">
+            <div class="d-flex align-items-end gap-2">
+                <textarea id="userInput"
+                          class="form-control flex-grow-1"
+                          placeholder="Ask StreamBot…"
+                          rows="1"
+                          style="background:#1a1a1a;border:1px solid #2a2a2a;color:#fff;border-radius:10px;resize:none;max-height:120px;overflow-y:auto;font-size:14px;padding:10px 14px;"
+                          oninput="autoResize(this)"></textarea>
+                <button id="sendBtn"
+                        class="btn btn-danger flex-shrink-0"
+                        style="border-radius:10px;width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;">
+                    <i class="ph ph-paper-plane-tilt" style="font-size:18px;"></i>
+                </button>
+            </div>
+            <div class="mt-1 text-muted" style="font-size:11px;">
+                <kbd style="font-size:10px;">Enter</kbd> to send &nbsp;·&nbsp; <kbd style="font-size:10px;">Shift+Enter</kbd> for new line
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .ai-chat-page {
+        height: calc(100vh - 72px);
+    }
+
+    .chat-bubble {
+        border-radius: 12px;
+        max-width: 70%;
+        line-height: 1.55;
+        font-size: 14px;
+    }
+
+    .bot-bubble {
+        background: #1e1e1e;
+        border-bottom-left-radius: 3px;
+    }
+
+    .user-bubble {
+        background: #e50914;
+        border-bottom-right-radius: 3px;
+        color: #fff;
+    }
+
+    .typing-dot {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #555;
+        margin: 0 2px;
+        animation: blink 1.2s infinite;
+    }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: .2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: .4s;
+        }
+  
+
+    #chatMessages::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    #chatMessages::-webkit-scrollbar-thumb {
+        background: #2a2a2a;
+        border-radius: 10px;
+    }
+
+    #userInput:focus {
+        outline: none;
+        border-color: #e50914 !important;
+        box-shadow: none !important;
+    }
+
+    kbd {
+        background: #1e1e1e;
+        border: 1px solid #333;
+        border-radius: 4px;
+        padding: 1px 4px;
+        color: #aaa;
+    }
+
+    /* Hide footer only on AI chat page */
+    footer.footer, .streamit-mobile-footer-menu {
+        display: none !important;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        const history = [];
+        const messagesEl = document.getElementById('chatMessages');
+        const inputEl = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const clearBtn = document.getElementById('clearBtn');
+
+        function scrollBottom() { messagesEl.scrollTop = messagesEl.scrollHeight; }
+
+        function autoResize(el) {
+            el.style.height = 'auto';
+            el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+        }
+
+        function sanitize(text) {
+            return text
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+        }
+
+        function appendMessage(role, text) {
+            const isUser = role === 'user';
+            const wrapper = document.createElement('div');
+            wrapper.className = `d-flex align-items-start mb-3 ${isUser ? 'justify-content-end' : ''}`;
+
+            const avatarHtml = isUser ? '' : `
+                    <div class="me-2 flex-shrink-0">
+                        <span style="width:32px;height:32px;background:#e50914;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                            <i class="ph ph-sparkle text-white" style="font-size:13px;"></i>
+                        </span>
+                    </div>`;
+
+            wrapper.innerHTML = `${avatarHtml}
+                    <div class="chat-bubble ${isUser ? 'user-bubble' : 'bot-bubble'} px-3 py-2">
+                        <p class="mb-0" style="font-size:14px;color:#fff;">${sanitize(text)}</p>
+                    </div>`;
+
+            messagesEl.appendChild(wrapper);
+            scrollBottom();
+        }
+
+        function showTyping() {
+            const el = document.createElement('div');
+            el.id = 'typingIndicator';
+            el.className = 'd-flex align-items-start mb-3';
+            el.innerHTML = `
+                    <div class="me-2 flex-shrink-0">
+                        <span style="width:32px;height:32px;background:#e50914;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                            <i class="ph ph-sparkle text-white" style="font-size:13px;"></i>
+                        </span>
+                    </div>
+                    <div class="chat-bubble bot-bubble px-3 py-2">
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                    </div>`;
+            messagesEl.appendChild(el);
+            scrollBottom();
+        }
+
+        function removeTyping() { document.getElementById('typingIndicator')?.remove(); }
+
+        async function sendMessage() {
+            const text = inputEl.value.trim();
+            if (!text || sendBtn.disabled) return;
+
+            history.push({ role: 'user', content: text });
+            appendMessage('user', text);
+            inputEl.value = '';
+            inputEl.style.height = 'auto';
+            sendBtn.disabled = true;
+            showTyping();
+
+            try {
+                const res = await fetch('/AiChat/Send', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: history })
+                });
+                removeTyping();
+                if (!res.ok) {
+                    appendMessage('assistant', 'Something went wrong. Please try again.');
+                } else {
+                    const data = await res.json();
+                    const reply = data.reply || 'No response.';
+                    history.push({ role: 'assistant', content: reply });
+                    appendMessage('assistant', reply);
+                }
+            } catch (e) {
+                removeTyping();
+                appendMessage('assistant', 'Network error. Please check your connection.');
+            } finally {
+                sendBtn.disabled = false;
+                inputEl.focus();
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        inputEl.addEventListener('keydown', e => {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+        });
+        clearBtn?.addEventListener('click', () => {
+            history.length = 0;
+            const msgs = messagesEl.querySelectorAll('.d-flex');
+            msgs.forEach((el, i) => { if (i > 0) el.remove(); });
+        });
+    </script>
+}

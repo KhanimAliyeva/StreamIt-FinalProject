@@ -123,19 +123,18 @@ namespace STREAMIT.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var response = await _httpClient.DeleteAsync($"api/blog/{id}");
+            TempData["DeleteError"] = $"MVC Delete action işə düşdü. Id={id}";
 
-            if (!response.IsSuccessStatusCode)
-            {
-                TempData["DeleteError"] = "Delete failed";
-            }
+            var response = await _httpClient.DeleteAsync($"api/blog/{id}");
+            var responseText = await response.Content.ReadAsStringAsync();
+
+            TempData["DeleteError"] += $" | API Status={(int)response.StatusCode} | Response={responseText}";
 
             return RedirectToAction(nameof(Index));
         }
-
+       
         private async Task<List<T>> SafeGetListFromApi<T>(string endpoint)
         {
             try

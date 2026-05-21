@@ -22,6 +22,7 @@ public class BlogController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var blogs = await _context.Blogs
+            .Where(x => !x.IsDeleted)
             .OrderByDescending(x => x.CreatedDate)
             .ToListAsync();
 

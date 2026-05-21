@@ -39,6 +39,8 @@ namespace STREAMIT.Business.ServiceRegistrations
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IPaymentService, KapitalBankPaymentService>();
+            services.AddScoped<IAiChatService, GroqAiChatService>();
+
 
             // services.AddScoped<IEmailService, FakeEmailService>();
 
@@ -46,9 +48,7 @@ namespace STREAMIT.Business.ServiceRegistrations
 
 
             services.AddAutoMapper(_ => { }, typeof(BusinessServiceRegistrations).Assembly);
-            // JWT options are read by services that need them. Authentication is configured in the Presentation project
-            // (Program.cs) to avoid registering authentication schemes multiple times across projects.
-            // Keep JWTOptions available for other services to consume.
+           
             JWTOptionsDto options = configuration.GetSection("JWTOptions").Get<JWTOptionsDto>() ?? new();
         }
     }

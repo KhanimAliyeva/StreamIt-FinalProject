@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using STREAMIT.Business.Dtos.DashboardDtos;
 using System.Text.Json;
 
 namespace STREAMIT.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+
     public class DashboardController : Controller
     {
         private readonly HttpClient _httpClient;

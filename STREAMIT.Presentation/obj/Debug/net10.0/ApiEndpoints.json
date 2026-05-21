@@ -1,5 +1,31 @@
 [
   {
+    "ContainingType": "AiController",
+    "Method": "Chat",
+    "RelativePath": "api/Ai/chat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "STREAMIT.Business.Dtos.AiDtos.ChatRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "STREAMIT.Business.Dtos.ResultDtos.ResultDto\u00601[[STREAMIT.Business.Dtos.AiDtos.ChatResponseDto, STREAMIT.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "AuthController",
     "Method": "ConfirmEmail",
     "RelativePath": "api/Auth/ConfirmEmail",
