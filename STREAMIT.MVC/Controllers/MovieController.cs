@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using STREAMIT.Business.Dtos.MovieDtos;
 using STREAMIT.Business.Dtos.ReviewDtos;
@@ -24,18 +24,17 @@ namespace STREAMIT.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> AddReview([FromBody] AddReviewDto dto)
         {
-            // Server-side user id əlavə et
             var principalUserId = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (!string.IsNullOrWhiteSpace(principalUserId))
                 dto.UserId = principalUserId;
 
-            // Sadə PostAsJsonAsync istifadə et, token handler tərəfindən əlavə olunacaq
             var response = await _httpClient.PostAsJsonAsync("api/reviews", dto);
 
             if (!response.IsSuccessStatusCode)
                 return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
 
-            return Ok();
+            var body = await response.Content.ReadAsStringAsync();
+            return Content(body, "application/json");
         }
         public async Task<IActionResult> Index()
 
@@ -54,14 +53,12 @@ namespace STREAMIT.MVC.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            // movie detail
             var response = await _httpClient.GetAsync($"api/movie/{id}");
             if (!response.IsSuccessStatusCode) return NotFound();
 
             var json = await response.Content.ReadAsStringAsync();
             var movie = JsonConvert.DeserializeObject<GetMovieDto>(json);
 
-            // reviews
             var reviewsResp = await _httpClient.GetAsync($"api/reviews/movie/{id}");
             if (reviewsResp.IsSuccessStatusCode)
             {
@@ -81,7 +78,7 @@ namespace STREAMIT.MVC.Controllers
                 }
                 else
                 {
-                    movie.IsInWatchList = false; // 401 və s.
+                    movie.IsInWatchList = false; 
                 }
             }
             catch
@@ -96,7 +93,6 @@ namespace STREAMIT.MVC.Controllers
         [Route("Movie/Detail/{id}")]
         public async Task<IActionResult> Detail(int id)
         {
-            // Delegate to the Details action and ensure the same view name is used
             return await Details(id);
         }
 
@@ -132,7 +128,6 @@ namespace STREAMIT.MVC.Controllers
         [IgnoreAntiforgeryToken]
         public async Task<IActionResult> IncrementView(int id)
         {
-            // Call Presentation API to increment view count for the movie
             _logger.LogInformation("IncrementView called for movie {movieId}", id);
             var resp = await _httpClient.PostAsync($"api/movie/increment-view/{id}", null);
             var content = await resp.Content.ReadAsStringAsync();
@@ -142,7 +137,6 @@ namespace STREAMIT.MVC.Controllers
             if (!resp.IsSuccessStatusCode)
                 return StatusCode((int)resp.StatusCode, content);
 
-            // Try to parse returned view count and forward it to the client
             try
             {
                 var obj = JsonConvert.DeserializeObject<dynamic>(content);
@@ -154,5 +148,57 @@ namespace STREAMIT.MVC.Controllers
                 return Ok();
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetReviews(int movieId)
+        {
+            var resp = await _httpClient.GetAsync($"api/reviews/movie/{movieId}");
+            var body = await resp.Content.ReadAsStringAsync();
+            return Content(body, "application/json");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostReply([FromBody] AddReplyDto dto)
+        {
+            AttachToken();
+            var resp = await _httpClient.PostAsJsonAsync("api/reviews/reply", dto);
+            var body = await resp.Content.ReadAsStringAsync();
+            return StatusCode((int)resp.StatusCode, body);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ToggleLike(int reviewId)
+        {
+            AttachToken();
+            var resp = await _httpClient.PostAsync($"api/reviews/{reviewId}/like", null);
+            var body = await resp.Content.ReadAsStringAsync();
+            return StatusCode((int)resp.StatusCode, body);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteReview(int reviewId)
+        {
+            AttachToken();
+            var resp = await _httpClient.DeleteAsync($"api/reviews/{reviewId}");
+            return StatusCode((int)resp.StatusCode);
+        }
+
+        [HttpGet]
+        public IActionResult Token()
+        {
+            var token = Request.Cookies["AccessToken"];
+            return Content(token ?? string.Empty);
+        }
+
+        private void AttachToken()
+        {
+            var token = Request.Cookies["AccessToken"] ?? string.Empty;
+            if (token.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                token = token[7..].Trim();
+            if (!string.IsNullOrWhiteSpace(token))
+                _httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
+        }
+
     }
 }

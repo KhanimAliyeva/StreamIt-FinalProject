@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using STREAMIT.Core.Entities;
 using System.Reflection;
@@ -42,6 +42,23 @@ public class AppDbContext : IdentityDbContext<AppUser, AppRole, string>
             .WithMany()
             .HasForeignKey(x => x.MovieId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        // ReviewLike: no cascade (prevents multiple cascade paths error)
+        modelBuilder.Entity<ReviewLike>()
+            .HasIndex(x => new { x.ReviewId, x.UserId })
+            .IsUnique();
+        modelBuilder.Entity<ReviewLike>()
+            .HasOne(x => x.Review)
+            .WithMany(r => r.Likes)
+            .HasForeignKey(x => x.ReviewId)
+            .OnDelete(DeleteBehavior.NoAction);  // ← key fix
+
+        // ReviewMovie self-referencing replies: no cascade
+        modelBuilder.Entity<ReviewMovie>()
+            .HasOne(r => r.ParentReview)
+            .WithMany(r => r.Replies)
+            .HasForeignKey(r => r.ParentReviewId)
+            .OnDelete(DeleteBehavior.NoAction);  // ← key fix
     }
 
 
@@ -58,6 +75,7 @@ public class AppDbContext : IdentityDbContext<AppUser, AppRole, string>
     public DbSet<MovieTag> MovieTags { get; set; }
     public DbSet<MoviePerson> MoviePeople { get; set; }
     public DbSet<ReviewMovie> ReviewMovies { get; set; }
+    public DbSet<ReviewLike> ReviewLikes { get; set; }
     public DbSet<MovieStatistics> MovieStatistics { get; set; }
     public DbSet<Season> Seasons { get; set; }
     public DbSet<Episode> Episodes { get; set; }

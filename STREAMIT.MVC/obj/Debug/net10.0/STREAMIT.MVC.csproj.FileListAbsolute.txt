@@ -686,3 +686,4 @@ C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\obj\Debug\net10.0\STREAMIT.MVC.
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\obj\Debug\net10.0\STREAMIT.MVC.genruntimeconfig.cache
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\obj\Debug\net10.0\ref\STREAMIT.MVC.dll
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\obj\Debug\net10.0\compressed\z9vy0rnf2x-{0}-3wvk6wd3k9-3wvk6wd3k9.gz
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\obj\Debug\net10.0\compressed\gzcbmau4hw-{0}-wgefxxklur-wgefxxklur.gz

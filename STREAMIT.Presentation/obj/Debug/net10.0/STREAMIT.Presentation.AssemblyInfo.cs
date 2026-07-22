@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STREAMIT.Presentation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d47d5e9fc9c921e2cd9a85f7518b7e0b71be78b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef74b62617c6f00acf87c3c2d9ae4b54dd1cfcfb")]
 [assembly: System.Reflection.AssemblyProductAttribute("STREAMIT.Presentation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STREAMIT.Presentation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

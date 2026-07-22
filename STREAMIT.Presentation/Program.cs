@@ -118,8 +118,8 @@ public class Program
                       if (!string.IsNullOrWhiteSpace(cookieToken) && cookieToken.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
                           cookieToken = cookieToken.Substring(7).Trim();
 
-                      // bu hissəni REST üçün aktiv etmək istəsən:
-                      // if (!string.IsNullOrWhiteSpace(cookieToken)) context.Token = cookieToken;
+                      // REST calls: read JWT from cookie automatically
+                      if (!string.IsNullOrWhiteSpace(cookieToken)) context.Token = cookieToken;
 
                       return Task.CompletedTask;
                   },
@@ -145,8 +145,6 @@ public class Program
         // 4) SignalR
         // --------------------------------------
         builder.Services.AddSignalR();
-
-
 
         // --------------------------------------
         // 5) CORS (MVC -> Presentation)
@@ -174,11 +172,6 @@ public class Program
                           .AllowAnyHeader();
                 }
             });
-        });
-        builder.Services.AddHttpClient("GroqClient", client =>
-        {
-            client.BaseAddress = new Uri("https://api.groq.com/");
-            client.Timeout = TimeSpan.FromSeconds(30);
         });
 
         // --------------------------------------

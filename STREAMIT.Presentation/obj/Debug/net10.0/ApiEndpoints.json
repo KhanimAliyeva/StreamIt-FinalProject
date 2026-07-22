@@ -1085,12 +1085,34 @@
   },
   {
     "ContainingType": "ReviewsController",
-    "Method": "Debug",
-    "RelativePath": "api/Reviews/debug",
-    "HttpMethod": "GET",
+    "Method": "DeleteReview",
+    "RelativePath": "api/Reviews/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ReviewsController",
+    "Method": "ToggleLike",
+    "RelativePath": "api/Reviews/{id}/like",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -1104,6 +1126,22 @@
       {
         "Name": "movieId",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ReviewsController",
+    "Method": "AddReply",
+    "RelativePath": "api/Reviews/reply",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "STREAMIT.Business.Dtos.ReviewDtos.AddReplyDto",
         "IsRequired": true
       }
     ],

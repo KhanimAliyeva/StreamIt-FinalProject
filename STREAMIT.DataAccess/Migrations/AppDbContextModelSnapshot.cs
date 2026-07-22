@@ -17,7 +17,7 @@ namespace STREAMIT.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.2")
+                .HasAnnotation("ProductVersion", "10.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -833,6 +833,31 @@ namespace STREAMIT.DataAccess.Migrations
                     b.ToTable("People");
                 });
 
+            modelBuilder.Entity("STREAMIT.Core.Entities.ReviewLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("ReviewId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("ReviewLikes");
+                });
+
             modelBuilder.Entity("STREAMIT.Core.Entities.ReviewMovie", b =>
                 {
                     b.Property<int>("Id")
@@ -862,7 +887,13 @@ namespace STREAMIT.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<int>("LikeCount")
+                        .HasColumnType("int");
+
                     b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ParentReviewId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Rating")
@@ -883,12 +914,15 @@ namespace STREAMIT.DataAccess.Migrations
 
                     b.HasIndex("CreatedDate");
 
+                    b.HasIndex("ParentReviewId");
+
                     b.HasIndex("Rating");
 
                     b.HasIndex("UserId");
 
                     b.HasIndex("MovieId", "UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ParentReviewId] IS NULL");
 
                     b.ToTable("ReviewMovies");
                 });
@@ -1355,6 +1389,25 @@ namespace STREAMIT.DataAccess.Migrations
                     b.Navigation("Tag");
                 });
 
+            modelBuilder.Entity("STREAMIT.Core.Entities.ReviewLike", b =>
+                {
+                    b.HasOne("STREAMIT.Core.Entities.ReviewMovie", "Review")
+                        .WithMany("Likes")
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("STREAMIT.Core.Entities.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Review");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("STREAMIT.Core.Entities.ReviewMovie", b =>
                 {
                     b.HasOne("STREAMIT.Core.Entities.Movie", "Movie")
@@ -1363,6 +1416,11 @@ namespace STREAMIT.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("STREAMIT.Core.Entities.ReviewMovie", "ParentReview")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentReviewId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
                     b.HasOne("STREAMIT.Core.Entities.AppUser", "User")
                         .WithMany("MovieReviews")
                         .HasForeignKey("UserId")
@@ -1370,6 +1428,8 @@ namespace STREAMIT.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Movie");
+
+                    b.Navigation("ParentReview");
 
                     b.Navigation("User");
                 });
@@ -1526,6 +1586,13 @@ namespace STREAMIT.DataAccess.Migrations
             modelBuilder.Entity("STREAMIT.Core.Entities.Person", b =>
                 {
                     b.Navigation("MoviePeople");
+                });
+
+            modelBuilder.Entity("STREAMIT.Core.Entities.ReviewMovie", b =>
+                {
+                    b.Navigation("Likes");
+
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("STREAMIT.Core.Entities.Season", b =>

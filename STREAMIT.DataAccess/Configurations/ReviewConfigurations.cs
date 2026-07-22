@@ -5,7 +5,6 @@ using STREAMIT.Core.Entities;
 namespace STREAMIT.DataAccess.Configurations
 {
     // Combined configuration for review entities (movies and TV shows).
-    // Implements both IEntityTypeConfiguration<ReviewMovie> and IEntityTypeConfiguration<ReviewTvShow>
     internal class CombinedReviewConfigurations : IEntityTypeConfiguration<ReviewMovie>
     {
         public void Configure(EntityTypeBuilder<ReviewMovie> builder)
@@ -33,8 +32,10 @@ namespace STREAMIT.DataAccess.Configurations
                    .HasForeignKey(r => r.UserId)
                    .OnDelete(DeleteBehavior.Cascade);
 
-            // Unique constraint: one review per user per movie
-            builder.HasIndex(r => new { r.MovieId, r.UserId }).IsUnique();
+          
+            builder.HasIndex(r => new { r.MovieId, r.UserId })
+                   .IsUnique()
+                   .HasFilter("[ParentReviewId] IS NULL");
 
             // Helpful indexes
             builder.HasIndex(r => r.Rating);

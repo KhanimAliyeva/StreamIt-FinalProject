@@ -166,6 +166,7 @@ C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\wwwroot\admin\assets\vendor\ful
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\wwwroot\admin\assets\vendor\fullcalendar\core\main.css
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\wwwroot\assets\vendor\video\video.min.js
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\wwwroot\admin\assets\js\iqonic-script\setting.min.js
+C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\wwwroot\assets\js\plugins\streamit-swal.js
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\wwwroot\admin\assets\vendor\fullcalendar\daygrid\main.min.js
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\wwwroot\admin\assets\vendor\phosphor-icons\Fonts\duotone\style.css
 C:\Users\ASUS\source\repos\STREAMIT\STREAMIT.MVC\wwwroot\admin\assets\vendor\fullcalendar\core\locales\en-gb.js
@@ -1258,6 +1259,7 @@ wwwroot\assets\js\plugins\fslightbox.js
 wwwroot\assets\js\plugins\nouslider.js
 wwwroot\assets\js\plugins\prism.mini.js
 wwwroot\assets\js\plugins\select2.js
+wwwroot\assets\js\plugins\streamit-swal.js
 wwwroot\assets\js\plugins\sweet-alert.js
 wwwroot\assets\js\setting-init.js
 wwwroot\assets\js\setting.js

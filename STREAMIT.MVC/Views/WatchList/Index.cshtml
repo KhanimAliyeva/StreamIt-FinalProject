@@ -1,4 +1,4 @@
-﻿@model List<STREAMIT.Business.Dtos.WatchlistDtos.GetWatchListDto>
+@model List<STREAMIT.Business.Dtos.WatchlistDtos.GetWatchListDto>
 
 <div class="iq-breadcrumb">
     <div class="container">
@@ -91,15 +91,20 @@
       }
 
       if(!resp.ok){
-        alert(await resp.text());
+        StreamSwal.error(await resp.text());
         return;
       }
 
       const data = await resp.json(); // {status:"removed"/"added"}
 
       if(data.status === "removed"){
+        const confirmed = await StreamSwal.confirmDelete('Remove this movie from your watchlist?');
+        if(!confirmed) return;
         const col = btn.closest(".col");
         if(col) col.remove();
+        StreamSwal.success('Removed from watchlist');
+      } else {
+        StreamSwal.success('Added to watchlist');
       }
     }
 </script>

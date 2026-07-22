@@ -1637,10 +1637,21 @@
         }
       }
     },
-    "/api/Reviews/debug": {
+    "/api/Reviews/movie/{movieId}": {
       "get": {
         "tags": [
           "Reviews"
+        ],
+        "parameters": [
+          {
+            "name": "movieId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -1680,14 +1691,68 @@
         }
       }
     },
-    "/api/Reviews/movie/{movieId}": {
-      "get": {
+    "/api/Reviews/reply": {
+      "post": {
+        "tags": [
+          "Reviews"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddReplyDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddReplyDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddReplyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reviews/{id}/like": {
+      "post": {
         "tags": [
           "Reviews"
         ],
         "parameters": [
           {
-            "name": "movieId",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reviews/{id}": {
+      "delete": {
+        "tags": [
+          "Reviews"
+        ],
+        "parameters": [
+          {
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -2272,6 +2337,24 @@
         },
         "additionalProperties": false
       },
+      "AddReplyDto": {
+        "type": "object",
+        "properties": {
+          "movieId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "parentReviewId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AddReviewDto": {
         "type": "object",
         "properties": {
@@ -2279,15 +2362,15 @@
             "type": "integer",
             "format": "int32"
           },
-          "userId": {
-            "type": "string",
-            "nullable": true
-          },
           "rating": {
             "type": "number",
             "format": "double"
           },
           "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
             "type": "string",
             "nullable": true
           }

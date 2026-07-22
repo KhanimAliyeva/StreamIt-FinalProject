@@ -38,11 +38,16 @@ namespace STREAMIT.DataAccess.Configurations
                    .HasForeignKey(r => r.UserId)
                    .OnDelete(DeleteBehavior.Cascade);
 
-            // Constraints / Indexes
-
-            // Eyni user eyni movie üçün yalnız bir review yaza bilər
+           
             builder.HasIndex(r => new { r.MovieId, r.UserId })
-                   .IsUnique();
+                   .IsUnique()
+                   .HasFilter("[ParentReviewId] IS NULL");
+
+            // Self-referencing: Review -> Replies
+            builder.HasOne(r => r.ParentReview)
+                   .WithMany(r => r.Replies)
+                   .HasForeignKey(r => r.ParentReviewId)
+                   .OnDelete(DeleteBehavior.NoAction);
 
             // Tez-tez sort / filter üçün index
             builder.HasIndex(r => r.Rating);
