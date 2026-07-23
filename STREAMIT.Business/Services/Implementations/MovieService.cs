@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DocumentFormat.OpenXml.InkML;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using STREAMIT.Business.Dtos.GenreDtos;
@@ -284,7 +285,7 @@ namespace STREAMIT.Business.Services.Implementations
         public async Task<List<GetMovieDto>> GetLatestMoviesAsync()
         {
             var movies = await _repository.GetAll(true)
-                .Where(x=>x.CreatedDate<= DateTime.Now)
+                .Where(x => x.CreatedDate <= DateTimeOffset.UtcNow)
                 .OrderByDescending(x => x.CreatedDate)
                 .Take(10)
                 .Include(x => x.MovieGenres).ThenInclude(x => x.Genre)

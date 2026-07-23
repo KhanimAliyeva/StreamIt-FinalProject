@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STREAMIT.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6628380d4d4bbd73c7003dae6112adcdd7018d0f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+adebb5c5a52f1714459b92fdc278adb7b39bc502")]
 [assembly: System.Reflection.AssemblyProductAttribute("STREAMIT.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STREAMIT.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
