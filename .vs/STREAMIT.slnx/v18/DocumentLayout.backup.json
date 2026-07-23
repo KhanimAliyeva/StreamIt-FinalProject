@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\configurations\\reviewmovieconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\configurations\\reviewmovieconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|solutionrelative:streamit.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.presentation\\streamit.presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|solutionrelative:streamit.presentation\\streamit.presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\tools\\remove-comments.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tools\\remove-comments.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\.copilot\\plans\\plan-remove-repository-comments-script.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownSecurePreview"
@@ -30,8 +22,16 @@
       "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\configurations\\reviewconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\configurations\\reviewconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\configurations\\reviewmovieconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\configurations\\reviewmovieconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260711055859_correct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -60,10 +60,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|solutionrelative:streamit.presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.presentation\\streamit.presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|solutionrelative:streamit.presentation\\streamit.presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\views\\movie\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -132,6 +128,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\views\\contact\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -613,6 +613,66 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\_Layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -622,7 +682,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -630,33 +690,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20260723085454_Init.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs",
-              "ViewState": "AgIAAAMEAAAAAAAAAAAEwAwEAAAtAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "remove-comments.ps1",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\tools\\remove-comments.ps1",
+              "RelativeDocumentMoniker": "tools\\remove-comments.ps1",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\tools\\remove-comments.ps1",
+              "RelativeToolTip": "tools\\remove-comments.ps1",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-22T19:08:24.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAADQGAAAAAAAAAAAQwD8GAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-23T08:54:54.365Z",
+              "WhenOpened": "2026-07-22T18:33:35.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 156,
+              "Title": "20260711060149_correct.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-11T06:01:49.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\appsettings.json",
+              "RelativeDocumentMoniker": "STREAMIT.Presentation\\appsettings.json",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\appsettings.json",
+              "RelativeToolTip": "STREAMIT.Presentation\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-01T12:10:30.5Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "20260723084732_Init.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs",
-              "ViewState": "AgIAAIYEAAAAAAAAAAAUwJYEAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-23T08:47:33.074Z",
+              "Title": "STREAMIT.Presentation.csproj",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
+              "RelativeDocumentMoniker": "STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
+              "RelativeToolTip": "STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-01T12:10:25.979Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 155,
+              "Title": "20260722184423_fixedreviewcomments.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-22T18:44:24.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "plan-remove-repository-comments-script.md [Preview]",
               "DocumentMoniker": "C:\\Users\\ASUS\\.copilot\\plans\\plan-remove-repository-comments-script.md",
               "RelativeDocumentMoniker": "..\\..\\..\\.copilot\\plans\\plan-remove-repository-comments-script.md",
@@ -668,6 +775,30 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
+              "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
+              "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
+              "ViewState": "AgIAADcAAAAAAAAAAAAawD8AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T11:34:46.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MovieController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\MovieController.cs",
+              "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\MovieController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\MovieController.cs",
+              "RelativeToolTip": "STREAMIT.MVC\\Controllers\\MovieController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T16:54:21.344Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
               "Title": "STREAMIT.Core.csproj",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\STREAMIT.Core.csproj",
@@ -676,8 +807,7 @@
               "RelativeToolTip": "STREAMIT.Core\\STREAMIT.Core.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-01T12:23:08.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:23:08.763Z"
             },
             {
               "$type": "Document",
@@ -689,77 +819,23 @@
               "RelativeToolTip": "STREAMIT.DataAccess\\Contexts\\AppDbContext.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAQwC0AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:14:47.568Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:14:47.568Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "ReviewMovieConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\ReviewMovieConfigurations.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Configurations\\ReviewMovieConfigurations.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\ReviewMovieConfigurations.cs",
               "RelativeToolTip": "STREAMIT.DataAccess\\Configurations\\ReviewMovieConfigurations.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAQwCgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T20:33:23.858Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\appsettings.json",
-              "RelativeDocumentMoniker": "STREAMIT.Presentation\\appsettings.json",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\appsettings.json",
-              "RelativeToolTip": "STREAMIT.Presentation\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-01T12:10:30.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\appsettings.json",
-              "RelativeDocumentMoniker": "STREAMIT.MVC\\appsettings.json",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\appsettings.json",
-              "RelativeToolTip": "STREAMIT.MVC\\appsettings.json",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-01T20:15:28.767Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T20:33:23.858Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "MovieController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\MovieController.cs",
-              "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\MovieController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\MovieController.cs",
-              "RelativeToolTip": "STREAMIT.MVC\\Controllers\\MovieController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T16:54:21.344Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
-              "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
-              "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
-              "ViewState": "AgIAADcAAAAAAAAAAAAawD8AAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-07T11:34:46.093Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "ReviewConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\ReviewConfigurations.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Configurations\\ReviewConfigurations.cs",
@@ -767,8 +843,7 @@
               "RelativeToolTip": "STREAMIT.DataAccess\\Configurations\\ReviewConfigurations.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T17:57:07.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T17:57:07.628Z"
             },
             {
               "$type": "Document",
@@ -780,8 +855,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\STREAMIT.MVC.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-02-28T20:56:15.701Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:56:15.701Z"
             },
             {
               "$type": "Document",
@@ -802,36 +876,21 @@
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj",
               "RelativeToolTip": "STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAABFwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAA8wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-01T12:29:48.405Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:29:48.405Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Movie\\Details.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Movie\\Details.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Movie\\Details.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Movie\\Details.cshtml",
-              "ViewState": "AgIAAOwBAAAAAAAAAABVwCgCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPABAAAAAAAAAAA8wCgCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-02T16:54:38.606Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "STREAMIT.Presentation.csproj",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
-              "RelativeDocumentMoniker": "STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
-              "RelativeToolTip": "STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-01T12:10:25.979Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T16:54:38.606Z"
             },
             {
               "$type": "Document",
@@ -843,12 +902,11 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Program.cs",
               "ViewState": "AgIAANEAAAAAAAAAAAAYwOYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:10:57.439Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:10:57.439Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 16,
               "Title": "STREAMIT.Business.csproj",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\STREAMIT.Business.csproj",
               "RelativeDocumentMoniker": "STREAMIT.Business\\STREAMIT.Business.csproj",
@@ -856,12 +914,11 @@
               "RelativeToolTip": "STREAMIT.Business\\STREAMIT.Business.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-05-22T10:44:11.823Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-22T10:44:11.823Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Services\\Implementations\\EmailService.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Services\\Implementations\\EmailService.cs",
@@ -869,12 +926,11 @@
               "RelativeToolTip": "STREAMIT.Business\\Services\\Implementations\\EmailService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-22T11:00:16.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-22T11:00:16.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\AiChat\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\AiChat\\Index.cshtml",
@@ -882,38 +938,35 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\AiChat\\Index.cshtml",
               "ViewState": "AgIAAKoAAAAAAAAAAAAYwLgAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-21T18:41:21.687Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-21T18:41:21.687Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\HomeController.cs",
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAIBhwBEAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAABVwBEAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:38:49.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:38:49.281Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 22,
               "Title": "BusinessServiceRegistrations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\ServiceRegistrations\\BusinessServiceRegistrations.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\ServiceRegistrations\\BusinessServiceRegistrations.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\ServiceRegistrations\\BusinessServiceRegistrations.cs",
               "RelativeToolTip": "STREAMIT.Business\\ServiceRegistrations\\BusinessServiceRegistrations.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAIBhwCoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAABVwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:29:23.572Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:29:23.572Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 23,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Home\\Index.cshtml",
@@ -921,12 +974,11 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAHcBAAAAAAAAAAAiwIcBAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-28T20:40:57.799Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:40:57.799Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 21,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Program.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Program.cs",
@@ -934,12 +986,11 @@
               "RelativeToolTip": "STREAMIT.MVC\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAABVwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T20:09:24.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T20:09:24.664Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Shared\\_Layout.cshtml",
@@ -947,25 +998,23 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAK8DAAAAAAAAAAAmwLwDAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-02T15:46:04.348Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T15:46:04.348Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 20,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAPEAAAAAAAAAAIBxwPwAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAPkAAAAAAAAAAABlwPwAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-01T08:42:42.965Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T08:42:42.965Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 25,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\DashboardController.cs",
@@ -973,12 +1022,11 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\DashboardController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T18:47:31.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-06T18:47:31.625Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 26,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\DashboardController.cs",
@@ -986,12 +1034,11 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T18:50:18.017Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-06T18:50:18.017Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 28,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Create.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Create.cshtml",
@@ -999,25 +1046,23 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-07T10:45:23.483Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-07T10:45:23.483Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 27,
               "Title": "Update.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
-              "ViewState": "AgIAABcAAAAAAAAAAIBhwDAAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAABVwDAAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-07T10:43:22.096Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-07T10:43:22.096Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 29,
               "Title": "BlogController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\BlogController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\BlogController.cs",
@@ -1025,12 +1070,11 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\BlogController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-07T10:50:01.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-07T10:50:01.201Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 30,
               "Title": "BlogController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
@@ -1038,8 +1082,19 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:19:01.096Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:19:01.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\appsettings.json",
+              "RelativeDocumentMoniker": "STREAMIT.MVC\\appsettings.json",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\appsettings.json",
+              "RelativeToolTip": "STREAMIT.MVC\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-01T20:15:28.767Z"
             },
             {
               "$type": "Document",
@@ -1051,8 +1106,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\PaymentDtos\\PurchaseVM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T19:59:00.127Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T19:59:00.127Z"
             },
             {
               "$type": "Document",
@@ -1064,8 +1118,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Models\\ContactMessageVM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T16:59:26.828Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T16:59:26.828Z"
             },
             {
               "$type": "Document",
@@ -1077,8 +1130,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Models\\EmailSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T17:00:55.417Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T17:00:55.417Z"
             },
             {
               "$type": "Document",
@@ -1090,12 +1142,11 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Contact\\Index.cshtml",
               "ViewState": "AgIAAMUAAAAAAAAAAAAkwNQAAACWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-10T17:02:51.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T17:02:51.11Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 31,
               "Title": "ContactController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\ContactController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\ContactController.cs",
@@ -1103,8 +1154,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\ContactController.cs",
               "ViewState": "AgIAABYAAAAAAAAAAADwvzQAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T17:02:30.458Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T17:02:30.458Z"
             },
             {
               "$type": "Document",
@@ -1116,8 +1166,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\KapitalBankOptionsDtos\\KapitalBankOption.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:19:44.884Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:19:44.884Z"
             },
             {
               "$type": "Document",
@@ -1129,8 +1178,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Movie\\Watch.cshtml",
               "ViewState": "AgIAADoBAAAAAAAAAAAkwHMBAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-08T17:44:19.674Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T17:44:19.674Z"
             },
             {
               "$type": "Document",
@@ -1142,8 +1190,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\Slider2Controller.cs",
               "ViewState": "AgIAAGEAAAAAAAAAAAAlwHUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:19:14.974Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:19:14.974Z"
             },
             {
               "$type": "Document",
@@ -1155,8 +1202,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\MembershipController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:28:32.813Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:28:32.813Z"
             },
             {
               "$type": "Document",
@@ -1168,8 +1214,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\PaymentDtos\\MembershipVM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T19:12:59.583Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T19:12:59.583Z"
             },
             {
               "$type": "Document",
@@ -1181,8 +1226,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Services\\Implementations\\KapitalBankPaymentService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAJ8AAABeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:14:32.232Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:14:32.232Z"
             },
             {
               "$type": "Document",
@@ -1194,8 +1238,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Services\\Implementations\\GenreService.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAiwDYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:07:09.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:07:09.684Z"
             },
             {
               "$type": "Document",
@@ -1205,10 +1248,9 @@
               "RelativeDocumentMoniker": "STREAMIT.Business\\Services\\Implementations\\AuthService.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Services\\Implementations\\AuthService.cs",
               "RelativeToolTip": "STREAMIT.Business\\Services\\Implementations\\AuthService.cs",
-              "ViewState": "AgIAAKkAAAAAAAAAAIBxwNMAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAALEAAAAAAAAAAABlwNMAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T20:13:55.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T20:13:55.346Z"
             },
             {
               "$type": "Document",
@@ -1220,8 +1262,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Services\\Implementations\\CloudinaryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T16:26:29.225Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-09T16:26:29.225Z"
             },
             {
               "$type": "Document",
@@ -1231,10 +1272,9 @@
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Profile\\Edit.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Profile\\Edit.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Profile\\Edit.cshtml",
-              "ViewState": "AgIAAHAAAAAAAAAAAIBhwB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHQAAAAAAAAAAABVwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-04T14:46:33.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T14:46:33.871Z"
             },
             {
               "$type": "Document",
@@ -1246,8 +1286,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\ProfileController.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAgwC8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T14:36:05.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T14:36:05.577Z"
             },
             {
               "$type": "Document",
@@ -1257,10 +1296,9 @@
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Movie\\Index.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Movie\\Index.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Movie\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBfwBQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAIBRwBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-08T19:55:50.163Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T19:55:50.163Z"
             },
             {
               "$type": "Document",
@@ -1272,8 +1310,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T18:48:04.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T18:48:04.863Z"
             },
             {
               "$type": "Document",
@@ -1285,8 +1322,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAANUAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T18:26:57.48Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T18:26:57.48Z"
             },
             {
               "$type": "Document",
@@ -1298,8 +1334,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\MovieController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T09:04:38.104Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T09:04:38.104Z"
             },
             {
               "$type": "Document",
@@ -1311,8 +1346,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\WatchListController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAABlwB8AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T07:29:34.316Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T07:29:34.316Z"
             },
             {
               "$type": "Document",
@@ -1324,8 +1358,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\WatchListController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T07:24:50.328Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T07:24:50.328Z"
             },
             {
               "$type": "Document",
@@ -1337,8 +1370,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\MovieDtos\\SuggestedMovieDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T19:21:47.682Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T19:21:47.682Z"
             },
             {
               "$type": "Document",
@@ -1350,8 +1382,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\WatchHistory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T17:30:57.987Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T17:30:57.987Z"
             },
             {
               "$type": "Document",
@@ -1363,8 +1394,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\WatchHistoryDtos\\UpdateWatchHistoryDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T17:40:17.846Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T17:40:17.846Z"
             },
             {
               "$type": "Document",
@@ -1376,8 +1406,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\WatchHistoryController.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAQwFwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T17:41:14.753Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T17:41:14.753Z"
             },
             {
               "$type": "Document",
@@ -1389,8 +1418,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Handlers\\AuthHeaderHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T18:43:12.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T18:43:12.134Z"
             },
             {
               "$type": "Document",
@@ -1402,8 +1430,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\BlogDtos\\CreateBlogDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-07T11:17:17.873Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-07T11:17:17.873Z"
             },
             {
               "$type": "Document",
@@ -1415,8 +1442,31 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\FavoriteController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T12:22:54.799Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T12:22:54.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 157,
+              "Title": "20260308173924_CreateWatchHistory.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:39:24.363Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 158,
+              "Title": "20260305173217_AddCommunityMessageReads.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAABVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T17:32:18.073Z"
             },
             {
               "$type": "Document",
@@ -1428,8 +1478,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Slider\\Index.cshtml",
               "ViewState": "AgIAAHsAAAAAAAAAAAAQwIwAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-01T07:44:43.903Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T07:44:43.903Z"
             },
             {
               "$type": "Document",
@@ -1441,8 +1490,7 @@
               "RelativeToolTip": "STREAMIT.DataAccess\\Configurations\\LanguageConfiguration.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAmwCMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:07:53.418Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:07:53.418Z"
             },
             {
               "$type": "Document",
@@ -1454,8 +1502,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Slider2\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAJkAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-01T07:46:46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T07:46:46Z"
             },
             {
               "$type": "Document",
@@ -1467,8 +1514,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\SliderController.cs",
               "ViewState": "AgIAALYAAAAAAAAAAAAQwNUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:19:19.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:19:19.136Z"
             },
             {
               "$type": "Document",
@@ -1478,10 +1524,9 @@
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\ViewModels\\Pagination.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\ViewModels\\Pagination.cs",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\ViewModels\\Pagination.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAABlwG4AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAABcwG4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-07T12:32:54.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-07T12:32:54.565Z"
             },
             {
               "$type": "Document",
@@ -1493,8 +1538,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Tag\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-08T13:19:26.873Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T13:19:26.873Z"
             },
             {
               "$type": "Document",
@@ -1506,8 +1550,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\MembershipController.cs",
               "ViewState": "AgIAALwAAAAAAAAAAAAQwNsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:17:44.126Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:17:44.126Z"
             },
             {
               "$type": "Document",
@@ -1519,8 +1562,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Membership\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-01T06:47:07.014Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T06:47:07.014Z"
             },
             {
               "$type": "Document",
@@ -1532,8 +1574,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Language\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-08T13:13:17.498Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T13:13:17.498Z"
             },
             {
               "$type": "Document",
@@ -1545,8 +1586,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\TagController.cs",
               "ViewState": "AgIAAEwAAAAAAAAAAAAQwMIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:13:47.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:13:47.057Z"
             },
             {
               "$type": "Document",
@@ -1558,8 +1598,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Genre\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-03T17:16:36.345Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:16:36.345Z"
             },
             {
               "$type": "Document",
@@ -1571,8 +1610,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\LanguageController.cs",
               "ViewState": "AgIAALIAAAAAAAAAAAAQwNEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:13:57.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:13:57.577Z"
             },
             {
               "$type": "Document",
@@ -1584,8 +1622,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\GenreController.cs",
               "ViewState": "AgIAAJ0AAAAAAAAAAAAQwLwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:12:23.027Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:12:23.027Z"
             },
             {
               "$type": "Document",
@@ -1597,8 +1634,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\User\\Index.cshtml",
               "ViewState": "AgIAADoAAAAAAAAAAAAQwEkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-03T17:15:08.494Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:15:08.494Z"
             },
             {
               "$type": "Document",
@@ -1610,8 +1646,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:11:27.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:11:27.717Z"
             },
             {
               "$type": "Document",
@@ -1623,8 +1658,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Rating\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-28T20:22:36.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:22:36.44Z"
             },
             {
               "$type": "Document",
@@ -1636,8 +1670,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\MovieController.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAAwC4AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:08:17.727Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:08:17.727Z"
             },
             {
               "$type": "Document",
@@ -1649,8 +1682,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\CastController.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAQwBcAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:00:46.692Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:00:46.692Z"
             },
             {
               "$type": "Document",
@@ -1662,8 +1694,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Movie\\Details.cshtml",
               "ViewState": "AgIAADsAAAAAAAAAAAAQwFEAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-08T12:35:48.598Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T12:35:48.598Z"
             },
             {
               "$type": "Document",
@@ -1675,8 +1706,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Movie\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-28T21:02:34.41Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T21:02:34.41Z"
             },
             {
               "$type": "Document",
@@ -1686,10 +1716,9 @@
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Cast\\Index.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Cast\\Index.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Cast\\Index.cshtml",
-              "ViewState": "AgIAAGYAAAAAAAAAAABlwAEAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAABcwAEAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-03T17:17:12.67Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:17:12.67Z"
             },
             {
               "$type": "Document",
@@ -1701,8 +1730,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\RatingController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:01:57.165Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:01:57.165Z"
             },
             {
               "$type": "Document",
@@ -1714,8 +1742,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\BlogController.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAowC0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T06:43:21.655Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T06:43:21.655Z"
             },
             {
               "$type": "Document",
@@ -1727,8 +1754,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\wwwroot\\admin\\assets\\js\\streamit.js",
               "ViewState": "AgIAAFgBAAAAAAAAAAAowHUBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-03-07T13:37:14.571Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-07T13:37:14.571Z"
             },
             {
               "$type": "Document",
@@ -1740,8 +1766,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\BlogDtos\\UpdateBlogDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-07T11:17:49.706Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-07T11:17:49.706Z"
             },
             {
               "$type": "Document",
@@ -1753,8 +1778,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Hubs\\CommunityHub.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAQwDgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T17:51:31.862Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T17:51:31.862Z"
             },
             {
               "$type": "Document",
@@ -1766,8 +1790,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Profile\\Index.cshtml",
               "ViewState": "AgIAABcBAAAAAAAAAAAowDQBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-04T14:52:08.704Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T14:52:08.704Z"
             },
             {
               "$type": "Document",
@@ -1779,8 +1802,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\MembershipController.cs",
               "ViewState": "AgIAAFoAAAAAAAAAAAAQwJQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-07T08:55:58.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-07T08:55:58.684Z"
             },
             {
               "$type": "Document",
@@ -1792,8 +1814,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\PaymentController.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAUwEcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:21:18.64Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:21:18.64Z"
             },
             {
               "$type": "Document",
@@ -1805,8 +1826,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\UserMembership.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:00:08.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:00:08.136Z"
             },
             {
               "$type": "Document",
@@ -1816,10 +1836,9 @@
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\ViewModels\\DashboardViewModel.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\ViewModels\\DashboardViewModel.cs",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\ViewModels\\DashboardViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAABlwCMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAABcwCMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T18:44:33.985Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-06T18:44:33.985Z"
             },
             {
               "$type": "Document",
@@ -1831,8 +1850,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\DashboardDtos\\GetDashboardDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T18:46:46.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-06T18:46:46.436Z"
             },
             {
               "$type": "Document",
@@ -1844,8 +1862,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T18:50:33.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-06T18:50:33.672Z"
             },
             {
               "$type": "Document",
@@ -1857,8 +1874,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\MovieDtos\\GetMovieDto.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAqwBAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T08:48:42.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T08:48:42.381Z"
             },
             {
               "$type": "Document",
@@ -1870,8 +1886,7 @@
               "RelativeToolTip": "STREAMIT.DataAccess\\ServiceRegistrations\\DataAccessServiceRegistration.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAQwD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T16:59:26.033Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T16:59:26.033Z"
             },
             {
               "$type": "Document",
@@ -1881,10 +1896,9 @@
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\CommunityController.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\CommunityController.cs",
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\CommunityController.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAABlwFoAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAABcwFoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T17:50:54.047Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T17:50:54.047Z"
             },
             {
               "$type": "Document",
@@ -1896,8 +1910,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Community\\Index.cshtml",
               "ViewState": "AgIAANoAAAAAAAAAAAAIwOoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-04T17:45:31.579Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T17:45:31.579Z"
             },
             {
               "$type": "Document",
@@ -1909,8 +1922,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\CommunityController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T17:44:00.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T17:44:00.863Z"
             },
             {
               "$type": "Document",
@@ -1922,8 +1934,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\ReviewController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:24:31.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:24:31.616Z"
             },
             {
               "$type": "Document",
@@ -1935,8 +1946,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\CommunityMessageRead.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T17:28:48.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T17:28:48.497Z"
             },
             {
               "$type": "Document",
@@ -1948,8 +1958,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\CommunityMessage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T17:39:12.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T17:39:12.612Z"
             },
             {
               "$type": "Document",
@@ -1961,8 +1970,31 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\CommunityGroup.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T17:38:55.867Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T17:38:55.867Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 159,
+              "Title": "20260304183539_ChatAdded1.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T18:35:40.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 160,
+              "Title": "20260304174114_ChatAdded.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T17:41:14.266Z"
             },
             {
               "$type": "Document",
@@ -1974,8 +2006,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\FavoriteController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T12:26:18.387Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T12:26:18.387Z"
             },
             {
               "$type": "Document",
@@ -1987,8 +2018,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\UserController.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwHMAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T20:33:25.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T20:33:25.95Z"
             },
             {
               "$type": "Document",
@@ -2000,8 +2030,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\UserDtos\\UpdateMeDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T14:44:42.899Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T14:44:42.899Z"
             },
             {
               "$type": "Document",
@@ -2013,8 +2042,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Favorite\\Index.cshtml",
               "ViewState": "AgIAADcAAAAAAAAAAAAQwHIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-04T12:27:32.793Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T12:27:32.793Z"
             },
             {
               "$type": "Document",
@@ -2026,8 +2054,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\WatchList\\Index.cshtml",
               "ViewState": "AgIAAFAAAAAAAAAAAAAQwG0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-04T08:54:46.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T08:54:46.378Z"
             },
             {
               "$type": "Document",
@@ -2039,8 +2066,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\FavoriteDtos\\GetFavoriteDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T12:25:11.738Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T12:25:11.738Z"
             },
             {
               "$type": "Document",
@@ -2052,8 +2078,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\FavoriteDtos\\FavoriteDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T12:24:36.12Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T12:24:36.12Z"
             },
             {
               "$type": "Document",
@@ -2065,8 +2090,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\WatchlistDtos\\GetWatchListDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T07:26:28.915Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T07:26:28.915Z"
             },
             {
               "$type": "Document",
@@ -2078,8 +2102,19 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\WatchlistDtos\\WatchListDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T07:26:48.285Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T07:26:48.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 161,
+              "Title": "20260304072346_WatchlistAndFavoritesAdded.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T07:23:47.099Z"
             },
             {
               "$type": "Document",
@@ -2091,8 +2126,7 @@
               "RelativeToolTip": "STREAMIT.DataAccess\\Configurations\\GenreConfigurations.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAiwB8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T07:23:14.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T07:23:14.924Z"
             },
             {
               "$type": "Document",
@@ -2104,8 +2138,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Genre.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T07:20:40.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T07:20:40.819Z"
             },
             {
               "$type": "Document",
@@ -2117,8 +2150,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Favorite.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T07:18:41.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T07:18:41.609Z"
             },
             {
               "$type": "Document",
@@ -2130,8 +2162,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Watchlist.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T07:17:37.351Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T07:17:37.351Z"
             },
             {
               "$type": "Document",
@@ -2143,8 +2174,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Blog\\Detail.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-04T06:49:42.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T06:49:42.678Z"
             },
             {
               "$type": "Document",
@@ -2178,8 +2208,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Common\\BaseAuditibleEntity.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T08:53:45.735Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T08:53:45.735Z"
             },
             {
               "$type": "Document",
@@ -2224,8 +2253,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\UserDtos\\GetUserDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:29:38.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:29:38.258Z"
             },
             {
               "$type": "Document",
@@ -2251,6 +2279,18 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 162,
+              "Title": "20260303170824_TvShowDeleted.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T17:08:24.747Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 120,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Membership\\Edit.cshtml",
@@ -2259,8 +2299,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Membership\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-01T06:45:28.023Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T06:45:28.023Z"
             },
             {
               "$type": "Document",
@@ -2272,8 +2311,7 @@
               "RelativeToolTip": "STREAMIT.DataAccess\\Configurations\\SeasonConfigurations.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAmwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:07:37.335Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:07:37.335Z"
             },
             {
               "$type": "Document",
@@ -2285,8 +2323,7 @@
               "RelativeToolTip": "STREAMIT.DataAccess\\Configurations\\MembershipConfigurations.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAmwDgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:07:28.802Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:07:28.802Z"
             },
             {
               "$type": "Document",
@@ -2298,8 +2335,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Services\\Implementations\\PersonService.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAmwGcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:07:05.37Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:07:05.37Z"
             },
             {
               "$type": "Document",
@@ -2311,8 +2347,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Language.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:03:55.386Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:03:55.386Z"
             },
             {
               "$type": "Document",
@@ -2324,8 +2359,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\AppUser.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAmwBQAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T20:30:40.778Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T20:30:40.778Z"
             },
             {
               "$type": "Document",
@@ -2337,8 +2371,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Person.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAmwBMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:03:52.03Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:03:52.03Z"
             },
             {
               "$type": "Document",
@@ -2350,8 +2383,7 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\RatingController.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAmwCMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:26:32.911Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:26:32.911Z"
             },
             {
               "$type": "Document",
@@ -2363,8 +2395,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Tag.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:03:48.692Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:03:48.692Z"
             },
             {
               "$type": "Document",
@@ -2376,8 +2407,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Season.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:03:44.534Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:03:44.534Z"
             },
             {
               "$type": "Document",
@@ -2389,8 +2419,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\GenreDtos\\GetGenreDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:03:36.131Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:03:36.131Z"
             },
             {
               "$type": "Document",
@@ -2402,8 +2431,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Membership.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAmwBgAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:03:29.92Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:03:29.92Z"
             },
             {
               "$type": "Document",
@@ -2414,8 +2442,7 @@
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
               "RelativeToolTip": "STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-03T17:02:05.649Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T17:02:05.649Z"
             },
             {
               "$type": "Document",
@@ -2425,10 +2452,9 @@
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Interceptors\\BaseAuditableInterceptor.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Interceptors\\BaseAuditableInterceptor.cs",
               "RelativeToolTip": "STREAMIT.DataAccess\\Interceptors\\BaseAuditableInterceptor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAEBqwCsAAABOAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAABlwCsAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T16:58:46.599Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T16:58:46.599Z"
             },
             {
               "$type": "Document",
@@ -2440,8 +2466,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\MoviePerson.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T16:57:20.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T16:57:20.616Z"
             },
             {
               "$type": "Document",
@@ -2453,8 +2478,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Profiles\\MovieProfile.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAgwGIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T10:23:23.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T10:23:23.914Z"
             },
             {
               "$type": "Document",
@@ -2466,8 +2490,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\TagController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T14:20:34.053Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T14:20:34.053Z"
             },
             {
               "$type": "Document",
@@ -2479,8 +2502,19 @@
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\GenreController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAmwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T14:01:22.259Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T14:01:22.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 163,
+              "Title": "20260303085546_SmallUpdateMaded.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T08:55:47.223Z"
             },
             {
               "$type": "Document",
@@ -2492,8 +2526,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\ReviewDtos\\AddReviewDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T18:16:27.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T18:16:27.516Z"
             },
             {
               "$type": "Document",
@@ -2505,8 +2538,43 @@
               "RelativeToolTip": "STREAMIT.Presentation\\Middlewares\\GlobalExceptionHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T19:56:34.643Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T19:56:34.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 164,
+              "Title": "20260302180025_FixReviewRelation.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T18:00:25.959Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 165,
+              "Title": "20260302175504_Added21.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T17:55:04.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 166,
+              "Title": "20260302153326_Added.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T15:33:26.386Z"
             },
             {
               "$type": "Document",
@@ -2518,8 +2586,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\PurchaseDtos\\PurchaseInfoVM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T06:20:05.835Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T06:20:05.835Z"
             },
             {
               "$type": "Document",
@@ -2531,8 +2598,7 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\Payment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:02:18.543Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:02:18.543Z"
             },
             {
               "$type": "Document",
@@ -2544,8 +2610,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Services\\Abstractions\\IPaymentService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:13:38.978Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:13:38.978Z"
             },
             {
               "$type": "Document",
@@ -2557,8 +2622,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Membership\\Checkout.cshtml",
               "ViewState": "AgIAAH8AAAAAAAAAAAAUwIgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-01T18:45:29.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T18:45:29.223Z"
             },
             {
               "$type": "Document",
@@ -2570,8 +2634,7 @@
               "RelativeToolTip": "STREAMIT.Business\\Dtos\\MembershipDtos\\MembershipCheckoutVM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:38:59.93Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:38:59.93Z"
             },
             {
               "$type": "Document",
@@ -2583,8 +2646,7 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Membership\\Index.cshtml",
               "ViewState": "AgIAAFUAAAAAAAAAAAAUwGwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-01T12:35:02.375Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:35:02.375Z"
             },
             {
               "$type": "Document",
@@ -2596,8 +2658,19 @@
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Price\\Index.cshtml",
               "ViewState": "AgIAAEoAAAAAAAAAAAAowFcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-01T18:15:37.111Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T18:15:37.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 167,
+              "Title": "20260301122515_KapitalbankCallBackTableAdded.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T12:25:15.246Z"
             },
             {
               "$type": "Document",
@@ -2609,8 +2682,19 @@
               "RelativeToolTip": "STREAMIT.Core\\Entities\\KapitalBankCallbackModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:23:40.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:23:40.212Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 168,
+              "Title": "20260301121653_PaymentTableAdded.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T12:16:53.959Z"
             },
             {
               "$type": "Document",
@@ -2620,14 +2704,21 @@
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Configurations\\MoviePersonConfigurations.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\MoviePersonConfigurations.cs",
               "RelativeToolTip": "STREAMIT.DataAccess\\Configurations\\MoviePersonConfigurations.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAABlwCYAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAABcwCYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:36:41.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-28T20:36:41.395Z"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 169,
+              "Title": "20260228204402_InitUpdate.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-28T20:44:02.616Z"
             }
           ]
         }
