@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using STREAMIT.Core.Entities;
 
@@ -35,7 +35,7 @@ namespace STREAMIT.DataAccess.Configurations
           
             builder.HasIndex(r => new { r.MovieId, r.UserId })
                    .IsUnique()
-                   .HasFilter("[ParentReviewId] IS NULL");
+                   .HasFilter("\"ParentReviewId\" IS NULL");
 
             // Helpful indexes
             builder.HasIndex(r => r.Rating);

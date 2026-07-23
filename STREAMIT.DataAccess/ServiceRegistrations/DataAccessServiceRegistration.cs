@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +29,7 @@ namespace STREAMIT.DataAccess.ServiceRegistrations
             services.AddDbContext<AppDbContext>((sp, opt) =>
             {
                 var interceptor = sp.GetRequiredService<BaseAuditableInterceptor>();
-                opt.UseSqlServer(configuration.GetConnectionString("Default"));
+                opt.UseNpgsql(configuration.GetConnectionString("Default"));
                 opt.AddInterceptors(interceptor);
             });
 

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using STREAMIT.Core.Entities;
 using System;
@@ -41,7 +41,7 @@ namespace STREAMIT.DataAccess.Configurations
            
             builder.HasIndex(r => new { r.MovieId, r.UserId })
                    .IsUnique()
-                   .HasFilter("[ParentReviewId] IS NULL");
+                   .HasFilter("\"ParentReviewId\" IS NULL");
 
             // Self-referencing: Review -> Replies
             builder.HasOne(r => r.ParentReview)

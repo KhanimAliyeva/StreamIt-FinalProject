@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STREAMIT.Business")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef74b62617c6f00acf87c3c2d9ae4b54dd1cfcfb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+371e439028561da777873e6736effd889ff74fb8")]
 [assembly: System.Reflection.AssemblyProductAttribute("STREAMIT.Business")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STREAMIT.Business")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

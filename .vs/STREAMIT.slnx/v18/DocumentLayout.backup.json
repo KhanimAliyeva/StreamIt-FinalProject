@@ -3,24 +3,35 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260722184423_fixedreviewcomments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260722184423_fixedreviewcomments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\configurations\\reviewconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\configurations\\reviewconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\configurations\\reviewmovieconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\configurations\\reviewmovieconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260711060149_correct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260711060149_correct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|solutionrelative:streamit.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\.copilot\\plans\\plan-remove-repository-comments-script.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|MarkdownSecurePreview"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\configurations\\reviewconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\configurations\\reviewconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260711055859_correct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,10 +48,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\streamit.dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\streamit.dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\areas\\admin\\views\\blog\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -91,10 +98,6 @@
       "RelativeMoniker": "D:0:0:{621F278C-8B9C-47A4-FF3B-21AD45E2B246}|STREAMIT.Business\\STREAMIT.Business.csproj|solutionrelative:streamit.business\\serviceregistrations\\businessserviceregistrations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6EAA7406-A597-AEE2-0621-F251127D5FDF}|STREAMIT.Presentation\\STREAMIT.Presentation.csproj|solutionrelative:streamit.presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -129,10 +132,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\views\\contact\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -249,10 +248,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\configurations\\languageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\configurations\\languageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260305173217_addcommunitymessagereads.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260305173217_addcommunitymessagereads.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\areas\\admin\\views\\slider2\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -419,14 +414,6 @@
       "RelativeMoniker": "D:0:0:{C503E606-3B0C-7A2F-E7AB-DB9ABCD72B4F}|STREAMIT.Core\\STREAMIT.Core.csproj|solutionrelative:streamit.core\\entities\\communitygroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260304183539_chatadded1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260304183539_chatadded1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260304174114_chatadded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260304174114_chatadded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.mvc\\controllers\\favoritecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{836415DC-89A6-432A-824E-53CADC463BE1}|STREAMIT.MVC\\STREAMIT.MVC.csproj|solutionrelative:streamit.mvc\\controllers\\favoritecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -461,10 +448,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{621F278C-8B9C-47A4-FF3B-21AD45E2B246}|STREAMIT.Business\\STREAMIT.Business.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.business\\dtos\\favoritedtos\\favoritedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{621F278C-8B9C-47A4-FF3B-21AD45E2B246}|STREAMIT.Business\\STREAMIT.Business.csproj|solutionrelative:streamit.business\\dtos\\favoritedtos\\favoritedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260304072346_watchlistandfavoritesadded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260304072346_watchlistandfavoritesadded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\configurations\\genreconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -617,30 +600,6 @@
       "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\configurations\\moviepersonconfigurations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260228204402_initupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260228204402_initupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260301122515_kapitalbankcallbacktableadded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260301122515_kapitalbankcallbacktableadded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260301121653_paymenttableadded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260301121653_paymenttableadded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260302180025_fixreviewrelation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260302180025_fixreviewrelation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260302175504_added21.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260302175504_added21.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260302153326_added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260302153326_added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\Create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
@@ -654,18 +613,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\_Layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260303170824_tvshowdeleted.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260303170824_tvshowdeleted.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260303085546_smallupdatemaded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260303085546_smallupdatemaded.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|c:\\users\\asus\\source\\repos\\streamit\\streamit.dataaccess\\migrations\\20260308173924_createwatchhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BDD0CDB0-89B4-3F5C-CB7E-C2865E732B42}|STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj|solutionrelative:streamit.dataaccess\\migrations\\20260308173924_createwatchhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -675,80 +622,53 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20260722184423_fixedreviewcomments.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260722184423_fixedreviewcomments.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-22T18:44:24.467Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppDbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\AppDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\AppDbContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\AppDbContextModelSnapshot.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\AppDbContextModelSnapshot.cs",
-              "ViewState": "AgIAADQGAAAAAAAAAAAQwD8GAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-22T18:33:35.54Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "20260711060149_correct.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260711060149_correct.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "20260723085454_Init.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260723085454_Init.cs",
+              "ViewState": "AgIAAAMEAAAAAAAAAAAEwAsEAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T06:01:49.554Z",
+              "WhenOpened": "2026-07-23T08:54:54.365Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20260723084732_Init.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs",
+              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs",
+              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260723084732_Init.cs",
+              "ViewState": "AgIAAIYEAAAAAAAAAAAUwJYEAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T08:47:33.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "plan-remove-repository-comments-script.md [Preview]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\.copilot\\plans\\plan-remove-repository-comments-script.md",
+              "RelativeDocumentMoniker": "..\\..\\..\\.copilot\\plans\\plan-remove-repository-comments-script.md",
+              "ToolTip": "C:\\Users\\ASUS\\.copilot\\plans\\plan-remove-repository-comments-script.md [Preview]",
+              "RelativeToolTip": "..\\..\\..\\.copilot\\plans\\plan-remove-repository-comments-script.md [Preview]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-07-22T19:07:46.24Z",
+              "EditorCaption": " [Preview]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
-              "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
-              "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
-              "ViewState": "AgIAADcAAAAAAAAAAAAawD8AAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-07T11:34:46.093Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MovieController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\MovieController.cs",
-              "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\MovieController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\MovieController.cs",
-              "RelativeToolTip": "STREAMIT.MVC\\Controllers\\MovieController.cs",
-              "ViewState": "AgIAAJcAAAAAAAAAAAAkwKMAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T16:54:21.344Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "STREAMIT.Core.csproj",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\STREAMIT.Core.csproj",
               "RelativeDocumentMoniker": "STREAMIT.Core\\STREAMIT.Core.csproj",
@@ -761,7 +681,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Contexts\\AppDbContext.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Contexts\\AppDbContext.cs",
@@ -774,20 +694,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "ReviewMovieConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\ReviewMovieConfigurations.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Configurations\\ReviewMovieConfigurations.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\ReviewMovieConfigurations.cs",
               "RelativeToolTip": "STREAMIT.DataAccess\\Configurations\\ReviewMovieConfigurations.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAQwCgAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T20:33:23.858Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\appsettings.json",
+              "RelativeDocumentMoniker": "STREAMIT.Presentation\\appsettings.json",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\appsettings.json",
+              "RelativeToolTip": "STREAMIT.Presentation\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-01T12:10:30.5Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\appsettings.json",
+              "RelativeDocumentMoniker": "STREAMIT.MVC\\appsettings.json",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\appsettings.json",
+              "RelativeToolTip": "STREAMIT.MVC\\appsettings.json",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-01T20:15:28.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MovieController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\MovieController.cs",
+              "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\MovieController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\MovieController.cs",
+              "RelativeToolTip": "STREAMIT.MVC\\Controllers\\MovieController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T16:54:21.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
+              "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
+              "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Index.cshtml",
+              "ViewState": "AgIAADcAAAAAAAAAAAAawD8AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T11:34:46.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ReviewConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\ReviewConfigurations.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Configurations\\ReviewConfigurations.cs",
@@ -800,7 +772,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "STREAMIT.MVC.csproj",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\STREAMIT.MVC.csproj",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\STREAMIT.MVC.csproj",
@@ -813,7 +785,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "20260711055859_correct.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260711055859_correct.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260711055859_correct.cs",
@@ -824,33 +796,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "STREAMIT.DataAccess.csproj",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj",
               "RelativeToolTip": "STREAMIT.DataAccess\\STREAMIT.DataAccess.csproj",
-              "ViewState": "AgIAAAEAAAAAAAAAAAA8wAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAABFwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-03-01T12:29:48.405Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Movie\\Details.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Movie\\Details.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Movie\\Details.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Movie\\Details.cshtml",
-              "ViewState": "AgIAAPABAAAAAAAAAAA8wCgCAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAOwBAAAAAAAAAABVwCgCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-02T16:54:38.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "STREAMIT.Presentation.csproj",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
@@ -863,7 +835,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Program.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Program.cs",
@@ -876,7 +848,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "STREAMIT.Business.csproj",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\STREAMIT.Business.csproj",
               "RelativeDocumentMoniker": "STREAMIT.Business\\STREAMIT.Business.csproj",
@@ -889,7 +861,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Services\\Implementations\\EmailService.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Services\\Implementations\\EmailService.cs",
@@ -902,7 +874,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\AiChat\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\AiChat\\Index.cshtml",
@@ -915,46 +887,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\appsettings.json",
-              "RelativeDocumentMoniker": "STREAMIT.Presentation\\appsettings.json",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\appsettings.json",
-              "RelativeToolTip": "STREAMIT.Presentation\\appsettings.json",
-              "ViewState": "AgIAABkAAAAAAAAAAAASwC8AAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-01T12:10:30.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\HomeController.cs",
               "RelativeToolTip": "STREAMIT.MVC\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAABVwBEAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAFkAAAAAAAAAAIBhwBEAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-28T20:38:49.281Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "BusinessServiceRegistrations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\ServiceRegistrations\\BusinessServiceRegistrations.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\ServiceRegistrations\\BusinessServiceRegistrations.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\ServiceRegistrations\\BusinessServiceRegistrations.cs",
               "RelativeToolTip": "STREAMIT.Business\\ServiceRegistrations\\BusinessServiceRegistrations.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAABVwCoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAIBhwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-01T12:29:23.572Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Home\\Index.cshtml",
@@ -967,7 +926,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Program.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Program.cs",
@@ -980,7 +939,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Shared\\_Layout.cshtml",
@@ -993,20 +952,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAPkAAAAAAAAAAABlwPwAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAPEAAAAAAAAAAIBxwPwAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-01T08:42:42.965Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\DashboardController.cs",
@@ -1019,7 +978,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\DashboardController.cs",
@@ -1032,7 +991,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Create.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Create.cshtml",
@@ -1045,20 +1004,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "Update.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAABVwDAAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAIBhwDAAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-07T10:43:22.096Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "BlogController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\BlogController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\BlogController.cs",
@@ -1071,7 +1030,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "BlogController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
@@ -1080,19 +1039,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-28T20:19:01.096Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\appsettings.json",
-              "RelativeDocumentMoniker": "STREAMIT.MVC\\appsettings.json",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\appsettings.json",
-              "RelativeToolTip": "STREAMIT.MVC\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-01T20:15:28.767Z",
               "EditorCaption": ""
             },
             {
@@ -1149,7 +1095,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "ContactController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\ContactController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\ContactController.cs",
@@ -1259,7 +1205,7 @@
               "RelativeDocumentMoniker": "STREAMIT.Business\\Services\\Implementations\\AuthService.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Services\\Implementations\\AuthService.cs",
               "RelativeToolTip": "STREAMIT.Business\\Services\\Implementations\\AuthService.cs",
-              "ViewState": "AgIAALEAAAAAAAAAAABlwNMAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAKkAAAAAAAAAAIBxwNMAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T20:13:55.346Z",
               "EditorCaption": ""
@@ -1285,7 +1231,7 @@
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Profile\\Edit.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Profile\\Edit.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Profile\\Edit.cshtml",
-              "ViewState": "AgIAAHQAAAAAAAAAAABVwB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHAAAAAAAAAAAIBhwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-04T14:46:33.871Z",
               "EditorCaption": ""
@@ -1311,7 +1257,7 @@
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Movie\\Index.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Movie\\Index.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Views\\Movie\\Index.cshtml",
-              "ViewState": "AgIAAAQAAAAAAAAAAIBRwBQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBfwBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-08T19:55:50.163Z",
               "EditorCaption": ""
@@ -1474,33 +1420,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 167,
-              "Title": "20260308173924_CreateWatchHistory.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260308173924_CreateWatchHistory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T17:39:24.363Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
-              "Title": "20260305173217_AddCommunityMessageReads.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260305173217_AddCommunityMessageReads.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAABVwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T17:32:18.073Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 65,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Slider\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Slider\\Index.cshtml",
@@ -1526,7 +1446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 62,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Slider2\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Slider2\\Index.cshtml",
@@ -1539,7 +1459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 64,
               "Title": "SliderController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\SliderController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\SliderController.cs",
@@ -1552,20 +1472,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 63,
               "Title": "Pagination.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\ViewModels\\Pagination.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\ViewModels\\Pagination.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\ViewModels\\Pagination.cs",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\ViewModels\\Pagination.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAABcwG4AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAEwAAAAAAAAAAABlwG4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-07T12:32:54.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 66,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Tag\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Tag\\Index.cshtml",
@@ -1578,7 +1498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 67,
               "Title": "MembershipController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\MembershipController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\MembershipController.cs",
@@ -1591,7 +1511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 68,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Membership\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Membership\\Index.cshtml",
@@ -1604,7 +1524,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 69,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Language\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Language\\Index.cshtml",
@@ -1617,7 +1537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 70,
               "Title": "TagController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\TagController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\TagController.cs",
@@ -1630,7 +1550,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 71,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Genre\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Genre\\Index.cshtml",
@@ -1643,7 +1563,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 72,
               "Title": "LanguageController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\LanguageController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\LanguageController.cs",
@@ -1656,7 +1576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 73,
               "Title": "GenreController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\GenreController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\GenreController.cs",
@@ -1669,7 +1589,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 74,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\User\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\User\\Index.cshtml",
@@ -1682,7 +1602,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 75,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
@@ -1695,7 +1615,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 76,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Rating\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Rating\\Index.cshtml",
@@ -1708,7 +1628,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 77,
               "Title": "MovieController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\MovieController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\MovieController.cs",
@@ -1721,7 +1641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 78,
               "Title": "CastController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\CastController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\CastController.cs",
@@ -1734,7 +1654,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 79,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Movie\\Details.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Movie\\Details.cshtml",
@@ -1747,7 +1667,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 81,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Movie\\Create.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Movie\\Create.cshtml",
@@ -1760,20 +1680,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 80,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Cast\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Cast\\Index.cshtml",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Cast\\Index.cshtml",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\Views\\Cast\\Index.cshtml",
-              "ViewState": "AgIAAGoAAAAAAAAAAABcwAEAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAGYAAAAAAAAAAABlwAEAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-03T17:17:12.67Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 83,
               "Title": "RatingController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Controllers\\RatingController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Controllers\\RatingController.cs",
@@ -1786,7 +1706,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 84,
               "Title": "BlogController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\BlogController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\BlogController.cs",
@@ -1799,7 +1719,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 82,
               "Title": "streamit.js",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\wwwroot\\admin\\assets\\js\\streamit.js",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\wwwroot\\admin\\assets\\js\\streamit.js",
@@ -1812,7 +1732,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 85,
               "Title": "UpdateBlogDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\BlogDtos\\UpdateBlogDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\BlogDtos\\UpdateBlogDto.cs",
@@ -1825,7 +1745,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 86,
               "Title": "CommunityHub.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Hubs\\CommunityHub.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Hubs\\CommunityHub.cs",
@@ -1838,7 +1758,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 87,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Profile\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Profile\\Index.cshtml",
@@ -1851,7 +1771,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 88,
               "Title": "MembershipController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\MembershipController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\MembershipController.cs",
@@ -1864,7 +1784,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 89,
               "Title": "PaymentController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\PaymentController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\PaymentController.cs",
@@ -1877,7 +1797,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 90,
               "Title": "UserMembership.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\UserMembership.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\UserMembership.cs",
@@ -1890,20 +1810,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 91,
               "Title": "DashboardViewModel.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\ViewModels\\DashboardViewModel.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\ViewModels\\DashboardViewModel.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\ViewModels\\DashboardViewModel.cs",
               "RelativeToolTip": "STREAMIT.MVC\\Areas\\Admin\\ViewModels\\DashboardViewModel.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAABcwCMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAABlwCMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-06T18:44:33.985Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 93,
               "Title": "GetDashboardDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\DashboardDtos\\GetDashboardDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\DashboardDtos\\GetDashboardDto.cs",
@@ -1916,7 +1836,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 92,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
@@ -1929,7 +1849,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 94,
               "Title": "GetMovieDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\MovieDtos\\GetMovieDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\MovieDtos\\GetMovieDto.cs",
@@ -1942,7 +1862,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 96,
+              "DocumentIndex": 95,
               "Title": "DataAccessServiceRegistration.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\ServiceRegistrations\\DataAccessServiceRegistration.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\ServiceRegistrations\\DataAccessServiceRegistration.cs",
@@ -1955,20 +1875,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 97,
+              "DocumentIndex": 96,
               "Title": "CommunityController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\CommunityController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\CommunityController.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\CommunityController.cs",
               "RelativeToolTip": "STREAMIT.Presentation\\Controllers\\CommunityController.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAABcwFoAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAE4AAAAAAAAAAABlwFoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-04T17:50:54.047Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 98,
+              "DocumentIndex": 97,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Community\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Community\\Index.cshtml",
@@ -1981,7 +1901,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 99,
+              "DocumentIndex": 98,
               "Title": "CommunityController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\CommunityController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\CommunityController.cs",
@@ -1994,7 +1914,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 100,
+              "DocumentIndex": 99,
               "Title": "ReviewController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\ReviewController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\ReviewController.cs",
@@ -2007,7 +1927,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 101,
+              "DocumentIndex": 100,
               "Title": "CommunityMessageRead.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\CommunityMessageRead.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\CommunityMessageRead.cs",
@@ -2020,7 +1940,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 102,
+              "DocumentIndex": 101,
               "Title": "CommunityMessage.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\CommunityMessage.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\CommunityMessage.cs",
@@ -2033,7 +1953,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 103,
+              "DocumentIndex": 102,
               "Title": "CommunityGroup.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\CommunityGroup.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\CommunityGroup.cs",
@@ -2046,33 +1966,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 104,
-              "Title": "20260304183539_ChatAdded1.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260304183539_ChatAdded1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T18:35:40.19Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 105,
-              "Title": "20260304174114_ChatAdded.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260304174114_ChatAdded.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T17:41:14.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 106,
+              "DocumentIndex": 103,
               "Title": "FavoriteController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\FavoriteController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\FavoriteController.cs",
@@ -2085,7 +1979,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 107,
+              "DocumentIndex": 104,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\UserController.cs",
@@ -2098,7 +1992,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 108,
+              "DocumentIndex": 105,
               "Title": "UpdateMeDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\UserDtos\\UpdateMeDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\UserDtos\\UpdateMeDto.cs",
@@ -2111,7 +2005,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 109,
+              "DocumentIndex": 106,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Favorite\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Favorite\\Index.cshtml",
@@ -2124,7 +2018,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 110,
+              "DocumentIndex": 107,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\WatchList\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\WatchList\\Index.cshtml",
@@ -2137,7 +2031,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 111,
+              "DocumentIndex": 108,
               "Title": "GetFavoriteDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\FavoriteDtos\\GetFavoriteDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\FavoriteDtos\\GetFavoriteDto.cs",
@@ -2150,7 +2044,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 114,
+              "DocumentIndex": 111,
               "Title": "FavoriteDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\FavoriteDtos\\FavoriteDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\FavoriteDtos\\FavoriteDto.cs",
@@ -2163,7 +2057,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 112,
+              "DocumentIndex": 109,
               "Title": "GetWatchListDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\WatchlistDtos\\GetWatchListDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\WatchlistDtos\\GetWatchListDto.cs",
@@ -2176,7 +2070,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 113,
+              "DocumentIndex": 110,
               "Title": "WatchListDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\WatchlistDtos\\WatchListDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\WatchlistDtos\\WatchListDto.cs",
@@ -2189,20 +2083,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 115,
-              "Title": "20260304072346_WatchlistAndFavoritesAdded.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260304072346_WatchlistAndFavoritesAdded.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T07:23:47.099Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 116,
+              "DocumentIndex": 112,
               "Title": "GenreConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\GenreConfigurations.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Configurations\\GenreConfigurations.cs",
@@ -2215,7 +2096,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 117,
+              "DocumentIndex": 113,
               "Title": "Genre.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Genre.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Genre.cs",
@@ -2228,7 +2109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 118,
+              "DocumentIndex": 114,
               "Title": "Favorite.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Favorite.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Favorite.cs",
@@ -2241,7 +2122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 119,
+              "DocumentIndex": 115,
               "Title": "Watchlist.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Watchlist.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Watchlist.cs",
@@ -2254,7 +2135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 121,
+              "DocumentIndex": 117,
               "Title": "Detail.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Blog\\Detail.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Blog\\Detail.cshtml",
@@ -2267,7 +2148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 122,
+              "DocumentIndex": 118,
               "Title": "TvShowController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1102921073\\TvShowController.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1102921073\\TvShowController.cs",
@@ -2278,7 +2159,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 163,
+              "DocumentIndex": 153,
               "Title": "Update.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\Update.cshtml",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\Update.cshtml",
@@ -2289,7 +2170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 120,
+              "DocumentIndex": 116,
               "Title": "BaseAuditibleEntity.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Common\\BaseAuditibleEntity.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Common\\BaseAuditibleEntity.cs",
@@ -2302,7 +2183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 161,
+              "DocumentIndex": 151,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\Details.cshtml",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\Details.cshtml",
@@ -2313,7 +2194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 162,
+              "DocumentIndex": 152,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\Index.cshtml",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\Index.cshtml",
@@ -2324,7 +2205,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 160,
+              "DocumentIndex": 150,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\Create.cshtml",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\Create.cshtml",
@@ -2335,7 +2216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 123,
+              "DocumentIndex": 119,
               "Title": "GetUserDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\UserDtos\\GetUserDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\UserDtos\\GetUserDto.cs",
@@ -2348,7 +2229,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 164,
+              "DocumentIndex": 154,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\_Layout.cshtml",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1751939447\\_Layout.cshtml",
@@ -2359,7 +2240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 125,
+              "DocumentIndex": 121,
               "Title": "TvShow",
               "DocumentMoniker": "C:\\Users\\ASUS\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1827066540\\TvShow",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\-1827066540\\TvShow",
@@ -2370,20 +2251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 165,
-              "Title": "20260303170824_TvShowDeleted.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260303170824_TvShowDeleted.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T17:08:24.747Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 124,
+              "DocumentIndex": 120,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Areas\\Admin\\Views\\Membership\\Edit.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Areas\\Admin\\Views\\Membership\\Edit.cshtml",
@@ -2396,7 +2264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 126,
+              "DocumentIndex": 122,
               "Title": "SeasonConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\SeasonConfigurations.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Configurations\\SeasonConfigurations.cs",
@@ -2409,7 +2277,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 127,
+              "DocumentIndex": 123,
               "Title": "MembershipConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\MembershipConfigurations.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Configurations\\MembershipConfigurations.cs",
@@ -2422,7 +2290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 128,
+              "DocumentIndex": 124,
               "Title": "PersonService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Services\\Implementations\\PersonService.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Services\\Implementations\\PersonService.cs",
@@ -2435,7 +2303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 130,
+              "DocumentIndex": 126,
               "Title": "Language.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Language.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Language.cs",
@@ -2448,7 +2316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 131,
+              "DocumentIndex": 127,
               "Title": "AppUser.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\AppUser.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\AppUser.cs",
@@ -2461,7 +2329,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 132,
+              "DocumentIndex": 128,
               "Title": "Person.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Person.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Person.cs",
@@ -2474,7 +2342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 129,
+              "DocumentIndex": 125,
               "Title": "RatingController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Controllers\\RatingController.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Controllers\\RatingController.cs",
@@ -2487,7 +2355,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 133,
+              "DocumentIndex": 129,
               "Title": "Tag.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Tag.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Tag.cs",
@@ -2500,7 +2368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 134,
+              "DocumentIndex": 130,
               "Title": "Season.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Season.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Season.cs",
@@ -2513,7 +2381,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 135,
+              "DocumentIndex": 131,
               "Title": "GetGenreDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\GenreDtos\\GetGenreDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\GenreDtos\\GetGenreDto.cs",
@@ -2526,7 +2394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 136,
+              "DocumentIndex": 132,
               "Title": "Membership.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Membership.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Membership.cs",
@@ -2539,7 +2407,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 137,
+              "DocumentIndex": 133,
               "Title": "STREAMIT.Presentation",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\STREAMIT.Presentation.csproj",
@@ -2551,20 +2419,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 138,
+              "DocumentIndex": 134,
               "Title": "BaseAuditableInterceptor.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Interceptors\\BaseAuditableInterceptor.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Interceptors\\BaseAuditableInterceptor.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Interceptors\\BaseAuditableInterceptor.cs",
               "RelativeToolTip": "STREAMIT.DataAccess\\Interceptors\\BaseAuditableInterceptor.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAABlwCsAAABOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAEBqwCsAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-03T16:58:46.599Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 139,
+              "DocumentIndex": 135,
               "Title": "MoviePerson.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\MoviePerson.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\MoviePerson.cs",
@@ -2577,7 +2445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 140,
+              "DocumentIndex": 136,
               "Title": "MovieProfile.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Profiles\\MovieProfile.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Profiles\\MovieProfile.cs",
@@ -2590,7 +2458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 141,
+              "DocumentIndex": 137,
               "Title": "TagController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\TagController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\TagController.cs",
@@ -2603,7 +2471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 142,
+              "DocumentIndex": 138,
               "Title": "GenreController.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Controllers\\GenreController.cs",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Controllers\\GenreController.cs",
@@ -2616,20 +2484,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 166,
-              "Title": "20260303085546_SmallUpdateMaded.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260303085546_SmallUpdateMaded.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T08:55:47.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 143,
+              "DocumentIndex": 139,
               "Title": "AddReviewDto.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\ReviewDtos\\AddReviewDto.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\ReviewDtos\\AddReviewDto.cs",
@@ -2642,7 +2497,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 144,
+              "DocumentIndex": 140,
               "Title": "GlobalExceptionHandler.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Presentation\\Middlewares\\GlobalExceptionHandler.cs",
               "RelativeDocumentMoniker": "STREAMIT.Presentation\\Middlewares\\GlobalExceptionHandler.cs",
@@ -2655,46 +2510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 157,
-              "Title": "20260302180025_FixReviewRelation.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260302180025_FixReviewRelation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T18:00:25.959Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 158,
-              "Title": "20260302175504_Added21.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260302175504_Added21.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T17:55:04.322Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 159,
-              "Title": "20260302153326_Added.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260302153326_Added.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T15:33:26.386Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 147,
+              "DocumentIndex": 143,
               "Title": "PurchaseInfoVM.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\PurchaseDtos\\PurchaseInfoVM.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\PurchaseDtos\\PurchaseInfoVM.cs",
@@ -2707,7 +2523,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 145,
+              "DocumentIndex": 141,
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\Payment.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\Payment.cs",
@@ -2720,7 +2536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 146,
+              "DocumentIndex": 142,
               "Title": "IPaymentService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Services\\Abstractions\\IPaymentService.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Services\\Abstractions\\IPaymentService.cs",
@@ -2733,7 +2549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 148,
+              "DocumentIndex": 144,
               "Title": "Checkout.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Membership\\Checkout.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Membership\\Checkout.cshtml",
@@ -2746,7 +2562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 149,
+              "DocumentIndex": 145,
               "Title": "MembershipCheckoutVM.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Business\\Dtos\\MembershipDtos\\MembershipCheckoutVM.cs",
               "RelativeDocumentMoniker": "STREAMIT.Business\\Dtos\\MembershipDtos\\MembershipCheckoutVM.cs",
@@ -2759,7 +2575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 150,
+              "DocumentIndex": 146,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Membership\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Membership\\Index.cshtml",
@@ -2772,7 +2588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 151,
+              "DocumentIndex": 147,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.MVC\\Views\\Price\\Index.cshtml",
               "RelativeDocumentMoniker": "STREAMIT.MVC\\Views\\Price\\Index.cshtml",
@@ -2785,20 +2601,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 155,
-              "Title": "20260301122515_KapitalbankCallBackTableAdded.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260301122515_KapitalbankCallBackTableAdded.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:25:15.246Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 152,
+              "DocumentIndex": 148,
               "Title": "KapitalBankCallbackModel.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.Core\\Entities\\KapitalBankCallbackModel.cs",
               "RelativeDocumentMoniker": "STREAMIT.Core\\Entities\\KapitalBankCallbackModel.cs",
@@ -2811,42 +2614,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 156,
-              "Title": "20260301121653_PaymentTableAdded.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260301121653_PaymentTableAdded.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:16:53.959Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 153,
+              "DocumentIndex": 149,
               "Title": "MoviePersonConfigurations.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\MoviePersonConfigurations.cs",
               "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Configurations\\MoviePersonConfigurations.cs",
               "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Configurations\\MoviePersonConfigurations.cs",
               "RelativeToolTip": "STREAMIT.DataAccess\\Configurations\\MoviePersonConfigurations.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAABcwCYAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAABlwCYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-28T20:36:41.395Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 154,
-              "Title": "20260228204402_InitUpdate.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs",
-              "RelativeDocumentMoniker": "STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs",
-              "ToolTip": "C:\\Users\\ASUS\\source\\repos\\STREAMIT\\STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs",
-              "RelativeToolTip": "STREAMIT.DataAccess\\Migrations\\20260228204402_InitUpdate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T20:44:02.616Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

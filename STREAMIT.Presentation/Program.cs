@@ -179,7 +179,8 @@ public class Program
         // --------------------------------------
         builder.Services.AddHttpClient("ApiClient", client =>
         {
-            client.BaseAddress = new Uri("https://localhost:7108/");
+            var apiBase = builder.Configuration["Api:BaseUrl"] ?? "https://localhost:7108/";
+            client.BaseAddress = new Uri(apiBase.TrimEnd('/') + "/");
         });
 
         // --------------------------------------

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\STREAMIT.Business\STREAMIT.Business.csproj" />
+    <ProjectReference Include="..\STREAMIT.DataAccess\STREAMIT.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
